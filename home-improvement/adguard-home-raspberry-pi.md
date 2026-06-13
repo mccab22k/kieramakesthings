@@ -11,6 +11,12 @@ Use the Raspberry Pi as the network-wide DNS and DHCP service so AdGuard can:
 - avoid router DNS proxy visibility issues
 - keep the setup portable when moving the router from a modem to an apartment Ethernet handoff
 
+## Current Issue
+
+The Pi was initially configured with both Wi-Fi and Ethernet available. That created a current troubleshooting problem: the Pi can appear with two LAN IP addresses, one for `wlan0` and one for `eth0`.
+
+Current lesson: for this setup, the Pi should have been configured Ethernet-only from the start. Wi-Fi should be left unconfigured unless Ethernet is unavailable.
+
 ## Current Architecture
 
 ```text
@@ -54,9 +60,10 @@ Recommended settings:
 - OS: Raspberry Pi OS Lite
 - Enable SSH
 - Configure username/password
+- Do **not** configure Wi-Fi if the Pi will be wired by Ethernet
 - Configure Wi-Fi only if Ethernet is unavailable
 
-Ethernet is preferred because it avoids confusion between `wlan0` and `eth0`.
+Ethernet is preferred because it avoids confusion between `wlan0` and `eth0`. For this AdGuard setup, initial Wi-Fi configuration created avoidable ambiguity because the Pi can later appear as two devices or two IPs on the LAN.
 
 ## 2. Update the Pi
 
@@ -81,7 +88,24 @@ wlan0 = 192.168.1.x
 eth0  = 192.168.1.y
 ```
 
-Use the Ethernet address if available.
+Use the Ethernet address if available. If both addresses are active, treat that as a configuration issue to clean up before relying on the Pi for DHCP/DNS.
+
+Recommended cleanup:
+
+1. Keep Ethernet connected.
+2. Remove or disable the saved Wi-Fi connection.
+3. Reserve only the Ethernet MAC/IP on the router.
+4. Use the Ethernet IP in AdGuard, router DNS, and DHCP settings.
+5. Reboot the Pi and confirm only the intended Ethernet IP remains active.
+
+Useful checks:
+
+```bash
+ip addr show wlan0
+ip addr show eth0
+ip route
+hostname -I
+```
 
 ## 4. Make the Pi IP Static
 
@@ -296,11 +320,19 @@ Renew leases by:
 - running `ipconfig /release` and `ipconfig /renew` on Windows
 - waiting for leases to expire
 
-## 12. Why Toggling Router DHCP Fixed Things
+## 12. Why Re-Enabling Router DHCP Fixed Things
 
-Turning router DHCP back on may appear to fix the network because it rebuilds stale state.
+Re-enabling router DHCP may be necessary as a temporary recovery step when leases, hostnames, or local DNS state get stale.
 
-Likely causes:
+Use this when clients stop resolving correctly, devices disappear, or AdGuard/router lease state looks inconsistent:
+
+1. Re-enable router DHCP temporarily.
+2. Let clients refresh or renew their leases.
+3. Confirm devices regain valid IP, gateway, and DNS settings.
+4. Re-check the Pi IP and make sure only the intended Ethernet IP is being used.
+5. Move back to AdGuard DHCP only after the network state is clean.
+
+Why this helps:
 
 - clients renewed leases
 - devices re-registered hostnames
@@ -506,27 +538,33 @@ The Raspberry Pi 4 Ethernet port is 1 Gbps, so anything above reliable Cat5e is 
 
 1. Flash Raspberry Pi OS Lite with Raspberry Pi Imager.
 2. Enable SSH.
-3. Boot Pi on Ethernet.
-4. Update OS.
-5. Check Pi IP.
-6. Make Pi IP static/reserved and outside DHCP pool.
-7. Install AdGuard Home.
-8. Check installed version from CLI.
-9. Open AdGuard web UI.
-10. Configure upstream, bootstrap, and fallback DNS.
-11. Test DNS manually.
-12. Configure AdGuard DHCP.
-13. Confirm gateway is router IP and DNS is Pi IP.
-14. Disable router DHCP.
-15. Renew client leases.
-16. Confirm clients appear individually in AdGuard.
-17. Test router UI access via default gateway.
-18. Test WAN handoff if switching from modem to apartment Ethernet.
+3. Do not configure Wi-Fi unless Ethernet is unavailable.
+4. Boot Pi on Ethernet.
+5. Update OS.
+6. Check Pi IP.
+7. Confirm the Pi is using the Ethernet IP, not both Wi-Fi and Ethernet IPs.
+8. Make Pi IP static/reserved and outside DHCP pool.
+9. Install AdGuard Home.
+10. Check installed version from CLI.
+11. Open AdGuard web UI.
+12. Configure upstream, bootstrap, and fallback DNS.
+13. Test DNS manually.
+14. Configure AdGuard DHCP.
+15. Confirm gateway is router IP and DNS is Pi IP.
+16. Disable router DHCP.
+17. Renew client leases.
+18. If leases or hostname state look stale, temporarily re-enable router DHCP to refresh leases, then return to the intended single-DHCP setup.
+19. Confirm clients appear individually in AdGuard.
+20. Test router UI access via default gateway.
+21. Test WAN handoff if switching from modem to apartment Ethernet.
 
 ## Lessons Learned
 
+- The Pi should be configured Ethernet-only for this setup unless Wi-Fi is required.
+- Configuring Wi-Fi during initial setup can create a two-IP problem later: one IP for `wlan0` and one IP for `eth0`.
 - The Pi IP should be static and outside the AdGuard DHCP range.
 - Router DHCP and AdGuard DHCP should not both stay enabled long-term.
+- Temporarily re-enabling router DHCP can help refresh stale leases and rebuild local network state.
 - AdGuard DHCP improves client visibility because AdGuard owns the lease table.
 - The router should remain the gateway even when AdGuard is DHCP.
 - Changing DHCP can fix stale state that a router reboot does not clear.
