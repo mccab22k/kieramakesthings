@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colony Cat Management — Kiera Makes Things</title>
+  <meta name="description" content="A machine-learning-assisted project for identifying community cats, tracking colony members, and supporting humane cat colony management.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f6efe8;
+      --cream-2: #fbf7f2;
+      --blush: #ead0c5;
+      --rose: #a95f5f;
+      --rose-2: #c98982;
+      --brown: #3c261f;
+      --brown-2: #66483f;
+      --muted: #8a746b;
+      --line: #e2c9bd;
+      --surface: rgba(255,255,255,.38);
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--brown);
+      background:
+        radial-gradient(circle at 84% 8%, rgba(234,208,197,.95), transparent 34%),
+        linear-gradient(90deg, var(--cream-2) 0%, var(--cream) 52%, var(--blush) 100%);
+      line-height: 1.6;
+    }
+
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+    nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; }
+    nav a { color: var(--brown-2); text-decoration: none; font-size: 14px; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: -.03em; }
+    .brand small { font-family: Inter, sans-serif; color: var(--rose); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-left: 2px; }
+
+    .hero { display: grid; grid-template-columns: 1fr .9fr; gap: 44px; align-items: center; margin-bottom: 72px; }
+    .pill { display: inline-flex; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--rose); background: rgba(255,255,255,.42); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--rose-2); }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -.055em; line-height: .95; color: var(--brown); }
+    h1 { font-size: clamp(58px, 9vw, 118px); margin: 34px 0 24px; }
+    h1 em { color: var(--rose); font-style: italic; }
+    h2 { font-size: clamp(42px, 6vw, 72px); margin-bottom: 16px; }
+    h3 { font-size: 30px; margin-bottom: 8px; }
+    .lede { max-width: 650px; color: var(--brown-2); font-size: clamp(17px, 1.8vw, 21px); margin-bottom: 28px; }
+    p { color: var(--brown-2); margin-bottom: 14px; }
+    ul { color: var(--brown-2); padding-left: 20px; margin-top: 12px; }
+    li { margin-bottom: 8px; }
+
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: var(--brown); color: white; text-decoration: none; font-weight: 700; box-shadow: 0 14px 34px rgba(60,38,31,.12); }
+    .button.secondary { background: rgba(255,255,255,.36); color: var(--brown); border: 1px solid var(--line); box-shadow: none; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .mock-frame { border: 1px solid var(--line); border-radius: 32px; padding: 14px; background: rgba(255,255,255,.32); box-shadow: 0 30px 90px rgba(60,38,31,.14); }
+    .cat-card { min-height: 560px; border-radius: 24px; background: #fbf7f2; border: 1px solid var(--line); padding: 28px; position: relative; overflow: hidden; }
+    .cat-card::before { content: ''; position: absolute; width: 310px; height: 310px; right: -70px; top: -60px; border-radius: 50%; background: rgba(201,137,130,.22); }
+    .cat-face { position: relative; width: 260px; height: 230px; margin: 54px auto 24px; }
+    .ear { position: absolute; top: 0; width: 92px; height: 112px; background: var(--brown); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+    .ear.left { left: 22px; transform: rotate(-18deg); }
+    .ear.right { right: 22px; transform: rotate(18deg); }
+    .head { position: absolute; bottom: 0; left: 30px; width: 200px; height: 170px; border-radius: 48% 48% 44% 44%; background: var(--brown); }
+    .eye { position: absolute; top: 108px; width: 34px; height: 24px; border-radius: 50%; background: #f6efe8; }
+    .eye.left { left: 80px; }
+    .eye.right { right: 80px; }
+    .nose { position: absolute; left: 123px; top: 148px; width: 18px; height: 13px; border-radius: 50%; background: var(--rose-2); }
+    .tagline { position: relative; display: grid; gap: 10px; margin-top: 22px; }
+    .tagline div { border: 1px solid var(--line); border-radius: 999px; padding: 11px 14px; background: rgba(255,255,255,.52); color: var(--brown-2); font-size: 13px; }
+
+    .section { border-top: 1px solid var(--line); padding: 34px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+    .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+    .feature strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 28px; line-height: 1; margin-bottom: 10px; color: var(--brown); }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 28px; }
+    .stat { padding: 22px 24px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .label { color: var(--rose); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
+    footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--muted); }
+
+    @media (max-width: 850px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: 0; }
+      h1 { font-size: 62px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav>
+      <a class="brand" href="./">Kiera Makes Things<small>project</small></a>
+      <a href="./">Back to projects</a>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="pill">Machine learning + animal welfare</div>
+        <h1>Colony cats, <em>identified.</em></h1>
+        <p class="lede">A computer-vision-assisted project for community cat caretakers: identify individual cats from photos, track colony members over time, and support humane colony management.</p>
+        <div class="actions">
+          <a class="button" href="https://github.com/mccab22k/colony-cat-management">View project repo</a>
+          <a class="button secondary" href="./">Back to portfolio</a>
+        </div>
+      </div>
+
+      <div class="mock-frame" aria-label="Cat identification project mockup">
+        <div class="cat-card">
+          <div class="pill">Prototype classifier</div>
+          <div class="cat-face" aria-hidden="true">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="head"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+          </div>
+          <div class="tagline">
+            <div><strong>Input:</strong> colony photo set</div>
+            <div><strong>Signals:</strong> ear shape, coat pattern, markings</div>
+            <div><strong>Output:</strong> likely individual match + notes</div>
+            <div><strong>Use:</strong> monitor colony population and TNR status</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Project goal</h2>
+      <p>The project is intended to help caretakers distinguish cats that look similar, maintain a cleaner colony record, and identify which cats may already be known, missing, new, clipped, unclipped, or in need of follow-up.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="label">Domain</div><p>Community cat care</p></div>
+        <div class="stat"><div class="label">Method</div><p>Image classification</p></div>
+        <div class="stat"><div class="label">Inputs</div><p>Cat photo libraries</p></div>
+        <div class="stat"><div class="label">Status</div><p>Prototype</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What it should do</h2>
+      <div class="grid">
+        <div class="feature"><strong>Identify cats</strong><p>Compare uploaded photos against known colony members and return likely matches.</p></div>
+        <div class="feature"><strong>Track TNR status</strong><p>Use ear-tip/clipped-ear signals and caretaker notes to help distinguish altered and unaltered cats.</p></div>
+        <div class="feature"><strong>Build a colony record</strong><p>Store photos, names, markings, sightings, and health notes for each cat.</p></div>
+        <div class="feature"><strong>Handle lookalikes</strong><p>Prioritize features like coat pattern, ear shape, facial markings, body markings, and tail pattern.</p></div>
+        <div class="feature"><strong>Support field use</strong><p>Design around quick photo review and low-friction updates from caretakers.</p></div>
+        <div class="feature"><strong>Improve over time</strong><p>Expand the training set with clipped and unclipped examples and known individual identities.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Model approach</h2>
+      <p>The practical first version should avoid overclaiming. A good MVP is not a perfect cat recognizer; it is a ranked assistant that says: this cat may be one of these known cats, here are the visual reasons, and here is where a human caretaker should confirm.</p>
+      <ul>
+        <li>Start with labeled folders of known cats and clipped/unclipped ear examples.</li>
+        <li>Use image embeddings to compare visual similarity across photos.</li>
+        <li>Add a separate ear-tip classifier for TNR status.</li>
+        <li>Keep human confirmation in the loop for final identity decisions.</li>
+        <li>Log uncertain predictions so the dataset improves over time.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Why it matters</h2>
+      <p>Community cat management depends on knowing which cats are already part of a colony, which cats are new, which cats are altered, and which cats may need care. A lightweight identification tool can reduce duplicate records and make caretaker handoffs easier.</p>
+    </section>
+
+    <footer>© 2026 Kiera Makes Things</footer>
+  </main>
+</body>
+</html>
