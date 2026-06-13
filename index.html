@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiera Makes Things</title>
+    <meta name="description" content="Kiera Makes Things is a portfolio of apps, hardware concepts, home lab projects, and personal systems exploring time, travel, identity, health, and infrastructure.">
+    <meta property="og:title" content="Kiera Makes Things">
+    <meta property="og:description" content="Software, hardware, and personal systems exploring time, travel, identity, health, and infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/">
+    <meta name="twitter:card" content="summary">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
 
@@ -42,15 +48,19 @@
         }
 
         .container { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
-        header { text-align: center; margin-bottom: 100px; animation: fadeInDown 0.8s ease-out; }
+        header { text-align: center; margin-bottom: 72px; animation: fadeInDown 0.8s ease-out; }
         .header-tag { display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-primary); margin-bottom: 16px; padding: 8px 16px; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 50px; background: rgba(99, 102, 241, 0.05); }
-        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -2px; background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 660px; margin: 0 auto; font-weight: 400; line-height: 1.6; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.7rem, 8vw, 5rem); font-weight: 800; line-height: 1.05; margin-bottom: 20px; letter-spacing: -2px; background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 760px; margin: 0 auto; font-weight: 400; line-height: 1.6; }
+        .section-label { margin: 54px 0 18px; color: var(--text-muted); font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 80px; }
         .project-card { position: relative; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); overflow: hidden; animation: fadeInUp 0.6s ease-out backwards; }
+        .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; padding: 40px; }
         .project-card:nth-child(1) { animation-delay: 0.1s; }
         .project-card:nth-child(2) { animation-delay: 0.2s; }
         .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
         .project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s ease; z-index: 1; }
         .project-card:hover { border-color: var(--accent-primary); background: var(--bg-hover); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2); }
         .project-card:hover::before { opacity: 1; }
@@ -59,7 +69,9 @@
         .project-icon.secondary { background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary)); }
         .project-icon.tertiary { background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary)); }
         .project-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+        .featured .project-title { font-size: clamp(2rem, 4vw, 3.3rem); letter-spacing: -1.5px; }
         .project-description { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        .featured .project-description { font-size: 1.05rem; max-width: 720px; }
         .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
         .tag { display: inline-block; padding: 4px 12px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 20px; font-size: 0.8rem; color: var(--accent-primary); font-weight: 500; letter-spacing: 0.5px; }
         .tag.secondary { background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.2); color: var(--accent-secondary); }
@@ -72,71 +84,73 @@
         .status-badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
         .status-active { background: rgba(20, 184, 166, 0.2); color: var(--accent-tertiary); }
         .status-planned { background: rgba(99, 102, 241, 0.2); color: var(--accent-primary); }
+        .preview-orbit { position: relative; z-index: 2; min-height: 280px; border: 1px solid var(--border-color); border-radius: 22px; background: #08090b; display: grid; place-items: center; overflow: hidden; }
+        .preview-orbit::before { content: ''; width: 210px; height: 210px; border: 1px solid #333; border-radius: 50%; box-shadow: 0 0 0 42px rgba(255,255,255,.025), 0 0 0 84px rgba(255,255,255,.018); }
+        .preview-orbit::after { content: '24H'; position: absolute; color: #f8fafc; font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: .08em; }
         footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.95rem; }
-        .social-links { display: flex; justify-content: center; gap: 24px; margin-top: 20px; }
+        .social-links { display: flex; justify-content: center; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
         .social-link { color: var(--text-secondary); text-decoration: none; transition: all 0.3s ease; }
         .social-link:hover { color: var(--accent-primary); transform: translateY(-2px); }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .container { padding: 40px 20px; } header { margin-bottom: 60px; } h1 { font-size: 2rem; } .projects-grid { grid-template-columns: 1fr; gap: 20px; } .project-card { padding: 24px; } }
+        @media (max-width: 768px) { .container { padding: 40px 20px; } header { margin-bottom: 52px; } h1 { font-size: 2.4rem; } .projects-grid { grid-template-columns: 1fr; gap: 20px; } .project-card, .project-card.featured { grid-template-columns: 1fr; padding: 24px; } .preview-orbit { min-height: 220px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="header-tag">Kiera Makes Things</div>
-            <h1>Projects & Experiments</h1>
-            <p class="subtitle">Experimental apps, personal systems, and hardware concepts for time, planning, and better living.</p>
+            <h1>Software, hardware, and personal systems.</h1>
+            <p class="subtitle">A portfolio of tools exploring time, attention, travel, identity, health, and home infrastructure.</p>
         </header>
 
+        <div class="section-label">Featured project</div>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card featured">
                 <div class="card-content">
-                    <div class="status-badge status-active">Active</div>
+                    <div class="status-badge status-active">Live</div>
                     <div class="project-icon">O</div>
                     <h2 class="project-title">Orbit, A Fancy Planner</h2>
-                    <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
+                    <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling. Built around the shape of a day instead of a linear list.</p>
                     <div class="project-tags">
                         <span class="tag">JavaScript</span>
                         <span class="tag">Planner</span>
                         <span class="tag">Web App</span>
+                        <span class="tag">iOS</span>
                     </div>
                     <div class="project-links">
                         <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
                         <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Launch Web App</a>
-                        <a href="orbit.md" class="project-link">Read More</a>
+                        <a href="orbit.html" class="project-link">Read More</a>
                         <a href="privacy.html" class="project-link">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="preview-orbit" aria-label="Abstract Orbit circular planner preview"></div>
+            </div>
+        </div>
 
-                    </div>
-                </div>
-            </div>
+        <div class="section-label">Apps and product concepts</div>
+        <div class="projects-grid">
             <div class="project-card">
                 <div class="card-content">
-                    <div class="status-badge status-active">Active</div>
-                    <div class="project-icon tertiary">R</div>
-            
-                    <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
-            
-                    <p class="project-description">
-                        Network-wide DNS filtering and ad blocking using a Raspberry Pi 4B,
-                        Raspberry Pi OS Lite, AdGuard Home, and a Netgear Nighthawk router.
-                    </p>
-            
+                    <div class="status-badge status-planned">Work in Progress</div>
+                    <div class="project-icon secondary">T</div>
+                    <h2 class="project-title">Travel Buddy</h2>
+                    <p class="project-description">A passport-aware travel planning tool for groups. The goal is to compare destinations across different passports, Schengen constraints, visa friction, departure cities, and mutually practical meeting airports.</p>
                     <div class="project-tags">
-                        <span class="tag tertiary">Raspberry Pi</span>
-                        <span class="tag tertiary">Networking</span>
-                        <span class="tag tertiary">AdGuard</span>
+                        <span class="tag secondary">Passports</span>
+                        <span class="tag secondary">Travel</span>
+                        <span class="tag secondary">Schengen</span>
                     </div>
-            
                     <div class="project-links">
-                        <a href="adguard.html" class="project-link">Read More</a>
+                        <a href="travel-buddy.md" class="project-link">Project Notes</a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="project-card">
                 <div class="card-content">
-                    <div class="status-badge status-active">Active</div>
+                    <div class="status-badge status-active">Prototype</div>
                     <div class="project-icon tertiary">E</div>
                     <h2 class="project-title">Enneagram Scaled Test</h2>
                     <p class="project-description">A scaled Enneagram testing prototype that extends forced-choice Riso-Hudson-style pairs with weighted 0, 1, and 2 scoring.</p>
@@ -154,24 +168,7 @@
 
             <div class="project-card">
                 <div class="card-content">
-                    <div class="status-badge status-planned">Work in Progress</div>
-                    <div class="project-icon secondary">T</div>
-                    <h2 class="project-title">Travel Buddy</h2>
-                    <p class="project-description">A passport-aware travel tool for groups with different travel documents to compare destinations, visa friction, and entry requirements.</p>
-                    <div class="project-tags">
-                        <span class="tag secondary">Passports</span>
-                        <span class="tag secondary">Travel</span>
-                        <span class="tag secondary">WIP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="travel-buddy.md" class="project-link">Project Notes</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="card-content">
-                    <div class="status-badge status-planned">Planned</div>
+                    <div class="status-badge status-planned">Concept</div>
                     <div class="project-icon secondary">W</div>
                     <h2 class="project-title">Custom Wearable</h2>
                     <p class="project-description">A discreet modular fitness tracker designed to sit between a traditional watch and the wrist.</p>
@@ -186,17 +183,34 @@
                 </div>
             </div>
         </div>
+
+        <div class="section-label">Home lab and infrastructure</div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="card-content">
+                    <div class="status-badge status-active">Active</div>
+                    <div class="project-icon tertiary">R</div>
+                    <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
+                    <p class="project-description">Network-wide DNS filtering and ad blocking using a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, and a Netgear Nighthawk router.</p>
+                    <div class="project-tags">
+                        <span class="tag tertiary">Raspberry Pi</span>
+                        <span class="tag tertiary">Networking</span>
+                        <span class="tag tertiary">AdGuard</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="adguard.html" class="project-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>Building beautiful tools for better living.</p>
-        
             <div class="social-links">
                 <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
                 <a href="privacy.html" class="social-link">Privacy Policy</a>
             </div>
-        
-            <p style="margin-top: 40px; font-size: 0.85rem;">
-                Made with care. © 2026 Kiera Makes Things
-            </p>
+            <p style="margin-top: 40px; font-size: 0.85rem;">Made with care. © 2026 Kiera Makes Things</p>
         </footer>
     </div>
 </body>
