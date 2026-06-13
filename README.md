@@ -24,6 +24,14 @@ A web app prototype for a scaled Enneagram test. It extends either-or question p
 - Launch: https://mccab22k.github.io/enneagram-scaled-test/
 - Notes: enneagram-scaled-test.md
 
+## Work in Progress
+
+### Travel Buddy
+
+A travel-planning companion concept for organizing destinations, shared preferences, itinerary ideas, and lightweight travel logistics.
+
+- Notes: travel-buddy.md
+
 ## Planned / Concept Work
 
 - Custom wearable fitness tracker concept
