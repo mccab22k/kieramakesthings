@@ -1,3 +1,34 @@
-# personal-projects
+# Kiera Makes Things
 
-This is a repo to help redirect to anything I want / have done. Should be making some NLP projects, AR projects, and a few college games public. This is part of my rapid sprint project of 2026
+A GitHub Pages homepage for active projects, prototypes, and build notes.
+
+## Active Projects
+
+### Orbit, A Fancy Planner
+
+Circular daily planner for visual time blocking, templates, recurring routines, and drag-based scheduling.
+
+- Launch: https://mccab22k.github.io/orbit-a-fancy-planner/
+
+### Raspberry Pi + AdGuard Home
+
+Home infrastructure notes for network-wide DNS filtering on a Raspberry Pi 4B.
+
+- Project page: adguard.html
+- Notes: home-improvement/adguard-home-raspberry-pi.md
+
+### Enneagram Scaled Test
+
+A web app prototype for a scaled Enneagram test. It extends either-or question pairs with 0, 1, and 2 scoring so answers can reflect absent, present, or strongly present traits.
+
+- Launch: https://mccab22k.github.io/enneagram-scaled-test/
+- Notes: enneagram-scaled-test.md
+
+## Planned / Concept Work
+
+- Custom wearable fitness tracker concept
+- NLP projects
+- AR projects
+- College games and older CS experiments
+
+This repo is part of my 2026 rapid sprint project: making more projects public, documented, and easier to launch from one place.
