@@ -8,7 +8,9 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 Circular daily planner for visual time blocking, templates, recurring routines, and drag-based scheduling.
 
-- Launch: https://mccab22k.github.io/orbit-a-fancy-planner/
+- App Store: https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489
+- Web app: https://mccab22k.github.io/orbit-a-fancy-planner/
+- Notes: orbit.md
 
 ### Raspberry Pi + AdGuard Home
 
