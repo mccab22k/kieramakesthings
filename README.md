@@ -30,7 +30,7 @@ A web app prototype for a scaled Enneagram test. It extends either-or question p
 
 ### Travel Buddy
 
-A travel-planning companion concept for organizing destinations, shared preferences, itinerary ideas, and lightweight travel logistics.
+A passport-aware trip planning companion for groups with different travel documents. It helps compare destinations and flag where entry requirements differ.
 
 - Notes: travel-buddy.md
 
