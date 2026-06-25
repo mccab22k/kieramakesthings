@@ -172,6 +172,11 @@
       margin-bottom: 48px;
     }
 
+    .featured-projects {
+      grid-template-columns: minmax(0, 1.15fr) minmax(310px, .85fr);
+      align-items: stretch;
+    }
+
     .project-card {
       position: relative;
       background: rgba(250, 248, 244, .78);
@@ -196,7 +201,6 @@
     }
 
     .project-card.featured {
-      grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 28px;
@@ -205,6 +209,14 @@
       border-color: #1e293b;
       color: #f8fafc;
       border-radius: 16px;
+    }
+
+    .project-card.featured-orbit {
+      grid-template-columns: minmax(0, 1.1fr) minmax(220px, .75fr);
+    }
+
+    .project-card.featured-compact {
+      display: block;
     }
 
     .project-card.featured .project-title,
@@ -253,6 +265,10 @@
 
     .featured .project-title {
       font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .featured-compact .project-title {
+      font-size: clamp(2rem, 3vw, 2.65rem);
     }
 
     .project-description {
@@ -423,6 +439,10 @@
         padding: 24px;
       }
 
+      .featured-projects {
+        grid-template-columns: 1fr;
+      }
+
       .preview-orbit {
         min-height: 220px;
       }
@@ -447,9 +467,9 @@
       </p>
     </header>
 
-    <div class="section-label">Featured project</div>
-    <div class="projects-grid">
-      <div class="project-card featured">
+    <div class="section-label">Featured projects</div>
+    <div class="projects-grid featured-projects">
+      <div class="project-card featured featured-orbit">
         <div>
           <div class="status-badge">Live</div>
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
@@ -478,12 +498,36 @@
         </div>
         <div class="preview-orbit"></div>
       </div>
+
+      <div class="project-card featured featured-compact">
+        <div class="status-badge">Featured</div>
+        <h2 class="project-title">Passport Buddy</h2>
+        <p class="project-description">
+          Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
+          departure cities, multi-country itineraries, and mutually practical meeting airports.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Travel</span>
+          <span class="tag">Passports</span>
+          <span class="tag">Group Planning</span>
+        </div>
+        <div class="project-links">
+          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
+          <a href="travel-buddy.md" class="project-link">Project Notes</a>
+        </div>
+        <details class="why-made">
+          <summary>Why I Made This</summary>
+          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
+          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
+          <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
+        </details>
+      </div>
     </div>
 
     <div class="section-label">Apps, ML, and product concepts</div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="status-badge">Live</div>
+        <div class="status-badge">Work in Progress</div>
         <h2 class="project-title">Time Since</h2>
         <p class="project-description">
           Track how long it's been since chores, maintenance, routines, and life events. Instead of recurring on a fixed schedule,
@@ -508,7 +552,7 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Active</div>
+        <div class="status-badge">Work in Progress</div>
         <h2 class="project-title">Better NYC Map</h2>
         <p class="project-description">
           A web-based NYC transit map and route planner focused on real commuting tradeoffs: walking thresholds, transfer tolerance,
@@ -557,7 +601,7 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Component</div>
+        <div class="status-badge">Work in Progress / Component</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
         <p class="project-description">
           A computer vision utility that turns pet photos into clean, transparent sticker assets by detecting the pet's head,
@@ -576,29 +620,6 @@
           <summary>Why I Made This</summary>
           <p>I built this as an asset-generation component for Catflakes.</p>
           <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
-        </details>
-      </div>
-
-      <div class="project-card">
-        <div class="status-badge">Live</div>
-        <h2 class="project-title">Passport Buddy</h2>
-        <p class="project-description">
-          Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
-          departure cities, and mutually practical meeting airports.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Travel</span>
-          <span class="tag">Passports</span>
-        </div>
-        <div class="project-links">
-          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
-          <a href="travel-buddy.md" class="project-link">Project Notes</a>
-        </div>
-        <details class="why-made">
-          <summary>Why I Made This</summary>
-          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
-          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
-          <p>Passport Buddy helps answer a simple question: where can all of us go together?</p>
         </details>
       </div>
 
@@ -649,7 +670,7 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Concept</div>
+        <div class="status-badge">Prototype</div>
         <h2 class="project-title">Wearable Computing</h2>
         <p class="project-description">
           Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.
