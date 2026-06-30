@@ -14,26 +14,18 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --paper: #F5F2EC;
       --surface: #FAF8F4;
-      --stone: #D8D2C8;
       --ink: #23262B;
       --slate: #606A76;
       --copper: #B46E4D;
-      --moss: #72836B;
       --indigo: #5966A8;
       --line: #C9C1B6;
-      --orbit-bg: #08090b;
       --orbit-card: #111633;
       --orbit-accent: #6366f1;
-      --orbit-secondary: #ec4899;
       --orbit-tertiary: #14b8a6;
       color-scheme: light;
     }
@@ -41,11 +33,9 @@
     body.dark {
       --paper: #0F1218;
       --surface: #171B23;
-      --stone: #2B313C;
       --ink: #F5F2EC;
       --slate: #B6C0CD;
       --copper: #D99A78;
-      --moss: #9FB293;
       --indigo: #AAB4FF;
       --line: #303744;
       color-scheme: dark;
@@ -60,9 +50,7 @@
       transition: background .2s ease, color .2s ease;
     }
 
-    body.dark {
-      background: linear-gradient(135deg, var(--paper), #171B23);
-    }
+    body.dark { background: linear-gradient(135deg, var(--paper), #171B23); }
 
     .container {
       width: min(1200px, calc(100% - 32px));
@@ -94,7 +82,7 @@
       justify-content: flex-end;
     }
 
-    .topbar a:not(.logo) {
+    .topbar a:not(.logo), .social-link {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--slate);
       text-decoration: none;
@@ -111,25 +99,17 @@
       letter-spacing: .08em;
       padding: 7px 10px;
       text-transform: uppercase;
-      transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
     }
 
-    .theme-toggle:hover {
-      transform: translateY(-1px);
-      border-color: var(--indigo);
-    }
+    body.dark .theme-toggle { background: rgba(23, 27, 35, .78); }
 
-    body.dark .theme-toggle {
-      background: rgba(23, 27, 35, .78);
-    }
+    header { max-width: 880px; margin-bottom: 64px; }
 
-    header {
-      max-width: 880px;
-      margin-bottom: 64px;
+    .eyebrow, .section-label, .project-meta, .status-badge, .project-link, .why-made summary {
+      font-family: 'IBM Plex Mono', monospace;
     }
 
     .eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
       color: var(--copper);
       font-size: 12px;
       text-transform: uppercase;
@@ -150,12 +130,9 @@
       max-width: 820px;
     }
 
-    body.dark .subtitle {
-      color: #D6DCE6;
-    }
+    body.dark .subtitle { color: #D6DCE6; }
 
     .section-label {
-      font-family: 'IBM Plex Mono', monospace;
       color: var(--slate);
       font-size: 12px;
       text-transform: uppercase;
@@ -172,10 +149,7 @@
       margin-bottom: 48px;
     }
 
-    .featured-projects {
-      grid-template-columns: 1fr;
-      align-items: stretch;
-    }
+    .featured-projects { grid-template-columns: 1fr; align-items: stretch; }
 
     .project-card {
       position: relative;
@@ -190,22 +164,18 @@
       overflow: hidden;
     }
 
-    body.dark .project-card {
-      background: rgba(23, 27, 35, .78);
-    }
+    body.dark .project-card { background: rgba(23, 27, 35, .78); }
 
     .project-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 34px rgba(35, 38, 43, .10);
     }
 
-    body.dark .project-card:hover {
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
-    }
+    body.dark .project-card:hover { box-shadow: 0 14px 34px rgba(0, 0, 0, .28); }
 
     .project-card.featured {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(220px, .75fr);
       gap: 28px;
       align-items: center;
       background: var(--orbit-card);
@@ -214,20 +184,12 @@
       border-radius: 16px;
     }
 
-    .project-card.featured-orbit {
-      grid-template-columns: minmax(0, 1.1fr) minmax(220px, .75fr);
-    }
-
     .project-card.featured .project-title,
     .project-card.featured .project-description,
-    .project-card.featured .project-hook {
-      color: #f8fafc;
-    }
+    .project-card.featured .project-hook { color: #f8fafc; }
 
     .project-card.featured .project-description,
-    .project-card.featured .project-meta {
-      color: #cbd5e1;
-    }
+    .project-card.featured .project-meta { color: #cbd5e1; }
 
     .project-card.featured .status-badge {
       background: rgba(20, 184, 166, .2);
@@ -245,13 +207,8 @@
       background: rgba(15, 23, 42, .34);
     }
 
-    .project-card.featured .why-made summary {
-      color: #c4b5fd;
-    }
-
-    .project-card.featured .why-made p {
-      color: #cbd5e1;
-    }
+    .project-card.featured .why-made summary { color: #c4b5fd; }
+    .project-card.featured .why-made p { color: #cbd5e1; }
 
     .project-title {
       font-size: 1.55rem;
@@ -260,12 +217,9 @@
       margin-bottom: 12px;
     }
 
-    .featured .project-title {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-    }
+    .featured .project-title { font-size: clamp(2rem, 4vw, 3.4rem); }
 
     .project-meta {
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       color: var(--slate);
       text-transform: uppercase;
@@ -286,10 +240,7 @@
       margin-bottom: 20px;
     }
 
-    .featured .project-description {
-      font-size: 1.05rem;
-      max-width: 720px;
-    }
+    .featured .project-description { font-size: 1.05rem; max-width: 720px; }
 
     .project-links {
       display: flex;
@@ -305,39 +256,19 @@
       border: 1px solid var(--line);
       padding: 7px 10px;
       background: rgba(250, 248, 244, .72);
-      font-family: 'IBM Plex Mono', monospace;
       color: var(--indigo);
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
 
-    .project-link:hover {
-      transform: translateY(-1px);
-      border-color: var(--indigo);
-    }
-
-    body.dark .project-link {
-      background: rgba(15, 18, 24, .46);
-    }
-
-    .project-link-static {
-      color: var(--slate);
-      cursor: default;
-    }
-
-    .project-link::after {
-      content: ' →';
-    }
-
-    .project-link-static::after {
-      content: '';
-    }
+    body.dark .project-link { background: rgba(15, 18, 24, .46); }
+    .project-link-static { color: var(--slate); cursor: default; }
+    .project-link::after { content: ' →'; }
+    .project-link-static::after { content: ''; }
 
     .status-badge {
       display: inline-block;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .12em;
@@ -359,7 +290,6 @@
 
     .why-made summary {
       cursor: pointer;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
@@ -373,9 +303,7 @@
       font-size: .94rem;
     }
 
-    .why-made p + p {
-      margin-top: 10px;
-    }
+    .why-made p + p { margin-top: 10px; }
 
     .preview-orbit {
       position: relative;
@@ -394,7 +322,7 @@
       height: 210px;
       border: 1px solid #333;
       border-radius: 50%;
-      box-shadow: 0 0 0 42px rgba(255, 255, 255, .025), 0 0 0 84px rgba(255, 255, 255, .018);
+      box-shadow: 0 0 0 32px rgba(99, 102, 241, .08), 0 0 0 70px rgba(236, 72, 153, .06);
     }
 
     .preview-orbit::after {
@@ -421,13 +349,6 @@
       flex-wrap: wrap;
     }
 
-    .social-link {
-      font-family: 'IBM Plex Mono', monospace;
-      color: var(--slate);
-      text-decoration: none;
-      font-size: 13px;
-    }
-
     .license-note {
       max-width: 760px;
       margin: 30px auto 0;
@@ -435,36 +356,13 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 28px 0 52px;
-      }
-
-      .topbar {
-        margin-bottom: 46px;
-        align-items: flex-start;
-      }
-
-      .topbar-actions {
-        gap: 10px;
-      }
-
-      h1 {
-        font-size: 52px;
-      }
-
-      .projects-grid,
-      .featured-projects {
-        grid-template-columns: 1fr;
-      }
-
-      .project-card.featured {
-        grid-template-columns: 1fr;
-        padding: 24px;
-      }
-
-      .preview-orbit {
-        min-height: 220px;
-      }
+      .container { padding: 28px 0 52px; }
+      .topbar { margin-bottom: 46px; align-items: flex-start; }
+      .topbar-actions { gap: 10px; }
+      h1 { font-size: 52px; }
+      .projects-grid, .featured-projects { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; padding: 24px; }
+      .preview-orbit { min-height: 220px; }
     }
   </style>
 </head>
@@ -481,9 +379,7 @@
     <header>
       <div class="eyebrow">Kiera Makes Things</div>
       <h1>Designing Useful Things</h1>
-      <p class="subtitle">
-        Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.
-      </p>
+      <p class="subtitle">Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.</p>
     </header>
 
     <div class="section-label">Featured project</div>
@@ -494,9 +390,7 @@
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
           <div class="project-meta">Planner · Live app · iOS + web</div>
           <p class="project-hook">Built because linear planners did not match how my ADHD brain understands a day.</p>
-          <p class="project-description">
-            A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.
-          </p>
+          <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
           <div class="project-links">
             <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
             <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Launch App</a>
@@ -521,9 +415,7 @@
         <h2 class="project-title">Better NYC Map</h2>
         <div class="project-meta">Route planner · Active build · Mobile-first</div>
         <p class="project-hook">Built because route planners miss how New Yorkers choose between walking, transfers, and transit modes.</p>
-        <p class="project-description">
-          A web-based NYC transit map and route planner for real commuting tradeoffs.
-        </p>
+        <p class="project-description">A web-based NYC transit map and route planner for real commuting tradeoffs.</p>
         <div class="project-links">
           <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub Repo (Private)</a>
@@ -542,9 +434,7 @@
         <h2 class="project-title">Passport Buddy</h2>
         <div class="project-meta">Travel planner · Live app · Groups</div>
         <p class="project-hook">Built because group travel gets complicated fast when friends hold different passports.</p>
-        <p class="project-description">
-          Passport-aware travel planning across visa friction, Schengen constraints, departure cities, and practical meeting airports.
-        </p>
+        <p class="project-description">Passport-aware travel planning across visa friction, Schengen constraints, departure cities, and practical meeting airports.</p>
         <div class="project-links">
           <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/passport-buddy" class="project-link">GitHub Repo (Private)</a>
@@ -563,9 +453,7 @@
         <h2 class="project-title">Time Since</h2>
         <div class="project-meta">Productivity · Live app · Reminders</div>
         <p class="project-hook">Built because some routines should reset from the last time they were done.</p>
-        <p class="project-description">
-          Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.
-        </p>
+        <p class="project-description">Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.</p>
         <div class="project-links">
           <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub Repo (Private)</a>
@@ -587,9 +475,7 @@
         <h2 class="project-title">Catflakes</h2>
         <div class="project-meta">Canvas animation · Prototype · Cats</div>
         <p class="project-hook">Built because sometimes a small, strange visual toy is reason enough.</p>
-        <p class="project-description">
-          A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.
-        </p>
+        <p class="project-description">A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/catflakes/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub Repo (Private)</a>
@@ -604,13 +490,11 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Active</div>
+        <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
-        <div class="project-meta">Computer vision · Active component · Stickers</div>
+        <div class="project-meta">Computer vision · Paused component · Stickers</div>
         <p class="project-hook">Built because Catflakes needs clean reusable cat-head assets without manual image editing.</p>
-        <p class="project-description">
-          A utility that turns pet photos into transparent sticker assets for reuse in other apps.
-        </p>
+        <p class="project-description">A utility that turns pet photos into transparent sticker assets for reuse in other apps.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub Repo (Private)</a>
@@ -620,6 +504,7 @@
           <summary>Why I Made This</summary>
           <p>I built this as an asset-generation component for Catflakes.</p>
           <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
+          <p>This project is currently paused while the Catflakes renderer is stabilized and support for bundled custom PNG and SVG assets is prioritized.</p>
         </details>
       </div>
 
@@ -628,9 +513,7 @@
         <h2 class="project-title">Colony Cat Management</h2>
         <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
         <p class="project-hook">Built because community cat caretakers need better ways to recognize and track individual cats.</p>
-        <p class="project-description">
-          Machine-learning-assisted identification and tracking for community cat caretakers.
-        </p>
+        <p class="project-description">Machine-learning-assisted identification and tracking for community cat caretakers.</p>
         <div class="project-links">
           <a href="https://github.com/mccab22k/colony-cat-management" class="project-link">GitHub Repo</a>
           <a href="cats.html" class="project-link">Read More</a>
@@ -647,9 +530,7 @@
         <h2 class="project-title">Personality Systems Research</h2>
         <div class="project-meta">Assessment · Prototype · Identity</div>
         <p class="project-hook">Built because personality tools should show gradients, not just labels.</p>
-        <p class="project-description">
-          A personality assessment experiment combining scaled Enneagram scoring and longitudinal pattern tracking.
-        </p>
+        <p class="project-description">A personality assessment experiment combining scaled Enneagram scoring and longitudinal pattern tracking.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub Repo (Private)</a>
@@ -670,9 +551,7 @@
         <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
         <div class="project-meta">Home lab · Active · DNS</div>
         <p class="project-hook">Built because I wanted network-wide ad blocking and a better understanding of my own infrastructure.</p>
-        <p class="project-description">
-          Network-wide DNS filtering and ad blocking with a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, and a Netgear router.
-        </p>
+        <p class="project-description">Network-wide DNS filtering and ad blocking with a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, and a Netgear router.</p>
         <div class="project-links">
           <a href="adguard.html" class="project-link">Read More</a>
         </div>
@@ -691,9 +570,7 @@
         <h2 class="project-title">Wearable Computing</h2>
         <div class="project-meta">Hardware concept · Research · Sensors</div>
         <p class="project-hook">Built because traditional watches could be augmented without becoming full smartwatches.</p>
-        <p class="project-description">
-          Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.
-        </p>
+        <p class="project-description">Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.</p>
         <div class="project-links">
           <span class="project-link project-link-static">No repo yet</span>
           <a href="wearable-computing.md" class="project-link">Project Notes</a>
@@ -739,11 +616,7 @@
   </script>
 
   <!-- Cloudflare Web Analytics -->
-  <script
-    defer
-    src="https://static.cloudflareinsights.com/beacon.min.js"
-    data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'
-  ></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
