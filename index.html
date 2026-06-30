@@ -154,6 +154,13 @@
       color: #D6DCE6;
     }
 
+    .intro-note {
+      margin-top: 18px;
+      color: var(--slate);
+      max-width: 720px;
+      font-size: 1rem;
+    }
+
     .section-label {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--slate);
@@ -173,7 +180,7 @@
     }
 
     .featured-projects {
-      grid-template-columns: minmax(0, 1.15fr) minmax(310px, .85fr);
+      grid-template-columns: 1fr;
       align-items: stretch;
     }
 
@@ -181,6 +188,7 @@
       position: relative;
       background: rgba(250, 248, 244, .78);
       border: 1px solid var(--line);
+      border-radius: 14px;
       padding: 28px;
       min-height: 280px;
       transition: .2s ease;
@@ -192,12 +200,12 @@
     }
 
     .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 46px rgba(35, 38, 43, .12);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(35, 38, 43, .10);
     }
 
     body.dark .project-card:hover {
-      box-shadow: 0 18px 46px rgba(0, 0, 0, .34);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
     }
 
     .project-card.featured {
@@ -215,16 +223,14 @@
       grid-template-columns: minmax(0, 1.1fr) minmax(220px, .75fr);
     }
 
-    .project-card.featured-compact {
-      display: block;
-    }
-
     .project-card.featured .project-title,
-    .project-card.featured .project-description {
+    .project-card.featured .project-description,
+    .project-card.featured .project-hook {
       color: #f8fafc;
     }
 
-    .project-card.featured .project-description {
+    .project-card.featured .project-description,
+    .project-card.featured .project-meta {
       color: #cbd5e1;
     }
 
@@ -235,6 +241,8 @@
 
     .project-card.featured .project-link {
       color: var(--orbit-accent);
+      background: rgba(15, 23, 42, .42);
+      border-color: rgba(99, 102, 241, .32);
     }
 
     .project-card.featured .tag {
@@ -267,8 +275,20 @@
       font-size: clamp(2rem, 4vw, 3.4rem);
     }
 
-    .featured-compact .project-title {
-      font-size: clamp(2rem, 3vw, 2.65rem);
+    .project-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+    }
+
+    .project-hook {
+      font-size: .95rem;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     .project-description {
@@ -308,11 +328,26 @@
     }
 
     .project-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      background: rgba(250, 248, 244, .72);
       font-family: 'IBM Plex Mono', monospace;
       color: var(--indigo);
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .project-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--indigo);
+    }
+
+    body.dark .project-link {
+      background: rgba(15, 18, 24, .46);
     }
 
     .project-link-static {
@@ -439,17 +474,14 @@
         font-size: 52px;
       }
 
-      .projects-grid {
+      .projects-grid,
+      .featured-projects {
         grid-template-columns: 1fr;
       }
 
       .project-card.featured {
         grid-template-columns: 1fr;
         padding: 24px;
-      }
-
-      .featured-projects {
-        grid-template-columns: 1fr;
       }
 
       .preview-orbit {
@@ -470,18 +502,23 @@
 
     <header>
       <div class="eyebrow">Kiera Makes Things</div>
-      <h1>Software, hardware, and personal systems.</h1>
+      <h1>Designing useful software for time, travel, infrastructure, animal welfare, and everyday systems.</h1>
       <p class="subtitle">
-        A portfolio of tools exploring time, travel, identity, animal welfare, health, and home infrastructure.
+        A portfolio of shipped apps, prototypes, home lab documentation, and research concepts.
+      </p>
+      <p class="intro-note">
+        These projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.
       </p>
     </header>
 
-    <div class="section-label">Featured projects</div>
+    <div class="section-label">Featured project</div>
     <div class="projects-grid featured-projects">
       <div class="project-card featured featured-orbit">
         <div>
           <div class="status-badge">Live</div>
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
+          <div class="project-meta">Planner · Live app · iOS + web</div>
+          <p class="project-hook">Built because linear planners did not match how my ADHD brain understands a day.</p>
           <p class="project-description">
             A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.
             Built around the shape of a day instead of a linear list.
@@ -507,62 +544,15 @@
         </div>
         <div class="preview-orbit"></div>
       </div>
-
-      <div class="project-card featured featured-compact">
-        <div class="status-badge">Live</div>
-        <h2 class="project-title">Passport Buddy</h2>
-        <p class="project-description">
-          Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
-          departure cities, multi-country itineraries, and mutually practical meeting airports.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Travel</span>
-          <span class="tag">Passports</span>
-          <span class="tag">Group Planning</span>
-        </div>
-        <div class="project-links">
-          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
-          <a href="travel-buddy.md" class="project-link">Project Notes</a>
-        </div>
-        <details class="why-made">
-          <summary>Why I Made This</summary>
-          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
-          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
-          <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
-        </details>
-      </div>
     </div>
 
-    <div class="section-label">Apps, ML, and product concepts</div>
+    <div class="section-label">Live apps</div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="status-badge">Work in Progress</div>
-        <h2 class="project-title">Time Since</h2>
-        <p class="project-description">
-          Track how long it's been since chores, maintenance, routines, and life events. Instead of recurring on a fixed schedule,
-          reminders regenerate based on the last time something was actually completed.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Productivity</span>
-          <span class="tag">ADHD</span>
-          <span class="tag">Habits</span>
-          <span class="tag">Web App</span>
-        </div>
-        <div class="project-links">
-          <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub Repo</a>
-        </div>
-        <details class="why-made">
-          <summary>Why I Made This</summary>
-          <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
-          <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
-          <p>Time Since supports occurrence trackers, session trackers, counters, reminders, CSV import/export, and flexible elapsed-time views ranging from days to years.</p>
-        </details>
-      </div>
-
-      <div class="project-card">
-        <div class="status-badge">Work in Progress</div>
+        <div class="status-badge">Active</div>
         <h2 class="project-title">Better NYC Map</h2>
+        <div class="project-meta">Route planner · Active build · Mobile-first</div>
+        <p class="project-hook">Built because Google Maps optimizes routes, not how New Yorkers actually choose between walking, transfers, and transit modes.</p>
         <p class="project-description">
           A web-based NYC transit map and route planner focused on real commuting tradeoffs: walking thresholds, transfer tolerance,
           above-ground preferences, buses, ferries, PATH, LIRR, Metro-North, and best-case versus worst-case route estimates.
@@ -586,8 +576,66 @@
       </div>
 
       <div class="project-card">
+        <div class="status-badge">Live</div>
+        <h2 class="project-title">Passport Buddy</h2>
+        <div class="project-meta">Travel planner · Live app · Groups</div>
+        <p class="project-hook">Built because group travel gets complicated fast when friends hold different passports.</p>
+        <p class="project-description">
+          Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
+          departure cities, multi-country itineraries, and mutually practical meeting airports.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Travel</span>
+          <span class="tag">Passports</span>
+          <span class="tag">Group Planning</span>
+        </div>
+        <div class="project-links">
+          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
+          <a href="travel-buddy.md" class="project-link">Project Notes</a>
+        </div>
+        <details class="why-made">
+          <summary>Why I Made This</summary>
+          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
+          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
+          <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
+        </details>
+      </div>
+
+      <div class="project-card">
+        <div class="status-badge">Live</div>
+        <h2 class="project-title">Time Since</h2>
+        <div class="project-meta">Productivity · Live app · Reminders</div>
+        <p class="project-hook">Built because some routines should reset from the last time they were done, not from a fixed calendar date.</p>
+        <p class="project-description">
+          Track how long it's been since chores, maintenance, routines, and life events. Instead of recurring on a fixed schedule,
+          reminders regenerate based on the last time something was actually completed.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Productivity</span>
+          <span class="tag">ADHD</span>
+          <span class="tag">Habits</span>
+          <span class="tag">Web App</span>
+        </div>
+        <div class="project-links">
+          <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub Repo</a>
+        </div>
+        <details class="why-made">
+          <summary>Why I Made This</summary>
+          <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
+          <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
+          <p>Time Since supports occurrence trackers, session trackers, counters, reminders, CSV import/export, and flexible elapsed-time views ranging from days to years.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="section-label">Active / prototype projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Catflakes</h2>
+        <div class="project-meta">Canvas animation · Prototype · Cats</div>
+        <p class="project-hook">Built because sometimes a small, strange visual toy is reason enough.</p>
         <p class="project-description">
           A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.
         </p>
@@ -610,8 +658,10 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Live / Component</div>
+        <div class="status-badge">Active</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
+        <div class="project-meta">Computer vision · Active component · Stickers</div>
+        <p class="project-hook">Built because Catflakes needs clean reusable cat-head assets without manual image editing.</p>
         <p class="project-description">
           A computer vision utility that turns pet photos into clean, transparent sticker assets by detecting the pet's head,
           removing the background and body, and preparing the result for reuse in other apps.
@@ -636,6 +686,8 @@
       <div class="project-card">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Colony Cat Management</h2>
+        <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
+        <p class="project-hook">Built because community cat caretakers need better ways to recognize and track individual cats.</p>
         <p class="project-description">
           Machine-learning-assisted identification for community cat caretakers: compare cat photos, track colony members,
           and support clipped-ear/TNR status workflows.
@@ -659,6 +711,8 @@
       <div class="project-card">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Personality Systems Research</h2>
+        <div class="project-meta">Assessment · Prototype · Identity</div>
+        <p class="project-hook">Built because personality tools should show gradients, not just labels.</p>
         <p class="project-description">
           A broader personality assessment experiment combining scaled Enneagram scoring, structured self-observation,
           and longitudinal pattern tracking.
@@ -678,22 +732,6 @@
           <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
         </details>
       </div>
-
-      <div class="project-card">
-        <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Wearable Computing</h2>
-        <p class="project-description">
-          Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Hardware</span>
-          <span class="tag">Sensors</span>
-          <span class="tag">Concept</span>
-        </div>
-        <div class="project-links">
-          <span class="project-link project-link-static">Coming Soon</span>
-        </div>
-      </div>
     </div>
 
     <div class="section-label">Infrastructure and home labs</div>
@@ -701,6 +739,8 @@
       <div class="project-card">
         <div class="status-badge">Active</div>
         <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
+        <div class="project-meta">Home lab · Active · DNS</div>
+        <p class="project-hook">Built because I wanted network-wide ad blocking and a better understanding of my own infrastructure.</p>
         <p class="project-description">
           Network-wide DNS filtering and ad blocking using a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home,
           and a Netgear Nighthawk router.
@@ -719,6 +759,24 @@
           <p>I wanted to get rid of ads across my network and learn more about managing my own infrastructure.</p>
           <p>This project documents my Raspberry Pi and AdGuard Home setup, the mistakes I made along the way, and the lessons learned getting everything working correctly.</p>
         </details>
+      </div>
+    </div>
+
+    <div class="section-label">Research / concepts</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="status-badge">Research</div>
+        <h2 class="project-title">Wearable Computing</h2>
+        <div class="project-meta">Hardware concept · Research · Sensors</div>
+        <p class="project-hook">Built because traditional watches could be augmented without becoming full smartwatches.</p>
+        <p class="project-description">
+          Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Hardware</span>
+          <span class="tag">Sensors</span>
+          <span class="tag">Research</span>
+        </div>
       </div>
     </div>
 
