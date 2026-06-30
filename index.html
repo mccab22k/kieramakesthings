@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiera Makes Things</title>
-  <meta name="description" content="Kiera Makes Things is a portfolio of apps, hardware concepts, home lab projects, machine learning experiments, and personal systems.">
-  <meta property="og:title" content="Kiera Makes Things">
-  <meta property="og:description" content="Software, hardware, and personal systems exploring time, travel, identity, animal welfare, and infrastructure.">
+  <title>Designing Useful Things</title>
+  <meta name="description" content="Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.">
+  <meta property="og:title" content="Designing Useful Things">
+  <meta property="og:description" content="Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/">
   <meta name="twitter:card" content="summary">
@@ -154,13 +154,6 @@
       color: #D6DCE6;
     }
 
-    .intro-note {
-      margin-top: 18px;
-      color: var(--slate);
-      max-width: 720px;
-      font-size: 1rem;
-    }
-
     .section-label {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--slate);
@@ -186,6 +179,8 @@
 
     .project-card {
       position: relative;
+      display: flex;
+      flex-direction: column;
       background: rgba(250, 248, 244, .78);
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -245,12 +240,6 @@
       border-color: rgba(99, 102, 241, .32);
     }
 
-    .project-card.featured .tag {
-      background: rgba(99, 102, 241, .1);
-      border-color: rgba(99, 102, 241, .25);
-      color: #a5b4fc;
-    }
-
     .project-card.featured .why-made {
       border-color: rgba(203, 213, 225, .28);
       background: rgba(15, 23, 42, .34);
@@ -302,29 +291,12 @@
       max-width: 720px;
     }
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      padding: 5px 9px;
-      border: 1px solid var(--line);
-      color: var(--slate);
-      background: var(--surface);
-    }
-
     .project-links {
       display: flex;
       flex-wrap: wrap;
       gap: 12px 16px;
+      margin-top: auto;
+      padding-top: 6px;
     }
 
     .project-link {
@@ -374,7 +346,7 @@
     }
 
     .why-made {
-      margin-top: 22px;
+      margin-top: 18px;
       border: 1px solid rgba(201, 193, 182, .72);
       background: rgba(245, 242, 236, .58);
       padding: 12px 14px;
@@ -456,6 +428,12 @@
       font-size: 13px;
     }
 
+    .license-note {
+      max-width: 760px;
+      margin: 30px auto 0;
+      font-size: .85rem;
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 28px 0 52px;
@@ -502,12 +480,9 @@
 
     <header>
       <div class="eyebrow">Kiera Makes Things</div>
-      <h1>Designing useful software for time, travel, infrastructure, animal welfare, and everyday systems.</h1>
+      <h1>Designing Useful Things</h1>
       <p class="subtitle">
-        A portfolio of shipped apps, prototypes, home lab documentation, and research concepts.
-      </p>
-      <p class="intro-note">
-        These projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.
+        Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.
       </p>
     </header>
 
@@ -521,25 +496,17 @@
           <p class="project-hook">Built because linear planners did not match how my ADHD brain understands a day.</p>
           <p class="project-description">
             A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.
-            Built around the shape of a day instead of a linear list.
           </p>
-          <div class="project-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Planner</span>
-            <span class="tag">Web App</span>
-            <span class="tag">iOS</span>
-          </div>
           <div class="project-links">
             <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
-            <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Launch Web App</a>
+            <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Launch App</a>
+            <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub Repo (Private)</a>
             <a href="orbit.html" class="project-link">Read More</a>
-            <a href="privacy.html" class="project-link">Privacy Policy</a>
           </div>
           <details class="why-made">
             <summary>Why I Made This</summary>
-            <p>I built Orbit because traditional planners never worked particularly well for my ADHD or the way I actually schedule my life.</p>
-            <p>A lot of tasks do not happen on a strict weekly cadence. Instead, they need to happen five days after I last did them or two weeks from completion. Orbit's regenerating task system was built around that idea and remains my favorite feature.</p>
-            <p>I also wanted a better way to see where my time is actually going throughout the day instead of constantly jumping between calendars and task lists.</p>
+            <p>Traditional planners never worked particularly well for my ADHD or the way I actually schedule my life.</p>
+            <p>Orbit is built around the shape of a day, regenerating tasks, and seeing where time actually goes.</p>
           </details>
         </div>
         <div class="preview-orbit"></div>
@@ -552,26 +519,19 @@
         <div class="status-badge">Active</div>
         <h2 class="project-title">Better NYC Map</h2>
         <div class="project-meta">Route planner · Active build · Mobile-first</div>
-        <p class="project-hook">Built because Google Maps optimizes routes, not how New Yorkers actually choose between walking, transfers, and transit modes.</p>
+        <p class="project-hook">Built because route planners miss how New Yorkers choose between walking, transfers, and transit modes.</p>
         <p class="project-description">
-          A web-based NYC transit map and route planner focused on real commuting tradeoffs: walking thresholds, transfer tolerance,
-          above-ground preferences, buses, ferries, PATH, LIRR, Metro-North, and best-case versus worst-case route estimates.
+          A web-based NYC transit map and route planner for real commuting tradeoffs.
         </p>
-        <div class="project-tags">
-          <span class="tag">NYC Transit</span>
-          <span class="tag">Maps</span>
-          <span class="tag">Routing</span>
-          <span class="tag">Web App</span>
-        </div>
         <div class="project-links">
           <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub Repo</a>
+          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub Repo (Private)</a>
+          <a href="bettermapnyc.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
-          <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
-          <p>Longer-term, it can support native app packaging, service-alert-aware routing, accessibility preferences, and better multi-modal planning across NYC and regional transit.</p>
+          <p>I wanted a transit planner that reflects actual NYC routing decisions, not only the mathematically shortest trip.</p>
+          <p>The app is designed around walking tolerance, transfers, above-ground routes, buses, ferries, PATH, LIRR, Metro-North, and best/worst-case estimates.</p>
         </details>
       </div>
 
@@ -581,23 +541,17 @@
         <div class="project-meta">Travel planner · Live app · Groups</div>
         <p class="project-hook">Built because group travel gets complicated fast when friends hold different passports.</p>
         <p class="project-description">
-          Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
-          departure cities, multi-country itineraries, and mutually practical meeting airports.
+          Passport-aware travel planning across visa friction, Schengen constraints, departure cities, and practical meeting airports.
         </p>
-        <div class="project-tags">
-          <span class="tag">Travel</span>
-          <span class="tag">Passports</span>
-          <span class="tag">Group Planning</span>
-        </div>
         <div class="project-links">
           <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/passport-buddy" class="project-link">GitHub Repo (Private)</a>
           <a href="travel-buddy.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
-          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
-          <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
+          <p>Different passports make group travel surprisingly complicated.</p>
+          <p>Passport Buddy turns the spreadsheet version of that problem into an app.</p>
         </details>
       </div>
 
@@ -605,26 +559,19 @@
         <div class="status-badge">Live</div>
         <h2 class="project-title">Time Since</h2>
         <div class="project-meta">Productivity · Live app · Reminders</div>
-        <p class="project-hook">Built because some routines should reset from the last time they were done, not from a fixed calendar date.</p>
+        <p class="project-hook">Built because some routines should reset from the last time they were done.</p>
         <p class="project-description">
-          Track how long it's been since chores, maintenance, routines, and life events. Instead of recurring on a fixed schedule,
-          reminders regenerate based on the last time something was actually completed.
+          Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.
         </p>
-        <div class="project-tags">
-          <span class="tag">Productivity</span>
-          <span class="tag">ADHD</span>
-          <span class="tag">Habits</span>
-          <span class="tag">Web App</span>
-        </div>
         <div class="project-links">
           <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub Repo</a>
+          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub Repo (Private)</a>
+          <a href="time-since.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
-          <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
-          <p>Time Since supports occurrence trackers, session trackers, counters, reminders, CSV import/export, and flexible elapsed-time views ranging from days to years.</p>
+          <p>Many recurring tasks do not fit a normal weekly calendar.</p>
+          <p>Time Since supports occurrences, sessions, counters, reminders, CSV import/export, and flexible elapsed-time views.</p>
         </details>
       </div>
     </div>
@@ -639,21 +586,15 @@
         <p class="project-description">
           A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.
         </p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">Canvas</span>
-          <span class="tag">Animation</span>
-          <span class="tag">Cats</span>
-        </div>
         <div class="project-links">
           <a href="https://mccab22k.github.io/catflakes/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub Repo</a>
+          <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub Repo (Private)</a>
+          <a href="catflakes.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>Just because!</p>
-          <p>The proof of concept uses plain HTML, CSS, and Canvas instead of a heavier framework.</p>
-          <p>It currently supports four built-in cats, selectable cat types, wind drift, density controls, speed controls, and falling animation.</p>
+          <p>Just because.</p>
+          <p>The proof of concept uses plain HTML, CSS, and Canvas rather than a heavier framework.</p>
         </details>
       </div>
 
@@ -663,23 +604,17 @@
         <div class="project-meta">Computer vision · Active component · Stickers</div>
         <p class="project-hook">Built because Catflakes needs clean reusable cat-head assets without manual image editing.</p>
         <p class="project-description">
-          A computer vision utility that turns pet photos into clean, transparent sticker assets by detecting the pet's head,
-          removing the background and body, and preparing the result for reuse in other apps.
+          A utility that turns pet photos into transparent sticker assets for reuse in other apps.
         </p>
-        <div class="project-tags">
-          <span class="tag">Computer Vision</span>
-          <span class="tag">Image Segmentation</span>
-          <span class="tag">Stickers</span>
-          <span class="tag">Cats</span>
-        </div>
         <div class="project-links">
           <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub Repo</a>
+          <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub Repo (Private)</a>
+          <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
           <p>I built this as an asset-generation component for Catflakes.</p>
-          <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
+          <p>The goal is to remove pet-photo cleanup work from the user flow.</p>
         </details>
       </div>
 
@@ -689,22 +624,16 @@
         <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
         <p class="project-hook">Built because community cat caretakers need better ways to recognize and track individual cats.</p>
         <p class="project-description">
-          Machine-learning-assisted identification for community cat caretakers: compare cat photos, track colony members,
-          and support clipped-ear/TNR status workflows.
+          Machine-learning-assisted identification and tracking for community cat caretakers.
         </p>
-        <div class="project-tags">
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Computer Vision</span>
-          <span class="tag">Animal Welfare</span>
-        </div>
         <div class="project-links">
-          <a href="cats.html" class="project-link">Read More</a>
           <a href="https://github.com/mccab22k/colony-cat-management" class="project-link">GitHub Repo</a>
+          <a href="cats.html" class="project-link">Read More</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>I live in a part of Manhattan with several cat colonies, I have traveled extensively in places with large street cat populations, and I simply love cats.</p>
-          <p>This project explores whether computer vision can help identify individual cats over time. My hope is that it can eventually support TNR efforts and help volunteers better monitor colony health, population changes, and cats that may need attention.</p>
+          <p>I live near several Manhattan cat colonies and wanted to explore whether computer vision can help identify individual cats over time.</p>
+          <p>The longer-term goal is to support TNR and volunteer monitoring workflows.</p>
         </details>
       </div>
 
@@ -714,22 +643,17 @@
         <div class="project-meta">Assessment · Prototype · Identity</div>
         <p class="project-hook">Built because personality tools should show gradients, not just labels.</p>
         <p class="project-description">
-          A broader personality assessment experiment combining scaled Enneagram scoring, structured self-observation,
-          and longitudinal pattern tracking.
+          A personality assessment experiment combining scaled Enneagram scoring and longitudinal pattern tracking.
         </p>
-        <div class="project-tags">
-          <span class="tag">Identity</span>
-          <span class="tag">Scoring</span>
-          <span class="tag">Web App</span>
-        </div>
         <div class="project-links">
           <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub Repo (Private)</a>
           <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>Most personality tests give you a label. I wanted something a little more nuanced.</p>
-          <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
+          <p>Most personality tests give you a label.</p>
+          <p>This project explores scoring personality traits on a spectrum instead of forcing one category.</p>
         </details>
       </div>
     </div>
@@ -742,22 +666,15 @@
         <div class="project-meta">Home lab · Active · DNS</div>
         <p class="project-hook">Built because I wanted network-wide ad blocking and a better understanding of my own infrastructure.</p>
         <p class="project-description">
-          Network-wide DNS filtering and ad blocking using a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home,
-          and a Netgear Nighthawk router.
+          Network-wide DNS filtering and ad blocking with a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, and a Netgear router.
         </p>
-        <div class="project-tags">
-          <span class="tag">Pi 4B</span>
-          <span class="tag">AdGuard Home</span>
-          <span class="tag">DNS</span>
-          <span class="tag">Networking</span>
-        </div>
         <div class="project-links">
           <a href="adguard.html" class="project-link">Read More</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
           <p>I wanted to get rid of ads across my network and learn more about managing my own infrastructure.</p>
-          <p>This project documents my Raspberry Pi and AdGuard Home setup, the mistakes I made along the way, and the lessons learned getting everything working correctly.</p>
+          <p>This documents the setup, mistakes, and lessons learned.</p>
         </details>
       </div>
     </div>
@@ -772,10 +689,9 @@
         <p class="project-description">
           Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.
         </p>
-        <div class="project-tags">
-          <span class="tag">Hardware</span>
-          <span class="tag">Sensors</span>
-          <span class="tag">Research</span>
+        <div class="project-links">
+          <span class="project-link project-link-static">No repo yet</span>
+          <a href="wearable-computing.md" class="project-link">Project Notes</a>
         </div>
       </div>
     </div>
@@ -786,7 +702,12 @@
         <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
         <a href="privacy.html" class="social-link">Privacy Policy</a>
       </div>
-      <p style="margin-top:40px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
+      <p class="license-note">
+        Unless otherwise stated, all code, concepts, and project materials on this site are owned by Kiera McCabe.
+        Do not copy, reuse, sell, redistribute, or commercialize this work without written permission.
+        For licensing or usage questions, contact <a href="mailto:kieramakesthings@gmail.com" class="social-link">kieramakesthings@gmail.com</a>.
+      </p>
+      <p style="margin-top:28px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
     </footer>
   </main>
 
