@@ -315,8 +315,17 @@
       font-weight: 600;
     }
 
+    .project-link-static {
+      color: var(--slate);
+      cursor: default;
+    }
+
     .project-link::after {
       content: ' →';
+    }
+
+    .project-link-static::after {
+      content: '';
     }
 
     .status-badge {
@@ -500,7 +509,7 @@
       </div>
 
       <div class="project-card featured featured-compact">
-        <div class="status-badge">Featured</div>
+        <div class="status-badge">Live</div>
         <h2 class="project-title">Passport Buddy</h2>
         <p class="project-description">
           Passport-aware travel planning for groups: compare destinations across passports, Schengen constraints, visa friction,
@@ -682,7 +691,7 @@
           <span class="tag">Concept</span>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">Coming Soon</a>
+          <span class="project-link project-link-static">Coming Soon</span>
         </div>
       </div>
     </div>
