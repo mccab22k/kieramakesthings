@@ -82,6 +82,14 @@ questionCount
 - compare binary results against scaled results
 - add admin controls for weighted questions
 
+## Deployment / External Services
+
+- Hosting: GitHub Pages.
+- Source control: GitHub.
+- Database: none documented.
+- Analytics: not documented in this repo.
+- Notes: current app is a static prototype.
+
 ## Status
 
 Active prototype.

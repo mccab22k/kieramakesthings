@@ -120,6 +120,14 @@ The first useful version should answer:
 Given these travelers, passports, and departure airports, where can we all go with the least friction and most reasonable cost?
 ```
 
+## Deployment / External Services
+
+- Hosting: Vercel.
+- Source control: GitHub.
+- Database: not documented in this repo.
+- Analytics: not documented in this repo.
+- Notes: future data/API choices are still being defined.
+
 ## Data Structure Ideas
 
 ```text

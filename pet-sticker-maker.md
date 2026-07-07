@@ -11,11 +11,13 @@ Pet Sticker Maker turns pet photos into reusable transparent sticker assets, pri
 - Integration goal: export or redirect finished assets into Catflakes.
 - Processing model: client-side first where possible, with future room for segmentation/model-assisted cleanup.
 
-## Subprocessors / External Services
+## Deployment / External Services
 
-- GitHub Pages: static hosting.
-- GitHub: source control.
-- Image segmentation/model services may be evaluated if client-side processing is insufficient.
+- Hosting: GitHub Pages.
+- Source control: GitHub.
+- Database: none documented.
+- Analytics: Cloudflare Web Analytics is installed on the live project.
+- Notes: image segmentation/model services may be evaluated if client-side processing is insufficient.
 
 ## Notes
 

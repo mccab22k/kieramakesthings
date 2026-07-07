@@ -51,6 +51,14 @@ The router remains the internet gateway. AdGuard DHCP should hand out the router
 - AdGuard Home
 - Optional WAN source: Spectrum modem or apartment Ethernet jack
 
+## Deployment / External Services
+
+- Hosting: local Raspberry Pi 4B on the home network.
+- Source control: documentation stored in GitHub.
+- Database: AdGuard Home local configuration and logs.
+- Analytics: AdGuard Home dashboard/query log for local DNS traffic.
+- Notes: upstream DNS can use Cloudflare DNS, Google DNS, Quad9, or another provider.
+
 ## 1. Flash Raspberry Pi OS Lite
 
 Use Raspberry Pi Imager.

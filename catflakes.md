@@ -11,10 +11,13 @@ Catflakes is a small visual toy that turns cat images into falling radial snowfl
 - Controls: cat selection, wind, density, speed, and animation behavior.
 - Asset flow: intended to use Pet Sticker Maker output as reusable cat-head sticker assets.
 
-## Subprocessors / External Services
+## Deployment / External Services
 
-- GitHub Pages: static hosting.
-- GitHub: source control.
+- Hosting: GitHub Pages.
+- Source control: GitHub.
+- Database: none documented.
+- Analytics: not documented in this repo.
+- Notes: intended to use Pet Sticker Maker output as reusable cat-head sticker assets.
 
 ## Notes
 

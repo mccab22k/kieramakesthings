@@ -31,6 +31,14 @@ Orbit is designed for visual planning, routine-building, and reducing the fricti
 
 Active project. Available on the Apple App Store and as a web app.
 
+## Deployment / External Services
+
+- Hosting: GitHub Pages web app; Apple App Store for iOS distribution.
+- Source control: GitHub.
+- Database: local-first storage.
+- Analytics: not documented in this repo.
+- Notes: sync and calendar integrations are roadmap items.
+
 ## Roadmap
 
 - calendar integrations

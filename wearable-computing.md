@@ -10,9 +10,13 @@ A research concept exploring whether traditional watches can be augmented with m
 - Hardware direction: modular sensors, passive power concepts, watch retrofits, and lightweight data capture.
 - Software direction: local-first tracking and optional sync if the concept becomes an implemented prototype.
 
-## Subprocessors / External Services
+## Deployment / External Services
 
-- None currently. This is not yet an implemented app or hosted service.
+- Hosting: none currently.
+- Source control: not documented.
+- Database: none currently.
+- Analytics: none currently.
+- Notes: this is not yet an implemented app or hosted service.
 
 ## Notes
 

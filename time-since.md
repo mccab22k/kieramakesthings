@@ -11,10 +11,13 @@ Time Since tracks routines and events by elapsed time instead of forcing every t
 - Storage: browser/app persistence with import/export support.
 - UX: card-based tracking with quick actions for logging events and sessions.
 
-## Subprocessors / External Services
+## Deployment / External Services
 
-- Vercel: app hosting and deployment.
-- GitHub: source control and deployment integration.
+- Hosting: Vercel.
+- Source control: GitHub with deployment integration.
+- Database: browser/app persistence with import/export support.
+- Analytics: not documented in this repo.
+- Notes: no backend service is documented here.
 
 ## Notes
 
