@@ -15,7 +15,7 @@ A mobile-first NYC transit map and route planner focused on how people actually 
 
 - Hosting: Vercel.
 - Source control: GitHub with deployment integration.
-- Database: not documented in this repo.
+- Database: optional Supabase sharing is implemented in the app repo; local-only use still works without accounts.
 - Analytics: not documented in this repo.
 - Notes: mapping and routing providers may be added as the project evolves.
 

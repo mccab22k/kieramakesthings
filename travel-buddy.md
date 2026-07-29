@@ -1,14 +1,14 @@
-# Travel Buddy
+# Passport Buddy
 
 Status: work in progress.
 
 ## Summary
 
-Travel Buddy is a passport-aware travel planning project. The core goal is to help groups with different passports understand where they can travel together, what entry requirements may differ, and which destinations are easiest for everyone.
+Passport Buddy is a passport-aware travel planning project. The core goal is to help groups with different passports understand where they can travel together, what entry requirements may differ, and which destinations are easiest for everyone.
 
 ## Core Use Case
 
-People traveling together often do not have the same passport, visa access, transit rules, airport options, or entry requirements. Travel Buddy is meant to make that visible early, before a group commits to flights, lodging, or a destination.
+People traveling together often do not have the same passport, visa access, transit rules, airport options, or entry requirements. Passport Buddy is meant to make that visible early, before a group commits to flights, lodging, or a destination.
 
 Example travelers:
 
@@ -38,7 +38,7 @@ The app should show:
 
 ### Schengen and non-Schengen Europe planning
 
-Europe trips often cross different entry-rule zones. Travel Buddy should help plan itineraries that include:
+Europe trips often cross different entry-rule zones. Passport Buddy should help plan itineraries that include:
 
 - Schengen-only travel
 - non-Schengen stops
@@ -62,7 +62,7 @@ Each stop should be checked against every traveler's passport, residency, and tr
 
 ### Different departure airports
 
-Friends may start from different airports. Travel Buddy should compare likely routes from each person's origin.
+Friends may start from different airports. Passport Buddy should compare likely routes from each person's origin.
 
 The app should help answer:
 
@@ -124,9 +124,9 @@ Given these travelers, passports, and departure airports, where can we all go wi
 
 - Hosting: Vercel.
 - Source control: GitHub.
-- Database: not documented in this repo.
+- Database: optional Supabase sharing is implemented in the app repo; local-only use still works without accounts.
 - Analytics: not documented in this repo.
-- Notes: future data/API choices are still being defined.
+- Notes: travel requirements remain planning guidance and should be verified against official sources.
 
 ## Data Structure Ideas
 

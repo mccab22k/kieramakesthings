@@ -11,7 +11,27 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub.
 - Database: none for this static splash site.
 - Analytics: Cloudflare Web Analytics is installed on `index.html`.
-- Notes: linked apps may have their own hosting, databases, analytics, and deployment settings. No Supabase connection is documented in this repo yet.
+- Notes: linked apps may have their own hosting, databases, analytics, and deployment settings. Supabase is documented only where a specific app uses it.
+
+## Recent Updates
+
+### Orbit App Store and Native App Work
+
+- App Store distribution is live.
+- Google Calendar import is currently browser read-only.
+- Native calendar integration, write-back, and cross-device sync remain roadmap items.
+
+### Supabase-Backed Sharing
+
+- Better NYC Map documents optional Supabase sharing in the app repo; local-only use still works without accounts.
+- Passport Buddy documents optional Supabase sharing in the app repo; local-only use still works without accounts.
+
+### Pet Sticker Maker Processing
+
+- The frontend is live on GitHub Pages.
+- The processing direction now includes a FastAPI sticker-processing service.
+- Current processing is documented as CPU-first OpenCV segmentation with an optional model-backed provider path.
+- Frontend and backend hosting should be documented together before making the repo public.
 
 ## Featured
 
@@ -29,7 +49,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub.
 - Database: local-first storage documented in project notes.
 - Analytics: not documented in this repo.
-- Notes: sync and calendar integrations are roadmap items.
+- Notes: Google Calendar import is currently browser read-only; sync and native calendar write-back remain roadmap items.
 
 ## Live Apps
 
@@ -43,7 +63,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 - Hosting: Vercel.
 - Source control: GitHub with deployment integration.
-- Database: not documented in this repo.
+- Database: optional Supabase sharing is implemented in the app repo; local-only use still works without accounts.
 - Analytics: not documented in this repo.
 - Notes: mapping and routing providers may be added as the project evolves.
 
@@ -57,9 +77,9 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 - Hosting: Vercel.
 - Source control: GitHub.
-- Database: not documented in this repo.
+- Database: optional Supabase sharing is implemented in the app repo; local-only use still works without accounts.
 - Analytics: not documented in this repo.
-- Notes: future data/API choices are still being defined in the project notes.
+- Notes: travel requirements remain planning guidance and should be verified against official sources.
 
 ### Time Since
 
@@ -99,11 +119,11 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 #### Deployment / External Services
 
-- Hosting: GitHub Pages.
+- Hosting: GitHub Pages frontend; backend hosting is not documented in this repo.
 - Source control: GitHub.
 - Database: none documented.
 - Analytics: Cloudflare Web Analytics is installed on the live project.
-- Notes: image segmentation/model services may be evaluated later.
+- Notes: frontend/backend hosting should be documented together before making the repo public.
 
 ### Colony Cat Management
 

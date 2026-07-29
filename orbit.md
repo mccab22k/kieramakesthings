@@ -31,17 +31,24 @@ Orbit is designed for visual planning, routine-building, and reducing the fricti
 
 Active project. Available on the Apple App Store and as a web app.
 
+## App Store / Native App Efforts
+
+- App Store distribution is live.
+- Current native-app work focuses on keeping the iOS and web planner experience aligned.
+- Google Calendar import is currently browser read-only.
+- Native calendar integration, write-back, and cross-device sync remain roadmap items.
+
 ## Deployment / External Services
 
 - Hosting: GitHub Pages web app; Apple App Store for iOS distribution.
 - Source control: GitHub.
 - Database: local-first storage.
 - Analytics: not documented in this repo.
-- Notes: sync and calendar integrations are roadmap items.
+- Notes: Google Calendar import is currently browser read-only; sync and native calendar write-back remain roadmap items.
 
 ## Roadmap
 
-- calendar integrations
+- native calendar integration and write-back
 - sync across devices
 - richer recurring-task logic
 - improved template application
