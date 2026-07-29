@@ -21,6 +21,24 @@ themeToggle.addEventListener('click', () => {
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
 const projectGrids = document.querySelectorAll('.projects-grid');
+let highlightTimer;
+
+function highlightProjectCard(card) {
+  if (!card) return;
+
+  clearTimeout(highlightTimer);
+  projectCards.forEach((currentCard) => currentCard.classList.remove('is-highlighted'));
+
+  card.classList.remove('is-hidden');
+  card.closest('.projects-grid')?.classList.remove('is-hidden');
+  card.closest('.projects-grid')?.previousElementSibling?.classList.remove('is-hidden');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  card.classList.add('is-highlighted');
+
+  highlightTimer = setTimeout(() => {
+    card.classList.remove('is-highlighted');
+  }, 3600);
+}
 
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -47,3 +65,22 @@ filterButtons.forEach((button) => {
     });
   });
 });
+
+document.querySelectorAll('.project-jump-link').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    const targetCard = document.querySelector(targetId);
+
+    if (!targetCard) return;
+
+    event.preventDefault();
+    history.pushState(null, '', targetId);
+    highlightProjectCard(targetCard);
+  });
+});
+
+if (window.location.hash) {
+  window.addEventListener('load', () => {
+    highlightProjectCard(document.querySelector(window.location.hash));
+  });
+}

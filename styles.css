@@ -208,6 +208,15 @@ body.dark .project-card { background: rgba(23, 27, 35, .78); }
 
 body.dark .project-card:hover { box-shadow: 0 14px 34px rgba(0, 0, 0, .28); }
 
+.project-card.is-highlighted {
+  border-color: var(--copper);
+  box-shadow: 0 0 0 4px rgba(180, 110, 77, .18), 0 18px 42px rgba(35, 38, 43, .16);
+}
+
+body.dark .project-card.is-highlighted {
+  box-shadow: 0 0 0 4px rgba(217, 154, 120, .22), 0 18px 42px rgba(0, 0, 0, .34);
+}
+
 /* Featured project */
 .project-card.featured {
   display: grid;
