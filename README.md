@@ -38,6 +38,12 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - The project now has both a detail page and notes page linked from the homepage.
 - Current goals focus on fast elapsed-time tracking, flexible routine logging, and local-first portability.
 
+### Time Here, Time There
+
+- The app is live on GitHub Pages.
+- The matching GitHub repo exists and is currently marked private on the splash page.
+- Current goals focus on timezone comparison, timeline scrubbing, and practical scheduling across cities.
+
 ### Rent Stabilized Map
 
 - Added as a work-in-progress NYC housing data and mapping project.
@@ -122,6 +128,19 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Database: none documented.
 - Analytics: not documented in this repo.
 - Notes: intended to use Pet Sticker Maker output as reusable cat-head assets.
+
+### Time Here, Time There
+
+- App: https://mccab22k.github.io/timeheretimethere/
+- Repo: https://github.com/mccab22k/timeheretimethere
+
+#### Deployment / External Services
+
+- Hosting: GitHub Pages.
+- Source control: GitHub.
+- Database: none documented.
+- Analytics: not documented in this repo.
+- Notes: current app is a static prototype for comparing time across cities.
 
 ### Pet Sticker Maker
 
