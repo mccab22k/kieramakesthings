@@ -30,22 +30,16 @@
       <p class="subtitle">Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.</p>
     </header>
 
+    <!-- Project filters -->
+    <div class="project-filters" aria-label="Project filters">
+      <button class="filter-button active" type="button" data-filter="all">All</button>
+      <button class="filter-button" type="button" data-filter="app-store">App Store</button>
+      <span class="filter-note">Android releases are planned.</span>
+    </div>
+
     <!-- Recent updates -->
     <div class="section-label">Recent updates</div>
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="status-badge">App Store</div>
-        <h2 class="project-title">Orbit Native App Work</h2>
-        <div class="project-meta">iOS distribution · Calendar import · Planner UX</div>
-        <p class="project-hook">Orbit is live on the App Store, with continued work on native app polish and calendar workflows.</p>
-        <p class="project-description">Current app efforts focus on keeping Orbit useful across web and iOS while exploring browser read-only Google Calendar import and future native calendar write-back.</p>
-        <div class="project-links">
-          <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
-          <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub (Private)</a>
-          <a href="orbit.md" class="project-link">Project Notes</a>
-        </div>
-      </div>
-
       <div class="project-card">
         <div class="status-badge">Sharing</div>
         <h2 class="project-title">Supabase-Backed Sharing</h2>
@@ -91,11 +85,11 @@
     <!-- Featured project -->
     <div class="section-label">Featured project</div>
     <div class="projects-grid featured-projects">
-      <div class="project-card featured featured-orbit">
+      <div class="project-card featured featured-orbit" data-filter-tags="app-store">
         <div>
           <div class="status-badge">Live</div>
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
-          <div class="project-meta">Planner · Live app · iOS + web</div>
+          <div class="project-meta">Planner · App Store · iOS + web</div>
           <p class="project-hook">Built because linear planners did not match how my ADHD brain understands a day.</p>
           <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
           <div class="project-links">

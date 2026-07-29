@@ -17,3 +17,33 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('kmt-theme', nextTheme);
   setTheme(nextTheme);
 });
+
+const filterButtons = document.querySelectorAll('.filter-button');
+const projectCards = document.querySelectorAll('.project-card');
+const projectGrids = document.querySelectorAll('.projects-grid');
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const selectedFilter = button.dataset.filter;
+
+    filterButtons.forEach((currentButton) => {
+      currentButton.classList.toggle('active', currentButton === button);
+    });
+
+    projectCards.forEach((card) => {
+      const tags = (card.dataset.filterTags || '').split(' ');
+      const shouldShow = selectedFilter === 'all' || tags.includes(selectedFilter);
+      card.classList.toggle('is-hidden', !shouldShow);
+    });
+
+    projectGrids.forEach((grid) => {
+      const hasVisibleCards = Boolean(grid.querySelector('.project-card:not(.is-hidden)'));
+      const label = grid.previousElementSibling;
+
+      grid.classList.toggle('is-hidden', !hasVisibleCards);
+      if (label && label.classList.contains('section-label')) {
+        label.classList.toggle('is-hidden', !hasVisibleCards);
+      }
+    });
+  });
+});

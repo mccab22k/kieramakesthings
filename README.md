@@ -15,11 +15,10 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ## Recent Updates
 
-### Orbit App Store and Native App Work
+### App Store Filter
 
-- App Store distribution is live.
-- Google Calendar import is currently browser read-only.
-- Native calendar integration, write-back, and cross-device sync remain roadmap items.
+- The homepage includes an App Store filter for projects released through Apple's store.
+- Android releases are planned.
 
 ### Supabase-Backed Sharing
 

@@ -130,6 +130,48 @@ body.dark .subtitle { color: #D6DCE6; }
   padding-top: 22px;
 }
 
+/* Filters */
+.project-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -26px 0 42px;
+}
+
+.filter-button {
+  border: 1px solid var(--line);
+  background: rgba(250, 248, 244, .72);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+body.dark .filter-button { background: rgba(15, 18, 24, .46); }
+
+.filter-button.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+}
+
+body.dark .filter-button.active {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #0F1218;
+}
+
+.filter-note {
+  color: var(--slate);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+
 /* Project grids and cards */
 .projects-grid {
   display: grid;
@@ -152,6 +194,10 @@ body.dark .subtitle { color: #D6DCE6; }
   transition: .2s ease;
   overflow: hidden;
 }
+
+.project-card.is-hidden,
+.projects-grid.is-hidden,
+.section-label.is-hidden { display: none; }
 
 body.dark .project-card { background: rgba(23, 27, 35, .78); }
 
