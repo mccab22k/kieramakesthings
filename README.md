@@ -33,6 +33,18 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Current processing is documented as CPU-first OpenCV segmentation with an optional model-backed provider path.
 - Frontend and backend hosting should be documented together before making the repo public.
 
+### Time Since App
+
+- The app is live on Vercel.
+- The project now has both a detail page and notes page linked from the homepage.
+- Current goals focus on fast elapsed-time tracking, flexible routine logging, and local-first portability.
+
+### Rent Stabilized Map
+
+- Added as a work-in-progress NYC housing data and mapping project.
+- The homepage links only to project notes, not to a live app.
+- Current goals focus on public-data exploration, building-level context, and apartment-search decision support.
+
 ## Featured
 
 ### Orbit, A Fancy Planner
@@ -85,6 +97,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 - App: https://timesincechorereminder.vercel.app/
 - Repo: https://github.com/mccab22k/timesincechorereminder
+- Project page: time-since.html
 - Notes: time-since.md
 
 #### Deployment / External Services
@@ -151,6 +164,18 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Database: none documented.
 - Analytics: not documented in this repo.
 - Notes: current app is a static prototype.
+
+### Rent Stabilized Map
+
+- Notes: rent-stabilized-map.md
+
+#### Deployment / External Services
+
+- Hosting: no public launch link is documented in this repo.
+- Source control: not documented in this repo.
+- Database: public housing datasets and local/project data workflow are still being defined.
+- Analytics: not documented in this repo.
+- Notes: public portfolio materials should describe the goals and data approach without linking the live project.
 
 ## Infrastructure and Home Labs
 
