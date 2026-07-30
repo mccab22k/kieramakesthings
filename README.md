@@ -18,6 +18,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 ### App Store Filter
 
 - The homepage includes an App Store filter for projects released through Apple's store.
+- The filter also includes apps pending App Store acceptance or planned for submission: Passport Buddy, Time Since, Catflakes, and Time Here, Time There.
 - Android releases are planned.
 
 ### Supabase-Backed Sharing
@@ -96,7 +97,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub.
 - Database: optional Supabase sharing is implemented in the app repo; local-only use still works without accounts.
 - Analytics: not documented in this repo.
-- Notes: travel requirements remain planning guidance and should be verified against official sources.
+- Notes: travel requirements remain planning guidance and should be verified against official sources. App Store submission is pending/planned.
 
 ### Time Since
 
@@ -111,7 +112,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub with deployment integration.
 - Database: browser/app persistence with import/export support.
 - Analytics: not documented in this repo.
-- Notes: no backend service is documented here.
+- Notes: no backend service is documented here. App Store submission is pending/planned.
 
 ## Active / Prototype Projects
 
@@ -127,7 +128,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub.
 - Database: none documented.
 - Analytics: not documented in this repo.
-- Notes: intended to use Pet Sticker Maker output as reusable cat-head assets.
+- Notes: intended to use Pet Sticker Maker output as reusable cat-head assets. App Store submission is pending/planned.
 
 ### Time Here, Time There
 
@@ -140,7 +141,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Source control: GitHub.
 - Database: none documented.
 - Analytics: not documented in this repo.
-- Notes: current app is a static prototype for comparing time across cities.
+- Notes: current app is a static prototype for comparing time across cities. App Store submission is pending/planned.
 
 ### Pet Sticker Maker
 
