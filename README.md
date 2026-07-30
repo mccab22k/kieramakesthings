@@ -24,11 +24,6 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Research / WIP includes prototypes, paused projects, research, concepts, and home lab notes.
 - Android releases are planned.
 
-### Supabase-Backed Sharing
-
-- Better NYC Map documents optional Supabase sharing in the app repo; local-only use still works without accounts.
-- Passport Buddy documents optional Supabase sharing in the app repo; local-only use still works without accounts.
-
 ### Pet Sticker Maker Processing
 
 - The project is paused, with the frontend still hosted on GitHub Pages.
