@@ -33,8 +33,10 @@
     <!-- Project filters -->
     <div class="project-filters" aria-label="Project filters">
       <button class="filter-button active" type="button" data-filter="all">All</button>
+      <button class="filter-button" type="button" data-filter="live">Live</button>
       <button class="filter-button" type="button" data-filter="app-store">App Store</button>
-      <span class="filter-note">Includes live, pending, and planned App Store releases. Android releases are planned.</span>
+      <button class="filter-button" type="button" data-filter="wip">Research / WIP</button>
+      <span class="filter-note">App Store shows launched, pending, and planned releases. Android planned.</span>
     </div>
 
     <!-- Recent updates -->
@@ -57,10 +59,10 @@
       </div>
 
       <div class="project-card">
-        <div class="status-badge">Prototype</div>
+        <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Processing</h2>
         <div class="project-meta">GitHub Pages · FastAPI · OpenCV</div>
-        <p class="project-hook">Pet Sticker Maker is live as a frontend and now has a documented backend processing direction.</p>
+        <p class="project-hook">Pet Sticker Maker is paused while the backend processing direction stays documented.</p>
         <p class="project-description">The current direction pairs a GitHub Pages frontend with a FastAPI sticker-processing service using CPU-first OpenCV segmentation and an optional model-backed path.</p>
         <div class="project-links">
           <a href="#pet-sticker-maker" class="project-link project-jump-link">Jump to Project</a>
@@ -102,7 +104,7 @@
     <!-- Featured project -->
     <div class="section-label">Featured project</div>
     <div class="projects-grid featured-projects">
-      <div class="project-card featured featured-orbit" data-filter-tags="app-store">
+      <div class="project-card featured featured-orbit" data-filter-tags="live app-store">
         <div>
           <div class="status-badge">Live</div>
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
@@ -129,7 +131,7 @@
     <!-- Live apps -->
     <div class="section-label">Live apps</div>
     <div class="projects-grid">
-      <div class="project-card" id="better-nyc-map">
+      <div class="project-card" id="better-nyc-map" data-filter-tags="live">
         <div class="status-badge">Active</div>
         <h2 class="project-title">Better NYC Map</h2>
         <div class="project-meta">Route planner · Active build · Mobile-first</div>
@@ -148,7 +150,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="passport-buddy" data-filter-tags="app-store">
+      <div class="project-card" id="passport-buddy" data-filter-tags="live app-store">
         <div class="status-badge">Live</div>
         <h2 class="project-title">Passport Buddy</h2>
         <div class="project-meta">Travel planner · Live app · App Store pending/planned</div>
@@ -167,7 +169,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="time-since" data-filter-tags="app-store">
+      <div class="project-card" id="time-since" data-filter-tags="live app-store">
         <div class="status-badge">Live</div>
         <h2 class="project-title">Time Since</h2>
         <div class="project-meta">Productivity · Live app · App Store pending/planned</div>
@@ -191,7 +193,7 @@
     <!-- Active and prototype projects -->
     <div class="section-label">Active / prototype projects</div>
     <div class="projects-grid">
-      <div class="project-card" data-filter-tags="app-store">
+      <div class="project-card" data-filter-tags="app-store wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Catflakes</h2>
         <div class="project-meta">Canvas animation · Prototype · App Store pending/planned</div>
@@ -210,7 +212,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="time-here-time-there" data-filter-tags="app-store">
+      <div class="project-card" id="time-here-time-there" data-filter-tags="app-store wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Time Here, Time There</h2>
         <div class="project-meta">Time zones · Prototype · App Store pending/planned</div>
@@ -227,7 +229,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="pet-sticker-maker">
+      <div class="project-card" id="pet-sticker-maker" data-filter-tags="wip">
         <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
         <div class="project-meta">Computer vision · Paused component · Stickers</div>
@@ -246,7 +248,7 @@
         </details>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-filter-tags="wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Colony Cat Management</h2>
         <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
@@ -263,7 +265,7 @@
         </details>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-filter-tags="wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Personality Systems Research</h2>
         <div class="project-meta">Assessment · Prototype · Identity</div>
@@ -281,7 +283,7 @@
         </details>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-filter-tags="wip">
         <div class="status-badge">Work in progress</div>
         <h2 class="project-title">Rent Stabilized Map</h2>
         <div class="project-meta">NYC housing · Data mapping · Research tool</div>
@@ -303,7 +305,7 @@
     <!-- Infrastructure and home labs -->
     <div class="section-label">Infrastructure and home labs</div>
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card" data-filter-tags="wip">
         <div class="status-badge">Active</div>
         <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
         <div class="project-meta">Home lab · Active · DNS</div>
@@ -324,7 +326,7 @@
     <!-- Research and concepts -->
     <div class="section-label">Research / concepts</div>
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card" data-filter-tags="wip">
         <div class="status-badge">Research</div>
         <h2 class="project-title">Wearable Computing</h2>
         <div class="project-meta">Hardware concept · Research · Sensors</div>

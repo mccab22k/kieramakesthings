@@ -15,10 +15,13 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ## Recent Updates
 
-### App Store Filter
+### Project Filters
 
-- The homepage includes an App Store filter for projects released through Apple's store.
+- The homepage includes filters for All, Live, App Store, and Research / WIP.
+- Live means active launchable apps.
+- App Store means launched, pending, or planned App Store releases.
 - The filter also includes apps pending App Store acceptance or planned for submission: Passport Buddy, Time Since, Catflakes, and Time Here, Time There.
+- Research / WIP includes prototypes, paused projects, research, concepts, and home lab notes.
 - Android releases are planned.
 
 ### Supabase-Backed Sharing
@@ -28,7 +31,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ### Pet Sticker Maker Processing
 
-- The frontend is live on GitHub Pages.
+- The project is paused, with the frontend still hosted on GitHub Pages.
 - The processing direction now includes a FastAPI sticker-processing service.
 - Current processing is documented as CPU-first OpenCV segmentation with an optional model-backed provider path.
 - Frontend and backend hosting should be documented together before making the repo public.
