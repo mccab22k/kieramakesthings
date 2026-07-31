@@ -412,3 +412,54 @@ footer {
   .project-card.featured { grid-template-columns: 1fr; padding: 24px; }
   .preview-orbit { min-height: 220px; }
 }
+
+
+/* App Store corner badge */
+.app-store-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(250, 248, 244, .92);
+  color: var(--ink);
+  transition: .2s ease;
+}
+
+.app-store-badge svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+a.app-store-badge:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+  transform: translateY(-1px);
+}
+
+a.app-store-badge:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
+body.dark .app-store-badge { background: rgba(23, 27, 35, .92); }
+
+.project-card.featured .app-store-badge {
+  background: rgba(15, 23, 42, .72);
+  border-color: rgba(99, 102, 241, .32);
+  color: #f8fafc;
+}
+
+/* Non-link variant for releases that aren't out yet */
+span.app-store-badge { opacity: .42; }
+
+/* Keeps long titles from running under the badge */
+.project-card:has(.app-store-badge) .status-badge,
+.project-card:has(.app-store-badge) .project-title { padding-right: 44px; }
