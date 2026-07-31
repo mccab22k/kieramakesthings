@@ -39,56 +39,10 @@
       <span class="filter-note">App Store shows launched, pending, and planned releases. Android planned.</span>
     </div>
 
-    <!-- Recent updates -->
-    <div class="section-label">Recent updates</div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="status-badge">Paused</div>
-        <h2 class="project-title">Pet Sticker Processing</h2>
-        <div class="project-meta">GitHub Pages · FastAPI · OpenCV</div>
-        <p class="project-hook">Pet Sticker Maker is paused while the backend processing direction stays documented.</p>
-        <p class="project-description">The current direction pairs a GitHub Pages frontend with a FastAPI sticker-processing service using CPU-first OpenCV segmentation and an optional model-backed path.</p>
-        <div class="project-links">
-          <a href="#pet-sticker-maker" class="project-link project-jump-link">Jump to Project</a>
-          <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub (Private)</a>
-          <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="status-badge">Live</div>
-        <h2 class="project-title">Time Since App</h2>
-        <div class="project-meta">Vercel · Routine tracking · Local persistence</div>
-        <p class="project-hook">Time Since is live as a lightweight tracker for chores, maintenance, routines, and recurring life events.</p>
-        <p class="project-description">Recent documentation clarifies the app goals: make elapsed-time tracking fast, flexible, and useful without forcing everything into a calendar recurrence.</p>
-        <div class="project-links">
-          <a href="#time-since" class="project-link project-jump-link">Jump to Project</a>
-          <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub (Private)</a>
-          <a href="time-since.html" class="project-link">Read More</a>
-          <a href="time-since.md" class="project-link">Project Notes</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Time Here, Time There</h2>
-        <div class="project-meta">GitHub Pages · Time zones · Scheduling</div>
-        <p class="project-hook">Time Here, Time There is live as a lightweight timezone coordination tool.</p>
-        <p class="project-description">The app compares cities across clocks, timelines, and planner views so it is easier to schedule without waking anyone up.</p>
-        <div class="project-links">
-          <a href="#time-here-time-there" class="project-link project-jump-link">Jump to Project</a>
-          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
-        </div>
-      </div>
-    </div>
-
     <!-- Featured project -->
     <div class="section-label">Featured project</div>
     <div class="projects-grid featured-projects">
-      <div class="project-card featured featured-orbit" data-filter-tags="live app-store">
+      <div class="project-card featured featured-orbit" id="orbit" data-filter-tags="live app-store">
         <div>
           <div class="status-badge">Live</div>
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
@@ -112,28 +66,9 @@
       </div>
     </div>
 
-    <!-- Live apps -->
-    <div class="section-label">Live apps</div>
+    <!-- Functional apps -->
+    <div class="section-label">Functional Apps</div>
     <div class="projects-grid">
-      <div class="project-card" id="better-nyc-map" data-filter-tags="live">
-        <div class="status-badge">Active</div>
-        <h2 class="project-title">Better NYC Map</h2>
-        <div class="project-meta">Route planner · Active build · Supabase</div>
-        <p class="project-hook">Built because route planners miss how New Yorkers choose between walking, transfers, and transit modes.</p>
-        <p class="project-description">A web-based NYC transit map and route planner for real commuting tradeoffs.</p>
-        <div class="project-links">
-          <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub (Private)</a>
-          <a href="bettermapnyc.md" class="project-link">Project Notes</a>
-        </div>
-        <details class="why-made">
-          <summary>Why I Made This</summary>
-          <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
-          <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
-          <p>Longer-term, it can support native app packaging, service-alert-aware routing, accessibility preferences, and better multi-modal planning across NYC and regional transit.</p>
-        </details>
-      </div>
-
       <div class="project-card" id="passport-buddy" data-filter-tags="live app-store">
         <div class="status-badge">Live</div>
         <h2 class="project-title">Passport Buddy</h2>
@@ -153,9 +88,26 @@
         </details>
       </div>
 
+      <div class="project-card" id="time-here-time-there" data-filter-tags="live app-store">
+        <div class="status-badge">Live</div>
+        <h2 class="project-title">Time Here, Time There</h2>
+        <div class="project-meta">Time zones · Live app · App Store pending/planned</div>
+        <p class="project-hook">Built because coordinating across cities should not require mental calendar math.</p>
+        <p class="project-description">A timezone comparison app with clocks, timeline scrubbing, planner views, city grouping, and meeting templates.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
+        </div>
+        <details class="why-made">
+          <summary>Why I Made This</summary>
+          <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
+          <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
+        </details>
+      </div>
+
       <div class="project-card" id="time-since" data-filter-tags="live app-store">
         <div class="status-badge">Live</div>
-        <h2 class="project-title">Time Since</h2>
+        <h2 class="project-title">Time Since Chore Manager</h2>
         <div class="project-meta">Productivity · Live app · App Store pending/planned</div>
         <p class="project-hook">Built because some routines should reset from the last time they were done.</p>
         <p class="project-description">Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.</p>
@@ -174,10 +126,10 @@
       </div>
     </div>
 
-    <!-- Active and prototype projects -->
-    <div class="section-label">Active / prototype projects</div>
+    <!-- Prototypes -->
+    <div class="section-label">Prototypes</div>
     <div class="projects-grid">
-      <div class="project-card" data-filter-tags="app-store wip">
+      <div class="project-card" id="catflakes" data-filter-tags="app-store wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Catflakes</h2>
         <div class="project-meta">Canvas animation · Prototype · App Store pending/planned</div>
@@ -196,27 +148,47 @@
         </details>
       </div>
 
-      <div class="project-card" id="time-here-time-there" data-filter-tags="app-store wip">
+      <div class="project-card" id="better-nyc-map" data-filter-tags="live wip">
         <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Time Here, Time There</h2>
-        <div class="project-meta">Time zones · Prototype · App Store pending/planned</div>
-        <p class="project-hook">Built because coordinating across cities should not require mental calendar math.</p>
-        <p class="project-description">A timezone comparison app with clocks, timeline scrubbing, planner views, city grouping, and meeting templates.</p>
+        <h2 class="project-title">Better NYC Map</h2>
+        <div class="project-meta">Route planner · Prototype · Supabase</div>
+        <p class="project-hook">Built because route planners miss how New Yorkers choose between walking, transfers, and transit modes.</p>
+        <p class="project-description">A web-based NYC transit map and route planner for real commuting tradeoffs.</p>
         <div class="project-links">
-          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
+          <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub (Private)</a>
+          <a href="bettermapnyc.md" class="project-link">Project Notes</a>
         </div>
         <details class="why-made">
           <summary>Why I Made This</summary>
-          <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
-          <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
+          <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
+          <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
+          <p>Longer-term, it can support native app packaging, service-alert-aware routing, accessibility preferences, and better multi-modal planning across NYC and regional transit.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="rent-stabilized-map" data-filter-tags="wip">
+        <div class="status-badge">Prototype</div>
+        <h2 class="project-title">Rent Stabilized Map</h2>
+        <div class="project-meta">NYC housing · Data mapping · Research tool</div>
+        <p class="project-hook">Built because apartment search decisions need clearer public-data context.</p>
+        <p class="project-description">A mapping and research project for understanding rent-stabilized housing signals, building records, and neighborhood-level search tradeoffs.</p>
+        <div class="project-links">
+          <span class="project-link project-link-static">No public launch link yet</span>
+          <a href="rent-stabilized-map.md" class="project-link">Project Notes</a>
+        </div>
+        <details class="why-made">
+          <summary>Goals</summary>
+          <p>Make public housing data easier to scan during apartment research.</p>
+          <p>Help compare buildings, neighborhoods, and listing signals without treating any single dataset as definitive legal advice.</p>
+          <p>Keep the public portfolio version focused on product goals and data approach rather than linking the live project.</p>
         </details>
       </div>
 
       <div class="project-card" id="pet-sticker-maker" data-filter-tags="wip">
         <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
-        <div class="project-meta">Computer vision · Paused component · Stickers</div>
+        <div class="project-meta">Computer vision · Paused · Stickers</div>
         <p class="project-hook">Built because Catflakes needs clean reusable cat-head assets without manual image editing.</p>
         <p class="project-description">A utility that turns pet photos into transparent sticker assets for reuse in other apps.</p>
         <div class="project-links">
@@ -232,7 +204,7 @@
         </details>
       </div>
 
-      <div class="project-card" data-filter-tags="wip">
+      <div class="project-card" id="colony-cat-management" data-filter-tags="wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Colony Cat Management</h2>
         <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
@@ -249,7 +221,7 @@
         </details>
       </div>
 
-      <div class="project-card" data-filter-tags="wip">
+      <div class="project-card" id="personality-systems-research" data-filter-tags="wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Personality Systems Research</h2>
         <div class="project-meta">Assessment · Prototype · Identity</div>
@@ -264,24 +236,6 @@
           <summary>Why I Made This</summary>
           <p>Most personality tests give you a label. I wanted something a little more nuanced.</p>
           <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
-        </details>
-      </div>
-
-      <div class="project-card" data-filter-tags="wip">
-        <div class="status-badge">Work in progress</div>
-        <h2 class="project-title">Rent Stabilized Map</h2>
-        <div class="project-meta">NYC housing · Data mapping · Research tool</div>
-        <p class="project-hook">Built because apartment search decisions need clearer public-data context.</p>
-        <p class="project-description">A mapping and research project for understanding rent-stabilized housing signals, building records, and neighborhood-level search tradeoffs.</p>
-        <div class="project-links">
-          <span class="project-link project-link-static">No public launch link yet</span>
-          <a href="rent-stabilized-map.md" class="project-link">Project Notes</a>
-        </div>
-        <details class="why-made">
-          <summary>Goals</summary>
-          <p>Make public housing data easier to scan during apartment research.</p>
-          <p>Help compare buildings, neighborhoods, and listing signals without treating any single dataset as definitive legal advice.</p>
-          <p>Keep the public portfolio version focused on product goals and data approach rather than linking the live project.</p>
         </details>
       </div>
     </div>
