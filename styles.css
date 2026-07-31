@@ -413,12 +413,11 @@ footer {
   .preview-orbit { min-height: 220px; }
 }
 
-
 /* Store badges — corner cluster */
 .store-badges {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   z-index: 3;
   display: flex;
   gap: 6px;
@@ -427,10 +426,10 @@ footer {
 .store-badge {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border: 1px solid var(--line);
-  border-radius: 9px;
+  border-radius: 8px;
   background: rgba(250, 248, 244, .92);
   color: var(--ink);
   transition: .2s ease;
@@ -438,9 +437,15 @@ footer {
 
 .store-badge svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
   fill: currentColor;
+}
+
+/* The Play glyph is drawn taller than the apple; scale it to match optically */
+.play-store-badge svg {
+  width: 11px;
+  height: 11px;
 }
 
 a.store-badge:hover {
@@ -462,12 +467,12 @@ body.dark .store-badge { background: rgba(23, 27, 35, .92); }
   color: #f8fafc;
 }
 
-/* Non-link variant for releases that aren't out yet */
+/* Non-link variant for releases that are not out yet */
 span.store-badge { opacity: .42; }
 
 /* Keeps long titles from running under the badges */
 .project-card:has(.store-badges) .status-badge,
-.project-card:has(.store-badges) .project-title { padding-right: 30px; }
+.project-card:has(.store-badges) .project-title { padding-right: 20px; }
 
 .project-card:has(.play-store-badge) .status-badge,
-.project-card:has(.play-store-badge) .project-title { padding-right: 68px; }
+.project-card:has(.play-store-badge) .project-title { padding-right: 54px; }
