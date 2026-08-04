@@ -5,18 +5,94 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 function setTheme(theme) {
   const isDark = theme === 'dark';
   document.body.classList.toggle('dark', isDark);
-  themeToggle.textContent = isDark ? 'Light' : 'Dark';
-  themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  themeToggle.setAttribute('aria-pressed', String(isDark));
+
+  if (themeToggle) {
+    themeToggle.textContent = isDark ? 'Light' : 'Dark';
+    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+  }
 }
 
 setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
-themeToggle.addEventListener('click', () => {
+themeToggle?.addEventListener('click', () => {
   const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
   localStorage.setItem('kmt-theme', nextTheme);
   setTheme(nextTheme);
 });
+
+function injectSecuritySystems() {
+  const filters = document.querySelector('.project-filters');
+  const featuredGrid = document.querySelector('.featured-projects');
+
+  if (!filters || !featuredGrid || document.querySelector('#security-work')) return;
+
+  const securityButton = document.createElement('button');
+  securityButton.className = 'filter-button';
+  securityButton.type = 'button';
+  securityButton.dataset.filter = 'security';
+  securityButton.textContent = 'Security Work';
+
+  const wipButton = filters.querySelector('[data-filter="wip"]');
+  filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
+
+  const filterNote = filters.querySelector('.filter-note');
+  if (filterNote) {
+    filterNote.textContent = 'Security shows sanitized professional case studies. App Store includes launched, pending, and planned releases.';
+  }
+
+  featuredGrid.insertAdjacentHTML('afterend', `
+    <div class="section-label" id="security-work">Selected security systems</div>
+    <div class="projects-grid">
+      <div class="project-card" id="access-governance-system" data-filter-tags="security">
+        <div class="status-badge">Production</div>
+        <h2 class="project-title">Access Governance Automation</h2>
+        <div class="project-meta">Node.js · TypeScript · Slack · Okta · Email security</div>
+        <p class="project-hook">Built to make application access easier to request without weakening approval controls.</p>
+        <p class="project-description">A self-service platform for configurable approval chains, group-based provisioning, email-security actions, and scheduled access reviews across dozens of applications.</p>
+        <div class="project-links">
+          <a href="security-systems.html#access-governance" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made">
+          <summary>What It Demonstrates</summary>
+          <p>End-to-end ownership of an internal security product: workflow design, API integrations, identity provisioning, safe write controls, configuration architecture, and operational support.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="identity-lifecycle-system" data-filter-tags="security">
+        <div class="status-badge">Live Automation</div>
+        <h2 class="project-title">Identity Lifecycle Controls</h2>
+        <div class="project-meta">Google Apps Script · Admin SDK · Okta · Slack</div>
+        <p class="project-hook">Built so onboarding and offboarding do not depend on someone remembering every account transition.</p>
+        <p class="project-description">An idempotent account-lifecycle state machine with protected-account exclusions, group cleanup, audit logs, and independent read-only reconciliation across systems.</p>
+        <div class="project-links">
+          <a href="security-systems.html#identity-lifecycle" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made">
+          <summary>What It Demonstrates</summary>
+          <p>Identity architecture, lifecycle automation, least-privilege service design, cross-system consistency checks, exception handling, and observable scheduled operations.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="workspace-admin-system" data-filter-tags="security">
+        <div class="status-badge">Internal App</div>
+        <h2 class="project-title">Google Workspace Admin Platform</h2>
+        <div class="project-meta">Python · Flask · Gmail and Directory APIs · PyInstaller</div>
+        <p class="project-hook">Built to make bulk administration safer, reviewable, and usable by authorized operators.</p>
+        <p class="project-description">A packaged administration application with preview-before-apply workflows, directory data-quality checks, device-restricted access, and centralized audit logging.</p>
+        <div class="project-links">
+          <a href="security-systems.html#workspace-admin" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made">
+          <summary>What It Demonstrates</summary>
+          <p>Secure internal application development, domain-wide delegated API access, bulk-operation safeguards, local packaging, configuration separation, and auditability.</p>
+        </details>
+      </div>
+    </div>
+  `);
+}
+
+injectSecuritySystems();
 
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
