@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Security Systems — Kiera Makes Things</title>
+  <meta name="description" content="Sanitized case studies covering access governance, identity lifecycle automation, and secure Google Workspace administration.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .case-hero {
+      max-width: 980px;
+      margin-bottom: 58px;
+    }
+
+    .case-hero h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      max-width: 920px;
+    }
+
+    .case-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 56px;
+    }
+
+    .case-note,
+    .principle,
+    .system-panel {
+      border: 1px solid var(--line);
+      background: rgba(250, 248, 244, .74);
+      border-radius: 14px;
+    }
+
+    body.dark .case-note,
+    body.dark .principle,
+    body.dark .system-panel {
+      background: rgba(23, 27, 35, .78);
+    }
+
+    .case-note {
+      padding: 22px;
+      color: var(--slate);
+    }
+
+    .case-note strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .systems {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .system-panel {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .system-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .system-heading h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+
+    .system-status {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--copper);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .system-block h3,
+    .principle h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .system-block p,
+    .system-block li,
+    .principle p {
+      color: var(--slate);
+      font-size: .95rem;
+    }
+
+    .system-block ul {
+      padding-left: 18px;
+    }
+
+    .system-block li + li {
+      margin-top: 7px;
+    }
+
+    .stack-line {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--indigo);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 56px;
+    }
+
+    .principle {
+      padding: 22px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 840px) {
+      .case-intro,
+      .system-grid,
+      .principles,
+      .system-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .system-status {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <nav class="topbar">
+      <a class="logo" href="./">KMT /</a>
+      <div class="topbar-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a href="./">Back to projects</a>
+        <a href="https://github.com/mccab22k">GitHub</a>
+      </div>
+    </nav>
+
+    <header class="case-hero">
+      <div class="eyebrow">Professional systems · Sanitized case studies</div>
+      <h1>Security systems built for safer access and usable operations.</h1>
+      <p class="subtitle">Selected internal platforms spanning access governance, identity lifecycle controls, and Google Workspace administration. Details are intentionally generalized to protect company systems and configuration.</p>
+    </header>
+
+    <section class="case-intro" aria-label="Overview">
+      <div>
+        <div class="section-label">Scope</div>
+        <p class="project-description">These systems were designed and implemented as operational security infrastructure—not isolated proofs of concept. The work combines application development, identity architecture, API integration, safe automation, and day-to-day administration.</p>
+      </div>
+      <aside class="case-note">
+        <strong>Public-boundary note</strong>
+        No credentials, tenant identifiers, internal domains, employee data, source code, or organization-specific routing rules are included here.
+      </aside>
+    </section>
+
+    <section class="systems" aria-label="Selected security systems">
+      <article class="system-panel" id="access-governance">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">01 · Access governance</div>
+            <h2>Self-service access with controlled provisioning</h2>
+            <p class="project-description">A Slack-based access platform that turns fragmented requests into configurable, auditable workflows across dozens of applications.</p>
+          </div>
+          <div class="system-status">Internal production system</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Problem</h3>
+            <p>Application access was distributed across informal messages, manual follow-up, and inconsistent provisioning paths.</p>
+          </div>
+          <div class="system-block">
+            <h3>System</h3>
+            <ul>
+              <li>Self-service Slack requests</li>
+              <li>Per-application approval chains</li>
+              <li>Automated group-based provisioning</li>
+              <li>Email-security actions and scheduled reviews</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Safety design</h3>
+            <ul>
+              <li>Writes disabled by default</li>
+              <li>Explicit production gates</li>
+              <li>Human approval for sensitive access</li>
+              <li>Configuration separated from workflow logic</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Node.js · TypeScript · Slack Bolt / Socket Mode · Okta APIs · Email-security APIs</p>
+      </article>
+
+      <article class="system-panel" id="identity-lifecycle">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">02 · Identity lifecycle</div>
+            <h2>Lifecycle automation with independent reconciliation</h2>
+            <p class="project-description">A scheduled account state machine for onboarding, active employment, and offboarding, paired with a separate read-only control that detects cross-system drift.</p>
+          </div>
+          <div class="system-status">Live automation</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Lifecycle engine</h3>
+            <ul>
+              <li>Routes new accounts through controlled states</li>
+              <li>Moves active users based on validated attributes</li>
+              <li>Removes terminated users from group access</li>
+              <li>Excludes protected service and guest accounts</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Control layer</h3>
+            <ul>
+              <li>Read-only comparison across identity and collaboration systems</li>
+              <li>Specific mismatch reporting</li>
+              <li>Independent credentials and minimal scopes</li>
+              <li>No automatic remediation by the recon job</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Reliability</h3>
+            <ul>
+              <li>Idempotent repeated scans</li>
+              <li>Explicit state precedence</li>
+              <li>Action and error logging</li>
+              <li>Human-readable operational digests</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Google Apps Script · Admin SDK · Okta OAuth service apps · Slack APIs · Google Workspace</p>
+      </article>
+
+      <article class="system-panel" id="workspace-admin">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">03 · Secure administration</div>
+            <h2>Packaged Google Workspace administration platform</h2>
+            <p class="project-description">A Python and Flask application for controlled bulk administration, directory data-quality review, previews, and centralized audit logging.</p>
+          </div>
+          <div class="system-status">Internal application</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Capabilities</h3>
+            <ul>
+              <li>Bulk Gmail and directory operations</li>
+              <li>Preview-before-apply workflows</li>
+              <li>Missing-field and data-quality checks</li>
+              <li>Administrative CSV generation</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Access model</h3>
+            <ul>
+              <li>Domain-wide delegation</li>
+              <li>Approved-device restriction</li>
+              <li>Secrets excluded from source control</li>
+              <li>Separate configuration from application code</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Operational design</h3>
+            <ul>
+              <li>Packaged native macOS distribution</li>
+              <li>Launch and write-event auditing</li>
+              <li>Scoped bulk selection</li>
+              <li>Clear handling of incomplete source data</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Python · Flask · Gmail API · Google Directory API · People API · PyInstaller</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="principles-heading">
+      <div class="section-label">Architecture principles</div>
+      <h2 id="principles-heading" class="project-title">Patterns shared across the systems</h2>
+      <div class="principles">
+        <div class="principle"><h3>Safe defaults</h3><p>Potentially destructive writes begin disabled or dry-run and require deliberate enablement.</p></div>
+        <div class="principle"><h3>Least privilege</h3><p>Read-only jobs use read-only service identities rather than inheriting broader administrative scopes.</p></div>
+        <div class="principle"><h3>Human control</h3><p>Automation handles repeatable work while preserving review for privileged, ambiguous, or destructive actions.</p></div>
+        <div class="principle"><h3>Idempotency</h3><p>Scheduled jobs can run repeatedly without reapplying settled state or creating duplicate side effects.</p></div>
+        <div class="principle"><h3>Observability</h3><p>Actions, failures, pending work, and cross-system inconsistencies are surfaced in useful operational summaries.</p></div>
+        <div class="principle"><h3>Usable security</h3><p>Controls are embedded into tools employees and administrators can actually use, rather than added as separate friction.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Selected professional work is described at a system level and intentionally omits confidential implementation details.</p>
+      <a class="project-link back-link" href="./#security-work">Back to portfolio</a>
+    </footer>
+  </main>
+
+  <script src="theme.js"></script>
+</body>
+</html>
