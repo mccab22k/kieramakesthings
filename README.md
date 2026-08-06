@@ -15,12 +15,19 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ## Recent Updates
 
+### Catflakes App Store Launch
+
+- Catflakes is live on the App Store: https://apps.apple.com/us/app/catflakes/id6795675453
+- The web version remains available through GitHub Pages.
+- The portfolio card now shows Catflakes as a live iOS and web app with a clickable App Store icon.
+- Catflakes documentation and launch links now use the published app icon and current distribution status.
+
 ### Project Filters
 
 - The homepage includes filters for All, Live, App Store, and Research / WIP.
 - Live means active launchable apps.
 - App Store means launched, pending, or planned App Store releases.
-- The filter also includes apps pending App Store acceptance or planned for submission: Passport Buddy, Time Since, Catflakes, and Time Here, Time There.
+- Apps pending or planned for App Store submission include Passport Buddy, Time Since, and Time Here, Time There.
 - Research / WIP includes prototypes, paused projects, research, concepts, and home lab notes.
 - Android releases are planned.
 
@@ -112,21 +119,23 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Analytics: not documented in this repo.
 - Notes: no backend service is documented here. App Store submission is pending/planned.
 
-## Active / Prototype Projects
-
 ### Catflakes
 
-- App: https://mccab22k.github.io/catflakes/
+- App Store: https://apps.apple.com/us/app/catflakes/id6795675453
+- Web app: https://mccab22k.github.io/catflakes/
 - Repo: https://github.com/mccab22k/catflakes
 - Notes: catflakes.md
 
 #### Deployment / External Services
 
-- Hosting: GitHub Pages.
+- iOS distribution: Apple App Store.
+- Web hosting: GitHub Pages.
 - Source control: GitHub.
 - Database: none documented.
 - Analytics: not documented in this repo.
-- Notes: intended to use Pet Sticker Maker output as reusable cat-head assets. App Store submission is pending/planned.
+- Notes: the SwiftUI iOS app bundles the same core static animation experience used by the web version.
+
+## Active / Prototype Projects
 
 ### Time Here, Time There
 
@@ -227,7 +236,7 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 - Homepage source: index.html
 - Styles: styles.css
-- Theme toggle: theme.js
+- Theme and project-status behavior: theme.js
 - Privacy policy: privacy.html
 
 This repo is part of my 2026 rapid sprint project: making more projects public, documented, and easier to launch from one place.
