@@ -92,7 +92,55 @@ function injectSecuritySystems() {
   `);
 }
 
+function updateCatflakesLaunchStatus() {
+  const card = document.querySelector('#catflakes');
+  if (!card) return;
+
+  const appStoreUrl = 'https://apps.apple.com/us/app/catflakes/id6795675453';
+  card.dataset.filterTags = 'live app-store';
+
+  const status = card.querySelector('.status-badge');
+  if (status) status.textContent = 'Live';
+
+  const meta = card.querySelector('.project-meta');
+  if (meta) meta.textContent = 'Canvas animation · App Store · iOS + web';
+
+  const description = card.querySelector('.project-description');
+  if (description) {
+    description.textContent = 'A playful iOS and web app for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.';
+  }
+
+  const pendingBadge = card.querySelector('.app-store-badge');
+  if (pendingBadge && pendingBadge.tagName !== 'A') {
+    const liveBadge = document.createElement('a');
+    liveBadge.className = pendingBadge.className;
+    liveBadge.href = appStoreUrl;
+    liveBadge.setAttribute('aria-label', 'Catflakes on the App Store');
+    liveBadge.title = 'Download on the App Store';
+    liveBadge.innerHTML = pendingBadge.innerHTML;
+    pendingBadge.replaceWith(liveBadge);
+  }
+
+  const links = card.querySelector('.project-links');
+  if (links && !links.querySelector(`[href="${appStoreUrl}"]`)) {
+    const appStoreLink = document.createElement('a');
+    appStoreLink.href = appStoreUrl;
+    appStoreLink.className = 'project-link';
+    appStoreLink.textContent = 'App Store';
+    links.prepend(appStoreLink);
+  }
+
+  const functionalAppsLabel = Array.from(document.querySelectorAll('.section-label'))
+    .find((label) => label.textContent.trim() === 'Functional Apps');
+  const functionalAppsGrid = functionalAppsLabel?.nextElementSibling;
+
+  if (functionalAppsGrid?.classList.contains('projects-grid')) {
+    functionalAppsGrid.append(card);
+  }
+}
+
 injectSecuritySystems();
+updateCatflakesLaunchStatus();
 
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
