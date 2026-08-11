@@ -476,3 +476,30 @@ span.store-badge { opacity: .42; }
 
 .project-card:has(.play-store-badge) .status-badge,
 .project-card:has(.play-store-badge) .project-title { padding-right: 54px; }
+
+/* Screenshot strip on a project card. The site was text-only before this, so the
+   images are pre-scaled thumbnails and lazy-loaded to keep the index quick. */
+.card-shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+.card-shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line, #d9e1e8);
+  border-radius: 10px;
+}
+
+.card-shots a {
+  display: block;
+  line-height: 0;
+  transition: transform 140ms ease;
+}
+
+.card-shots a:hover {
+  transform: translateY(-2px);
+}
