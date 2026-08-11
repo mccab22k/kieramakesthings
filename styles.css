@@ -503,3 +503,6 @@ span.store-badge { opacity: .42; }
 .card-shots a:hover {
   transform: translateY(-2px);
 }
+
+/* Two-up variant for projects with fewer captures. */
+.card-shots-2 { grid-template-columns: repeat(2, 1fr); max-width: 66%; }
