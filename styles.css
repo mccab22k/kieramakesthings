@@ -175,7 +175,7 @@ body.dark .filter-button.active {
 /* Project grids and cards */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
   gap: 20px;
   margin-bottom: 48px;
 }
@@ -477,32 +477,41 @@ span.store-badge { opacity: .42; }
 .project-card:has(.play-store-badge) .status-badge,
 .project-card:has(.play-store-badge) .project-title { padding-right: 54px; }
 
-/* Screenshot strip on a project card. The site was text-only before this, so the
-   images are pre-scaled thumbnails and lazy-loaded to keep the index quick. */
-.card-shots {
+/* One screenshot per card, sitting to the right of the copy. The site was
+   text-only before this, so images are pre-scaled thumbnails and lazy-loaded.
+   Cards are flex-column by default; non-featured cards become a two-column grid
+   and every child except the shot is pinned to column 1, which avoids rewrapping
+   the existing markup. */
+.project-card:not(.featured) {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 14px 0 16px;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  column-gap: 22px;
+  align-content: start;
 }
 
-.card-shots img {
+.project-card:not(.featured) > *:not(.card-shot) {
+  grid-column: 1;
+}
+
+.card-shot {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: start;
+  margin-top: 26px;
+}
+
+.card-shot img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line, #d9e1e8);
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
 }
 
-.card-shots a {
-  display: block;
-  line-height: 0;
-  transition: transform 140ms ease;
-}
+.card-shot a { display: block; line-height: 0; transition: transform 140ms ease; }
+.card-shot a:hover { transform: translateY(-2px); }
 
-.card-shots a:hover {
-  transform: translateY(-2px);
+@media (max-width: 620px) {
+  .project-card:not(.featured) { grid-template-columns: minmax(0, 1fr); }
+  .card-shot { grid-column: 1; grid-row: auto; margin: 4px 0 14px; max-width: 132px; }
 }
-
-/* Two-up variant for projects with fewer captures. */
-.card-shots-2 { grid-template-columns: repeat(2, 1fr); max-width: 66%; }
