@@ -43,7 +43,7 @@ function injectSecuritySystems() {
 
   featuredGrid.insertAdjacentHTML('afterend', `
     <div class="section-label" id="security-work">Selected security systems</div>
-    <div class="projects-grid">
+    <div class="projects-grid security-grid">
       <div class="project-card" id="access-governance-system" data-filter-tags="security">
         <div class="status-badge">Production</div>
         <h2 class="project-title">Access Governance Automation</h2>

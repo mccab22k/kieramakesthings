@@ -477,27 +477,28 @@ span.store-badge { opacity: .42; }
 .project-card:has(.play-store-badge) .status-badge,
 .project-card:has(.play-store-badge) .project-title { padding-right: 54px; }
 
-/* One screenshot per card, sitting to the right of the copy. The site was
-   text-only before this, so images are pre-scaled thumbnails and lazy-loaded.
-   Cards are flex-column by default; non-featured cards become a two-column grid
-   and every child except the shot is pinned to column 1, which avoids rewrapping
-   the existing markup. */
-.project-card:not(.featured) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 132px;
-  column-gap: 22px;
-  align-content: start;
+/* One screenshot per card, to the right of the copy. Cards stay flex-column so
+   the existing `margin-top: auto` bottom-pinning keeps working; only the content
+   from the title down is wrapped, so the shot's top edge lines up with the title
+   rather than with the status badge above it. */
+.card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  flex: 1;
+  min-width: 0;
 }
 
-.project-card:not(.featured) > *:not(.card-shot) {
-  grid-column: 1;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .card-shot {
-  grid-column: 2;
-  grid-row: 1 / -1;
-  align-self: start;
-  margin-top: 26px;
+  flex: none;
+  width: 132px;
 }
 
 .card-shot img {
@@ -512,6 +513,10 @@ span.store-badge { opacity: .42; }
 .card-shot a:hover { transform: translateY(-2px); }
 
 @media (max-width: 620px) {
-  .project-card:not(.featured) { grid-template-columns: minmax(0, 1fr); }
-  .card-shot { grid-column: 1; grid-row: auto; margin: 4px 0 14px; max-width: 132px; }
+  .card-main { flex-direction: column; }
+  .card-shot { width: 132px; }
+}
+
+.projects-grid.security-grid {
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
 }
