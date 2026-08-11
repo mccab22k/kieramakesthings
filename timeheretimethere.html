@@ -1,188 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Here, Time There — a shared timeline for people in other cities</title>
-  <meta name="description" content="A world clock built around one shared timeline: drag it and every city moves together, so you can find a time that works before you ask." />
-  <meta property="og:title" content="Time Here, Time There" />
-  <meta property="og:description" content="Drag one timeline and watch every city move with it. A world clock for coordinating across time zones." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/timeheretimethere.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Here, Time There | Kiera Makes Things</title>
+  <meta name="description" content="A world clock built around one shared timeline: drag it and every city moves together, so you can find a time that works before you ask.">
+  <meta property="og:title" content="Time Here, Time There">
+  <meta property="og:description" content="Drag one timeline and watch every city move with it. A world clock for coordinating across time zones.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/timeheretimethere.html">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Site stylesheet, so type, palette and dark mode match the rest of KMT. -->
+  <link rel="stylesheet" href="styles.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap');
+    /* Page-specific only. Everything else inherits from styles.css. */
+    .project-detail-hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 32px; align-items: center; margin-bottom: 12px; }
+    .project-detail-hero .device { margin: 0; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* The app's own palette, not the site's default warm one. */
-    :root {
-      --paper: #f7f4ef;
-      --paper-2: #fdfcfa;
-      --panel: #ffffff;
-      --ink: #17202a;
-      --ink-2: #3c4a57;
-      --muted: #667085;
-      --line: #d9e1e8;
-      --blue: #2f80ed;
-      --green: #1f9d63;
-      --gold: #f3b33d;
-      --night: #0b1117;
+    .device {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 10px;
+      background: var(--surface);
+      box-shadow: 0 18px 50px rgba(35, 38, 43, .12);
     }
+    body.dark .device { box-shadow: 0 18px 50px rgba(0, 0, 0, .34); }
+    .device img { display: block; width: 100%; height: auto; border-radius: 18px; }
 
-    body {
-      font-family: Inter, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 84% 6%, rgba(47,128,237,.14), transparent 36%),
-        radial-gradient(circle at 8% 92%, rgba(31,157,99,.10), transparent 40%),
-        linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 60%);
-      line-height: 1.6;
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin: 22px 0 8px;
     }
+    .spec { padding: 18px 20px; border-right: 1px solid var(--line); }
+    .spec:last-child { border-right: 0; }
+    .spec-label { font-family: 'IBM Plex Mono', monospace; color: var(--copper); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+    .spec p { margin: 0; color: var(--ink); font-weight: 700; }
 
-    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 72px; }
-    nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; }
-    nav a { color: var(--ink-2); text-decoration: none; font-size: 14px; }
-    nav a:hover { color: var(--blue); }
-    .brand { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: -.03em; }
-    .brand small { font-family: Inter, sans-serif; color: var(--blue); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-left: 2px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+    .feature { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 18px; }
+    .feature strong { display: block; margin-bottom: 6px; font-size: 1.05rem; }
+    .feature p { margin: 0; color: var(--slate); font-size: .93rem; }
 
-    .pill { display: inline-flex; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--blue); background: rgba(255,255,255,.6); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .shot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px; align-items: start; }
+    .shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .shot figcaption { margin-top: 8px; color: var(--slate); font-size: .88rem; }
+    .shot figcaption b { color: var(--ink); }
 
-    .hero { display: grid; grid-template-columns: 1fr .72fr; gap: 48px; align-items: center; margin-bottom: 72px; }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -.055em; line-height: .95; color: var(--ink); }
-    h1 { font-size: clamp(58px, 8.5vw, 116px); margin: 30px 0 22px; }
-    h1 em { color: var(--blue); font-style: italic; }
-    .lede { max-width: 640px; color: var(--ink-2); font-size: clamp(17px, 1.8vw, 21px); margin-bottom: 28px; }
-    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; box-shadow: 0 14px 34px rgba(23,32,42,.14); }
-    .button.secondary { background: rgba(255,255,255,.6); color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+    .detail-note {
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--indigo);
+      border-radius: 0 12px 12px 0;
+      background: var(--surface);
+      padding: 16px 20px;
+      margin-top: 18px;
+    }
+    .detail-note p:last-child { margin-bottom: 0; }
 
-    .device { border: 1px solid var(--line); border-radius: 34px; padding: 12px; background: rgba(255,255,255,.55); box-shadow: 0 30px 90px rgba(23,32,42,.16); }
-    .device img { display: block; width: 100%; height: auto; border-radius: 24px; }
-
-    .section { border-top: 1px solid var(--line); padding: 34px 0; }
-    h2 { font-size: clamp(38px, 5.4vw, 66px); margin-bottom: 16px; }
-    p { color: var(--ink-2); margin-bottom: 14px; }
-    .grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 28px; }
-    .stat { padding: 22px 24px; border-right: 1px solid var(--line); }
-    .stat:last-child { border-right: 0; }
-    .label { color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
-    .feature { background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
-    .feature strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 27px; line-height: 1; margin-bottom: 10px; }
-    .feature p { margin-bottom: 0; font-size: 15px; }
-
-    .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; align-items: start; }
-    .shot img { display: block; width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--line); background: var(--panel); }
-    .caption { color: var(--muted); font-size: 13px; margin-top: 10px; }
-    .caption b { color: var(--ink-2); font-weight: 700; }
-
-    .note { border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 16px 16px 0; background: rgba(255,255,255,.55); padding: 18px 22px; margin-top: 24px; }
-    .note p:last-child { margin-bottom: 0; }
-
-    footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--muted); font-size: 14px; }
-    footer a { color: var(--ink-2); }
-
-    @media (max-width: 850px) {
-      .hero, .feature-grid { grid-template-columns: 1fr; }
-      .screens { grid-template-columns: 1fr 1fr; }
-      .grid { grid-template-columns: 1fr 1fr; }
-      .stat:nth-child(2) { border-right: 0; }
-      h1 { font-size: 58px; }
+    @media (max-width: 880px) {
+      .project-detail-hero, .feature-grid { grid-template-columns: 1fr; }
+      .shot-grid { grid-template-columns: 1fr 1fr; }
+      .spec-grid { grid-template-columns: 1fr 1fr; }
+      .spec:nth-child(2) { border-right: 0; }
     }
     @media (max-width: 520px) {
-      .screens { grid-template-columns: 1fr; }
+      .shot-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <nav>
-      <a class="brand" href="./">Kiera Makes Things <small>KMT</small></a>
-      <div><a href="./">All projects</a></div>
+  <main class="container">
+    <nav class="topbar">
+      <a class="logo" href="./">KMT /</a>
+      <div class="topbar-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a href="./">All projects</a>
+        <a href="https://github.com/mccab22k">GitHub</a>
+      </div>
     </nav>
 
-    <section class="hero">
+    <header>
+      <div class="eyebrow">World clock · iOS + web</div>
+      <h1>Time Here, Time There</h1>
+      <p class="subtitle">Every world clock can tell you the time in Tokyo. Almost none help with the question you actually have: when can we both talk? This one is built around a single shared timeline — drag it and every city moves together.</p>
+    </header>
+
+    <section class="project-detail-hero">
       <div>
-        <div class="pill">World clock · iOS &amp; web</div>
-        <h1>What time is it <em>for them?</em></h1>
-        <p class="lede">Every world clock app can tell you the time in Tokyo. Almost none help you answer the question you actually have: when can we both talk? Time Here, Time There is built around one shared timeline — drag it and every city moves together.</p>
-        <div class="actions">
-          <a class="button" href="https://mccab22k.github.io/timeheretimethere/">Launch the web app</a>
-          <a class="button secondary" href="https://github.com/mccab22k/timeheretimethere">GitHub</a>
+        <p>Knowing it is 9:16 PM in London does not tell you whether London is awake, or what 9:00 AM your time means for someone in Chongqing. The arithmetic is easy; holding it in your head across a group is not.</p>
+        <p>So the interface is one scrubber and a list. Move the scrubber and every city's local time follows in step, with a daylight band behind each row, so the answer is something you read rather than something you compute.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
+          <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
         </div>
       </div>
       <div class="device">
-        <img src="assets/thtt/shot-1-timeline.jpg" width="640" alt="Time Here, Time There showing a shared timeline above a list of cities, each with its daylight band and local time" />
+        <img src="assets/thtt/shot-1-timeline.jpg" width="640" alt="Time Here, Time There showing a shared timeline above a list of cities, each with a daylight band and its local time">
       </div>
     </section>
 
-    <section class="section">
-      <h2>Mental time-zone math is the actual problem.</h2>
-      <p>Knowing it is 9:16 PM in London does not tell you whether London is awake, or what 9:00 AM your time means for someone in Chongqing. The arithmetic is easy and the working memory is not — especially across a group.</p>
-      <p>So the app is organised around a single scrubber. Move it and every city's local time follows in step, with a daylight band behind each row, so the answer is something you look at rather than something you calculate.</p>
-      <div class="grid">
-        <div class="stat"><div class="label">Core idea</div><p>One shared timeline</p></div>
-        <div class="stat"><div class="label">Reading</div><p>Daylight bands per city</p></div>
-        <div class="stat"><div class="label">Platform</div><p>iOS + web, offline</p></div>
-        <div class="stat"><div class="label">Data collected</div><p>None</p></div>
-      </div>
-    </section>
+    <div class="spec-grid">
+      <div class="spec"><div class="spec-label">Core idea</div><p>One shared timeline</p></div>
+      <div class="spec"><div class="spec-label">Reading</div><p>Daylight bands per city</p></div>
+      <div class="spec"><div class="spec-label">Platform</div><p>iOS + web, offline</p></div>
+      <div class="spec"><div class="spec-label">Data collected</div><p>None</p></div>
+    </div>
 
-    <section class="section">
-      <h2>Features</h2>
-      <div class="feature-grid">
-        <div class="feature"><strong>Shared scrubbing</strong><p>Drag the timeline across yesterday, today, and tomorrow. Every city moves together.</p></div>
-        <div class="feature"><strong>Daylight at a glance</strong><p>Each row shades its daytime and labels it — morning, work hours, evening, sleeping hours.</p></div>
-        <div class="feature"><strong>Sunrise and sunset</strong><p>Real solar times per city, so "evening" means something concrete.</p></div>
-        <div class="feature"><strong>Timezone grouping</strong><p>Cities sharing an offset collapse into one row. Eight cities need not mean eight identical clocks.</p></div>
-        <div class="feature"><strong>Any city as home</strong><p>Pick a home city and every offset recalculates against it.</p></div>
-        <div class="feature"><strong>Quick sort</strong><p>A–Z, furthest ahead, furthest behind, or your own dragged order.</p></div>
-        <div class="feature"><strong>Tap to return</strong><p>Tap any city's time, or the NOW marker, to snap straight back to live.</p></div>
-        <div class="feature"><strong>Home-screen widget</strong><p>An iOS widget showing home time next to one tracked city.</p></div>
-        <div class="feature"><strong>No network at all</strong><p>No account, no ads, no analytics. The app makes zero network requests.</p></div>
-      </div>
-    </section>
+    <div class="section-label">Features</div>
+    <div class="feature-grid">
+      <div class="feature"><strong>Shared scrubbing</strong><p>Drag across yesterday, today, and tomorrow. Every city moves together.</p></div>
+      <div class="feature"><strong>Daylight at a glance</strong><p>Each row shades its daytime and labels it — morning, work hours, evening, sleeping hours.</p></div>
+      <div class="feature"><strong>Sunrise and sunset</strong><p>Real solar times per city, so "evening" means something concrete.</p></div>
+      <div class="feature"><strong>Timezone grouping</strong><p>Cities sharing an offset collapse into one row. Eight cities need not mean eight identical clocks.</p></div>
+      <div class="feature"><strong>Any city as home</strong><p>Pick a home city and every offset recalculates against it.</p></div>
+      <div class="feature"><strong>Quick sort</strong><p>A–Z, furthest ahead, furthest behind, or your own dragged order.</p></div>
+      <div class="feature"><strong>Tap to return</strong><p>Tap any city's time, or the NOW marker, to snap straight back to live.</p></div>
+      <div class="feature"><strong>Home-screen widget</strong><p>An iOS widget showing home time next to one tracked city.</p></div>
+      <div class="feature"><strong>No network at all</strong><p>No account, no ads, no analytics. The app makes zero network requests.</p></div>
+    </div>
 
-    <section class="section" id="screenshots">
-      <h2>Screenshots</h2>
-      <p>Captured from the iOS build at App Store resolution.</p>
-      <div class="screens">
-        <div class="shot">
-          <img loading="lazy" src="assets/thtt/shot-1-timeline.jpg" width="640" alt="The default view: a shared timeline above five city rows, Luxembourg and Paris merged into one row" />
-          <p class="caption"><b>Shared timeline.</b> The scrubber sits at NOW; every row shows its local time and daylight band.</p>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="assets/thtt/shot-2-separate.jpg" width="640" alt="The same list with grouping turned off, so Luxembourg and Paris each get their own row" />
-          <p class="caption"><b>Grouping off.</b> Every city gets its own row when you would rather see them separately.</p>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="assets/thtt/shot-3-sorted.jpg" width="640" alt="The city list re-sorted so the cities furthest ahead appear first" />
-          <p class="caption"><b>Quick sort.</b> One control cycles between your own order, A–Z, and by offset.</p>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="assets/thtt/shot-4-home.jpg" width="640" alt="The same cities with London set as home, so New York now reads five hours behind" />
-          <p class="caption"><b>Any city as home.</b> With London as home, New York reads five hours behind.</p>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="assets/thtt/shot-5-dark.jpg" width="640" alt="The app in dark mode, with the city rows tinted by each city's time of day" />
-          <p class="caption"><b>Dark mode.</b> Rows tint by local time of day — light at midday, deep navy at night.</p>
-        </div>
-      </div>
-    </section>
+    <div class="section-label">Screenshots</div>
+    <div class="shot-grid">
+      <figure class="shot">
+        <img loading="lazy" src="assets/thtt/shot-1-timeline.jpg" width="640" alt="The default view: a shared timeline above five city rows, with Luxembourg and Paris merged into one row">
+        <figcaption><b>Shared timeline.</b> The scrubber sits at NOW; every row shows its local time and daylight band.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" src="assets/thtt/shot-2-separate.jpg" width="640" alt="The same list with grouping turned off, so Luxembourg and Paris each get their own row">
+        <figcaption><b>Grouping off.</b> Every city gets its own row when you would rather see them separately.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" src="assets/thtt/shot-3-sorted.jpg" width="640" alt="The city list re-sorted so the cities furthest ahead appear first">
+        <figcaption><b>Quick sort.</b> One control cycles your own order, A–Z, and by offset.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" src="assets/thtt/shot-4-home.jpg" width="640" alt="The same cities with London set as home, so New York now reads five hours behind">
+        <figcaption><b>Any city as home.</b> With London as home, New York reads five hours behind.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" src="assets/thtt/shot-5-dark.jpg" width="640" alt="The app in dark mode, with city rows tinted by each city's local time of day">
+        <figcaption><b>Dark mode.</b> Rows tint by local time of day — light at midday, deep navy at night.</figcaption>
+      </figure>
+    </div>
 
-    <section class="section">
-      <h2>Status</h2>
-      <p>The web app is live and the iOS build is complete — distribution-signed, widget included, submitted for review. It is not on the App Store yet.</p>
-      <div class="note">
-        <p><b>Android</b> is planned but not started. The app is a web core wrapped for iOS with Capacitor, so the same bundle should carry over.</p>
-      </div>
-    </section>
+    <div class="section-label">Status</div>
+    <p>The web app is live. The iOS build is complete — distribution-signed, widget included, and submitted for review. It is not on the App Store yet.</p>
+    <div class="detail-note">
+      <p><b>Android</b> is planned but not started. The app is a web core wrapped for iOS with Capacitor, so the same bundle should carry over.</p>
+    </div>
 
-    <footer>
-      <p>Built by Kiera McCabe · <a href="./">More projects</a> · <a href="https://mccab22k.github.io/timeheretimethere/">Launch the web app</a></p>
-    </footer>
+    <details class="why-made">
+      <summary>Why I Made This</summary>
+      <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
+      <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
+    </details>
   </main>
+
+  <script src="theme.js"></script>
 </body>
 </html>
