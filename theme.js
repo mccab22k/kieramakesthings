@@ -139,8 +139,38 @@ function updateCatflakesLaunchStatus() {
   }
 }
 
+function injectNoMoreDataBrokers() {
+  if (document.querySelector('#no-more-data-brokers')) return;
+
+  const functionalAppsLabel = Array.from(document.querySelectorAll('.section-label'))
+    .find((label) => label.textContent.trim() === 'Functional Apps');
+  const functionalAppsGrid = functionalAppsLabel?.nextElementSibling;
+
+  if (!functionalAppsGrid?.classList.contains('projects-grid')) return;
+
+  functionalAppsGrid.insertAdjacentHTML('afterbegin', `
+    <div class="project-card" id="no-more-data-brokers" data-filter-tags="">
+      <div class="status-badge">v1</div>
+      <h2 class="project-title">No More Data Brokers</h2>
+      <div class="project-meta">Privacy · Open source · Local-only</div>
+      <p class="project-hook">Built because privacy rights should not require paying the same industry that profits from personal data.</p>
+      <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. No account or backend.</p>
+      <div class="project-links">
+        <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+      </div>
+      <details class="why-made">
+        <summary>Why I Made This</summary>
+        <p>Data brokers collect and sell personal information, while paid removal services can turn that same exposure into a subscription product. I wanted the opt-out process to be understandable, free, and directly usable by the person whose data is involved.</p>
+        <p>The privacy constraint is also the technical thesis: the tool is a single self-contained HTML file with no build step or dependencies, and all profile and broker-removal state stays in localStorage rather than being sent to a server.</p>
+        <p>Fresh sessions use a fictional profile by default, while confirmed removals surface broker-specific re-check dates because broker profiles can reappear after being re-scraped.</p>
+      </details>
+    </div>
+  `);
+}
+
 injectSecuritySystems();
 updateCatflakesLaunchStatus();
+injectNoMoreDataBrokers();
 
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
