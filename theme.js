@@ -139,6 +139,40 @@ function updateCatflakesLaunchStatus() {
   }
 }
 
+function updateTimeSinceLaunchStatus() {
+  const card = document.querySelector('#time-since');
+  if (!card) return;
+
+  const appStoreUrl = 'https://apps.apple.com/app/time-since-chore-reminder/id6795689073';
+  card.dataset.filterTags = 'live app-store';
+
+  const status = card.querySelector('.status-badge');
+  if (status) status.textContent = 'Live';
+
+  const meta = card.querySelector('.project-meta');
+  if (meta) meta.textContent = 'Productivity · App Store · iOS + web';
+
+  const pendingBadge = card.querySelector('.app-store-badge');
+  if (pendingBadge && pendingBadge.tagName !== 'A') {
+    const liveBadge = document.createElement('a');
+    liveBadge.className = pendingBadge.className;
+    liveBadge.href = appStoreUrl;
+    liveBadge.setAttribute('aria-label', 'Time Since Chore Reminder on the App Store');
+    liveBadge.title = 'Download on the App Store';
+    liveBadge.innerHTML = pendingBadge.innerHTML;
+    pendingBadge.replaceWith(liveBadge);
+  }
+
+  const links = card.querySelector('.project-links');
+  if (links && !links.querySelector(`[href="${appStoreUrl}"]`)) {
+    const appStoreLink = document.createElement('a');
+    appStoreLink.href = appStoreUrl;
+    appStoreLink.className = 'project-link';
+    appStoreLink.textContent = 'App Store';
+    links.prepend(appStoreLink);
+  }
+}
+
 function injectNoMoreDataBrokers() {
   if (document.querySelector('#no-more-data-brokers')) return;
 
@@ -149,13 +183,14 @@ function injectNoMoreDataBrokers() {
   if (!functionalAppsGrid?.classList.contains('projects-grid')) return;
 
   functionalAppsGrid.insertAdjacentHTML('afterbegin', `
-    <div class="project-card" id="no-more-data-brokers" data-filter-tags="">
-      <div class="status-badge">v1</div>
+    <div class="project-card" id="no-more-data-brokers" data-filter-tags="live">
+      <div class="status-badge">Live · v1</div>
       <h2 class="project-title">No More Data Brokers</h2>
       <div class="project-meta">Privacy · Open source · Local-only</div>
       <p class="project-hook">Built because privacy rights should not require paying the same industry that profits from personal data.</p>
       <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. No account or backend.</p>
       <div class="project-links">
+        <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Launch App</a>
         <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
       </div>
       <details class="why-made">
@@ -168,9 +203,58 @@ function injectNoMoreDataBrokers() {
   `);
 }
 
+function arrangeFeaturedProjects() {
+  const featuredGrid = document.querySelector('.featured-projects');
+  const functionalAppsLabel = Array.from(document.querySelectorAll('.section-label'))
+    .find((label) => label.textContent.trim() === 'Functional Apps');
+  const functionalAppsGrid = functionalAppsLabel?.nextElementSibling;
+  const timeSince = document.querySelector('#time-since');
+  const noMoreDataBrokers = document.querySelector('#no-more-data-brokers');
+  const orbit = document.querySelector('#orbit');
+
+  if (!featuredGrid || !functionalAppsGrid || !timeSince || !noMoreDataBrokers) return;
+
+  const featuredLabel = featuredGrid.previousElementSibling;
+  if (featuredLabel?.classList.contains('section-label')) {
+    featuredLabel.textContent = 'Featured projects';
+  }
+
+  if (orbit) {
+    orbit.classList.remove('featured', 'featured-orbit');
+    orbit.querySelector('.preview-orbit')?.remove();
+    functionalAppsGrid.append(orbit);
+  }
+
+  timeSince.classList.add('portfolio-highlight');
+  noMoreDataBrokers.classList.add('portfolio-highlight');
+  featuredGrid.append(timeSince, noMoreDataBrokers);
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .featured-projects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    .featured-projects .portfolio-highlight {
+      min-height: 360px;
+      border-color: var(--copper);
+      box-shadow: 0 12px 30px rgba(35, 38, 43, .08);
+    }
+    body.dark .featured-projects .portfolio-highlight {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+    }
+    @media (max-width: 900px) {
+      .featured-projects { grid-template-columns: 1fr; }
+    }
+  `;
+  document.head.append(style);
+}
+
 injectSecuritySystems();
 updateCatflakesLaunchStatus();
+updateTimeSinceLaunchStatus();
 injectNoMoreDataBrokers();
+arrangeFeaturedProjects();
 
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
