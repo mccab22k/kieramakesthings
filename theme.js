@@ -92,6 +92,21 @@ function injectSecuritySystems() {
   `);
 }
 
+function injectAppleDeveloperLink() {
+  const topbarActions = document.querySelector('.topbar-actions');
+  if (!topbarActions || topbarActions.querySelector('[data-apple-developer-link]')) return;
+
+  const developerLink = document.createElement('a');
+  developerLink.href = 'https://apps.apple.com/us/developer/kiera-mccabe/id6776764761';
+  developerLink.textContent = 'App Store';
+  developerLink.dataset.appleDeveloperLink = 'true';
+  developerLink.setAttribute('aria-label', 'Kiera McCabe on the App Store');
+
+  const githubLink = Array.from(topbarActions.querySelectorAll('a'))
+    .find((link) => link.textContent.trim() === 'GitHub');
+  topbarActions.insertBefore(developerLink, githubLink || null);
+}
+
 function updateCatflakesLaunchStatus() {
   const card = document.querySelector('#catflakes');
   if (!card) return;
@@ -143,7 +158,7 @@ function updateTimeSinceLaunchStatus() {
   const card = document.querySelector('#time-since');
   if (!card) return;
 
-  const appStoreUrl = 'https://apps.apple.com/app/time-since-chore-reminder/id6795689073';
+  const appStoreUrl = 'https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073';
   card.dataset.filterTags = 'live app-store';
 
   const status = card.querySelector('.status-badge');
@@ -158,6 +173,40 @@ function updateTimeSinceLaunchStatus() {
     liveBadge.className = pendingBadge.className;
     liveBadge.href = appStoreUrl;
     liveBadge.setAttribute('aria-label', 'Time Since Chore Reminder on the App Store');
+    liveBadge.title = 'Download on the App Store';
+    liveBadge.innerHTML = pendingBadge.innerHTML;
+    pendingBadge.replaceWith(liveBadge);
+  }
+
+  const links = card.querySelector('.project-links');
+  if (links && !links.querySelector(`[href="${appStoreUrl}"]`)) {
+    const appStoreLink = document.createElement('a');
+    appStoreLink.href = appStoreUrl;
+    appStoreLink.className = 'project-link';
+    appStoreLink.textContent = 'App Store';
+    links.prepend(appStoreLink);
+  }
+}
+
+function updateTimeHereLaunchStatus() {
+  const card = document.querySelector('#time-here-time-there');
+  if (!card) return;
+
+  const appStoreUrl = 'https://apps.apple.com/us/app/time-here-time-there/id6796821781';
+  card.dataset.filterTags = 'live app-store';
+
+  const status = card.querySelector('.status-badge');
+  if (status) status.textContent = 'Live';
+
+  const meta = card.querySelector('.project-meta');
+  if (meta) meta.textContent = 'Time zones · App Store · iOS + web';
+
+  const pendingBadge = card.querySelector('.app-store-badge');
+  if (pendingBadge && pendingBadge.tagName !== 'A') {
+    const liveBadge = document.createElement('a');
+    liveBadge.className = pendingBadge.className;
+    liveBadge.href = appStoreUrl;
+    liveBadge.setAttribute('aria-label', 'Time Here, Time There on the App Store');
     liveBadge.title = 'Download on the App Store';
     liveBadge.innerHTML = pendingBadge.innerHTML;
     pendingBadge.replaceWith(liveBadge);
@@ -251,8 +300,10 @@ function arrangeFeaturedProjects() {
 }
 
 injectSecuritySystems();
+injectAppleDeveloperLink();
 updateCatflakesLaunchStatus();
 updateTimeSinceLaunchStatus();
+updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
 arrangeFeaturedProjects();
 
