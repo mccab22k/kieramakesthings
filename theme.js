@@ -98,7 +98,7 @@ function injectAppleDeveloperLink() {
 
   const developerLink = document.createElement('a');
   developerLink.href = 'https://apps.apple.com/us/developer/kiera-mccabe/id6776764761';
-  developerLink.textContent = 'App Store';
+  developerLink.textContent = 'iOS Apps';
   developerLink.dataset.appleDeveloperLink = 'true';
   developerLink.setAttribute('aria-label', 'Kiera McCabe on the App Store');
 
@@ -141,7 +141,7 @@ function updateCatflakesLaunchStatus() {
     const appStoreLink = document.createElement('a');
     appStoreLink.href = appStoreUrl;
     appStoreLink.className = 'project-link';
-    appStoreLink.textContent = 'App Store';
+    appStoreLink.textContent = 'iOS App Store';
     links.prepend(appStoreLink);
   }
 
@@ -183,7 +183,7 @@ function updateTimeSinceLaunchStatus() {
     const appStoreLink = document.createElement('a');
     appStoreLink.href = appStoreUrl;
     appStoreLink.className = 'project-link';
-    appStoreLink.textContent = 'App Store';
+    appStoreLink.textContent = 'iOS App Store';
     links.prepend(appStoreLink);
   }
 }
@@ -217,7 +217,7 @@ function updateTimeHereLaunchStatus() {
     const appStoreLink = document.createElement('a');
     appStoreLink.href = appStoreUrl;
     appStoreLink.className = 'project-link';
-    appStoreLink.textContent = 'App Store';
+    appStoreLink.textContent = 'iOS App Store';
     links.prepend(appStoreLink);
   }
 }
@@ -239,7 +239,7 @@ function injectNoMoreDataBrokers() {
       <p class="project-hook">Built because privacy rights should not require paying the same industry that profits from personal data.</p>
       <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. No account or backend.</p>
       <div class="project-links">
-        <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Launch App</a>
+        <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
         <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
       </div>
       <details class="why-made">
@@ -299,6 +299,17 @@ function arrangeFeaturedProjects() {
   document.head.append(style);
 }
 
+function clarifyPlatformLinks() {
+  document.querySelectorAll('.project-link').forEach((link) => {
+    const label = link.textContent.trim();
+    if (label === 'Launch App') link.textContent = 'Web App';
+    if (label === 'App Store') link.textContent = 'iOS App Store';
+  });
+
+  const developerLink = document.querySelector('[data-apple-developer-link]');
+  if (developerLink) developerLink.textContent = 'iOS Apps';
+}
+
 injectSecuritySystems();
 injectAppleDeveloperLink();
 updateCatflakesLaunchStatus();
@@ -306,6 +317,7 @@ updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
 arrangeFeaturedProjects();
+clarifyPlatformLinks();
 
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
