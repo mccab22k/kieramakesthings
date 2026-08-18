@@ -4,6 +4,15 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 - Splash page: https://mccab22k.github.io/kieramakesthings/
 - Source repo: https://github.com/mccab22k/kieramakesthings
+- Apple developer profile: https://apps.apple.com/us/developer/kiera-mccabe/id6776764761
+
+## Apple App Store
+
+- Time Here, Time There: https://apps.apple.com/us/app/time-here-time-there/id6796821781
+- Time Since Chore Reminder: https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073
+- Orbit, A Fancy Planner: https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489
+- Catflakes: https://apps.apple.com/us/app/catflakes/id6795675453
+- Developer profile: https://apps.apple.com/us/developer/kiera-mccabe/id6776764761
 
 ## Deployment / External Services
 
@@ -15,19 +24,20 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ## Recent Updates
 
-### Catflakes App Store Launch
+### iOS App Store Releases
 
-- Catflakes is live on the App Store: https://apps.apple.com/us/app/catflakes/id6795675453
-- The web version remains available through GitHub Pages.
-- The portfolio card now shows Catflakes as a live iOS and web app with a clickable App Store icon.
-- Catflakes documentation and launch links now use the published app icon and current distribution status.
+- Time Here, Time There: https://apps.apple.com/us/app/time-here-time-there/id6796821781
+- Time Since Chore Reminder: https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073
+- Orbit, A Fancy Planner: https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489
+- Catflakes: https://apps.apple.com/us/app/catflakes/id6795675453
+- All current iOS releases are also available from the Apple developer profile: https://apps.apple.com/us/developer/kiera-mccabe/id6776764761
 
 ### Project Filters
 
 - The homepage includes filters for All, Live, App Store, and Research / WIP.
 - Live means active launchable apps.
-- App Store means launched, pending, or planned App Store releases.
-- Apps pending or planned for App Store submission include Passport Buddy, Time Since, and Time Here, Time There.
+- App Store includes launched releases as well as projects still planned for submission.
+- Passport Buddy remains pending/planned for App Store submission.
 - Research / WIP includes prototypes, paused projects, research, concepts, and home lab notes.
 - Android releases are planned.
 
@@ -40,15 +50,17 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ### Time Since App
 
-- The app is live on Vercel.
-- The project now has both a detail page and notes page linked from the homepage.
+- The app is live on the App Store: https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073
+- The web app is live on Vercel.
+- The project has both a detail page and notes page linked from the homepage.
 - Current goals focus on fast elapsed-time tracking, flexible routine logging, and local-first portability.
 
 ### Time Here, Time There
 
-- The app is live on GitHub Pages.
+- The app is live on the App Store: https://apps.apple.com/us/app/time-here-time-there/id6796821781
+- The web app remains live on GitHub Pages.
 - The matching GitHub repo exists and is currently marked private on the splash page.
-- Current goals focus on timezone comparison, timeline scrubbing, and practical scheduling across cities.
+- Current goals focus on timezone comparison, timeline scrubbing, daylight context, and practical scheduling across cities.
 
 ### Rent Stabilized Map
 
@@ -106,18 +118,35 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 ### Time Since
 
-- App: https://timesincechorereminder.vercel.app/
+- App Store: https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073
+- Web app: https://timesincechorereminder.vercel.app/
 - Repo: https://github.com/mccab22k/timesincechorereminder
 - Project page: time-since.html
 - Notes: time-since.md
 
 #### Deployment / External Services
 
-- Hosting: Vercel.
+- iOS distribution: Apple App Store.
+- Web hosting: Vercel.
 - Source control: GitHub with deployment integration.
 - Database: browser/app persistence with import/export support.
 - Analytics: not documented in this repo.
-- Notes: no backend service is documented here. App Store submission is pending/planned.
+- Notes: no backend service is documented here.
+
+### Time Here, Time There
+
+- App Store: https://apps.apple.com/us/app/time-here-time-there/id6796821781
+- Web app: https://mccab22k.github.io/timeheretimethere/
+- Repo: https://github.com/mccab22k/timeheretimethere
+
+#### Deployment / External Services
+
+- iOS distribution: Apple App Store.
+- Web hosting: GitHub Pages.
+- Source control: GitHub.
+- Database: none documented.
+- Analytics: not documented in this repo.
+- Notes: local-first timezone comparison app with native iOS distribution and a static web version.
 
 ### Catflakes
 
@@ -136,19 +165,6 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 - Notes: the SwiftUI iOS app bundles the same core static animation experience used by the web version.
 
 ## Active / Prototype Projects
-
-### Time Here, Time There
-
-- App: https://mccab22k.github.io/timeheretimethere/
-- Repo: https://github.com/mccab22k/timeheretimethere
-
-#### Deployment / External Services
-
-- Hosting: GitHub Pages.
-- Source control: GitHub.
-- Database: none documented.
-- Analytics: not documented in this repo.
-- Notes: current app is a static prototype for comparing time across cities. App Store submission is pending/planned.
 
 ### Pet Sticker Maker
 
