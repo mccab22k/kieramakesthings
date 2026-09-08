@@ -6,6 +6,12 @@ Status: work in progress.
 
 Passport Buddy is a passport-aware travel planning project. The core goal is to help groups with different passports understand where they can travel together, what entry requirements may differ, and which destinations are easiest for everyone.
 
+## Project history
+
+**Started:** January 2020
+
+The current app is a later implementation of an older travel-planning idea focused on comparing passport, visa, and route constraints across groups.
+
 ## Core Use Case
 
 People traveling together often do not have the same passport, visa access, transit rules, airport options, or entry requirements. Passport Buddy is meant to make that visible early, before a group commits to flights, lodging, or a destination.

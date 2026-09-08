@@ -273,6 +273,8 @@ body.dark .project-card.is-highlighted {
   margin-bottom: 14px;
 }
 
+.project-meta + .project-meta { display: none; }
+
 .project-hook {
   font-size: .95rem;
   color: var(--ink);

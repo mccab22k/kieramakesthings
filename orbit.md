@@ -4,6 +4,12 @@ App Store: https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489
 
 Web app: https://mccab22k.github.io/orbit-a-fancy-planner/
 
+## Project history
+
+**Started:** November 2025
+
+Orbit began as a visual planner for making daily time visible as a circular schedule rather than a list. The current App Store and GitHub Pages implementation is a later standalone version of that planning system.
+
 ## Summary
 
 Orbit is a visual planner built around a simple idea: your day is a clock, not a list.

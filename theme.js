@@ -310,6 +310,23 @@ function clarifyPlatformLinks() {
   if (developerLink) developerLink.textContent = 'iOS Apps';
 }
 
+function applyProjectOrigins() {
+  const origins = {
+    '#orbit': 'Started 2025 - November origin - iOS + web',
+    '#passport-buddy': 'Started January 2020 - Ongoing travel planning',
+    '#time-here-time-there': 'Started 2021 - Ongoing timezone coordination',
+    '#time-since': 'Started December 2024 - iOS + web',
+    '#catflakes': 'Started 2018 - Java to iOS',
+    '#colony-cat-management': 'Graduate-school era - Computer vision - TNR',
+  };
+
+  Object.entries(origins).forEach(([selector, text]) => {
+    const card = document.querySelector(selector);
+    const meta = card?.querySelector('.project-meta');
+    if (meta) meta.textContent = text;
+  });
+}
+
 injectSecuritySystems();
 injectAppleDeveloperLink();
 updateCatflakesLaunchStatus();
@@ -317,6 +334,7 @@ updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
 arrangeFeaturedProjects();
+applyProjectOrigins();
 clarifyPlatformLinks();
 
 const filterButtons = document.querySelectorAll('.filter-button');

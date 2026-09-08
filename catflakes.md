@@ -8,6 +8,14 @@ Catflakes is live on the Apple App Store and remains available as a web app.
 - Web app: https://mccab22k.github.io/catflakes/
 - Source: https://github.com/mccab22k/catflakes
 
+## Project history
+
+**Started:** 2018
+**Original implementation:** Java
+**Current implementation:** iOS and web rewrite
+
+Catflakes began as a Java project in 2018. The current app is a later rewrite and continuation of that original visual-toy idea.
+
 ## Purpose
 
 Catflakes is a small visual toy that turns cat assets into falling radial snowflake-style animations.

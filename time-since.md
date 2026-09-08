@@ -2,6 +2,12 @@
 
 [iOS App Store](https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073) · [Web App](https://timesincechorereminder.vercel.app/)
 
+## Project history
+
+**Started:** December 2024
+
+Time Since began as a practical tracker for chores and recurring life events that are easier to manage by elapsed time than fixed calendar dates. The current Expo app is a later cross-platform implementation of that workflow.
+
 ## Purpose
 
 Time Since tracks routines and events by elapsed time instead of forcing every task into a fixed calendar recurrence.
