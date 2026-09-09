@@ -1,6 +1,6 @@
 # Raspberry Pi + AdGuard Home Setup
 
-A rebuild guide for running AdGuard Home on a Raspberry Pi 4B with Raspberry Pi OS Lite, using AdGuard for DNS filtering and DHCP-based client visibility.
+A rebuild guide for running AdGuard Home on a Raspberry Pi 4B with Raspberry Pi OS Lite, using AdGuard for DNS filtering, DHCP-based client visibility, fast upstream DNS, and practical allow/block rules for AI tools, Fandom, smart home devices, and Roku.
 
 ## Current Goal
 
@@ -9,6 +9,7 @@ Use the Raspberry Pi as the network-wide DNS and DHCP service so AdGuard can:
 - block ads and trackers at the DNS layer
 - show traffic by individual client/device
 - avoid router DNS proxy visibility issues
+- keep ChatGPT, Claude, casting, and normal smart-home functionality working
 - keep the setup portable when moving the router from a modem to an apartment Ethernet handoff
 
 ## Current Issue
@@ -57,7 +58,8 @@ The router remains the internet gateway. AdGuard DHCP should hand out the router
 - Source control: documentation stored in GitHub.
 - Database: AdGuard Home local configuration and logs.
 - Analytics: AdGuard Home dashboard/query log for local DNS traffic.
-- Notes: upstream DNS can use Cloudflare DNS, Google DNS, Quad9, or another provider.
+- Upstream DNS options: Cloudflare DNS, Google Public DNS, Quad9, or another reliable resolver.
+- DNS filtering: AdGuard DNS Filter, OISD, HaGeZi lists, and local custom rules.
 
 ## 1. Flash Raspberry Pi OS Lite
 
@@ -183,7 +185,7 @@ After setup, the admin UI is usually:
 http://<PI-IP>
 ```
 
-## 8. Configure Upstream DNS
+## 8. Configure Fast Upstream DNS
 
 In AdGuard:
 
@@ -191,7 +193,9 @@ In AdGuard:
 Settings → DNS settings → Upstream DNS servers
 ```
 
-Reliable starting config:
+### Balanced speed profile
+
+Use this first. It is fast, stable, and easy to debug.
 
 ```text
 https://dns.cloudflare.com/dns-query
@@ -202,7 +206,9 @@ Bootstrap DNS:
 
 ```text
 1.1.1.1
+1.0.0.1
 8.8.8.8
+8.8.4.4
 ```
 
 Fallback DNS:
@@ -212,11 +218,45 @@ Fallback DNS:
 8.8.8.8
 ```
 
+### Security-leaning profile
+
+Use this if malware/phishing filtering matters more than raw speed.
+
+```text
+https://dns.quad9.net/dns-query
+https://dns11.quad9.net/dns-query
+```
+
+Bootstrap DNS:
+
+```text
+9.9.9.9
+149.112.112.112
+1.1.1.1
+```
+
+### Raw-speed troubleshooting profile
+
+Use this temporarily if encrypted DNS feels slow and you want to compare against plain DNS.
+
+```text
+1.1.1.1
+1.0.0.1
+8.8.8.8
+8.8.4.4
+```
+
+If plain DNS is much faster than DoH, the issue may be TLS/DoH latency, router inspection, IPv6 behavior, or a slow upstream route.
+
+### Speed settings
+
 Recommended while troubleshooting:
 
-- Enable parallel requests.
-- Keep blocklists minimal.
+- Enable **Parallel requests** if speed matters more than sending each query to only one upstream.
+- Keep blocklists minimal until average processing time is consistently low.
 - Avoid using the router IP as AdGuard's upstream DNS unless specifically needed.
+- Do not mix too many upstreams at first; more providers can make failures harder to isolate.
+- Watch the AdGuard dashboard average processing time after each change.
 
 Avoid DNS loops:
 
@@ -231,7 +271,253 @@ Clients → Pi/AdGuard
 AdGuard → Cloudflare / Google / Quad9 / other upstream
 ```
 
-## 9. Test DNS Before Moving DHCP
+## 9. DNS Blocklists and Local Rules
+
+DNS blocking is good for network-wide ads, trackers, telemetry, and obvious malicious domains. It cannot remove every ad, especially first-party ads, YouTube-style ads, app-native ads, or page elements served from the same domain as the content.
+
+Recommended AdGuard path:
+
+```text
+Filters → DNS blocklists → Add blocklist
+Filters → Custom filtering rules
+Filters → Allowlist
+```
+
+### Stable starting blocklists
+
+Start with a small, low-breakage setup:
+
+```text
+AdGuard DNS filter
+OISD Big: https://big.oisd.nl
+```
+
+Optional after the network is stable:
+
+```text
+HaGeZi Multi PRO: https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt
+HaGeZi Threat Intelligence Feeds Mini: https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt
+```
+
+Avoid starting with every aggressive list at once. If something breaks, it becomes hard to identify the responsible rule.
+
+### AdGuard rule syntax
+
+Use AdGuard-style rules for manual entries.
+
+Block a domain and its subdomains:
+
+```text
+||example.org^
+```
+
+Allow a domain and its subdomains:
+
+```text
+@@||example.org^
+```
+
+Client-specific blocking is useful for Roku, Alexa, and smart TVs:
+
+```text
+||logs.roku.com^$client='Living Room Roku'
+```
+
+That lets you test aggressive blocks on one device before applying them network-wide.
+
+## 10. Keep ChatGPT and Claude Working
+
+Add these to the AdGuard allowlist if ChatGPT, Codex, Claude, Claude Code, file uploads, login, or streaming responses fail.
+
+### ChatGPT / OpenAI allowlist
+
+Minimal rules:
+
+```text
+@@||chatgpt.com^
+@@||openai.com^
+@@||auth.openai.com^
+@@||oaistatic.com^
+@@||oaiusercontent.com^
+@@||oaistatsig.com^
+@@||openaimerge.com^
+@@||workos.com^
+@@||workoscdn.com^
+@@||challenges.cloudflare.com^
+```
+
+Additional rules if login, support, billing, app telemetry, upload, or desktop/mobile app behavior breaks:
+
+```text
+@@||intercom.io^
+@@||intercomcdn.com^
+@@||stripe.com^
+@@||sendgrid.net^
+@@||sentry.io^
+@@||datadoghq.com^
+```
+
+Do not block WebSockets for ChatGPT/Codex. Some ChatGPT and Codex behavior needs WebSocket upgrades over TCP 443, especially streaming and long-running sessions.
+
+### Claude / Anthropic allowlist
+
+Minimal rules:
+
+```text
+@@||claude.ai^
+@@||claude.com^
+@@||anthropic.com^
+@@||api.anthropic.com^
+@@||platform.claude.com^
+@@||statsig.anthropic.com^
+```
+
+Use these if the web app works but Claude Code, API calls, Console, or Chrome integration fails.
+
+## 11. Fandom Ad Blocking
+
+Goal: block the worst Fandom ads and trackers without breaking wiki assets.
+
+Use the normal blocklists first:
+
+```text
+AdGuard DNS filter
+OISD Big
+HaGeZi Multi PRO, optional
+```
+
+Do **not** block all of Fandom or Wikia globally:
+
+```text
+Bad:
+||fandom.com^
+||wikia.com^
+||wikia.nocookie.net^
+```
+
+`wikia.nocookie.net` is commonly used for static wiki assets. If Fandom pages render incorrectly, allow it:
+
+```text
+@@||wikia.nocookie.net^
+```
+
+Optional Fandom-specific block rules to test:
+
+```text
+||jwplayer.com^$domain=fandom.com
+||doubleclick.net^
+||googlesyndication.com^
+||googleadservices.com^
+||pubmatic.com^
+||criteo.com^
+||taboola.com^
+||scorecardresearch.com^
+||quantserve.com^
+```
+
+Most of those should already be handled by good lists. If Fandom is still obnoxious, pair AdGuard Home with a browser content blocker such as uBlock Origin or the AdGuard browser extension. DNS cannot perform cosmetic filtering.
+
+## 12. Smart Home, Casting, Alexa, and Google Home
+
+Goal: block unnecessary telemetry while preserving casting, speakers, streaming, and device discovery.
+
+Important distinction:
+
+```text
+DNS filtering controls internet name lookups.
+Casting discovery often depends on local-network discovery such as mDNS/SSDP.
+```
+
+For casting to work:
+
+- Keep the phone and casting device on the same Wi-Fi/LAN.
+- Do not enable client isolation or guest-network isolation for devices that need to cast to each other.
+- Do not block all Google domains globally.
+- Do not block all Amazon domains globally if Alexa devices must keep working.
+
+### Google Home / Chromecast allowlist if casting breaks
+
+Use only if needed:
+
+```text
+@@||google.com^
+@@||gstatic.com^
+@@||googleapis.com^
+@@||googlevideo.com^
+@@||youtube.com^
+@@||ytimg.com^
+@@||clients3.google.com^
+@@||connectivitycheck.gstatic.com^
+```
+
+If casting breaks, check local network settings before assuming DNS is the only problem.
+
+### Google / Android tracker blocks to test carefully
+
+These can reduce telemetry but may affect apps or smart devices. Test before applying globally.
+
+```text
+||app-measurement.com^
+||firebase-settings.crashlytics.com^
+||firebaselogging-pa.googleapis.com^
+||android.clients.google.com^
+```
+
+### Alexa / Amazon tracker blocks to test carefully
+
+Prefer device-specific rules for Echo/Alexa devices first.
+
+```text
+||device-metrics-us.amazon.com^
+||device-metrics-us-2.amazon.com^
+||metrics.amazon.com^
+||fls-na.amazon.com^
+||data.amazon.com^
+```
+
+If Alexa voice control, routines, device setup, or music playback breaks, remove the most recent Amazon rule first.
+
+Optional list:
+
+```text
+HaGeZi Native Tracker - Amazon:
+https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/native.amazon.txt
+```
+
+Use the native Amazon list only after the basic network is stable.
+
+## 13. Roku Tracker Blocking
+
+Roku devices are noisy. Block telemetry and ad endpoints carefully; aggressive blocks can break thumbnails, search, channel launch, or streaming apps.
+
+Recommended list:
+
+```text
+HaGeZi Native Tracker - Roku:
+https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/native.roku.txt
+```
+
+Manual Roku rules to test first on the Roku client only:
+
+```text
+||logs.roku.com^$client='Living Room Roku'
+||scribe.logs.roku.com^$client='Living Room Roku'
+||ads.roku.com^$client='Living Room Roku'
+||p.ads.roku.com^$client='Living Room Roku'
+```
+
+If stable, convert to global rules by removing the `$client` modifier:
+
+```text
+||logs.roku.com^
+||scribe.logs.roku.com^
+||ads.roku.com^
+||p.ads.roku.com^
+```
+
+Do not block broad Roku CDN or image domains until you know what each domain does. Blocking telemetry is safer than blocking every Roku hostname.
+
+## 14. Test DNS Before Moving DHCP
 
 From a client:
 
@@ -262,7 +548,7 @@ Interpretation:
 | both fail | gateway/network issue |
 | both work | Pi network path is healthy |
 
-## 10. AdGuard DHCP Configuration
+## 15. AdGuard DHCP Configuration
 
 Use AdGuard DHCP if you want client/device names and per-device visibility.
 
@@ -293,7 +579,7 @@ DNS     = Pi IP
 
 The Pi should not be the gateway unless it is actually routing traffic.
 
-## 11. Disable Router DHCP
+## 16. Disable Router DHCP
 
 If AdGuard DHCP is the final target:
 
@@ -328,7 +614,7 @@ Renew leases by:
 - running `ipconfig /release` and `ipconfig /renew` on Windows
 - waiting for leases to expire
 
-## 12. Why Re-Enabling Router DHCP Fixed Things
+## 17. Why Re-Enabling Router DHCP Fixed Things
 
 Re-enabling router DHCP may be necessary as a temporary recovery step when leases, hostnames, or local DNS state get stale.
 
@@ -350,7 +636,7 @@ Why this helps:
 
 A router reboot alone does **not** always force every client to request a new DHCP lease. Clients may keep their existing lease until it expires.
 
-## 13. Client Names / Hostname Resolution
+## 18. Client Names / Hostname Resolution
 
 Best option for visibility:
 
@@ -375,7 +661,7 @@ dig -x <CLIENT-IP> @<ROUTER-IP>
 
 If the router returns no hostname, AdGuard cannot reliably show client names using router DHCP.
 
-## 14. Troubleshooting: Connected but Internet Unavailable
+## 19. Troubleshooting: Connected but Internet Unavailable
 
 Most common cause: AdGuard DHCP is handing out the wrong gateway.
 
@@ -417,7 +703,7 @@ Default gateway: <router IP>
 DNS server:      <Pi IP>
 ```
 
-## 15. Troubleshooting: Cannot Access Router UI
+## 20. Troubleshooting: Cannot Access Router UI
 
 Find the default gateway from a client.
 
@@ -438,7 +724,7 @@ Open the default gateway IP in a browser.
 
 If gateway is blank or wrong, AdGuard DHCP is misconfigured.
 
-## 16. Troubleshooting: Slow DNS / Slow Internet
+## 21. Troubleshooting: Slow DNS / Slow Internet
 
 Check AdGuard dashboard average processing time.
 
@@ -453,20 +739,23 @@ General targets:
 Stabilization steps:
 
 - Use reliable upstream DNS.
-- Enable parallel requests.
+- Enable parallel requests only if speed matters more than minimizing duplicate upstream queries.
 - Use a small set of blocklists first.
 - Avoid router/Pi DNS loops.
 - Check whether IPv6 DNS is bypassing AdGuard.
 - Keep the Pi wired by Ethernet.
+- Disable newly added aggressive lists if latency or breakage appears immediately after adding them.
 
 Minimal blocklist approach while troubleshooting:
 
 ```text
 AdGuard DNS filter
-OISD Basic or OISD Full
+OISD Big
 ```
 
-## 17. IPv6 Note
+If ChatGPT, Claude, casting, Alexa, Roku, or Fandom breaks after enabling a list, check the query log, identify the exact blocked domain, and allow only the smallest required domain rather than disabling filtering globally.
+
+## 22. IPv6 Note
 
 IPv6 can bypass AdGuard if the router advertises a separate IPv6 DNS server.
 
@@ -483,7 +772,7 @@ nslookup google.com
 
 The DNS server should be the Pi.
 
-## 18. Apartment Ethernet Handoff
+## 23. Apartment Ethernet Handoff
 
 If replacing the Spectrum modem with the apartment Ethernet jack, the AdGuard setup usually does not need to change.
 
@@ -532,7 +821,7 @@ Possible apartment-network issues:
 - apartment IT needing the router WAN MAC
 - double NAT, which is usually fine for normal browsing but can matter for inbound services/gaming/VPNs
 
-## 19. Ethernet Cable Notes
+## 24. Ethernet Cable Notes
 
 For router-to-Pi and modem/apartment-Ethernet-to-router:
 
@@ -556,15 +845,86 @@ The Raspberry Pi 4 Ethernet port is 1 Gbps, so anything above reliable Cat5e is 
 10. Check installed version from CLI.
 11. Open AdGuard web UI.
 12. Configure upstream, bootstrap, and fallback DNS.
-13. Test DNS manually.
-14. Configure AdGuard DHCP.
-15. Confirm gateway is router IP and DNS is Pi IP.
-16. Disable router DHCP.
-17. Renew client leases.
-18. If leases or hostname state look stale, temporarily re-enable router DHCP to refresh leases, then return to the intended single-DHCP setup.
-19. Confirm clients appear individually in AdGuard.
-20. Test router UI access via default gateway.
-21. Test WAN handoff if switching from modem to apartment Ethernet.
+13. Add only stable DNS blocklists first.
+14. Add ChatGPT and Claude allowlist rules if needed.
+15. Add Fandom, Roku, Alexa, and Google Home rules gradually.
+16. Test DNS manually.
+17. Configure AdGuard DHCP.
+18. Confirm gateway is router IP and DNS is Pi IP.
+19. Disable router DHCP.
+20. Renew client leases.
+21. If leases or hostname state look stale, temporarily re-enable router DHCP to refresh leases, then return to the intended single-DHCP setup.
+22. Confirm clients appear individually in AdGuard.
+23. Test router UI access via default gateway.
+24. Test WAN handoff if switching from modem to apartment Ethernet.
+
+## Copyable Rule Sets
+
+### AI tools allowlist
+
+```text
+@@||chatgpt.com^
+@@||openai.com^
+@@||auth.openai.com^
+@@||oaistatic.com^
+@@||oaiusercontent.com^
+@@||oaistatsig.com^
+@@||openaimerge.com^
+@@||workos.com^
+@@||workoscdn.com^
+@@||challenges.cloudflare.com^
+@@||claude.ai^
+@@||claude.com^
+@@||anthropic.com^
+@@||api.anthropic.com^
+@@||platform.claude.com^
+@@||statsig.anthropic.com^
+```
+
+### Fandom helper rules
+
+```text
+@@||wikia.nocookie.net^
+||jwplayer.com^$domain=fandom.com
+||doubleclick.net^
+||googlesyndication.com^
+||googleadservices.com^
+||pubmatic.com^
+||criteo.com^
+||taboola.com^
+||scorecardresearch.com^
+||quantserve.com^
+```
+
+### Google Home / casting fallback allowlist
+
+```text
+@@||google.com^
+@@||gstatic.com^
+@@||googleapis.com^
+@@||googlevideo.com^
+@@||youtube.com^
+@@||ytimg.com^
+@@||clients3.google.com^
+@@||connectivitycheck.gstatic.com^
+```
+
+### Smart-device telemetry blocks to test
+
+```text
+||app-measurement.com^
+||firebase-settings.crashlytics.com^
+||firebaselogging-pa.googleapis.com^
+||device-metrics-us.amazon.com^
+||device-metrics-us-2.amazon.com^
+||metrics.amazon.com^
+||fls-na.amazon.com^
+||data.amazon.com^
+||logs.roku.com^
+||scribe.logs.roku.com^
+||ads.roku.com^
+||p.ads.roku.com^
+```
 
 ## Lessons Learned
 
@@ -578,4 +938,16 @@ The Raspberry Pi 4 Ethernet port is 1 Gbps, so anything above reliable Cat5e is 
 - Changing DHCP can fix stale state that a router reboot does not clear.
 - Moving from a modem to apartment Ethernet should be a WAN-side change only if the router LAN stays unchanged.
 - DNS filtering and client visibility are separate problems.
+- DNS blocking cannot remove every app-native or first-party ad.
+- Start with stable blocklists, then add aggressive smart-device rules one device at a time.
+- Allow only the smallest required domain when fixing false positives.
 - Keep a recovery path to the router during DHCP changes.
+
+## References Checked
+
+- AdGuard DNS filtering syntax: https://adguard-dns.io/kb/general/dns-filtering-syntax/
+- OISD AdGuard Home setup: https://oisd.nl/setup/adguardhome
+- HaGeZi DNS blocklists: https://github.com/hagezi/dns-blocklists
+- OpenAI ChatGPT network recommendations: https://help.openai.com/en/articles/9247338
+- Anthropic Claude network/control docs: https://support.claude.com/ and https://docs.anthropic.com/
+- Google Cast local network guidance: https://support.google.com/chromecast/answer/10063094
