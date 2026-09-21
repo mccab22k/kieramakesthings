@@ -49,7 +49,7 @@ function injectSecuritySystems() {
   }
 
   featuredGrid.insertAdjacentHTML('afterend', `
-    <div class="section-label" id="security-work">Selected security systems</div>
+    <div class="section-label" id="security-work">Selected security systems · <a href="securing-yourself.html">Consumer security? Go to Securing Yourself →</a></div>
     <div class="projects-grid security-grid">
       <div class="project-card" id="access-governance-system" data-filter-tags="security">
         <div class="status-badge">Production</div>
@@ -314,7 +314,7 @@ function injectNoMoreDataBrokers() {
   if (!functionalAppsGrid?.classList.contains('projects-grid')) return;
 
   functionalAppsGrid.insertAdjacentHTML('afterbegin', `
-    <div class="project-card" id="no-more-data-brokers" data-filter-tags="live security personal-security">
+    <div class="project-card" id="no-more-data-brokers" data-filter-tags="live personal-security">
       <div class="status-badge">Live · v1</div>
       <h2 class="project-title">No More Data Brokers</h2>
       <div class="project-meta">Privacy · Open source · Local-only</div>
@@ -339,7 +339,7 @@ function injectFeaturedNoMoreDataBrokers() {
   if (!featuredGrid || document.querySelector('#no-more-data-brokers-featured')) return;
 
   featuredGrid.insertAdjacentHTML('beforeend', `
-    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security">
+    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live">
       <div>
         <div class="status-badge">Live · v1</div>
         <h2 class="project-title">No More Data Brokers</h2>
