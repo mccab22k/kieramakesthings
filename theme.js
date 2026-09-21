@@ -36,6 +36,13 @@ function injectSecuritySystems() {
   const wipButton = filters.querySelector('[data-filter="wip"]');
   filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
 
+  const funButton = document.createElement('button');
+  funButton.className = 'filter-button';
+  funButton.type = 'button';
+  funButton.dataset.filter = 'fun';
+  funButton.textContent = 'Fun Projects';
+  filters.insertBefore(funButton, wipButton || filters.querySelector('.filter-note'));
+
   const personalSecurityButton = document.createElement('button');
   personalSecurityButton.className = 'filter-button';
   personalSecurityButton.type = 'button';
@@ -194,7 +201,7 @@ function updateCatflakesLaunchStatus() {
   if (!card) return;
 
   const appStoreUrl = 'https://apps.apple.com/us/app/catflakes/id6795675453';
-  card.dataset.filterTags = 'live app-store';
+  card.dataset.filterTags = 'live app-store fun';
 
   const status = card.querySelector('.status-badge');
   if (status) status.textContent = 'Live';
@@ -234,6 +241,45 @@ function updateCatflakesLaunchStatus() {
   if (functionalAppsGrid?.classList.contains('projects-grid')) {
     functionalAppsGrid.append(card);
   }
+}
+
+function injectFunProjects() {
+  const personalityCard = document.querySelector('#personality-systems-research');
+  if (personalityCard) {
+    const tags = new Set((personalityCard.dataset.filterTags || '').split(' ').filter(Boolean));
+    tags.add('fun');
+    personalityCard.dataset.filterTags = Array.from(tags).join(' ');
+  }
+
+  const catflakesCard = document.querySelector('#catflakes');
+  if (catflakesCard) {
+    const tags = new Set((catflakesCard.dataset.filterTags || '').split(' ').filter(Boolean));
+    tags.add('fun');
+    catflakesCard.dataset.filterTags = Array.from(tags).join(' ');
+  }
+
+  if (document.querySelector('#nyc-trolley-problem')) return;
+
+  const prototypesLabel = Array.from(document.querySelectorAll('.section-label'))
+    .find((label) => label.textContent.trim() === 'Prototypes');
+  const prototypesGrid = prototypesLabel?.nextElementSibling;
+  if (!prototypesGrid?.classList.contains('projects-grid')) return;
+
+  prototypesGrid.insertAdjacentHTML('afterbegin', `
+    <div class="project-card" id="nyc-trolley-problem" data-filter-tags="wip fun">
+      <div class="status-badge">Concept</div>
+      <h2 class="project-title">The NYC Trolley Problem</h2>
+      <div class="project-meta">NYC culture · Transit · Swipe game</div>
+      <p class="project-hook">New Yorkers already have strong opinions about stations, neighborhoods, transit modes, public art, and pigeons. This turns those arguments into a deliberately impossible series of binary choices.</p>
+      <p class="project-description">A Tinder-style swipe game that starts in hyper-niche transit mode — stations, subway lines, ferries, buses, and service patterns — before expanding into increasingly specific NYC cultural dilemmas.</p>
+      <details class="why-made" open>
+        <summary>Why I Made This</summary>
+        <p>I wanted a New York version of the trolley problem that feels local enough to reward people who actually know the city.</p>
+        <p>The first mode is transit-heavy: players choose between stations, lines, buses, ferries, and other pieces of the system. Later rounds move into neighborhood and cultural matchups such as Koreatown versus Chinatown, DUMBO versus Gramercy, Keith Haring versus other New York iconography, and one giant pigeon versus all ordinary pigeons.</p>
+        <p>The interaction is intentionally simple: swipe left or right, then see how everyone else voted.</p>
+      </details>
+    </div>
+  `);
 }
 
 function updateTimeSinceLaunchStatus() {
@@ -387,6 +433,7 @@ function applyProjectOrigins() {
 injectSecuritySystems();
 injectAppleDeveloperLink();
 updateCatflakesLaunchStatus();
+injectFunProjects();
 updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
