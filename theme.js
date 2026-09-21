@@ -48,12 +48,12 @@ function injectSecuritySystems() {
         <div class="status-badge">Production</div>
         <h2 class="project-title">Access Governance Automation</h2>
         <div class="project-meta">Node.js · TypeScript · Slack · Okta · Email security</div>
-        <p class="project-hook">Built to make application access easier to request without weakening approval controls.</p>
+        <p class="project-hook">Access requests should not require choosing between a process people can follow and one security can trust. I built the workflow around both.</p>
         <p class="project-description">A self-service platform for configurable approval chains, group-based provisioning, email-security actions, and scheduled access reviews across dozens of applications.</p>
         <div class="project-links">
           <a href="security-systems.html#access-governance" class="project-link">Read Case Study</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>What It Demonstrates</summary>
           <p>End-to-end ownership of an internal security product: workflow design, API integrations, identity provisioning, safe write controls, configuration architecture, and operational support.</p>
         </details>
@@ -63,12 +63,12 @@ function injectSecuritySystems() {
         <div class="status-badge">Live Automation</div>
         <h2 class="project-title">Identity Lifecycle Controls</h2>
         <div class="project-meta">Google Apps Script · Admin SDK · Okta · Slack</div>
-        <p class="project-hook">Built so onboarding and offboarding do not depend on someone remembering every account transition.</p>
+        <p class="project-hook">“Someone will remember to remove the account” is not an identity-lifecycle strategy. I automated the transitions and added an independent check for anything the automation missed.</p>
         <p class="project-description">An idempotent account-lifecycle state machine with protected-account exclusions, group cleanup, audit logs, and independent read-only reconciliation across systems.</p>
         <div class="project-links">
           <a href="security-systems.html#identity-lifecycle" class="project-link">Read Case Study</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>What It Demonstrates</summary>
           <p>Identity architecture, lifecycle automation, least-privilege service design, cross-system consistency checks, exception handling, and observable scheduled operations.</p>
         </details>
@@ -78,12 +78,12 @@ function injectSecuritySystems() {
         <div class="status-badge">Internal App</div>
         <h2 class="project-title">Google Workspace Admin Platform</h2>
         <div class="project-meta">Python · Flask · Gmail and Directory APIs · PyInstaller</div>
-        <p class="project-hook">Built to make bulk administration safer, reviewable, and usable by authorized operators.</p>
+        <p class="project-hook">Bulk administrative actions are useful precisely because they can change a lot at once. I built this so an operator can see what will happen before anything happens.</p>
         <p class="project-description">A packaged administration application with preview-before-apply workflows, directory data-quality checks, device-restricted access, and centralized audit logging.</p>
         <div class="project-links">
           <a href="security-systems.html#workspace-admin" class="project-link">Read Case Study</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>What It Demonstrates</summary>
           <p>Secure internal application development, domain-wide delegated API access, bulk-operation safeguards, local packaging, configuration separation, and auditability.</p>
         </details>
@@ -236,13 +236,13 @@ function injectNoMoreDataBrokers() {
       <div class="status-badge">Live · v1</div>
       <h2 class="project-title">No More Data Brokers</h2>
       <div class="project-meta">Privacy · Open source · Local-only</div>
-      <p class="project-hook">Built because privacy rights should not require paying the same industry that profits from personal data.</p>
+      <p class="project-hook">Privacy rights should not require paying the same industry that profits from personal data. I objected to paying a subscription to remove information that should not have been collected in the first place, so I made the process free and kept the data in the browser.</p>
       <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. No account or backend.</p>
       <div class="project-links">
         <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
         <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
       </div>
-      <details class="why-made">
+      <details class="why-made" open>
         <summary>Why I Made This</summary>
         <p>Data brokers collect and sell personal information, while paid removal services can turn that same exposure into a subscription product. I wanted the opt-out process to be understandable, free, and directly usable by the person whose data is involved.</p>
         <p>The privacy constraint is also the technical thesis: the tool is a single self-contained HTML file with no build step or dependencies, and all profile and broker-removal state stays in localStorage rather than being sent to a server.</p>
@@ -250,53 +250,6 @@ function injectNoMoreDataBrokers() {
       </details>
     </div>
   `);
-}
-
-function arrangeFeaturedProjects() {
-  const featuredGrid = document.querySelector('.featured-projects');
-  const functionalAppsLabel = Array.from(document.querySelectorAll('.section-label'))
-    .find((label) => label.textContent.trim() === 'Functional Apps');
-  const functionalAppsGrid = functionalAppsLabel?.nextElementSibling;
-  const timeSince = document.querySelector('#time-since');
-  const noMoreDataBrokers = document.querySelector('#no-more-data-brokers');
-  const orbit = document.querySelector('#orbit');
-
-  if (!featuredGrid || !functionalAppsGrid || !timeSince || !noMoreDataBrokers) return;
-
-  const featuredLabel = featuredGrid.previousElementSibling;
-  if (featuredLabel?.classList.contains('section-label')) {
-    featuredLabel.textContent = 'Featured projects';
-  }
-
-  if (orbit) {
-    orbit.classList.remove('featured', 'featured-orbit');
-    orbit.querySelector('.preview-orbit')?.remove();
-    functionalAppsGrid.append(orbit);
-  }
-
-  timeSince.classList.add('portfolio-highlight');
-  noMoreDataBrokers.classList.add('portfolio-highlight');
-  featuredGrid.append(timeSince, noMoreDataBrokers);
-
-  const style = document.createElement('style');
-  style.textContent = `
-    .featured-projects {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-items: stretch;
-    }
-    .featured-projects .portfolio-highlight {
-      min-height: 360px;
-      border-color: var(--copper);
-      box-shadow: 0 12px 30px rgba(35, 38, 43, .08);
-    }
-    body.dark .featured-projects .portfolio-highlight {
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
-    }
-    @media (max-width: 900px) {
-      .featured-projects { grid-template-columns: 1fr; }
-    }
-  `;
-  document.head.append(style);
 }
 
 function clarifyPlatformLinks() {
@@ -333,7 +286,6 @@ updateCatflakesLaunchStatus();
 updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
-arrangeFeaturedProjects();
 applyProjectOrigins();
 clarifyPlatformLinks();
 

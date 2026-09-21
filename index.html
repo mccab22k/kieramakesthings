@@ -17,17 +17,24 @@
   <main class="container">
     <!-- Top navigation -->
     <nav class="topbar">
-      <a class="logo" href="./">KMT /</a>
+      <a class="logo" href="./">KMT_</a>
       <div class="topbar-actions">
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
         <a href="https://github.com/mccab22k">GitHub</a>
       </div>
     </nav>
 
-    <header>
-      <div class="eyebrow">Kiera Makes Things</div>
-      <h1>Designing Useful Things</h1>
-      <p class="subtitle">Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.</p>
+    <header class="hero-shell">
+      <div class="hero-main">
+        <div class="eyebrow">Kiera Makes Things / Selected work</div>
+        <h1>Designing Useful Things</h1>
+        <p class="subtitle">I’m a cybersecurity engineer who builds practical software, research prototypes, and the occasional strange little tool. Most projects begin with something that should work better than it does.</p>
+      </div>
+      <aside class="working-principle">
+        <span class="working-label">Working principle</span>
+        <strong>If I complain that a tool should exist for long enough, eventually I make it.</strong>
+        <p>$ status --current · 4 shipped · 6 active · always tinkering</p>
+      </aside>
     </header>
 
     <!-- Project filters -->
@@ -52,7 +59,7 @@
           <h2 class="project-title">Orbit, A Fancy Planner</h2>
           <div class="project-meta">Started 2025 &middot; November origin &middot; iOS + web</div>
           <div class="project-meta">Planner · App Store · iOS + web</div>
-          <p class="project-hook">Built because linear planners did not match how my ADHD brain understands a day.</p>
+          <p class="project-hook">I have never experienced a day as a vertical list. Orbit started as an attempt to make time look more like it feels: circular, finite, and constantly being rearranged.</p>
           <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
           <div class="project-links">
             <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
@@ -60,7 +67,7 @@
             <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub (Private)</a>
             <a href="orbit.html" class="project-link">Read More</a>
           </div>
-          <details class="why-made">
+          <details class="why-made" open>
             <summary>Why I Made This</summary>
             <p>I built Orbit because traditional planners never worked particularly well for my ADHD or the way I actually schedule my life.</p>
             <p>A lot of tasks do not happen on a strict weekly cadence. Instead, they need to happen five days after I last did them or two weeks from completion. Orbit's regenerating task system was built around that idea and remains my favorite feature.</p>
@@ -85,14 +92,14 @@
             <h2 class="project-title">Passport Buddy</h2>
         <div class="project-meta">Started January 2020 &middot; Ongoing travel planning</div>
         <div class="project-meta">Travel planner · Supabase · App Store pending/planned</div>
-        <p class="project-hook">Built because group travel gets complicated fast when friends hold different passports.</p>
+        <p class="project-hook">Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
         <p class="project-description">Passport-aware travel planning across visa friction, Schengen constraints, departure cities, and practical meeting airports.</p>
         <div class="project-links">
           <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/passport-buddy" class="project-link">GitHub (Private)</a>
           <a href="travel-buddy.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
           <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
@@ -117,14 +124,14 @@
             <h2 class="project-title">Time Here, Time There</h2>
         <div class="project-meta">Started 2021 &middot; Ongoing timezone coordination</div>
         <div class="project-meta">Time zones · Live app · App Store pending/planned</div>
-        <p class="project-hook">Built because coordinating across cities should not require mental calendar math.</p>
+        <p class="project-hook">I kept opening world clocks and then doing the time-zone math myself anyway. This puts every city on one movable timeline so the overlap is visible.</p>
         <p class="project-description">A world clock built around one shared timeline: drag it and every city moves together. Daylight bands, sunrise and sunset, timezone grouping, any city as home, and an iOS home-screen widget.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
           <a href="timeheretimethere.html" class="project-link">Read More</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
           <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
@@ -148,7 +155,7 @@
             <h2 class="project-title">Time Since Chore Manager</h2>
         <div class="project-meta">Started December 2024 &middot; iOS + web</div>
         <div class="project-meta">Productivity · Live app · App Store pending/planned</div>
-        <p class="project-hook">Built because some routines should reset from the last time they were done.</p>
+        <p class="project-hook">Some routines should reset from the last time they were done. I do not change my sheets every Tuesday—I change them a certain amount of time after I last changed them. A surprising number of routines work this way.</p>
         <p class="project-description">Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.</p>
         <div class="project-links">
           <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
@@ -156,7 +163,7 @@
           <a href="time-since.html" class="project-link">Read More</a>
           <a href="time-since.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
           <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
@@ -185,14 +192,14 @@
             <h2 class="project-title">Catflakes</h2>
         <div class="project-meta">Started 2018 &middot; Java to iOS</div>
         <div class="project-meta">Canvas animation · Prototype · App Store pending/planned</div>
-        <p class="project-hook">Built because sometimes a small, strange visual toy is reason enough.</p>
+        <p class="project-hook">When I was learning to code, I challenged myself to recreate a cat-snowflake meme in Java. That was the entire idea. Years later, I rebuilt it for the App Store because apparently I remained committed to the premise.</p>
         <p class="project-description">A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/catflakes/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub (Private)</a>
           <a href="catflakes.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>Just because!</p>
           <p>The proof of concept uses plain HTML, CSS, and Canvas instead of a heavier framework.</p>
@@ -210,14 +217,14 @@
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Better NYC Map</h2>
         <div class="project-meta">Route planner · Prototype · Supabase</div>
-        <p class="project-hook">Built because route planners miss how New Yorkers choose between walking, transfers, and transit modes.</p>
+        <p class="project-hook">Route planners regularly suggest trips that are technically faster and obviously worse. I wanted one that understood when I would rather walk farther, avoid a transfer, or take the ferry because the ferry is nicer.</p>
         <p class="project-description">A web-based NYC transit map and route planner for real commuting tradeoffs.</p>
         <div class="project-links">
           <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub (Private)</a>
           <a href="bettermapnyc.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
           <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
@@ -229,13 +236,13 @@
         <div class="status-badge">Beta</div>
         <h2 class="project-title">Rent Stabilized Map</h2>
         <div class="project-meta">NYC housing · Data mapping · Research tool</div>
-        <p class="project-hook">Built because apartment search decisions need clearer public-data context.</p>
+        <p class="project-hook">Looking for a rent-stabilized apartment meant checking public records one building at a time. I wanted the useful parts on a map.</p>
         <p class="project-description">A mapping and research project for understanding rent-stabilized housing signals, building records, and neighborhood-level search tradeoffs.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/nyc-stabilized-apartment-hunt/" class="project-link">Launch App</a>
           <a href="rent-stabilized-map.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Goals</summary>
           <p>Make public housing data easier to scan during apartment research.</p>
           <p>Help compare buildings, neighborhoods, and listing signals without treating any single dataset as definitive legal advice.</p>
@@ -247,14 +254,14 @@
         <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
         <div class="project-meta">Computer vision · Paused · Stickers</div>
-        <p class="project-hook">Built because Catflakes needs clean reusable cat-head assets without manual image editing.</p>
+        <p class="project-hook">Catflakes needed isolated cat heads. I did not want to cut them out manually forever, so this became its own computer-vision project.</p>
         <p class="project-description">A utility that turns pet photos into transparent sticker assets for reuse in other apps.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub (Private)</a>
           <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I built this as an asset-generation component for Catflakes.</p>
           <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
@@ -267,31 +274,37 @@
         <h2 class="project-title">Colony Cat Management</h2>
         <div class="project-meta">Graduate-school era &middot; Computer vision &middot; TNR</div>
         <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
-        <p class="project-hook">Built because community cat caretakers need better ways to recognize and track individual cats.</p>
+        <p class="project-hook">I live near several cat colonies, encounter street cats almost everywhere I travel, and love cats enough to revisit a graduate-school model that was only right about 70% of the time.</p>
         <p class="project-description">Computer-vision identification and tracking for community cat caretakers.</p>
         <div class="project-links">
           <a href="https://github.com/mccab22k/colony-cat-management" class="project-link">GitHub</a>
           <a href="cats.html" class="project-link">Read More</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I live in a part of Manhattan with several cat colonies, I have traveled extensively in places with large street cat populations, and I simply love cats.</p>
-          <p>This project explores whether computer vision can help identify individual cats over time. My hope is that it can eventually support TNR efforts and help volunteers better monitor colony health, population changes, and cats that may need attention.</p>
+          <p>In graduate school, I tested whether computer vision could distinguish individual community cats. The model reached roughly 70% accuracy: promising enough to be interesting and unreliable enough that I would not pretend the problem was solved.</p>
+          <p>I want to revisit it as a tool for TNR volunteers tracking colony health, population changes, and cats that may need attention.</p>
         </details>
+        <aside class="presentation-embed" aria-label="Cat Recognition for TNR presentation">
+          <span>Research presentation</span>
+          <strong>Cat Recognition for TNR</strong>
+          <a href="cats.html">View research notes →</a>
+        </aside>
       </div>
 
       <div class="project-card" id="personality-systems-research" data-filter-tags="wip">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Personality Systems Research</h2>
         <div class="project-meta">Assessment · Prototype · Identity</div>
-        <p class="project-hook">Built because personality tools should show gradients, not just labels.</p>
+        <p class="project-hook">Most personality tests give you one tidy label and send you on your way. I wanted to see the messier version: overlapping traits, relative strengths, and changes over time.</p>
         <p class="project-description">A personality assessment experiment combining scaled Enneagram scoring and longitudinal pattern tracking.</p>
         <div class="project-links">
           <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub (Private)</a>
           <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>Most personality tests give you a label. I wanted something a little more nuanced.</p>
           <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
@@ -306,13 +319,13 @@
         <div class="status-badge">Active</div>
         <h2 class="project-title">Raspberry Pi + AdGuard Home</h2>
         <div class="project-meta">Home lab · Active · DNS</div>
-        <p class="project-hook">Built because I wanted network-wide ad blocking and a better understanding of my own infrastructure.</p>
+        <p class="project-hook">I wanted ads off my entire network and thought setting up a Raspberry Pi would be straightforward. This project documents the working system and the several incorrect assumptions I made along the way.</p>
         <p class="project-description">Network-wide DNS filtering and ad blocking with a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, and a Netgear router.</p>
         <div class="project-links">
           <a href="https://github.com/mccab22k/kieramakesthings" class="project-link">GitHub</a>
           <a href="adguard.html" class="project-link">Read More</a>
         </div>
-        <details class="why-made">
+        <details class="why-made" open>
           <summary>Why I Made This</summary>
           <p>I wanted to get rid of ads across my network and learn more about managing my own infrastructure.</p>
           <p>This project documents my Raspberry Pi and AdGuard Home setup, the mistakes I made along the way, and the lessons learned getting everything working correctly.</p>
@@ -327,7 +340,7 @@
         <div class="status-badge">Research</div>
         <h2 class="project-title">Wearable Computing</h2>
         <div class="project-meta">Hardware concept · Research · Sensors</div>
-        <p class="project-hook">Built because traditional watches could be augmented without becoming full smartwatches.</p>
+        <p class="project-hook">I want to make my own wearable and take control of the data it collects.</p>
         <p class="project-description">Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.</p>
         <div class="project-links">
           <a href="wearable-computing.md" class="project-link">Project Notes</a>
@@ -337,7 +350,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>Building useful tools, experiments, and field notes.</p>
+      <p>Useful tools, unfinished experiments, and notes from figuring them out.</p>
       <div class="social-links">
         <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
         <a href="privacy.html" class="social-link">Privacy Policy</a>
