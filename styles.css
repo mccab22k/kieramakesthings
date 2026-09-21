@@ -252,6 +252,18 @@ h1 {
 
 .security-grid .project-card:nth-child(odd) { border-right: 2px solid var(--line); }
 .security-grid .project-title { font-size: clamp(27px, 2.8vw, 38px); }
+.security-grid .security-featured-card,
+.security-grid .security-more-card {
+  grid-column: 1 / -1;
+  border-right: 0;
+}
+
+.security-more-card .project-hook {
+  max-width: 80ch;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.75;
+}
 
 .project-card {
   counter-increment: project;
