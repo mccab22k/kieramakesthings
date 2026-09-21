@@ -8,6 +8,10 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 STYLES = (ROOT / "styles.css").read_text(encoding="utf-8")
 SCRIPT = (ROOT / "theme.js").read_text(encoding="utf-8")
+SUPPORTING_PAGES = [
+    (ROOT / "timeheretimethere.html").read_text(encoding="utf-8"),
+    (ROOT / "security-systems.html").read_text(encoding="utf-8"),
+]
 
 
 class DetailsParser(HTMLParser):
@@ -62,6 +66,11 @@ class HomepageRedesignTests(unittest.TestCase):
         project_card = re.search(r"\.project-card\s*\{(?P<body>.*?)\}", STYLES, re.S)
         self.assertIsNotNone(project_card)
         self.assertNotIn("border-radius", project_card.group("body"))
+
+    def test_shared_assets_are_versioned_to_prevent_stale_deployments(self):
+        for page in [INDEX, *SUPPORTING_PAGES]:
+            self.assertRegex(page, r'href="styles\.css\?v=[a-z0-9-]+"')
+            self.assertRegex(page, r'src="theme\.js\?v=[a-z0-9-]+"')
 
 
 if __name__ == "__main__":
