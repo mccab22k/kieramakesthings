@@ -36,19 +36,19 @@ function injectSecuritySystems() {
   const wipButton = filters.querySelector('[data-filter="wip"]');
   filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
 
-  const funButton = document.createElement('button');
-  funButton.className = 'filter-button';
-  funButton.type = 'button';
-  funButton.dataset.filter = 'fun';
-  funButton.textContent = 'Fun Projects';
-  filters.insertBefore(funButton, wipButton || filters.querySelector('.filter-note'));
-
   const personalSecurityButton = document.createElement('button');
   personalSecurityButton.className = 'filter-button';
   personalSecurityButton.type = 'button';
   personalSecurityButton.dataset.filter = 'personal-security';
   personalSecurityButton.textContent = 'Securing Yourself';
   filters.insertBefore(personalSecurityButton, wipButton || filters.querySelector('.filter-note'));
+
+  const funButton = document.createElement('button');
+  funButton.className = 'filter-button';
+  funButton.type = 'button';
+  funButton.dataset.filter = 'fun';
+  funButton.textContent = 'Fun Projects';
+  filters.insertBefore(funButton, wipButton || filters.querySelector('.filter-note'));
 
   const filterNote = filters.querySelector('.filter-note');
   if (filterNote) {
