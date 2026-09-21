@@ -134,12 +134,58 @@
       margin-top: 18px;
     }
 
+    .security-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: -28px 0 42px;
+    }
+
+    .security-tabs a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .personal-security {
+      margin: 0 0 58px;
+      scroll-margin-top: 24px;
+    }
+
+    .personal-security-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .personal-security-card {
+      padding: 28px;
+    }
+
+    .personal-security-card + .personal-security-card {
+      border-left: 2px solid var(--line);
+    }
+
+    .personal-security-card .project-title {
+      font-size: clamp(28px, 3.5vw, 44px);
+    }
+
     @media (max-width: 840px) {
       .case-intro,
       .system-grid,
       .principles,
-      .system-heading {
+      .system-heading,
+      .personal-security-grid {
         grid-template-columns: 1fr;
+      }
+
+      .personal-security-card + .personal-security-card {
+        border-left: 0;
+        border-top: 2px solid var(--line);
       }
 
       .system-status {
@@ -165,6 +211,11 @@
       <p class="subtitle">Selected systems spanning access governance, identity automation, endpoint security, and vendor assurance. Details are intentionally generalized to protect company systems and configuration.</p>
     </header>
 
+    <nav class="security-tabs" aria-label="Security portfolio sections">
+      <a href="#professional-systems">Professional Systems</a>
+      <a href="#securing-yourself">Securing Yourself</a>
+    </nav>
+
     <section class="case-intro" aria-label="Overview">
       <div>
         <div class="section-label">Scope</div>
@@ -176,7 +227,7 @@
       </aside>
     </section>
 
-    <section class="systems" aria-label="Selected security systems">
+    <section class="systems" id="professional-systems" aria-label="Selected security systems">
       <article class="system-panel" id="access-governance">
         <div class="system-heading">
           <div>
@@ -475,6 +526,39 @@
         </div>
         <p class="stack-line">Notion · Vendor inventory · Agreement tracking · Compliance views</p>
       </article>
+    </section>
+
+
+    <section class="personal-security" id="securing-yourself" aria-labelledby="securing-yourself-heading">
+      <div class="section-label">Securing Yourself</div>
+      <h2 id="securing-yourself-heading" class="project-title">Security tools for ordinary people and home networks.</h2>
+      <p class="project-description">These projects apply the same security principles at a personal scale: reduce unnecessary data exposure, keep sensitive state local when possible, and make protective controls understandable enough to operate yourself.</p>
+
+      <div class="personal-security-grid">
+        <article class="personal-security-card">
+          <div class="status-badge">Live · Open Source</div>
+          <h3 class="project-title">No More Data Brokers</h3>
+          <div class="project-meta">Privacy · Client-side · Local-only</div>
+          <p class="project-hook">Privacy rights should not require paying a subscription to the same ecosystem that profits from personal data.</p>
+          <p class="project-description">A free browser-based tool for working through data-broker opt-outs, generating privacy-request templates, prioritizing removals, and tracking when listings should be checked again. Profile and removal state stay in the browser rather than being sent to an application backend.</p>
+          <div class="project-links">
+            <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
+            <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+          </div>
+        </article>
+
+        <article class="personal-security-card">
+          <div class="status-badge">Active Home Lab</div>
+          <h3 class="project-title">Raspberry Pi + AdGuard Home</h3>
+          <div class="project-meta">DNS · Network privacy · Raspberry Pi</div>
+          <p class="project-hook">I wanted network-wide blocking I could understand, tune, and troubleshoot myself rather than another opaque appliance.</p>
+          <p class="project-description">A Raspberry Pi 4B running AdGuard Home as network DNS filtering, with documented router/DHCP configuration, upstream DNS choices, allowlisting for services that need to keep working, and targeted blocking for ad and telemetry-heavy devices.</p>
+          <div class="project-links">
+            <a href="adguard.html" class="project-link">Read More</a>
+            <a href="home-improvement/adguard-home-raspberry-pi.md" class="project-link">Setup Notes</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section aria-labelledby="principles-heading">
