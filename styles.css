@@ -235,22 +235,15 @@ h1 {
 }
 
 .featured-projects {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
-.featured-projects .project-card.featured {
+.featured-projects .featured-privacy {
   grid-template-columns: 52px minmax(0, 1fr);
 }
 
-.featured-projects .project-card.featured > div:not(.preview-orbit, .store-badges) {
+.featured-projects .featured-privacy > div:not(.store-badges) {
   grid-column: 2;
-}
-
-.featured-projects .preview-orbit {
-  grid-column: 2;
-  grid-row: auto;
-  min-height: 220px;
-  margin-top: 22px;
 }
 
 .projects-grid.security-grid {
