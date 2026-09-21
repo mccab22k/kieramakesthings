@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raspberry Pi + AdGuard Home</title>
+  <title>Block Trackers on Your Wi-Fi — Raspberry Pi + AdGuard Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap');
 
@@ -93,8 +93,8 @@
 
     <section class="hero">
       <div class="pill">Home Infrastructure · Active</div>
-      <h1>Raspberry Pi + AdGuard Home</h1>
-      <p class="lede">A rebuildable guide for deploying network-wide DNS filtering and ad blocking with a Raspberry Pi 4B, Raspberry Pi OS Lite, AdGuard Home, fast upstream DNS, and practical allow/block rules for ChatGPT, Claude, Fandom, Google Home, Alexa, and Roku.</p>
+      <h1>Block Trackers on Your Wi-Fi</h1>
+      <p class="lede">A rebuildable guide for using a Raspberry Pi 4B and AdGuard Home to block tracker and ad domains across a home Wi-Fi network while keeping ChatGPT, Claude, casting, smart-home devices, and streaming services working.</p>
       <div class="actions">
         <a class="button" href="#dns-rules">DNS rules</a>
         <a class="button secondary" href="home-improvement/adguard-home-raspberry-pi.md">View Markdown notes</a>
@@ -331,6 +331,12 @@ sudo journalctl -u AdGuardHome -f</code></pre>
         <li>DNS filtering and client visibility are related but separate problems.</li>
         <li>Allow only the smallest domain needed when fixing false positives.</li>
       </ul>
+    </section>
+
+    <section class="section">
+      <h2>Planned expansion: take the filtering with me</h2>
+      <p>The home setup currently protects devices while they use my network. The next step is to securely route my phone's DNS traffic back through the Raspberry Pi when I am away from home, so the same blocklists and allowlists continue working on cellular data and other Wi-Fi networks.</p>
+      <p>I plan to do this through a private VPN path such as Tailscale or WireGuard rather than exposing AdGuard directly to the public internet.</p>
     </section>
 
     <footer>
