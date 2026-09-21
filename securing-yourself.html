@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Securing Yourself — Kiera Makes Things</title>
+  <meta name="description" content="Consumer security projects for reducing data exposure and blocking trackers.">
+  <link rel="stylesheet" href="styles.css?v=editorial-5">
+  <style>
+    .consumer-hero { padding: 48px 28px 34px; border-bottom: 2px solid var(--line); }
+    .consumer-hero h1 { max-width: 820px; margin: 8px 0 16px; font-size: clamp(42px, 7vw, 76px); }
+    .consumer-intro { max-width: 780px; color: var(--slate); }
+    .consumer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .consumer-grid .project-card:nth-child(1) { border-right: 2px solid var(--line); }
+    .consumer-nav { display: flex; gap: 10px; flex-wrap: wrap; padding: 18px 28px; border-bottom: 2px solid var(--line); }
+    .consumer-nav a { font-family: "Courier New", monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+    @media (max-width: 840px) {
+      .consumer-grid { grid-template-columns: 1fr; }
+      .consumer-grid .project-card:nth-child(1) { border-right: 0; }
+      .consumer-hero { padding-left: 18px; padding-right: 18px; }
+      .consumer-nav { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <nav class="topbar">
+      <a class="logo" href="./">KMT_</a>
+      <div class="topbar-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a href="security-systems.html">Security Work</a>
+        <a href="./">All Projects</a>
+      </div>
+    </nav>
+
+    <header class="consumer-hero">
+      <div class="eyebrow">Consumer security / personal privacy</div>
+      <h1>Securing Yourself</h1>
+      <p class="consumer-intro">Projects for reducing personal data exposure and blocking trackers without outsourcing the entire problem to another subscription service.</p>
+    </header>
+
+    <nav class="consumer-nav" aria-label="Security portfolio navigation">
+      <a href="security-systems.html">Professional security work →</a>
+    </nav>
+
+    <section class="consumer-grid" aria-label="Consumer security projects">
+      <article class="project-card" id="no-more-data-brokers">
+        <div class="status-badge">Live · Open Source</div>
+        <h2 class="project-title">No More Data Brokers</h2>
+        <div class="project-meta">Privacy · Client-side · Local-only</div>
+        <p class="project-hook">Privacy rights should not require paying a subscription to the same ecosystem that profits from personal data.</p>
+        <p class="project-description">A free browser-based tool for working through data-broker opt-outs, generating privacy-request templates, prioritizing removals, and tracking when listings should be checked again. Profile and removal state stay in the browser.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
+          <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card" id="raspberry-pi-adguard">
+        <div class="status-badge">Active Home Lab</div>
+        <h2 class="project-title">Block Trackers on Your Wi-Fi</h2>
+        <div class="project-meta">Raspberry Pi + AdGuard Home · DNS · Network privacy</div>
+        <p class="project-hook">I wanted tracker and ad blocking at the network level, where every device on my Wi-Fi could benefit without installing a separate blocker.</p>
+        <p class="project-description">A Raspberry Pi 4B running AdGuard Home as network DNS filtering, with router/DHCP configuration, tuned upstream DNS, allowlisting for services that need to keep working, and targeted blocking for ad- and telemetry-heavy devices.</p>
+        <p class="project-description"><strong>Planned expansion:</strong> securely route my phone back through this DNS service while away from home so the same filtering follows me on cellular and other Wi-Fi networks.</p>
+        <div class="project-links">
+          <a href="adguard.html" class="project-link">Read More</a>
+          <a href="home-improvement/adguard-home-raspberry-pi.md" class="project-link">Setup Notes</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <p>Consumer security projects are intentionally separated from professional security systems.</p>
+    </footer>
+  </main>
+  <script src="theme.js?v=editorial-7"></script>
+</body>
+</html>
