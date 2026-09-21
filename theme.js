@@ -339,7 +339,7 @@ function injectFeaturedNoMoreDataBrokers() {
   if (!featuredGrid || document.querySelector('#no-more-data-brokers-featured')) return;
 
   featuredGrid.insertAdjacentHTML('beforeend', `
-    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security personal-security">
+    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security">
       <div>
         <div class="status-badge">Live · v1</div>
         <h2 class="project-title">No More Data Brokers</h2>
