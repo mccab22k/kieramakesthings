@@ -36,6 +36,13 @@ function injectSecuritySystems() {
   const wipButton = filters.querySelector('[data-filter="wip"]');
   filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
 
+  const personalSecurityButton = document.createElement('button');
+  personalSecurityButton.className = 'filter-button';
+  personalSecurityButton.type = 'button';
+  personalSecurityButton.dataset.filter = 'personal-security';
+  personalSecurityButton.textContent = 'Securing Yourself';
+  filters.insertBefore(personalSecurityButton, wipButton || filters.querySelector('.filter-note'));
+
   const filterNote = filters.querySelector('.filter-note');
   if (filterNote) {
     filterNote.textContent = 'Security shows sanitized professional case studies. App Store includes launched, pending, and planned releases.';
@@ -307,7 +314,7 @@ function injectNoMoreDataBrokers() {
   if (!functionalAppsGrid?.classList.contains('projects-grid')) return;
 
   functionalAppsGrid.insertAdjacentHTML('afterbegin', `
-    <div class="project-card" id="no-more-data-brokers" data-filter-tags="live">
+    <div class="project-card" id="no-more-data-brokers" data-filter-tags="live security personal-security">
       <div class="status-badge">Live · v1</div>
       <h2 class="project-title">No More Data Brokers</h2>
       <div class="project-meta">Privacy · Open source · Local-only</div>
@@ -323,6 +330,28 @@ function injectNoMoreDataBrokers() {
         <p>The privacy constraint is also the technical thesis: the tool is a single self-contained HTML file with no build step or dependencies, and all profile and broker-removal state stays in localStorage rather than being sent to a server.</p>
         <p>Fresh sessions use a fictional profile by default, while confirmed removals surface broker-specific re-check dates because broker profiles can reappear after being re-scraped.</p>
       </details>
+    </div>
+  `);
+}
+
+function injectFeaturedNoMoreDataBrokers() {
+  const featuredGrid = document.querySelector('.featured-projects');
+  if (!featuredGrid || document.querySelector('#no-more-data-brokers-featured')) return;
+
+  featuredGrid.insertAdjacentHTML('beforeend', `
+    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security personal-security">
+      <div>
+        <div class="status-badge">Live · v1</div>
+        <h2 class="project-title">No More Data Brokers</h2>
+        <div class="project-meta">Privacy · Open source · Local-only</div>
+        <p class="project-hook">Privacy rights should not require paying the same industry that profits from personal data.</p>
+        <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, request templates, and re-check tracking. Profile and removal state stay in the browser.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
+          <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+          <a href="#no-more-data-brokers" class="project-link project-jump-link">Why I Made This</a>
+        </div>
+      </div>
     </div>
   `);
 }
@@ -361,6 +390,7 @@ updateCatflakesLaunchStatus();
 updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectNoMoreDataBrokers();
+injectFeaturedNoMoreDataBrokers();
 applyProjectOrigins();
 clarifyPlatformLinks();
 
