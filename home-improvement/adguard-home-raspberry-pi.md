@@ -1,6 +1,6 @@
-# Raspberry Pi + AdGuard Home Setup
+# Block Trackers on Your Wi-Fi — Raspberry Pi + AdGuard Home
 
-A rebuild guide for running AdGuard Home on a Raspberry Pi 4B with Raspberry Pi OS Lite, using AdGuard for DNS filtering, DHCP-based client visibility, fast upstream DNS, and practical allow/block rules for AI tools, Fandom, smart home devices, and Roku.
+A rebuild guide for running AdGuard Home on a Raspberry Pi 4B to block tracker and ad domains across the home Wi-Fi network while preserving the services and devices that need to keep working.
 
 ## Current Goal
 
@@ -11,6 +11,17 @@ Use the Raspberry Pi as the network-wide DNS and DHCP service so AdGuard can:
 - avoid router DNS proxy visibility issues
 - keep ChatGPT, Claude, casting, and normal smart-home functionality working
 - keep the setup portable when moving the router from a modem to an apartment Ethernet handoff
+
+## Planned Expansion
+
+The current setup protects devices while they are on the home network. The next step is to route my phone's DNS traffic back through the Raspberry Pi while I am away from home so the same filtering applies on cellular data and other Wi-Fi networks.
+
+Planned design:
+
+- use a private VPN path such as Tailscale or WireGuard
+- send phone DNS queries to the home AdGuard instance
+- keep the AdGuard admin interface private rather than exposing it directly to the public internet
+- preserve the same blocklists, allowlists, and per-device tuning while away from home
 
 ## Current Issue
 
