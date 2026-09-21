@@ -266,7 +266,8 @@ h1 {
 }
 
 .project-card > *:not(.store-badges, .preview-orbit) { grid-column: 2; }
-.project-card.is-hidden, .projects-grid.is-hidden, .section-label.is-hidden { display: none; }
+.projects-grid .project-card.is-hidden { display: none; }
+.projects-grid.is-hidden, .section-label.is-hidden { display: none; }
 .project-card:hover { background: color-mix(in srgb, var(--surface) 90%, var(--accent) 10%); }
 .project-card.is-highlighted { box-shadow: inset 8px 0 0 var(--accent); }
 

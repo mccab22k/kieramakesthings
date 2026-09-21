@@ -100,6 +100,12 @@ class HomepageRedesignTests(unittest.TestCase):
             r"\.projects-grid\.security-grid\s*\{[^}]*grid-template-columns:\s*1fr",
         )
 
+    def test_hidden_filter_state_overrides_featured_card_layout(self):
+        self.assertRegex(
+            STYLES,
+            r"\.projects-grid\s+\.project-card\.is-hidden\s*\{\s*display:\s*none",
+        )
+
     def test_each_security_card_links_to_a_matching_case_study(self):
         security_page = SUPPORTING_PAGES[1]
         anchors = [
