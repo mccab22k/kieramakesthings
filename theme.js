@@ -48,44 +48,119 @@ function injectSecuritySystems() {
         <div class="status-badge">Production</div>
         <h2 class="project-title">Access Governance Automation</h2>
         <div class="project-meta">Node.js · TypeScript · Slack · Okta · Email security</div>
-        <p class="project-hook">Access requests should not require choosing between a process people can follow and one security can trust. I built the workflow around both.</p>
-        <p class="project-description">A self-service platform for configurable approval chains, group-based provisioning, email-security actions, and scheduled access reviews across dozens of applications.</p>
+        <p class="project-hook">I built a Slack-based system for requesting and approving access across dozens of applications.</p>
+        <p class="project-description">It handles different approval paths, provisions approved access, and keeps an audit trail without turning every request into a security ticket.</p>
         <div class="project-links">
           <a href="security-systems.html#access-governance" class="project-link">Read Case Study</a>
         </div>
         <details class="why-made" open>
           <summary>What It Demonstrates</summary>
-          <p>End-to-end ownership of an internal security product: workflow design, API integrations, identity provisioning, safe write controls, configuration architecture, and operational support.</p>
+          <p>Workflow design, API integration, identity provisioning, safe write controls, and end-to-end ownership of an internal security product.</p>
         </details>
       </div>
 
-      <div class="project-card" id="identity-lifecycle-system" data-filter-tags="security">
+      <div class="project-card" id="employee-onboarding-system" data-filter-tags="security">
+        <div class="status-badge">Internal Platform</div>
+        <h2 class="project-title">Employee Onboarding Platform</h2>
+        <div class="project-meta">TypeScript · Slack · Google Workspace · Shared engine</div>
+        <p class="project-hook">Onboarding touched enough systems that copying the same logic between scripts stopped making sense.</p>
+        <p class="project-description">I turned it into a shared engine with dry runs, credential safeguards, device checks, and append-only audit logging.</p>
+        <div class="project-links">
+          <a href="security-systems.html#employee-onboarding" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made" open>
+          <summary>What It Demonstrates</summary>
+          <p>Reusable service design, safe administrative tooling, testable integrations, credential handling, and operational auditability.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="account-lifecycle-system" data-filter-tags="security">
         <div class="status-badge">Live Automation</div>
-        <h2 class="project-title">Identity Lifecycle Controls</h2>
-        <div class="project-meta">Google Apps Script · Admin SDK · Okta · Slack</div>
-        <p class="project-hook">“Someone will remember to remove the account” is not an identity-lifecycle strategy. I automated the transitions and added an independent check for anything the automation missed.</p>
-        <p class="project-description">An idempotent account-lifecycle state machine with protected-account exclusions, group cleanup, audit logs, and independent read-only reconciliation across systems.</p>
+        <h2 class="project-title">Account Lifecycle Automation</h2>
+        <div class="project-meta">Google Apps Script · Admin SDK · Scheduled controls</div>
+        <p class="project-hook">A state-based workflow moves accounts through onboarding, first sign-in, and departure.</p>
+        <p class="project-description">The goal is straightforward: reduce manual cleanup while keeping destructive actions visible and controlled.</p>
         <div class="project-links">
-          <a href="security-systems.html#identity-lifecycle" class="project-link">Read Case Study</a>
+          <a href="security-systems.html#account-lifecycle" class="project-link">Read Case Study</a>
         </div>
         <details class="why-made" open>
           <summary>What It Demonstrates</summary>
-          <p>Identity architecture, lifecycle automation, least-privilege service design, cross-system consistency checks, exception handling, and observable scheduled operations.</p>
+          <p>Identity state modeling, idempotent automation, protected-account handling, scheduled reporting, and human-gated changes.</p>
         </details>
       </div>
 
-      <div class="project-card" id="workspace-admin-system" data-filter-tags="security">
-        <div class="status-badge">Internal App</div>
-        <h2 class="project-title">Google Workspace Admin Platform</h2>
-        <div class="project-meta">Python · Flask · Gmail and Directory APIs · PyInstaller</div>
-        <p class="project-hook">Bulk administrative actions are useful precisely because they can change a lot at once. I built this so an operator can see what will happen before anything happens.</p>
-        <p class="project-description">A packaged administration application with preview-before-apply workflows, directory data-quality checks, device-restricted access, and centralized audit logging.</p>
+      <div class="project-card" id="deactivation-reconciliation-system" data-filter-tags="security">
+        <div class="status-badge">Detective Control</div>
+        <h2 class="project-title">Deactivation Reconciliation</h2>
+        <div class="project-meta">Okta · Google Workspace · Slack · Read-only</div>
+        <p class="project-hook">Automation can fail quietly, so I built a read-only check that compares deactivated accounts across identity, email, and collaboration systems.</p>
+        <p class="project-description">It reports discrepancies without trying to “helpfully” modify anything.</p>
         <div class="project-links">
-          <a href="security-systems.html#workspace-admin" class="project-link">Read Case Study</a>
+          <a href="security-systems.html#deactivation-reconciliation" class="project-link">Read Case Study</a>
         </div>
         <details class="why-made" open>
           <summary>What It Demonstrates</summary>
-          <p>Secure internal application development, domain-wide delegated API access, bulk-operation safeguards, local packaging, configuration separation, and auditability.</p>
+          <p>Independent validation, least-privilege service design, cross-system consistency checks, and evidence operators can act on.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="proofpoint-directory-sync-system" data-filter-tags="security">
+        <div class="status-badge">Live Automation</div>
+        <h2 class="project-title">Proofpoint Directory Sync</h2>
+        <div class="project-meta">Proofpoint · Google Workspace · Apps Script · TypeScript</div>
+        <p class="project-hook">This automation keeps directory information synchronized with Proofpoint.</p>
+        <p class="project-description">Safe changes are additive and reversible; onboarding and offboarding actions remain human-reviewed.</p>
+        <div class="project-links">
+          <a href="security-systems.html#proofpoint-directory-sync" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made" open>
+          <summary>What It Demonstrates</summary>
+          <p>Conservative automation boundaries, protected-account handling, reversible updates, and parity between local and hosted implementations.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="workspace-directory-manager-system" data-filter-tags="security">
+        <div class="status-badge">Internal App</div>
+        <h2 class="project-title">Google Workspace Directory Manager</h2>
+        <div class="project-meta">Python · Flask · Gmail and Directory APIs · macOS</div>
+        <p class="project-hook">A small macOS tool for reviewing directory gaps, previewing Gmail signatures, applying approved changes, and exporting audit results.</p>
+        <p class="project-description">It made recurring administrative work easier to inspect and harder to do accidentally.</p>
+        <div class="project-links">
+          <a href="security-systems.html#workspace-directory-manager" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made" open>
+          <summary>What It Demonstrates</summary>
+          <p>Secure internal application development, preview-before-apply workflows, local packaging, and auditable administrative operations.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="endpoint-security-system" data-filter-tags="security">
+        <div class="status-badge">Fleet Automation</div>
+        <h2 class="project-title">Endpoint Security Automation</h2>
+        <div class="project-meta">CrowdStrike · Device management · Reconciliation · Monitoring</div>
+        <p class="project-hook">I worked across CrowdStrike and device-management data to find unhealthy installations, reconcile mismatched device records, and improve fleet visibility.</p>
+        <p class="project-description">More than 100 records were corrected without misplacing a device.</p>
+        <div class="project-links">
+          <a href="security-systems.html#endpoint-security" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made" open>
+          <summary>What It Demonstrates</summary>
+          <p>Root-cause analysis, device-data reconciliation, endpoint posture monitoring, and cautious fleet-scale remediation.</p>
+        </details>
+      </div>
+
+      <div class="project-card" id="vendor-assurance-system" data-filter-tags="security">
+        <div class="status-badge">System Design</div>
+        <h2 class="project-title">Vendor Assurance System of Record</h2>
+        <div class="project-meta">Notion · Vendor inventory · Agreement tracking · Compliance views</div>
+        <p class="project-hook">A reconciliation uncovered that vendor and agreement records were living in too many places.</p>
+        <p class="project-description">I designed a normalized Notion system that keeps the source record, review status, and downstream compliance views connected.</p>
+        <div class="project-links">
+          <a href="security-systems.html#vendor-assurance" class="project-link">Read Case Study</a>
+        </div>
+        <details class="why-made" open>
+          <summary>What It Demonstrates</summary>
+          <p>Control-gap discovery, normalized records, ownership mapping, and a usable operating model for vendor assurance.</p>
         </details>
       </div>
     </div>

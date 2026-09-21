@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selected Security Systems — Kiera Makes Things</title>
-  <meta name="description" content="Sanitized case studies covering access governance, identity lifecycle automation, and secure Google Workspace administration.">
-  <link rel="stylesheet" href="styles.css?v=editorial-1">
+  <meta name="description" content="Sanitized case studies covering access governance, identity automation, endpoint security, and vendor assurance.">
+  <link rel="stylesheet" href="styles.css?v=editorial-2">
   <style>
     .case-hero {
       max-width: 980px;
@@ -162,13 +162,13 @@
     <header class="case-hero">
       <div class="eyebrow">Professional systems · Sanitized case studies</div>
       <h1>Security systems built for safer access and usable operations.</h1>
-      <p class="subtitle">Selected internal platforms spanning access governance, identity lifecycle controls, and Google Workspace administration. Details are intentionally generalized to protect company systems and configuration.</p>
+      <p class="subtitle">Selected systems spanning access governance, identity automation, endpoint security, and vendor assurance. Details are intentionally generalized to protect company systems and configuration.</p>
     </header>
 
     <section class="case-intro" aria-label="Overview">
       <div>
         <div class="section-label">Scope</div>
-        <p class="project-description">These systems were designed and implemented as operational security infrastructure—not isolated proofs of concept. The work combines application development, identity architecture, API integration, safe automation, and day-to-day administration.</p>
+        <p class="project-description">These were built as operational security infrastructure—not isolated proofs of concept. The work combines application development, identity architecture, API integration, safe automation, reconciliation, and the less glamorous work of making systems maintainable.</p>
       </div>
       <aside class="case-note">
         <strong>Public-boundary note</strong>
@@ -213,12 +213,51 @@
         <p class="stack-line">Node.js · TypeScript · Slack Bolt / Socket Mode · Okta APIs · Email-security APIs</p>
       </article>
 
-      <article class="system-panel" id="identity-lifecycle">
+      <article class="system-panel" id="employee-onboarding">
         <div class="system-heading">
           <div>
-            <div class="eyebrow">02 · Identity lifecycle</div>
-            <h2>Lifecycle automation with independent reconciliation</h2>
-            <p class="project-description">A scheduled account state machine for onboarding, active employment, and offboarding, paired with a separate read-only control that detects cross-system drift.</p>
+            <div class="eyebrow">02 · Employee onboarding</div>
+            <h2>One onboarding engine instead of another pile of scripts</h2>
+            <p class="project-description">Onboarding touched enough systems that copying the same logic between scripts stopped making sense. I moved the shared work into a reusable engine and kept the operator-facing workflow small.</p>
+          </div>
+          <div class="system-status">Internal platform</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>System</h3>
+            <ul>
+              <li>Shared onboarding engine used by multiple entry points</li>
+              <li>Structured intake for otherwise messy HR data</li>
+              <li>Provisioning across communication and directory tools</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Safety design</h3>
+            <ul>
+              <li>Dry-run-first writes</li>
+              <li>Credentials stored outside the application</li>
+              <li>Approved-device checks</li>
+              <li>Append-only action logging</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Engineering</h3>
+            <ul>
+              <li>Integration tests around shared behavior</li>
+              <li>Reusable logic instead of copied call sites</li>
+              <li>Clear separation between parsing, decisions, and writes</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">TypeScript · Slack APIs · Google Workspace · Shared onboarding engine</p>
+      </article>
+
+      <article class="system-panel" id="account-lifecycle">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">03 · Account lifecycle</div>
+            <h2>Account state as a workflow, not a memory test</h2>
+            <p class="project-description">A scheduled state machine moves accounts through onboarding, first sign-in, active use, and departure while keeping destructive actions visible and controlled.</p>
           </div>
           <div class="system-status">Live automation</div>
         </div>
@@ -227,39 +266,108 @@
             <h3>Lifecycle engine</h3>
             <ul>
               <li>Routes new accounts through controlled states</li>
-              <li>Moves active users based on validated attributes</li>
-              <li>Removes terminated users from group access</li>
-              <li>Excludes protected service and guest accounts</li>
+              <li>Moves active users from validated directory attributes</li>
+              <li>Handles termination cleanup</li>
             </ul>
           </div>
           <div class="system-block">
-            <h3>Control layer</h3>
+            <h3>Boundaries</h3>
             <ul>
-              <li>Read-only comparison across identity and collaboration systems</li>
-              <li>Specific mismatch reporting</li>
-              <li>Independent credentials and minimal scopes</li>
-              <li>No automatic remediation by the recon job</li>
-            </ul>
-          </div>
-          <div class="system-block">
-            <h3>Reliability</h3>
-            <ul>
-              <li>Idempotent repeated scans</li>
+              <li>Protected service and guest accounts</li>
               <li>Explicit state precedence</li>
-              <li>Action and error logging</li>
-              <li>Human-readable operational digests</li>
+              <li>Human gates around destructive changes</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Operations</h3>
+            <ul>
+              <li>Idempotent scheduled scans</li>
+              <li>Dry-run controls</li>
+              <li>Action logs and daily reporting</li>
             </ul>
           </div>
         </div>
-        <p class="stack-line">Google Apps Script · Admin SDK · Okta OAuth service apps · Slack APIs · Google Workspace</p>
+        <p class="stack-line">Google Apps Script · Admin SDK · Google Workspace · Scheduled controls</p>
       </article>
 
-      <article class="system-panel" id="workspace-admin">
+      <article class="system-panel" id="deactivation-reconciliation">
         <div class="system-heading">
           <div>
-            <div class="eyebrow">03 · Secure administration</div>
-            <h2>Packaged Google Workspace administration platform</h2>
-            <p class="project-description">A Python and Flask application for controlled bulk administration, directory data-quality review, previews, and centralized audit logging.</p>
+            <div class="eyebrow">04 · Deactivation reconciliation</div>
+            <h2>A second system that checks the first one</h2>
+            <p class="project-description">Automation can fail quietly. This read-only control compares deactivated accounts across identity, email, and collaboration systems and reports exactly where the records disagree.</p>
+          </div>
+          <div class="system-status">Detective control</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Checks</h3>
+            <ul>
+              <li>Cross-system account-state comparison</li>
+              <li>Itemized discrepancies rather than a pass/fail total</li>
+              <li>Scheduled review outside the lifecycle workflow</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Deliberate limitation</h3>
+            <ul>
+              <li>Read-only by design</li>
+              <li>No automatic remediation</li>
+              <li>Dedicated minimal-permission identity</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Why separate it?</h3>
+            <p>The control should still be useful when the automation it checks is wrong. Sharing write behavior would defeat the point.</p>
+          </div>
+        </div>
+        <p class="stack-line">Okta · Google Workspace · Slack · Read-only reconciliation</p>
+      </article>
+
+      <article class="system-panel" id="proofpoint-directory-sync">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">05 · Email security</div>
+            <h2>Directory synchronization with conservative boundaries</h2>
+            <p class="project-description">This automation keeps directory names and aliases synchronized with Proofpoint. Safe updates are automatic; onboarding and offboarding remain human-reviewed.</p>
+          </div>
+          <div class="system-status">Live automation</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Automated</h3>
+            <ul>
+              <li>Additive directory updates</li>
+              <li>Alias and display-name consistency</li>
+              <li>Scheduled reporting</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Human-reviewed</h3>
+            <ul>
+              <li>Onboarding and offboarding actions</li>
+              <li>Ambiguous account changes</li>
+              <li>Protected account types</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Design</h3>
+            <ul>
+              <li>Additive and reversible defaults</li>
+              <li>Least-privilege scopes</li>
+              <li>Hosted job with a local TypeScript twin</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Proofpoint APIs · Google Workspace · Google Apps Script · TypeScript</p>
+      </article>
+
+      <article class="system-panel" id="workspace-directory-manager">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">06 · Secure administration</div>
+            <h2>A small interface for high-impact directory work</h2>
+            <p class="project-description">A packaged macOS tool for reviewing directory gaps, previewing Gmail signatures, applying approved changes, and exporting audit results.</p>
           </div>
           <div class="system-status">Internal application</div>
         </div>
@@ -267,32 +375,105 @@
           <div class="system-block">
             <h3>Capabilities</h3>
             <ul>
-              <li>Bulk Gmail and directory operations</li>
-              <li>Preview-before-apply workflows</li>
-              <li>Missing-field and data-quality checks</li>
-              <li>Administrative CSV generation</li>
+              <li>Directory data-quality review</li>
+              <li>Signature preview and application</li>
+              <li>Administrative CSV exports</li>
             </ul>
           </div>
           <div class="system-block">
             <h3>Access model</h3>
             <ul>
-              <li>Domain-wide delegation</li>
               <li>Approved-device restriction</li>
               <li>Secrets excluded from source control</li>
-              <li>Separate configuration from application code</li>
+              <li>Configuration separated from application code</li>
             </ul>
           </div>
           <div class="system-block">
-            <h3>Operational design</h3>
+            <h3>Operator safeguards</h3>
             <ul>
-              <li>Packaged native macOS distribution</li>
-              <li>Launch and write-event auditing</li>
+              <li>Preview before apply</li>
               <li>Scoped bulk selection</li>
-              <li>Clear handling of incomplete source data</li>
+              <li>Launch and write-event auditing</li>
             </ul>
           </div>
         </div>
-        <p class="stack-line">Python · Flask · Gmail API · Google Directory API · People API · PyInstaller</p>
+        <p class="stack-line">Python · Flask · Gmail API · Google Directory API · PyInstaller</p>
+      </article>
+
+      <article class="system-panel" id="endpoint-security">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">07 · Endpoint security</div>
+            <h2>Finding the gap between “installed” and healthy</h2>
+            <p class="project-description">I worked across endpoint-security and device-management data to find unhealthy installations, reconcile mismatched inventory, and improve fleet visibility.</p>
+          </div>
+          <div class="system-status">Fleet automation</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Investigation</h3>
+            <ul>
+              <li>Separated stale records from unhealthy installations</li>
+              <li>Identified missing endpoint permissions</li>
+              <li>Tracked devices invisible to one side of the inventory</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Reconciliation</h3>
+            <ul>
+              <li>Compared endpoint and device-management records</li>
+              <li>Corrected more than 100 records</li>
+              <li>Verified that no device was misplaced</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Direction</h3>
+            <ul>
+              <li>Automated health reporting</li>
+              <li>Fleet posture monitoring</li>
+              <li>Company-device controls for administrative access</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">CrowdStrike · Device management · Reconciliation · Monitoring design</p>
+      </article>
+
+      <article class="system-panel" id="vendor-assurance">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">08 · Vendor assurance</div>
+            <h2>One source record, several useful views</h2>
+            <p class="project-description">A reconciliation uncovered that vendor and agreement records were living in too many places. I designed a normalized system that keeps the source record, review status, and downstream compliance views connected.</p>
+          </div>
+          <div class="system-status">System design</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h3>Problem</h3>
+            <ul>
+              <li>Vendor data split across separate trackers</li>
+              <li>Agreement status difficult to verify</li>
+              <li>Downstream lists drifting from source records</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Model</h3>
+            <ul>
+              <li>Normalized vendor and agreement records</li>
+              <li>Explicit ownership and review status</li>
+              <li>Linked evidence rather than duplicated fields</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h3>Use</h3>
+            <ul>
+              <li>Live downstream compliance views</li>
+              <li>Clear gaps without publishing internal vendor data</li>
+              <li>A system people can maintain without a separate platform</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Notion · Vendor inventory · Agreement tracking · Compliance views</p>
       </article>
     </section>
 
@@ -315,6 +496,6 @@
     </footer>
   </main>
 
-  <script src="theme.js?v=editorial-1"></script>
+  <script src="theme.js?v=editorial-2"></script>
 </body>
 </html>

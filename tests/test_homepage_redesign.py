@@ -32,7 +32,7 @@ class HomepageRedesignTests(unittest.TestCase):
         self.assertIn('class="hero-shell"', INDEX)
         self.assertIn('class="working-principle"', INDEX)
         self.assertIn(
-            "If I complain that a tool should exist for long enough, eventually I make it.",
+            "If I need a tool, I should just make it. Privacy for all.",
             INDEX,
         )
         self.assertNotRegex(INDEX, r"<h1>[^<]*<br")
@@ -71,6 +71,50 @@ class HomepageRedesignTests(unittest.TestCase):
         for page in [INDEX, *SUPPORTING_PAGES]:
             self.assertRegex(page, r'href="styles\.css\?v=[a-z0-9-]+"')
             self.assertRegex(page, r'src="theme\.js\?v=[a-z0-9-]+"')
+
+    def test_security_filter_has_eight_distinct_system_cards(self):
+        titles = [
+            "Access Governance Automation",
+            "Employee Onboarding Platform",
+            "Account Lifecycle Automation",
+            "Deactivation Reconciliation",
+            "Proofpoint Directory Sync",
+            "Google Workspace Directory Manager",
+            "Endpoint Security Automation",
+            "Vendor Assurance System of Record",
+        ]
+        security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
+        security_markup = security_markup.split("`);", 1)[0]
+        self.assertEqual(security_markup.count('data-filter-tags="security"'), 8)
+        for title in titles:
+            self.assertIn(title, security_markup)
+
+    def test_security_grid_is_two_columns_and_collapses_on_mobile(self):
+        self.assertRegex(
+            STYLES,
+            r"\.projects-grid\.security-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)",
+        )
+        mobile = STYLES.split("@media (max-width: 780px)", 1)[1]
+        self.assertRegex(
+            mobile,
+            r"\.projects-grid\.security-grid\s*\{[^}]*grid-template-columns:\s*1fr",
+        )
+
+    def test_each_security_card_links_to_a_matching_case_study(self):
+        security_page = SUPPORTING_PAGES[1]
+        anchors = [
+            "access-governance",
+            "employee-onboarding",
+            "account-lifecycle",
+            "deactivation-reconciliation",
+            "proofpoint-directory-sync",
+            "workspace-directory-manager",
+            "endpoint-security",
+            "vendor-assurance",
+        ]
+        for anchor in anchors:
+            self.assertIn(f'security-systems.html#{anchor}', SCRIPT)
+            self.assertIn(f'id="{anchor}"', security_page)
 
 
 if __name__ == "__main__":

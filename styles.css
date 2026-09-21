@@ -234,6 +234,13 @@ h1 {
   margin: 0;
 }
 
+.projects-grid.security-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.security-grid .project-card:nth-child(odd) { border-right: 2px solid var(--line); }
+.security-grid .project-title { font-size: clamp(27px, 2.8vw, 38px); }
+
 .project-card {
   counter-increment: project;
   position: relative;
@@ -517,6 +524,8 @@ header:not(.hero-shell) { padding: 42px 28px; border-bottom: 2px solid var(--lin
   .project-filters { padding: 0; }
   .filter-note { width: 100%; margin-left: 0; padding: 11px 18px; border-top: 1px solid var(--line); }
   .section-label { padding: 13px 18px; }
+  .projects-grid.security-grid { grid-template-columns: 1fr; }
+  .security-grid .project-card:nth-child(odd) { border-right: 0; }
 
   .project-card, .project-card.featured {
     grid-template-columns: 34px minmax(0, 1fr);
