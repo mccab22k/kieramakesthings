@@ -72,22 +72,62 @@ class HomepageRedesignTests(unittest.TestCase):
             self.assertRegex(page, r'href="styles\.css\?v=[a-z0-9-]+"')
             self.assertRegex(page, r'src="theme\.js\?v=[a-z0-9-]+"')
 
-    def test_security_filter_has_eight_distinct_system_cards(self):
-        titles = [
-            "Access Governance Automation",
+    def test_homepage_security_preview_has_curated_projects_then_cta(self):
+        security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
+        security_markup = security_markup.split("`);", 1)[0]
+        titles = re.findall(r'class="project-title">([^<]+)', security_markup)
+        self.assertEqual(
+            titles[:3],
+            [
+                "Access Governance Automation",
+                "Google Workspace / GAM Automation",
+                "See other security projects",
+            ],
+        )
+        self.assertEqual(security_markup.count('data-security-preview="project"'), 2)
+        self.assertIn('data-security-cta="true"', security_markup)
+        self.assertIn('data-filter-jump="security"', security_markup)
+
+    def test_no_more_data_brokers_is_one_full_featured_card(self):
+        self.assertEqual(SCRIPT.count('>No More Data Brokers</h2>'), 1)
+        self.assertNotIn('id="security-no-more-data-brokers"', SCRIPT)
+        self.assertNotIn('id="no-more-data-brokers"', SCRIPT)
+        self.assertNotIn('function injectNoMoreDataBrokers()', SCRIPT)
+
+        featured_start = SCRIPT.index('function injectFeaturedNoMoreDataBrokers()')
+        featured = SCRIPT[featured_start:]
+        featured = featured.split("`);", 1)[0]
+        self.assertIn('class="project-card featured featured-privacy"', featured)
+        self.assertIn('data-filter-tags="live security personal-security"', featured)
+        self.assertIn('Live · Personal Security · v1', featured)
+        self.assertIn('CCPA/GDPR request templates', featured)
+        self.assertIn('Profile and removal state stay in the browser.', featured)
+        self.assertIn('all profile and broker-removal state stays in localStorage', featured)
+        self.assertIn('Fresh sessions use a fictional profile by default', featured)
+
+    def test_security_cta_names_the_projects_hidden_from_the_default_view(self):
+        security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
+        security_markup = security_markup.split("`);", 1)[0]
+        cta = security_markup.split('id="security-projects-more"', 1)[1]
+        cta = cta.split('</div>\n\n      <div class="project-card"', 1)[0]
+        remaining_titles = [
             "Employee Onboarding Platform",
             "Account Lifecycle Automation",
             "Deactivation Reconciliation",
             "Proofpoint Directory Sync",
-            "Google Workspace Directory Manager",
             "Endpoint Security Automation",
             "Vendor Assurance System of Record",
         ]
+        for title in remaining_titles:
+            self.assertIn(title, cta)
+
+    def test_security_filter_expands_all_professional_projects(self):
         security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
         security_markup = security_markup.split("`);", 1)[0]
-        self.assertEqual(security_markup.count('data-filter-tags="security"'), 8)
-        for title in titles:
-            self.assertIn(title, security_markup)
+        self.assertEqual(security_markup.count('data-security-detail="true"'), 6)
+        self.assertIn("if (isSecurityCta) return selectedFilter === 'all';", SCRIPT)
+        self.assertIn("if (selectedFilter === 'all') return !isSecurityDetail;", SCRIPT)
+        self.assertIn("filterButton.click();", SCRIPT)
 
     def test_security_grid_is_two_columns_and_collapses_on_mobile(self):
         self.assertRegex(
@@ -106,7 +146,7 @@ class HomepageRedesignTests(unittest.TestCase):
             r"\.projects-grid\s+\.project-card\.is-hidden\s*\{\s*display:\s*none",
         )
 
-    def test_each_security_card_links_to_a_matching_case_study(self):
+    def test_full_security_page_retains_all_professional_case_studies(self):
         security_page = SUPPORTING_PAGES[1]
         anchors = [
             "access-governance",
@@ -119,7 +159,6 @@ class HomepageRedesignTests(unittest.TestCase):
             "vendor-assurance",
         ]
         for anchor in anchors:
-            self.assertIn(f'security-systems.html#{anchor}', SCRIPT)
             self.assertIn(f'id="{anchor}"', security_page)
 
 
