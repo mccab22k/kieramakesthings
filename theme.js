@@ -246,6 +246,10 @@ function injectFunProjects() {
       <div class="project-meta">NYC culture · Transit · Swipe game</div>
       <p class="project-hook">New Yorkers already have strong opinions about stations, neighborhoods, transit modes, public art, and pigeons. This turns those arguments into a deliberately impossible series of binary choices.</p>
       <p class="project-description">A Tinder-style swipe game that starts in hyper-niche transit mode — stations, subway lines, ferries, buses, and service patterns — before expanding into increasingly specific NYC cultural dilemmas.</p>
+      <div class="project-links">
+        <a href="https://mccab22k.github.io/nyc-trolley-problem/" class="project-link">Play Game</a>
+        <a href="https://github.com/mccab22k/nyc-trolley-problem" class="project-link">GitHub</a>
+      </div>
       <details class="why-made" open>
         <summary>Why I Made This</summary>
         <p>I wanted a New York version of the trolley problem that feels local enough to reward people who actually know the city.</p>
