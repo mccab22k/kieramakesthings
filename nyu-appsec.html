@@ -71,7 +71,7 @@
   <div class="study-main">
     <section class="study-section" id="overview">
       <div class="eyebrow">The setup</div>
-      <h2>Four different places for software to go wrong.</h2>
+      <h2>From C bugs to mobile app permissions.</h2>
       <p>The assignments moved from a C gift-card reader to a Django website, then into containers and Kubernetes, and finally into an Android client. Most of the code was intentionally insecure. The point was to find the problem, make it reproducible, understand why it happened, and change the implementation.</p>
       <p>I still have my original lab notes, including the dead ends and things that didn't pass the autograder even when they seemed to work locally. I'm keeping that distinction here. This is coursework, not a description of production security work.</p>
     </section>
@@ -99,7 +99,7 @@
     </section>
     <section class="study-section" id="containers">
       <div class="eyebrow">03 / Containers, Kubernetes and monitoring</div>
-      <h2>A secure application can still have a bad deployment.</h2>
+      <h2>Then we had to secure the deployment.</h2>
       <p>Next we worked with a Dockerized Django app, MySQL database, Nginx reverse proxy, and Kubernetes manifests. The exercise included credentials placed in code or configuration, sensitive data exposed through metrics, and incomplete monitoring.</p>
       <p>I worked on separating secrets from the application configuration and using Kubernetes secrets and environment variables. My Prometheus notes describe removing a counter that exposed passwords in metric labels, adding a count for database-error 404 responses, installing Prometheus with Helm, and configuring it to scrape the application through the proxy service.</p>
       <p>That exercise connected two things I care about: observability is necessary, but collecting something because you <em>can</em> is not the same as collecting something you <em>should</em>. Credentials don't belong in metrics any more than they belong in source control.</p>
@@ -116,7 +116,7 @@
     </section>
     <section class="study-section" id="takeaways">
       <div class="eyebrow">What stayed with me</div>
-      <h2>I trust reproducible evidence more than a list of tools.</h2>
+      <h2>What I remember from the course.</h2>
       <p>These labs were messy in the way actual debugging is messy. A file crashed for reasons I didn't expect. A local fix didn't always satisfy a test harness. The behavior of a browser, a server, a container, and a phone each added another boundary to understand.</p>
       <p>What I took from the course is a way to approach security work: reproduce the failure, find the underlying trust assumption, use the framework or platform protection designed for it, and write a test that can catch the regression. I use that same lens now when I review software I've built myself.</p>
       <div class="study-note"><strong>Source and scope</strong><p>Based on my own lab notes and coursework repository. The exercises deliberately include vulnerable code, attack test cases, and demonstration configurations. They are educational artifacts, not deployable templates. Some notes describe partial solutions or grading mismatches.</p></div>
