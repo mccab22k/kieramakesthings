@@ -15,7 +15,7 @@ The goal is to help compare public signals about buildings, neighborhoods, and h
 - Help users notice records, patterns, and caveats that are easy to miss in separate public databases.
 - Keep the interface useful for practical decisions, not just raw data lookup.
 - Document data sources and uncertainty clearly.
-- Avoid linking the live project from the public splash page until the public-facing boundaries are ready.
+- Link the public beta while documenting dataset caveats and preserving the distinction between building leads and verified rent-regulated unit status.
 
 ## Possible Data / Product Direction
 
@@ -28,11 +28,11 @@ The goal is to help compare public signals about buildings, neighborhoods, and h
 
 ## Deployment / External Services
 
-- Hosting: no public launch link is documented in this repo.
-- Source control: not documented in this repo.
-- Database: public housing datasets and local/project data workflow are still being defined.
+- Hosting: GitHub Pages beta, https://mccab22k.github.io/nyc-stabilized-apartment-hunt/ .
+- Source control: private GitHub repository, `mccab22k/nyc-stabilized-apartment-hunt`.
+- Database: static public-data JSON served by the web app; saved notes and building statuses default to browser localStorage.
 - Analytics: not documented in this repo.
-- Notes: public portfolio materials should describe the goals and data approach without linking the live project.
+- Notes: public portfolio includes a beta link. Users should verify housing-status claims against official sources.
 
 ## Notes
 
