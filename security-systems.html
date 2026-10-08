@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selected Security Systems — Kiera Makes Things</title>
-  <meta name="description" content="Security engineering case studies, a source-based security review of Pet Sticker Maker, and NYU application security coursework.">
+  <meta name="description" content="Professional security engineering, AppSec coursework, and personal privacy projects including No More Data Brokers and AdGuard Home.">
   <link rel="stylesheet" href="styles.css?v=editorial-9">
   <style>
     .case-hero {
@@ -373,13 +373,13 @@
     <header class="case-hero">
       <div class="eyebrow">Professional systems · Sanitized case studies</div>
       <h1>Security systems built for safer access and usable operations.</h1>
-      <p class="subtitle">Professional security systems, plus hands-on application security work in my own software and NYU coursework. Work for employers is intentionally generalized to protect company systems and configuration.</p>
+      <p class="subtitle">Professional security systems, application security, and the tools I make to protect my own data and devices. Work for employers is intentionally generalized to protect company systems and configuration.</p>
     </header>
 
     <nav class="security-tabs" aria-label="Security portfolio sections">
       <a href="#professional-systems">Professional Systems</a>
       <a href="#hands-on-appsec">Hands-on AppSec</a>
-      <a href="securing-yourself.html">Click here to go to consumer security projects (Securing Yourself) →</a>
+      <a href="#personal-security">Personal Security</a>
     </nav>
 
     <section class="case-intro" aria-label="Overview">
@@ -720,6 +720,39 @@
       </div>
     </section>
 
+    <section class="personal-security" id="personal-security" aria-labelledby="personal-security-heading">
+      <div class="section-label">Personal Security / Privacy tools and home lab</div>
+      <h2 id="personal-security-heading" class="project-title">Securing yourself</h2>
+      <p class="project-description">Projects for reducing personal data exposure and blocking trackers without outsourcing the entire problem to another subscription service.</p>
+      <div class="personal-security-grid" aria-label="Personal security projects">
+      <article class="personal-security-card" id="no-more-data-brokers">
+        <div class="status-badge">Live · Public Source</div>
+        <h3 class="project-title">No More Data Brokers</h3>
+        <div class="project-meta">Privacy · Client-side · Local-only</div>
+        <p class="project-hook">Privacy rights should not require paying a subscription to the same ecosystem that profits from personal data.</p>
+        <p class="project-description">A free browser-based tool for working through data-broker opt-outs, generating privacy-request templates, prioritizing removals, and tracking when listings should be checked again. Profile and removal state stay in the browser.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
+          <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+        </div>
+      </article>
+
+      <article class="personal-security-card" id="raspberry-pi-adguard">
+        <div class="status-badge">Active Home Lab</div>
+        <h3 class="project-title">Block Trackers on Your Wi-Fi</h3>
+        <div class="project-meta">Raspberry Pi + AdGuard Home · DNS · Network privacy</div>
+        <p class="project-hook">I wanted tracker and ad blocking at the network level, where every device on my Wi-Fi could benefit without installing a separate blocker.</p>
+        <p class="project-description">A Raspberry Pi 4B running AdGuard Home as network DNS filtering, with router/DHCP configuration, tuned upstream DNS, allowlisting for services that need to keep working, and targeted blocking for ad- and telemetry-heavy devices.</p>
+        <p class="project-description"><strong>Planned expansion:</strong> securely route my phone back through this DNS service while away from home so the same filtering follows me on cellular and other Wi-Fi networks.</p>
+        <div class="project-links">
+          <a href="adguard.html" class="project-link">Read More</a>
+          <a href="home-improvement/adguard-home-raspberry-pi.md" class="project-link">Setup Notes</a>
+        </div>
+      </article>
+    
+      </div>
+    </section>
+
     <section aria-labelledby="principles-heading">
       <div class="section-label">Architecture principles</div>
       <h2 id="principles-heading" class="project-title">Patterns shared across the systems</h2>
@@ -734,11 +767,11 @@
     </section>
 
     <footer>
-      <p>Professional work is sanitized to omit confidential implementation details. The Pet Sticker Maker app is public, but its repository is private; the NYU coursework repository is public.</p>
+      <p>Professional work is sanitized to omit confidential implementation details. The Pet Sticker Maker app is public but its repository is private; the NYU coursework and No More Data Brokers repositories are public.</p>
       <a class="project-link back-link" href="./#security-work">Back to portfolio</a>
     </footer>
   </main>
 
-  <script src="theme.js?v=editorial-9"></script>
+  <script src="theme.js?v=editorial-11"></script>
 </body>
 </html>
