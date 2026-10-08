@@ -72,6 +72,12 @@ class HomepageRedesignTests(unittest.TestCase):
             self.assertRegex(page, r'href="styles\.css\?v=[a-z0-9-]+"')
             self.assertRegex(page, r'src="theme\.js\?v=[a-z0-9-]+"')
 
+    def test_security_systems_link_sits_next_to_security_work_filter(self):
+        self.assertIn("securityButton.insertAdjacentElement('afterend', securitySystemsLink);", SCRIPT)
+        self.assertIn("securitySystemsLink.href = 'security-systems.html';", SCRIPT)
+        self.assertIn("securitySystemsLink.textContent = 'Security Systems →';", SCRIPT)
+        self.assertIn(".filter-link {", STYLES)
+
     def test_homepage_security_preview_has_curated_projects_then_cta(self):
         security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
         security_markup = security_markup.split("`);", 1)[0]
