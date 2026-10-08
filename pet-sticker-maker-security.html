@@ -85,7 +85,7 @@
     </section>
     <section class="study-section" id="existing">
       <div class="eyebrow">02 / What exists today</div>
-      <h2>There are already sensible building blocks.</h2>
+      <h2>What I already had in place.</h2>
       <div class="study-grid">
         <article><h3>Checking the upload</h3><p>The API checks that the declared content type starts with <code>image/</code> and uses Pillow to verify that the bytes can be opened as an image. Invalid image data gets an HTTP 400 response.</p></article>
         <article><h3>Normalizing options</h3><p>FastAPI parses typed form fields. Rendering options pass through a normalization step before they reach the image pipeline.</p></article>
@@ -97,7 +97,7 @@
     </section>
     <section class="study-section" id="findings">
       <div class="eyebrow">03 / What I would harden</div>
-      <h2>The gaps are more interesting than a checklist of scanners.</h2>
+      <h2>Where the current implementation needs work.</h2>
       <h3>Bound the work an upload can trigger</h3>
       <p>Today, <code>_read_image_upload()</code> reads the full file into memory before verifying it. I don't see explicit maximum request bytes or decoded-image pixel limits in this path. A valid but oversized or unusually complex image can still put pressure on CPU and memory. My next change would be bounded reads, decoded-dimension limits, and tests for the rejection behavior.</p>
       <h3>Make browser origins deliberate</h3>
@@ -124,7 +124,7 @@
     </section>
     <section class="study-section" id="takeaway">
       <div class="eyebrow">05 / What it demonstrates</div>
-      <h2>I build things—and I can interrogate what I've built.</h2>
+      <h2>What I would fix before calling this secure.</h2>
       <p>The engineering work here is real: a browser app, an image-processing API, integration with another project, automated tests, and deployment workflows. The security work is a transparent review in progress. I'd rather show the actual boundary decisions and the work left to do than claim a “secure CI/CD pipeline” that I haven't built yet.</p>
       <p><a href="nyu-appsec.html">Related: what I learned doing vulnerability research in NYU AppSec →</a></p>
     </section>
