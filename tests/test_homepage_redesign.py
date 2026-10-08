@@ -104,12 +104,30 @@ class HomepageRedesignTests(unittest.TestCase):
         featured = SCRIPT[featured_start:]
         featured = featured.split("`);", 1)[0]
         self.assertIn('class="project-card featured featured-privacy"', featured)
-        self.assertIn('data-filter-tags="live security personal-security"', featured)
+        self.assertIn('data-filter-tags="live security"', featured)
         self.assertIn('Live · Personal Security · v1', featured)
         self.assertIn('CCPA/GDPR request templates', featured)
         self.assertIn('Profile and removal state stay in the browser.', featured)
         self.assertIn('all profile and broker-removal state stays in localStorage', featured)
         self.assertIn('Fresh sessions use a fictional profile by default', featured)
+
+    def test_personal_security_is_part_of_security_work(self):
+        self.assertIn("securityButton.dataset.filter = 'security';", SCRIPT)
+        self.assertNotIn("personalSecurityButton", SCRIPT)
+        self.assertIn('id="raspberry-pi-adguard" data-filter-tags="wip security"', INDEX)
+        self.assertIn('data-filter-tags="live security"', SCRIPT)
+        self.assertIn('href="security-systems.html#no-more-data-brokers"', SCRIPT)
+
+    def test_security_hub_combines_all_sections_and_preserves_old_urls(self):
+        hub = SUPPORTING_PAGES[1]
+        for section in ("professional-systems", "hands-on-appsec", "personal-security",
+                        "no-more-data-brokers", "raspberry-pi-adguard"):
+            self.assertIn(f'id="{section}"', hub)
+        self.assertIn('href="#personal-security"', hub)
+        self.assertEqual(hub.count('id="no-more-data-brokers"'), 1)
+        redirect = (ROOT / "securing-yourself.html").read_text(encoding="utf-8")
+        self.assertIn("window.location.hash || '#personal-security'", redirect)
+        self.assertIn("window.location.replace(", redirect)
 
     def test_security_cta_names_the_projects_hidden_from_the_default_view(self):
         security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
