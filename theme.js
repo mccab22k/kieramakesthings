@@ -36,6 +36,14 @@ function injectSecuritySystems() {
   const wipButton = filters.querySelector('[data-filter="wip"]');
   filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
 
+  // Keep the security category filter and the full case-study page as separate actions.
+  const securitySystemsLink = document.createElement('a');
+  securitySystemsLink.className = 'filter-link';
+  securitySystemsLink.href = 'security-systems.html';
+  securitySystemsLink.textContent = 'Security Systems →';
+  securitySystemsLink.setAttribute('aria-label', 'View all security systems and case studies');
+  securityButton.insertAdjacentElement('afterend', securitySystemsLink);
+
   const personalSecurityButton = document.createElement('button');
   personalSecurityButton.className = 'filter-button';
   personalSecurityButton.type = 'button';
