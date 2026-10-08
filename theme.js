@@ -347,7 +347,7 @@ function injectFeaturedNoMoreDataBrokers() {
       <div>
         <div class="status-badge">Live · Personal Security · v1</div>
         <h2 class="project-title">No More Data Brokers</h2>
-        <div class="project-meta">Privacy · Open source · Local-only</div>
+        <div class="project-meta">Privacy · Public source · Local-only</div>
         <p class="project-hook">Privacy rights should not require paying the same industry that profits from personal data. I objected to paying a subscription to remove information that should not have been collected in the first place, so I made the process free and kept the data in the browser.</p>
         <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. Profile and removal state stay in the browser. No account or backend.</p>
         <div class="project-links">
