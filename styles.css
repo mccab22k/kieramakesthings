@@ -202,6 +202,22 @@ h1 {
 .filter-button:hover, .filter-button:focus-visible { background: var(--accent-soft); }
 .filter-button.active { background: var(--ink); color: var(--paper); }
 
+.filter-link {
+  display: inline-flex;
+  align-items: center;
+  border-right: 1px solid var(--line);
+  padding: 13px 14px;
+  color: var(--accent);
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: uppercase;
+}
+.filter-link:hover, .filter-link:focus-visible { background: var(--accent-soft); }
+
 .filter-note {
   align-self: center;
   margin-left: auto;
