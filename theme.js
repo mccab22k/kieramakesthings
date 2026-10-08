@@ -258,7 +258,7 @@ function injectFunProjects() {
       <p class="project-description">A Tinder-style swipe game that starts in hyper-niche transit mode — stations, subway lines, ferries, buses, and service patterns — before expanding into increasingly specific NYC cultural dilemmas.</p>
       <div class="project-links">
         <a href="https://mccab22k.github.io/nyc-trolley-problem/" class="project-link">Play Game</a>
-        <a href="https://github.com/mccab22k/nyc-trolley-problem" class="project-link">GitHub</a>
+        <a href="https://github.com/mccab22k/nyc-trolley-problem" class="project-link">GitHub (Private)</a>
       </div>
       <details class="why-made" open>
         <summary>Why I Made This</summary>
