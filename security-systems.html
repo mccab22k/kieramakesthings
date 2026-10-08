@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selected Security Systems — Kiera Makes Things</title>
-  <meta name="description" content="Sanitized case studies covering access governance, identity automation, endpoint security, and vendor assurance.">
+  <meta name="description" content="Security engineering case studies, a source-based security review of Pet Sticker Maker, and NYU application security coursework.">
   <link rel="stylesheet" href="styles.css?v=editorial-9">
   <style>
     .case-hero {
@@ -373,11 +373,12 @@
     <header class="case-hero">
       <div class="eyebrow">Professional systems · Sanitized case studies</div>
       <h1>Security systems built for safer access and usable operations.</h1>
-      <p class="subtitle">Selected systems spanning access governance, identity automation, endpoint security, and vendor assurance. Details are intentionally generalized to protect company systems and configuration.</p>
+      <p class="subtitle">Professional security systems, plus hands-on application security work in my own software and NYU coursework. Work for employers is intentionally generalized to protect company systems and configuration.</p>
     </header>
 
     <nav class="security-tabs" aria-label="Security portfolio sections">
       <a href="#professional-systems">Professional Systems</a>
+      <a href="#hands-on-appsec">Hands-on AppSec</a>
       <a href="securing-yourself.html">Click here to go to consumer security projects (Securing Yourself) →</a>
     </nav>
 
@@ -695,6 +696,30 @@
 
 
 
+    <section class="personal-security" id="hands-on-appsec" aria-labelledby="hands-on-heading">
+      <div class="section-label">Application security / Public evidence</div>
+      <h2 id="hands-on-heading" class="project-title">Security on the software side, too.</h2>
+      <p class="project-description">Two kinds of evidence: reviewing software I built and working through intentionally vulnerable code in a university course. Neither should be confused with the sanitized professional systems above.</p>
+      <div class="personal-security-grid">
+        <article class="personal-security-card">
+          <div class="eyebrow">Public application · Security review in progress</div>
+          <h3 class="project-title">Pet Sticker Maker: Security Case Study</h3>
+          <p class="project-hook">What happens when a fun pet-photo tool accepts untrusted images and processes them on a server?</p>
+          <p class="project-description">I walk through the React/FastAPI architecture, upload boundary, automated tests, current GitHub Actions CI, and where I still need to harden it. Implemented safeguards and proposed changes are separated clearly.</p>
+          <p class="stack-line">FastAPI · Python · React · GitHub Actions · File Upload Security</p>
+          <a class="project-link" href="pet-sticker-maker-security.html">Read Security Case Study →</a>
+        </article>
+        <article class="personal-security-card">
+          <div class="eyebrow">Academic work · NYU AppSec</div>
+          <h3 class="project-title">Breaking Things to Learn AppSec</h3>
+          <p class="project-hook">Memory safety, fuzzing, Django exploits, Kubernetes deployments, and Android privacy—with the messy debugging notes left intact.</p>
+          <p class="project-description">A write-up grounded in my coursework notes: what I reproduced, what I changed, what didn't fully work, and what I would approach differently now.</p>
+          <p class="stack-line">C · Fuzzing · Django · Docker · Kubernetes · Android</p>
+          <a class="project-link" href="nyu-appsec.html">Read Course Write-up →</a>
+        </article>
+      </div>
+    </section>
+
     <section aria-labelledby="principles-heading">
       <div class="section-label">Architecture principles</div>
       <h2 id="principles-heading" class="project-title">Patterns shared across the systems</h2>
@@ -709,7 +734,7 @@
     </section>
 
     <footer>
-      <p>Selected professional work is described at a system level and intentionally omits confidential implementation details.</p>
+      <p>Professional work is sanitized to omit confidential implementation details. Public application and academic work link to their own source evidence.</p>
       <a class="project-link back-link" href="./#security-work">Back to portfolio</a>
     </footer>
   </main>
