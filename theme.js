@@ -44,13 +44,6 @@ function injectSecuritySystems() {
   securitySystemsLink.setAttribute('aria-label', 'View all security systems and case studies');
   securityButton.insertAdjacentElement('afterend', securitySystemsLink);
 
-  const personalSecurityButton = document.createElement('button');
-  personalSecurityButton.className = 'filter-button';
-  personalSecurityButton.type = 'button';
-  personalSecurityButton.dataset.filter = 'personal-security';
-  personalSecurityButton.textContent = 'Securing Yourself';
-  filters.insertBefore(personalSecurityButton, wipButton || filters.querySelector('.filter-note'));
-
   const funButton = document.createElement('button');
   funButton.className = 'filter-button';
   funButton.type = 'button';
@@ -60,11 +53,11 @@ function injectSecuritySystems() {
 
   const filterNote = filters.querySelector('.filter-note');
   if (filterNote) {
-    filterNote.textContent = 'Security shows sanitized professional case studies. App Store includes launched, pending, and planned releases.';
+    filterNote.textContent = 'Security includes professional systems, AppSec work, and personal privacy projects. App Store includes launched and planned releases.';
   }
 
   featuredGrid.insertAdjacentHTML('afterend', `
-    <div class="section-label" id="security-work">Selected security systems · <a href="securing-yourself.html">Consumer security? Go to Securing Yourself →</a></div>
+    <div class="section-label" id="security-work">Selected security systems · <a href="security-systems.html">View all security work →</a></div>
     <div class="projects-grid security-grid">
       <div class="project-card" id="access-governance-system" data-filter-tags="security" data-security-preview="project">
         <div class="status-badge">Production</div>
@@ -100,7 +93,7 @@ function injectSecuritySystems() {
         <div class="status-badge">More Security Work</div>
         <h2 class="project-title">See other security projects</h2>
         <div class="project-meta">The rest of the systems behind the work</div>
-        <p class="project-hook">Employee Onboarding Platform · Account Lifecycle Automation · Deactivation Reconciliation · Proofpoint Directory Sync · Endpoint Security Automation · Vendor Assurance System of Record · Pet Sticker Maker Security · NYU AppSec Course</p>
+        <p class="project-hook">Employee Onboarding Platform · Account Lifecycle Automation · Deactivation Reconciliation · Proofpoint Directory Sync · Endpoint Security Automation · Vendor Assurance System of Record · Pet Sticker Maker Security · NYU AppSec Course · No More Data Brokers · Raspberry Pi + AdGuard Home</p>
         <div class="project-links">
           <a href="#security-work" class="project-link" data-filter-jump="security">Show all Security Work</a>
           <a href="pet-sticker-maker-security.html" class="project-link">Pet Sticker Maker Security</a>
@@ -343,7 +336,7 @@ function injectFeaturedNoMoreDataBrokers() {
   if (!featuredGrid || document.querySelector('#no-more-data-brokers-featured')) return;
 
   featuredGrid.insertAdjacentHTML('beforeend', `
-    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security personal-security">
+    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security">
       <div>
         <div class="status-badge">Live · Personal Security · v1</div>
         <h2 class="project-title">No More Data Brokers</h2>
@@ -353,7 +346,7 @@ function injectFeaturedNoMoreDataBrokers() {
         <div class="project-links">
           <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
           <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
-          <a href="securing-yourself.html#no-more-data-brokers" class="project-link">Security Notes</a>
+          <a href="security-systems.html#no-more-data-brokers" class="project-link">Security Notes</a>
         </div>
         <details class="why-made" open>
           <summary>Why I Made This</summary>
