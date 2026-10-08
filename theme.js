@@ -92,9 +92,11 @@ function injectSecuritySystems() {
         <div class="status-badge">More Security Work</div>
         <h2 class="project-title">See other security projects</h2>
         <div class="project-meta">The rest of the systems behind the work</div>
-        <p class="project-hook">Employee Onboarding Platform · Account Lifecycle Automation · Deactivation Reconciliation · Proofpoint Directory Sync · Endpoint Security Automation · Vendor Assurance System of Record</p>
+        <p class="project-hook">Employee Onboarding Platform · Account Lifecycle Automation · Deactivation Reconciliation · Proofpoint Directory Sync · Endpoint Security Automation · Vendor Assurance System of Record · Pet Sticker Maker Security · NYU AppSec Course</p>
         <div class="project-links">
           <a href="#security-work" class="project-link" data-filter-jump="security">Show all Security Work</a>
+          <a href="pet-sticker-maker-security.html" class="project-link">Pet Sticker Maker Security</a>
+          <a href="nyu-appsec.html" class="project-link">NYU AppSec Write-up</a>
         </div>
       </div>
 
