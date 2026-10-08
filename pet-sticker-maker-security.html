@@ -61,13 +61,13 @@
   <div class="eyebrow">Security work / Public application / Engineering case study</div>
   <h1>Pet Sticker Maker, under the microscope.</h1>
   <p class="subtitle">I made a tool that turns pet photos into transparent stickers for Catflakes. Making it work was one problem. Looking at it as a security engineer raises another: what happens when an API takes untrusted photos and asks a server to process them?</p>
-  <div class="study-meta"><span>React + Vite</span><span>FastAPI + Python</span><span>Image processing</span><span>GitHub Actions</span><span>Security review: ongoing</span></div>
+  <div class="study-meta"><span>React + Vite</span><span>FastAPI + Python</span><span>Image processing</span><span>GitHub Actions</span><span>Security review: ongoing</span><span>Source repo: private</span></div>
 </header>
 <nav class="study-links" aria-label="Project links">
   <a href="https://mccab22k.github.io/pet-sticker-maker/">Use the app ↗</a>
-  <a href="https://github.com/mccab22k/pet-sticker-maker">Source repository ↗</a>
-  <a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/.github/workflows/ci.yml">Current CI workflow ↗</a>
-  <a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/backend/app/main.py">API implementation ↗</a>
+  <a href="https://github.com/mccab22k/pet-sticker-maker">Source repository (Private) ↗</a>
+  <a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/.github/workflows/ci.yml">Current CI workflow (Private) ↗</a>
+  <a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/backend/app/main.py">API implementation (Private) ↗</a>
 </nav>
 <div class="study-layout">
   <div class="study-main">
@@ -81,7 +81,7 @@
         <div><strong>02 / API</strong><small>FastAPI: multipart upload, image validation, segmentation and rendering</small></div>
         <div><strong>03 / Output</strong><small>PNG/base64 result or temporary Catflakes package handoff</small></div>
       </div>
-      <p><strong>Scope:</strong> this is a source-based security case study of an application I built, not a penetration test or a claim that every proposed control is deployed.</p>
+      <p><strong>Scope:</strong> this is a source-based security case study of an application I built, not a penetration test or a claim that every proposed control is deployed. The application can be used publicly; its GitHub source links are private.</p>
     </section>
     <section class="study-section" id="existing">
       <div class="eyebrow">02 / What exists today</div>
@@ -93,7 +93,7 @@
         <article><h3>Tests + deploy workflow</h3><p>GitHub Actions runs Python tests and a frontend build on pushes and pull requests. A separate Pages workflow sets explicit read, Pages-write, and OIDC-token permissions.</p></article>
       </div>
       <p>Tests cover successful image processing, PNG dimensions, candidate detection, Catflakes asset round-trips, and segmentation behavior. These are useful regression checks, but successful feature tests do not establish that hostile inputs are handled safely.</p>
-      <p><a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/backend/tests/test_api.py">Read the backend tests →</a></p>
+      <p><a href="https://github.com/mccab22k/pet-sticker-maker/blob/main/backend/tests/test_api.py">Backend tests (Private) →</a></p>
     </section>
     <section class="study-section" id="findings">
       <div class="eyebrow">03 / What I would harden</div>
