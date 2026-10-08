@@ -213,11 +213,11 @@ A GitHub Pages homepage for active projects, prototypes, and build notes.
 
 #### Deployment / External Services
 
-- Hosting: no public launch link is documented in this repo.
-- Source control: not documented in this repo.
-- Database: public housing datasets and local/project data workflow are still being defined.
+- Hosting: GitHub Pages beta at https://mccab22k.github.io/nyc-stabilized-apartment-hunt/ .
+- Source control: private GitHub repository at https://github.com/mccab22k/nyc-stabilized-apartment-hunt .
+- Database: static public-data JSON; saved leads and notes default to browser localStorage.
 - Analytics: not documented in this repo.
-- Notes: public portfolio materials should describe the goals and data approach without linking the live project.
+- Notes: the portfolio links the public beta; official data limitations remain relevant.
 
 ## Infrastructure and Home Labs
 
