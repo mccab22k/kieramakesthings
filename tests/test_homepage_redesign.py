@@ -72,11 +72,55 @@ class HomepageRedesignTests(unittest.TestCase):
             self.assertRegex(page, r'href="styles\.css\?v=[a-z0-9-]+"')
             self.assertRegex(page, r'src="theme\.js\?v=[a-z0-9-]+"')
 
-    def test_security_systems_link_sits_next_to_security_work_filter(self):
-        self.assertIn("securityButton.insertAdjacentElement('afterend', securitySystemsLink);", SCRIPT)
-        self.assertIn("securitySystemsLink.href = 'security-systems.html';", SCRIPT)
-        self.assertIn("securitySystemsLink.textContent = 'Security Systems →';", SCRIPT)
-        self.assertIn(".filter-link {", STYLES)
+    def test_navigation_distinguishes_pages_from_filters(self):
+        for link in ('href="#home"', 'href="security-systems.html"',
+                     'href="#apps"', 'href="#experiments"', 'href="#about"'):
+            self.assertIn(link, INDEX)
+        for label in ("Highlights", "All Projects", "Live on App Store",
+                      "Security", "Apps &amp; Products", "Experiments"):
+            self.assertIn(label, INDEX)
+        self.assertNotIn("securityButton.insertAdjacentElement", SCRIPT)
+        self.assertIn('data-nav-filter="apps"', INDEX)
+        self.assertIn("window.addEventListener('hashchange', followPortfolioHash)", SCRIPT)
+        self.assertIn(".primary-nav {", STYLES)
+
+    def test_app_store_filter_has_exactly_four_released_apps(self):
+        cards = re.findall(
+            r'<div class="project-card[^>]+id="([^"]+)" data-filter-tags="([^"]+)"',
+            INDEX,
+        )
+        released = {project_id for project_id, tags in cards
+                    if "app-store" in tags.split()}
+        self.assertEqual(
+            released, {"orbit", "time-here-time-there", "time-since", "catflakes"}
+        )
+        self.assertIn('data-filter="app-store" aria-pressed="false">Live on App Store', INDEX)
+        self.assertIn('a.app-store-badge[href^="https://apps.apple.com/"]', SCRIPT)
+        self.assertEqual(INDEX.count('href="https://apps.apple.com/us/app/'), 4)
+        self.assertNotIn('id="passport-buddy" data-filter-tags="live app-store"', INDEX)
+
+    def test_all_sections_and_cross_listed_projects_have_a_home(self):
+        self.assertIn('id="featured"', INDEX)
+        self.assertIn('id="apps"', INDEX)
+        self.assertIn('class="projects-grid products-grid"', INDEX)
+        self.assertIn('id="experiments"', INDEX)
+        self.assertIn('class="projects-grid experiments-grid"', INDEX)
+        self.assertIn('id="about"', INDEX)
+        self.assertIn("organizePortfolioSections();", SCRIPT)
+        for id in ('better-nyc-map', 'rent-stabilized-map', 'pet-sticker-maker'):
+            self.assertIn(f"'{id}'", SCRIPT)
+        self.assertIn("experiments.prepend(catflakes)", SCRIPT)
+        self.assertIn('id="catflakes" data-filter-tags="live app-store apps experiments fun"', INDEX)
+
+    def test_security_page_has_three_distinct_entryways(self):
+        hub = SUPPORTING_PAGES[1]
+        self.assertIn("<h1>Security Engineering</h1>", hub)
+        for text in ("Professional systems", "Application security",
+                     "Privacy &amp; personal infrastructure"):
+            self.assertIn(text, hub)
+        self.assertIn("8 sanitized case studies", hub)
+        self.assertIn("2 studies", hub)
+        self.assertIn("2 tools", hub)
 
     def test_homepage_security_preview_has_curated_projects_then_cta(self):
         security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
@@ -104,7 +148,7 @@ class HomepageRedesignTests(unittest.TestCase):
         featured = SCRIPT[featured_start:]
         featured = featured.split("`);", 1)[0]
         self.assertIn('class="project-card featured featured-privacy"', featured)
-        self.assertIn('data-filter-tags="live security"', featured)
+        self.assertIn('data-filter-tags="live security apps"', featured)
         self.assertIn('Live · Personal Security · v1', featured)
         self.assertIn('CCPA/GDPR request templates', featured)
         self.assertIn('Profile and removal state stay in the browser.', featured)
@@ -112,10 +156,10 @@ class HomepageRedesignTests(unittest.TestCase):
         self.assertIn('Fresh sessions use a fictional profile by default', featured)
 
     def test_personal_security_is_part_of_security_work(self):
-        self.assertIn("securityButton.dataset.filter = 'security';", SCRIPT)
+        self.assertIn('data-filter="security"', INDEX)
         self.assertNotIn("personalSecurityButton", SCRIPT)
         self.assertIn('id="raspberry-pi-adguard" data-filter-tags="wip security"', INDEX)
-        self.assertIn('data-filter-tags="live security"', SCRIPT)
+        self.assertIn('data-filter-tags="live security apps"', SCRIPT)
         self.assertIn('href="security-systems.html#no-more-data-brokers"', SCRIPT)
 
     def test_security_hub_combines_all_sections_and_preserves_old_urls(self):
@@ -149,20 +193,21 @@ class HomepageRedesignTests(unittest.TestCase):
         security_markup = SCRIPT.split('class="projects-grid security-grid"', 1)[1]
         security_markup = security_markup.split("`);", 1)[0]
         self.assertEqual(security_markup.count('data-security-detail="true"'), 6)
-        self.assertIn("if (isSecurityCta) return selectedFilter === 'all';", SCRIPT)
-        self.assertIn("if (selectedFilter === 'all') return !isSecurityDetail;", SCRIPT)
+        self.assertIn("if (selectedFilter === 'all') return !isSecurityCta;", SCRIPT)
+        self.assertIn("if (selectedFilter === 'highlights') return highlightIds.has(card.id);", SCRIPT)
+        self.assertIn("if (isSecurityCta) return false;", SCRIPT)
         self.assertIn("filterButton.click();", SCRIPT)
 
     def test_security_grid_is_two_columns_and_collapses_on_mobile(self):
         self.assertRegex(
             STYLES,
-            r"\.projects-grid\.security-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)",
+            r"\.projects-grid\.security-grid,\s*\.projects-grid\.products-grid,"
+            r"\s*\.projects-grid\.experiments-grid\s*\{"
+            r"[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)",
         )
         mobile = STYLES.split("@media (max-width: 780px)", 1)[1]
-        self.assertRegex(
-            mobile,
-            r"\.projects-grid\.security-grid\s*\{[^}]*grid-template-columns:\s*1fr",
-        )
+        self.assertIn(".projects-grid.experiments-grid { grid-template-columns: 1fr; }", mobile)
+
 
     def test_hidden_filter_state_overrides_featured_card_layout(self):
         self.assertRegex(
