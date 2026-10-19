@@ -26,7 +26,7 @@ function injectSecuritySystems() {
   if (!featuredGrid || document.querySelector('#security-work')) return;
 
   featuredGrid.insertAdjacentHTML('afterend', `
-    <div class="section-label" id="security-work">02 / Security Engineering · <a href="security-systems.html">Explore all case studies →</a></div>
+    <div class="section-label" id="security-work">Selected security projects · <a href="security-systems.html">All security case studies →</a></div>
     <div class="projects-grid security-grid">
       <div class="project-card" id="access-governance-system" data-filter-tags="security" data-security-preview="project">
         <div class="status-badge">Production</div>
