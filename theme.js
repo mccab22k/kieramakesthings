@@ -521,10 +521,35 @@ document.querySelectorAll('.project-jump-link').forEach((link) => {
   });
 });
 
-if (window.location.hash) {
-  window.addEventListener('load', () => {
-    highlightProjectCard(document.querySelector(window.location.hash));
-  });
+function followPortfolioHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (!hash) return;
+
+  const destinationFilters = {
+    home: 'highlights',
+    featured: 'highlights',
+    'security-work': 'security',
+    apps: 'apps',
+    experiments: 'experiments'
+  };
+  if (destinationFilters[hash]) {
+    const button = Array.from(filterButtons)
+      .find(item => item.dataset.filter === destinationFilters[hash]);
+    button?.click();
+    document.getElementById(hash)?.scrollIntoView({ block: 'start' });
+    return;
+  }
+  const target = document.getElementById(hash);
+  if (target?.classList.contains('project-card')) {
+    if (!projectMatchesFilter(target, 'highlights')) {
+      Array.from(filterButtons).find(item => item.dataset.filter === 'all')?.click();
+    }
+    highlightProjectCard(target);
+  } else {
+    target?.scrollIntoView({ block: 'start' });
+  }
 }
 
 applyProjectFilter('highlights');
+window.addEventListener('hashchange', followPortfolioHash);
+if (window.location.hash) window.addEventListener('load', followPortfolioHash);
