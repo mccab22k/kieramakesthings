@@ -96,7 +96,10 @@ class HomepageRedesignTests(unittest.TestCase):
         )
         self.assertIn('data-filter="app-store" aria-pressed="false">Live on App Store', INDEX)
         self.assertIn('a.app-store-badge[href^="https://apps.apple.com/"]', SCRIPT)
-        self.assertEqual(INDEX.count('href="https://apps.apple.com/us/app/'), 4)
+        self.assertEqual(len(re.findall(
+            r'<a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/',
+            INDEX,
+        )), 4)
         self.assertNotIn('id="passport-buddy" data-filter-tags="live app-store"', INDEX)
 
     def test_all_sections_and_cross_listed_projects_have_a_home(self):
