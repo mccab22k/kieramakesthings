@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selected Security Systems — Kiera Makes Things</title>
+  <title>Security Engineering — Kiera Makes Things</title>
   <meta name="description" content="Professional security engineering, AppSec coursework, and personal privacy projects including No More Data Brokers and AdGuard Home.">
-  <link rel="stylesheet" href="styles.css?v=editorial-9">
+  <link rel="stylesheet" href="styles.css?v=editorial-12">
   <style>
     .case-hero {
       max-width: none;
@@ -357,6 +357,29 @@
         padding-right: 18px;
       }
     }
+    /* Entryways to the three types of security work, not a competing filter. */
+    .security-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); padding: 0; gap: 0; }
+    .security-tabs a {
+      display: flex; flex-direction: column; gap: 7px;
+      min-width: 0; min-height: 152px;
+      padding: 22px 24px; border-right: 2px solid var(--line);
+      font-family: inherit; letter-spacing: 0; text-transform: none;
+      text-decoration: none; color: var(--ink);
+    }
+    .security-tabs a:first-child { border-left: 0; }
+    .security-tabs a:last-child { border-right: 0; }
+    .security-tabs a span { color: var(--accent); font: 700 10px/1.4 "Courier New", monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .security-tabs a strong { font: 900 clamp(17px,1.8vw,23px)/1.12 Arial,Helvetica,sans-serif; letter-spacing: -.03em; }
+    .security-tabs a small { margin-top: auto; font: 12px/1.5 Arial,Helvetica,sans-serif; color: var(--muted); }
+    #professional-systems, #hands-on-appsec, #personal-security { scroll-margin-top: 18px; }
+    #hands-on-appsec .personal-security-card { background: var(--accent-soft); }
+    #personal-security .personal-security-card { background: var(--surface); }
+    #hands-on-appsec .project-meta, #personal-security .project-meta { margin-bottom: 10px; }
+    @media (max-width: 840px) {
+      .security-tabs { grid-template-columns: 1fr; }
+      .security-tabs a { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 18px; }
+      .security-tabs a:last-child { border-bottom: 0; }
+    }
   </style>
 </head>
 <body>
@@ -364,28 +387,46 @@
     <nav class="topbar">
       <a class="logo" href="./">KMT /</a>
       <div class="topbar-actions">
+        <div class="primary-nav" aria-label="Primary navigation">
+          <a href="./">Home</a>
+          <a href="security-systems.html" aria-current="page">Security</a>
+          <a href="./#apps">Apps</a>
+          <a href="./#experiments">Experiments</a>
+          <a href="./#about">About</a>
+        </div>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
-        <a href="./">Back to projects</a>
         <a href="https://github.com/mccab22k">GitHub</a>
       </div>
     </nav>
 
     <header class="case-hero">
-      <div class="eyebrow">Professional systems · Sanitized case studies</div>
-      <h1>Security systems built for safer access and usable operations.</h1>
+      <div class="eyebrow">Security work / Production systems, application security, personal privacy</div>
+      <h1>Security Engineering</h1>
       <p class="subtitle">Professional security systems, application security, and the tools I make to protect my own data and devices. Work for employers is intentionally generalized to protect company systems and configuration.</p>
     </header>
 
-    <nav class="security-tabs" aria-label="Security portfolio sections">
-      <a href="#professional-systems">Professional Systems</a>
-      <a href="#hands-on-appsec">Hands-on AppSec</a>
-      <a href="#personal-security">Personal Security</a>
+    <nav class="security-tabs" aria-label="Explore security work by type">
+      <a href="#professional-systems">
+        <span>01 / Production</span>
+        <strong>Professional systems</strong>
+        <small>8 sanitized case studies · Identity, access, endpoint, automation</small>
+      </a>
+      <a href="#hands-on-appsec">
+        <span>02 / Code &amp; testing</span>
+        <strong>Application security</strong>
+        <small>2 studies · Pet Sticker Maker security and NYU AppSec</small>
+      </a>
+      <a href="#personal-security">
+        <span>03 / For everyone</span>
+        <strong>Privacy &amp; personal infrastructure</strong>
+        <small>2 tools · Data broker removal and network privacy</small>
+      </a>
     </nav>
 
     <section class="case-intro" aria-label="Overview">
       <div>
         <div class="section-label">Scope</div>
-        <p class="project-description">These were built as operational security infrastructure—not isolated proofs of concept. The work combines application development, identity architecture, API integration, safe automation, reconciliation, and the less glamorous work of making systems maintainable.</p>
+        <p class="project-description">Professional work here covers security systems I built or helped implement for real operations. My own software and academic labs sit in separate sections, with public links where available. A production system, a code review, and a consumer privacy tool show different kinds of work; none should be mistaken for the others.</p>
       </div>
       <aside class="case-note">
         <strong>Public-boundary note</strong>
@@ -393,7 +434,8 @@
       </aside>
     </section>
 
-    <section class="systems" id="professional-systems" aria-label="Selected security systems">
+    <div class="section-label">01 / Professional Systems · Production security engineering</div>
+    <section class="systems" id="professional-systems" aria-label="Selected professional security systems">
       <article class="system-panel" id="access-governance">
         <div class="system-heading">
           <div>
@@ -697,7 +739,7 @@
 
 
     <section class="personal-security" id="hands-on-appsec" aria-labelledby="hands-on-heading">
-      <div class="section-label">Application security / Case studies</div>
+      <div class="section-label">02 / Application &amp; Software Security · Code, testing and review</div>
       <h2 id="hands-on-heading" class="project-title">Security on the software side, too.</h2>
       <p class="project-description">Two kinds of evidence: reviewing software I built and working through intentionally vulnerable code in a university course. Neither should be confused with the sanitized professional systems above.</p>
       <div class="personal-security-grid">
@@ -721,8 +763,8 @@
     </section>
 
     <section class="personal-security" id="personal-security" aria-labelledby="personal-security-heading">
-      <div class="section-label">Personal Security / Privacy tools and home lab</div>
-      <h2 id="personal-security-heading" class="project-title">Securing yourself</h2>
+      <div class="section-label">03 / Privacy &amp; Personal Infrastructure · Consumer tools</div>
+      <h2 id="personal-security-heading" class="project-title">Tools for protecting your own data</h2>
       <p class="project-description">Projects for reducing personal data exposure and blocking trackers without outsourcing the entire problem to another subscription service.</p>
       <div class="personal-security-grid" aria-label="Personal security projects">
       <article class="personal-security-card" id="no-more-data-brokers">
@@ -772,6 +814,6 @@
     </footer>
   </main>
 
-  <script src="theme.js?v=editorial-11"></script>
+  <script src="theme.js?v=editorial-12"></script>
 </body>
 </html>
