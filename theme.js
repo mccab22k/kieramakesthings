@@ -22,42 +22,11 @@ themeToggle?.addEventListener('click', () => {
 });
 
 function injectSecuritySystems() {
-  const filters = document.querySelector('.project-filters');
   const featuredGrid = document.querySelector('.featured-projects');
-
-  if (!filters || !featuredGrid || document.querySelector('#security-work')) return;
-
-  const securityButton = document.createElement('button');
-  securityButton.className = 'filter-button';
-  securityButton.type = 'button';
-  securityButton.dataset.filter = 'security';
-  securityButton.textContent = 'Security Work';
-
-  const wipButton = filters.querySelector('[data-filter="wip"]');
-  filters.insertBefore(securityButton, wipButton || filters.querySelector('.filter-note'));
-
-  // Keep the security category filter and the full case-study page as separate actions.
-  const securitySystemsLink = document.createElement('a');
-  securitySystemsLink.className = 'filter-link';
-  securitySystemsLink.href = 'security-systems.html';
-  securitySystemsLink.textContent = 'Security Systems →';
-  securitySystemsLink.setAttribute('aria-label', 'View all security systems and case studies');
-  securityButton.insertAdjacentElement('afterend', securitySystemsLink);
-
-  const funButton = document.createElement('button');
-  funButton.className = 'filter-button';
-  funButton.type = 'button';
-  funButton.dataset.filter = 'fun';
-  funButton.textContent = 'Fun Projects';
-  filters.insertBefore(funButton, wipButton || filters.querySelector('.filter-note'));
-
-  const filterNote = filters.querySelector('.filter-note');
-  if (filterNote) {
-    filterNote.textContent = 'Security includes professional systems, AppSec work, and personal privacy projects. App Store includes launched and planned releases.';
-  }
+  if (!featuredGrid || document.querySelector('#security-work')) return;
 
   featuredGrid.insertAdjacentHTML('afterend', `
-    <div class="section-label" id="security-work">Selected security systems · <a href="security-systems.html">View all security work →</a></div>
+    <div class="section-label" id="security-work">02 / Security Engineering · <a href="security-systems.html">Explore all case studies →</a></div>
     <div class="projects-grid security-grid">
       <div class="project-card" id="access-governance-system" data-filter-tags="security" data-security-preview="project">
         <div class="status-badge">Production</div>
@@ -178,7 +147,7 @@ function updateCatflakesLaunchStatus() {
   if (!card) return;
 
   const appStoreUrl = 'https://apps.apple.com/us/app/catflakes/id6795675453';
-  card.dataset.filterTags = 'live app-store fun';
+  card.dataset.filterTags = 'live app-store apps fun';
 
   const status = card.querySelector('.status-badge');
   if (status) status.textContent = 'Live';
@@ -212,7 +181,7 @@ function updateCatflakesLaunchStatus() {
   }
 
   const functionalAppsLabel = Array.from(document.querySelectorAll('.section-label'))
-    .find((label) => label.textContent.trim() === 'Functional Apps');
+    .find((label) => label.id === 'apps');
   const functionalAppsGrid = functionalAppsLabel?.nextElementSibling;
 
   if (functionalAppsGrid?.classList.contains('projects-grid')) {
@@ -238,12 +207,12 @@ function injectFunProjects() {
   if (document.querySelector('#nyc-trolley-problem')) return;
 
   const prototypesLabel = Array.from(document.querySelectorAll('.section-label'))
-    .find((label) => label.textContent.trim() === 'Prototypes');
+    .find((label) => label.id === 'experiments');
   const prototypesGrid = prototypesLabel?.nextElementSibling;
   if (!prototypesGrid?.classList.contains('projects-grid')) return;
 
   prototypesGrid.insertAdjacentHTML('afterbegin', `
-    <div class="project-card" id="nyc-trolley-problem" data-filter-tags="wip fun">
+    <div class="project-card" id="nyc-trolley-problem" data-filter-tags="wip fun experiments">
       <div class="status-badge">Concept</div>
       <h2 class="project-title">The NYC Trolley Problem</h2>
       <div class="project-meta">NYC culture · Transit · Swipe game</div>
@@ -268,7 +237,7 @@ function updateTimeSinceLaunchStatus() {
   if (!card) return;
 
   const appStoreUrl = 'https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073';
-  card.dataset.filterTags = 'live app-store';
+  card.dataset.filterTags = 'live app-store apps';
 
   const status = card.querySelector('.status-badge');
   if (status) status.textContent = 'Live';
@@ -302,7 +271,7 @@ function updateTimeHereLaunchStatus() {
   if (!card) return;
 
   const appStoreUrl = 'https://apps.apple.com/us/app/time-here-time-there/id6796821781';
-  card.dataset.filterTags = 'live app-store';
+  card.dataset.filterTags = 'live app-store apps';
 
   const status = card.querySelector('.status-badge');
   if (status) status.textContent = 'Live';
@@ -336,7 +305,7 @@ function injectFeaturedNoMoreDataBrokers() {
   if (!featuredGrid || document.querySelector('#no-more-data-brokers-featured')) return;
 
   featuredGrid.insertAdjacentHTML('beforeend', `
-    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security">
+    <div class="project-card featured featured-privacy" id="no-more-data-brokers-featured" data-filter-tags="live security apps">
       <div>
         <div class="status-badge">Live · Personal Security · v1</div>
         <h2 class="project-title">No More Data Brokers</h2>
@@ -357,6 +326,44 @@ function injectFeaturedNoMoreDataBrokers() {
       </div>
     </div>
   `);
+}
+
+function organizePortfolioSections() {
+  const appsGrid = document.querySelector('#apps + .projects-grid');
+  const experimentsGrid = document.querySelector('#experiments + .projects-grid');
+  const securityGrid = document.querySelector('#security-work + .projects-grid');
+  if (!appsGrid || !experimentsGrid || !securityGrid) return;
+
+  // Keep each project in one primary section; filters can expose secondary associations.
+  for (const id of ['better-nyc-map', 'rent-stabilized-map', 'pet-sticker-maker']) {
+    const card = document.getElementById(id);
+    if (card) appsGrid.append(card);
+  }
+  const wearable = document.getElementById('wearable-computing');
+  if (wearable) experimentsGrid.append(wearable);
+
+  const adguard = document.getElementById('raspberry-pi-adguard');
+  if (adguard) {
+    adguard.dataset.securityDetail = 'true';
+    securityGrid.append(adguard);
+  }
+
+  // These empty wrappers predate the new portfolio categories.
+  for (const id of ['research-archive']) {
+    const label = document.getElementById(id);
+    if (label?.nextElementSibling?.classList.contains('projects-grid') &&
+        !label.nextElementSibling.querySelector('.project-card')) {
+      label.nextElementSibling.remove();
+      label.remove();
+    }
+  }
+  const legacyHomeLabLabel = Array.from(document.querySelectorAll('.section-label'))
+    .find(label => label.textContent.trim() === 'Infrastructure and home labs');
+  if (legacyHomeLabLabel?.nextElementSibling?.classList.contains('projects-grid') &&
+      !legacyHomeLabLabel.nextElementSibling.querySelector('.project-card')) {
+    legacyHomeLabLabel.nextElementSibling.remove();
+    legacyHomeLabLabel.remove();
+  }
 }
 
 function clarifyPlatformLinks() {
@@ -394,9 +401,16 @@ injectFunProjects();
 updateTimeSinceLaunchStatus();
 updateTimeHereLaunchStatus();
 injectFeaturedNoMoreDataBrokers();
+organizePortfolioSections();
 applyProjectOrigins();
 clarifyPlatformLinks();
 
+const highlightIds = new Set([
+  'orbit', 'no-more-data-brokers-featured',
+  'access-governance-system', 'workspace-gam-automation', 'security-projects-more',
+  'passport-buddy', 'time-here-time-there', 'time-since', 'catflakes',
+  'nyc-trolley-problem', 'personality-systems-research'
+]);
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
 const projectGrids = document.querySelectorAll('.projects-grid');
@@ -407,8 +421,11 @@ function projectMatchesFilter(card, selectedFilter) {
   const isSecurityCta = card.dataset.securityCta === 'true';
   const isSecurityDetail = card.dataset.securityDetail === 'true';
 
-  if (isSecurityCta) return selectedFilter === 'all';
-  if (selectedFilter === 'all') return !isSecurityDetail;
+  if (selectedFilter === 'highlights') return highlightIds.has(card.id);
+  if (selectedFilter === 'all') return !isSecurityCta;
+  if (isSecurityCta) return false;
+  if (selectedFilter === 'app-store') return tags.includes('app-store') &&
+    Boolean(card.querySelector('a.app-store-badge[href^="https://apps.apple.com/"]'));
   return tags.includes(selectedFilter);
 }
 
@@ -450,10 +467,27 @@ filterButtons.forEach((button) => {
     const selectedFilter = button.dataset.filter;
 
     filterButtons.forEach((currentButton) => {
-      currentButton.classList.toggle('active', currentButton === button);
+      const active = currentButton === button;
+      currentButton.classList.toggle('active', active);
+      currentButton.setAttribute('aria-pressed', String(active));
     });
 
     applyProjectFilter(selectedFilter);
+    const filterNote = document.querySelector('.filter-note');
+    if (filterNote) {
+      filterNote.textContent = selectedFilter === 'app-store'
+        ? 'Only apps available now on the Apple App Store.'
+        : selectedFilter === 'highlights'
+          ? 'Selected projects across security, software, and experiments.'
+          : 'Showing ' + button.textContent.trim().toLowerCase() + '.';
+    }
+  });
+});
+
+document.querySelectorAll('[data-nav-filter]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const selected = document.querySelector(`.filter-button[data-filter="${link.dataset.navFilter}"]`);
+    selected?.click();
   });
 });
 
@@ -493,4 +527,4 @@ if (window.location.hash) {
   });
 }
 
-applyProjectFilter('all');
+applyProjectFilter('highlights');
