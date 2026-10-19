@@ -11,14 +11,21 @@
   <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/">
   <meta name="twitter:card" content="summary">
 
-  <link rel="stylesheet" href="styles.css?v=editorial-10">
+  <link rel="stylesheet" href="styles.css?v=editorial-12">
 </head>
 <body>
-  <main class="container">
+  <main class="container" id="home">
     <!-- Top navigation -->
     <nav class="topbar">
       <a class="logo" href="./">KMT_</a>
       <div class="topbar-actions">
+        <div class="primary-nav" aria-label="Primary navigation">
+          <a href="#home" data-nav-filter="highlights" aria-current="page">Home</a>
+          <a href="security-systems.html">Security</a>
+          <a href="#apps" data-nav-filter="apps">Apps</a>
+          <a href="#experiments" data-nav-filter="experiments">Experiments</a>
+          <a href="#about">About</a>
+        </div>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
         <a href="https://github.com/mccab22k">GitHub</a>
       </div>
@@ -38,18 +45,21 @@
     </header>
 
     <!-- Project filters -->
-    <div class="project-filters" aria-label="Project filters">
-      <button class="filter-button active" type="button" data-filter="all">All</button>
-      <button class="filter-button" type="button" data-filter="live">Live</button>
-      <button class="filter-button" type="button" data-filter="app-store">App Store</button>
-      <button class="filter-button" type="button" data-filter="wip">Research / WIP</button>
-      <span class="filter-note">App Store shows launched, pending, and planned releases. Android planned.</span>
+    <div class="project-filters" aria-label="Filter projects">
+      <button class="filter-button active" type="button" data-filter="highlights" aria-pressed="true">Highlights</button>
+      <button class="filter-button" type="button" data-filter="all" aria-pressed="false">All Projects</button>
+      <button class="filter-button" type="button" data-filter="app-store" aria-pressed="false">Live on App Store</button>
+      <button class="filter-button" type="button" data-filter="security" aria-pressed="false">Security</button>
+      <button class="filter-button" type="button" data-filter="apps" aria-pressed="false">Apps &amp; Products</button>
+      <button class="filter-button" type="button" data-filter="experiments" aria-pressed="false">Experiments</button>
+      <button class="filter-button" type="button" data-filter="wip" aria-pressed="false">Research / WIP</button>
+      <span class="filter-note" aria-live="polite">Selected projects across security, software, and experiments.</span>
     </div>
 
     <!-- Featured project -->
-    <div class="section-label">Featured project</div>
+    <div class="section-label" id="featured">01 / Featured Builds</div>
     <div class="projects-grid featured-projects">
-      <div class="project-card featured featured-orbit" id="orbit" data-filter-tags="live app-store">
+      <div class="project-card featured featured-orbit" id="orbit" data-filter-tags="live app-store apps">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" aria-label="Orbit, A Fancy Planner on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
           <span class="store-badge play-store-badge" role="img" aria-label="Orbit, A Fancy Planner Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
@@ -79,9 +89,9 @@
     </div>
 
     <!-- Functional apps -->
-    <div class="section-label">Functional Apps</div>
+    <div class="section-label" id="apps">03 / Apps &amp; Products · Shipped and in progress</div>
     <div class="projects-grid">
-      <div class="project-card" id="passport-buddy" data-filter-tags="live app-store">
+      <div class="project-card" id="passport-buddy" data-filter-tags="live apps">
         <div class="store-badges">
           <span class="store-badge app-store-badge" role="img" aria-label="Passport Buddy App Store release pending" title="App Store release pending"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></span>
           <span class="store-badge play-store-badge" role="img" aria-label="Passport Buddy Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
@@ -91,7 +101,7 @@
           <div class="card-body">
             <h2 class="project-title">Passport Buddy</h2>
         <div class="project-meta">Started January 2020 &middot; Ongoing travel planning</div>
-        <div class="project-meta">Travel planner · Supabase · App Store pending/planned</div>
+        <div class="project-meta">Travel planner · Web app · iOS planned</div>
         <p class="project-hook">Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
         <p class="project-description">Group travel planning by passport, visa friction, and departure airport, with destination comparisons and shared trip shortlists. Schengen itinerary checks and meeting-airport optimization remain goals.</p>
         <div class="project-links">
@@ -113,7 +123,7 @@
       
       </div>
 
-      <div class="project-card" id="time-here-time-there" data-filter-tags="live app-store">
+      <div class="project-card" id="time-here-time-there" data-filter-tags="live app-store apps">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" aria-label="Time Here, Time There on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
           <span class="store-badge play-store-badge" role="img" aria-label="Time Here, Time There Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
@@ -144,7 +154,7 @@
       
       </div>
 
-      <div class="project-card" id="time-since" data-filter-tags="live app-store">
+      <div class="project-card" id="time-since" data-filter-tags="live app-store apps">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073" aria-label="Time Since Chore Reminder on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
           <span class="store-badge play-store-badge" role="img" aria-label="Time Since Chore Manager Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
@@ -179,9 +189,9 @@
     </div>
 
     <!-- Prototypes -->
-    <div class="section-label">Prototypes</div>
+    <div class="section-label" id="experiments">04 / Experiments &amp; Research</div>
     <div class="projects-grid">
-      <div class="project-card" id="catflakes" data-filter-tags="live app-store">
+      <div class="project-card" id="catflakes" data-filter-tags="live app-store apps fun">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/catflakes/id6795675453" aria-label="Catflakes on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
           <span class="store-badge play-store-badge" role="img" aria-label="Catflakes Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
@@ -213,7 +223,7 @@
       
       </div>
 
-      <div class="project-card" id="better-nyc-map" data-filter-tags="live wip">
+      <div class="project-card" id="better-nyc-map" data-filter-tags="live wip apps">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Better NYC Map</h2>
         <div class="project-meta">Route planner · Prototype · Supabase</div>
@@ -232,7 +242,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="rent-stabilized-map" data-filter-tags="live wip">
+      <div class="project-card" id="rent-stabilized-map" data-filter-tags="live wip apps">
         <div class="status-badge">Beta</div>
         <h2 class="project-title">Rent Stabilized Map</h2>
         <div class="project-meta">NYC housing · Data mapping · Research tool</div>
@@ -250,7 +260,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="pet-sticker-maker" data-filter-tags="wip">
+      <div class="project-card" id="pet-sticker-maker" data-filter-tags="wip apps">
         <div class="status-badge">Paused</div>
         <h2 class="project-title">Pet Sticker Maker</h2>
         <div class="project-meta">Computer vision · Paused · Stickers</div>
@@ -260,6 +270,7 @@
           <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub (Private)</a>
           <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
+          <a href="pet-sticker-maker-security.html" class="project-link">Security Review</a>
         </div>
         <details class="why-made" open>
           <summary>Why I Made This</summary>
@@ -269,7 +280,7 @@
         </details>
       </div>
 
-      <div class="project-card" id="colony-cat-management" data-filter-tags="wip">
+      <div class="project-card" id="colony-cat-management" data-filter-tags="wip experiments">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Colony Cat Management</h2>
         <div class="project-meta">Graduate-school era &middot; Computer vision &middot; TNR</div>
@@ -293,14 +304,15 @@
         </aside>
       </div>
 
-      <div class="project-card" id="personality-systems-research" data-filter-tags="wip">
+      <div class="project-card" id="personality-systems-research" data-filter-tags="wip experiments fun">
         <div class="status-badge">Prototype</div>
         <h2 class="project-title">Personality Systems Research</h2>
         <div class="project-meta">Assessment · Prototype · Identity</div>
         <p class="project-hook">Most personality tests give you one tidy label and send you on your way. I wanted to see the messier version: overlapping traits, relative strengths, and changes over time.</p>
         <p class="project-description">A personality assessment experiment combining scaled Enneagram scoring and longitudinal pattern tracking.</p>
         <div class="project-links">
-          <a href="personality.html" class="project-link">Explore Personality Systems</a>\n          <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Launch App</a>
+          <a href="personality.html" class="project-link">Explore Personality Systems</a>
+          <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Launch App</a>
           <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub (Private)</a>
           <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
         </div>
@@ -335,9 +347,9 @@
     </div>
 
     <!-- Research and concepts -->
-    <div class="section-label">Research / concepts</div>
+    <div class="section-label" id="research-archive">Research / concepts</div>
     <div class="projects-grid">
-      <div class="project-card" data-filter-tags="wip">
+      <div class="project-card" id="wearable-computing" data-filter-tags="wip experiments">
         <div class="status-badge">Research</div>
         <h2 class="project-title">Wearable Computing</h2>
         <div class="project-meta">Hardware concept · Research · Sensors</div>
@@ -348,6 +360,13 @@
         </div>
       </div>
     </div>
+
+    <section class="about-panel" id="about" aria-labelledby="about-heading">
+      <div class="eyebrow">About / The person making these things</div>
+      <h2 id="about-heading">Security engineer. Software builder. Very willing to make a tool for a small problem.</h2>
+      <p>I work on security systems, and I make apps because I keep finding problems I'd like to solve. Some are useful day to day; some are experiments that got out of hand. I care about privacy, clear interfaces, and software people can actually use.</p>
+      <a class="project-link" href="https://github.com/mccab22k">GitHub</a>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -366,7 +385,7 @@
   </main>
 
   <!-- Theme toggle -->
-  <script src="theme.js?v=editorial-11"></script>
+  <script src="theme.js?v=editorial-12"></script>
 
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>
