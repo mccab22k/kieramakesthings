@@ -147,7 +147,7 @@ function updateCatflakesLaunchStatus() {
   if (!card) return;
 
   const appStoreUrl = 'https://apps.apple.com/us/app/catflakes/id6795675453';
-  card.dataset.filterTags = 'live app-store apps fun';
+  card.dataset.filterTags = 'live app-store apps experiments fun';
 
   const status = card.querySelector('.status-badge');
   if (status) status.textContent = 'Live';
@@ -430,6 +430,16 @@ function projectMatchesFilter(card, selectedFilter) {
 }
 
 function applyProjectFilter(selectedFilter) {
+  // Catflakes is a shipped product and a fun project; present it in the
+  // category the visitor chose without creating a second, stale card.
+  const catflakes = document.getElementById('catflakes');
+  const apps = document.querySelector('#apps + .projects-grid');
+  const experiments = document.querySelector('#experiments + .projects-grid');
+  if (catflakes && apps && experiments) {
+    if (selectedFilter === 'experiments') experiments.prepend(catflakes);
+    else apps.insertBefore(catflakes, document.getElementById('better-nyc-map'));
+  }
+
   projectCards.forEach((card) => {
     card.classList.toggle('is-hidden', !projectMatchesFilter(card, selectedFilter));
   });
