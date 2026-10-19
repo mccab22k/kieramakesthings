@@ -31,8 +31,10 @@ body.dark {
 
 html { scroll-behavior: smooth; }
 
+/* Native hidden attribute must beat component display rules (used by filters). */
+[hidden] { display: none !important; }
+
 body {
-  counter-reset: project;
   min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
@@ -93,7 +95,7 @@ a { color: inherit; }
 .primary-nav a[aria-current="page"] {
   border-bottom-color: var(--accent);
 }
-#home, #apps, #experiments, #about, #security-work {
+#home, #apps, #experiments, #about, #security-work, #featured {
   scroll-margin-top: 16px;
 }
 
@@ -196,59 +198,6 @@ h1 {
   line-height: 1.5;
 }
 
-.project-filters {
-  display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  padding: 0 28px;
-  border-bottom: 2px solid var(--line);
-}
-
-.filter-button {
-  appearance: none;
-  border: 0;
-  border-right: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  padding: 13px 14px;
-  text-transform: uppercase;
-}
-
-.filter-button:first-child { border-left: 1px solid var(--line); }
-.filter-button:hover, .filter-button:focus-visible { background: var(--accent-soft); }
-.filter-button.active { background: var(--ink); color: var(--paper); }
-
-.filter-link {
-  display: inline-flex;
-  align-items: center;
-  border-right: 1px solid var(--line);
-  padding: 13px 14px;
-  color: var(--accent);
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-transform: uppercase;
-}
-.filter-link:hover, .filter-link:focus-visible { background: var(--accent-soft); }
-
-.filter-note {
-  align-self: center;
-  margin-left: auto;
-  padding: 8px 0 8px 16px;
-  color: var(--muted);
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  line-height: 1.35;
-}
-
 .section-label {
   display: flex;
   justify-content: space-between;
@@ -313,7 +262,6 @@ h1 {
 }
 
 .project-card {
-  counter-increment: project;
   position: relative;
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
@@ -330,7 +278,7 @@ h1 {
   grid-column: 1;
   grid-row: 1 / span 20;
   color: var(--accent);
-  content: counter(project, decimal-leading-zero);
+  content: attr(data-n);
   font-family: "Courier New", monospace;
   font-size: 13px;
   font-weight: 700;
@@ -371,8 +319,6 @@ h1 {
   line-height: 1.35;
   text-transform: uppercase;
 }
-
-.project-meta + .project-meta { display: none; }
 
 .status-badge {
   margin-bottom: 6px;
@@ -608,16 +554,12 @@ header:not(.hero-shell) { padding: 42px 28px; border-bottom: 2px solid var(--lin
 
 @media (max-width: 780px) {
   .container { width: 100%; border-right: 0; border-left: 0; }
-  .topbar { align-items: flex-start; padding: 14px 18px; }
-  .topbar-actions { gap: 12px; }
+  .topbar { padding: 12px 18px; }
   .hero-shell { grid-template-columns: 1fr; }
   .hero-main { padding: 38px 20px 34px; border-right: 0; border-bottom: 2px solid var(--line); }
   .working-principle { padding: 26px 20px; }
-  .project-filters { padding: 0; }
-  .filter-note { width: 100%; margin-left: 0; padding: 11px 18px; border-top: 1px solid var(--line); }
   .section-label { padding: 13px 18px; }
   .about-panel { padding: 26px 18px; }
-  .primary-nav { gap: 0 12px; }
   .featured-projects, .projects-grid.security-grid,
   .projects-grid.products-grid, .projects-grid.experiments-grid { grid-template-columns: 1fr; }
   .security-grid .project-card:nth-child(odd),
@@ -641,11 +583,293 @@ header:not(.hero-shell) { padding: 42px 28px; border-bottom: 2px solid var(--lin
 }
 
 @media (max-width: 460px) {
-  .topbar { flex-direction: column; }
-  .primary-nav { width: 100%; }
-  .primary-nav a { padding: 7px 0; }
-  .topbar-actions { justify-content: flex-start; }
   h1 { font-size: 45px; }
   .section-label::after { display: none; }
   .store-badges { top: 14px; right: 14px; }
+}
+
+/* ------------------------------------------------------------------
+   Redesign: global navigation, shelves, card types, filters, index.
+   Navigation between pages lives in .topbar; filtering within a page
+   lives in .filter-bar. They never repeat each other.
+   ------------------------------------------------------------------ */
+
+/* Keyboard users can bypass the header. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 20;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 700 12px/1 "Courier New", monospace;
+}
+.skip-link:focus { top: 12px; }
+
+/* One visible focus style for every interactive element. */
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* Global page navigation (same markup on every page). */
+.primary-nav { list-style: none; gap: 0 18px; }
+.primary-nav a { display: inline-block; padding: 8px 0; }
+.topbar .ext::after { color: var(--accent); content: " ↗"; }
+.topbar a:not(.logo):not(.ext)::after { content: none; }
+
+.menu-toggle {
+  display: none;
+  appearance: none;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: 700 12px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 780px) {
+  /* With JS, the nav collapses behind a Menu button; without JS it stays visible. */
+  .js .menu-toggle { display: inline-block; }
+  .topbar { flex-wrap: wrap; }
+  .js .topbar-actions { display: none; }
+  .js .topbar.is-open .topbar-actions { display: flex; }
+  .topbar-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+  }
+  .primary-nav { flex-direction: column; align-items: stretch; width: 100%; }
+  .primary-nav li, .topbar-actions > a, .topbar-actions > .theme-toggle {
+    border-top: 1px solid var(--line);
+  }
+  .primary-nav a, .topbar-actions > a, .topbar-actions > .theme-toggle {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    font-size: 14px;
+    text-align: left;
+  }
+  .topbar-actions > .theme-toggle { border-bottom: 0; }
+}
+
+/* Smaller hero used by Apps, Lab and All work. */
+.page-hero { padding: 38px 28px 32px; border-bottom: 2px solid var(--line); }
+.page-hero h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 14px; }
+header.page-hero { padding: 38px 28px 32px; }
+
+/* Two "doors" on the homepage: recruiters vs. people who want to use something. */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 2px solid var(--line);
+}
+.door {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.door + .door { border-left: 2px solid var(--line); }
+.door span {
+  color: var(--accent);
+  font: 700 10px/1.4 "Courier New", monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.door strong {
+  font: 900 clamp(20px, 2.4vw, 30px)/1.05 Arial Black, Arial, sans-serif;
+  letter-spacing: -.04em;
+}
+.door strong::after { color: var(--accent); content: " →"; }
+.door:hover, .door:focus-visible { background: var(--accent-soft); }
+.door-security { background: var(--accent-panel); color: var(--accent-panel-ink); }
+.door-security span { color: var(--accent-panel-ink); }
+.door-security strong::after { color: var(--accent-panel-ink); }
+.door-security:hover, .door-security:focus-visible {
+  background: color-mix(in srgb, var(--accent-panel) 85%, #000 15%);
+}
+
+/* Section headings that are real headings (were divs). */
+h2.section-label { font-size: 10px; }
+.section-label a { color: var(--accent); }
+.section-label.has-link::after { content: none; }
+
+/* Homepage shelves: short previews that link to the full category page. */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 2px solid var(--line);
+}
+.shelf-apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.shelf-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 24px 26px;
+  border-right: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  background: var(--surface);
+}
+.shelf > .shelf-card:nth-child(3n) { border-right: 0; }
+.shelf-apps > .shelf-card:nth-child(3n) { border-right: 2px solid var(--line); }
+.shelf-apps > .shelf-card:nth-child(2n) { border-right: 0; }
+.shelf-card h3 {
+  font: 900 clamp(22px, 2.2vw, 28px)/1 Arial Black, Arial, sans-serif;
+  letter-spacing: -.045em;
+}
+.shelf-card .project-hook {
+  margin: 4px 0 0;
+  font-size: 15px;
+  /* Full text lives on the category page; the preview keeps rows even. */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.shelf-card .project-links { margin-top: auto; padding-top: 14px; }
+.shelf-card .store-badges { top: 20px; right: 20px; }
+.see-all {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 28px;
+  border-bottom: 2px solid var(--line);
+}
+.see-all a {
+  color: var(--accent);
+  font: 700 12px/1.4 "Courier New", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* Card types: the kind of work is visible before reading anything.
+   - card-system:  production security system (no screenshot, dossier rule)
+   - card-product: shipped or usable software (screenshots, store badges)
+   - card-lab:     prototype / concept (sketchbook frame)
+   - card-course:  coursework or review write-up (citation style)            */
+.card-system { box-shadow: inset 6px 0 0 var(--accent-panel); }
+.card-system .status-badge::before { content: "■ "; }
+.card-lab { outline: 1px dashed var(--muted); outline-offset: -10px; }
+.card-lab .status-badge::before { content: "△ "; }
+.card-course .status-badge { color: var(--muted); }
+.card-course .status-badge::before { content: "§ "; }
+
+/* Status vocabulary: Production · Live · Beta · Prototype · Paused · Concept · Coursework · Case study */
+.status-badge[data-status="paused"],
+.status-badge[data-status="concept"] { color: var(--muted); }
+
+/* "Also in …" pointer to a project whose primary home is another page. */
+.cross-ref {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 16px 28px;
+  border-bottom: 2px solid var(--line);
+  background: var(--accent-soft);
+  font-size: 15px;
+}
+.cross-ref span {
+  color: var(--muted);
+  font: 700 10px/1.4 "Courier New", monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.cross-ref strong { font-family: Arial Black, Arial, sans-serif; letter-spacing: -.03em; }
+
+/* Within-page filter: one native select, so it never wraps on mobile. */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 12px 28px;
+  border-bottom: 2px solid var(--line);
+  font-family: "Courier New", monospace;
+}
+.filter-bar label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.filter-bar select {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 700 13px "Courier New", monospace;
+}
+.filter-note { color: var(--muted); font-size: 12px; }
+
+/* All work: a table-of-contents index of every project. */
+.work-index { list-style: none; }
+.work-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1.3fr) minmax(0, 2fr) 150px;
+  gap: 4px 20px;
+  align-items: baseline;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--line);
+}
+.work-row:hover { background: var(--accent-soft); }
+.work-row .n { color: var(--accent); font: 700 13px "Courier New", monospace; }
+.work-row a {
+  font: 900 19px/1.15 Arial Black, Arial, sans-serif;
+  letter-spacing: -.03em;
+  text-decoration: none;
+}
+.work-row a:hover, .work-row a:focus-visible { text-decoration: underline; }
+.work-row p { color: var(--muted); font-size: 14px; line-height: 1.45; }
+.work-row .tags {
+  color: var(--muted);
+  font: 700 10px/1.5 "Courier New", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.work-group { padding-top: 0; }
+
+@media (max-width: 780px) {
+  .page-hero, header.page-hero { padding: 30px 18px 26px; }
+  .doors, .shelf, .shelf-apps { grid-template-columns: 1fr; }
+  .door { padding: 20px 18px; }
+  .door + .door { border-left: 0; border-top: 2px solid var(--line); }
+  .shelf-card, .shelf > .shelf-card:nth-child(n) { padding: 22px 18px; border-right: 0; }
+  .see-all, .filter-bar, .cross-ref { padding-left: 18px; padding-right: 18px; }
+  .work-row { grid-template-columns: 34px minmax(0, 1fr); padding: 14px 18px; }
+  .work-row p, .work-row .tags { grid-column: 2; }
+  /* Larger tap targets for the small monospace links. */
+  .project-link { display: inline-block; padding: 8px 0 4px; font-size: 12px; }
+  .project-links { gap: 4px 18px; }
+}
+
+/* No More Data Brokers' featured card has no preview column. */
+.project-card.featured.featured-privacy { grid-template-columns: 52px minmax(0, 1fr); }
+.work-row a.row-store { font: 700 10px/1.5 "Courier New", monospace; text-decoration: underline; }
+
+@media (max-width: 780px) {
+  /* Menu links need the larger mobile size over the base 11px topbar rule. */
+  .topbar .primary-nav a, .topbar .topbar-actions > a { font-size: 13px; }
+  .working-principle { gap: 16px; padding: 22px 20px; }
+}
+@media (max-width: 780px) {
+  /* Bigger tap targets for the small links in the All work index. */
+  .work-row a.row-store, .section-label a { display: inline-block; padding: 8px 0; }
 }

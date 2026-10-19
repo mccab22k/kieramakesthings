@@ -1,1 +1,91 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Personality Systems | Kiera Makes Things</title><style>:root{font-family:system-ui,-apple-system,sans-serif;color:#252a2d;background:#faf9f6}*{box-sizing:border-box}main{max-width:940px;margin:0 auto;padding:64px 24px}a{color:inherit}nav{font-size:14px;margin-bottom:65px}h1{font-size:clamp(38px,6vw,70px);letter-spacing:-.05em;margin:0 0 16px}p{line-height:1.6;color:#535a5d}.lead{font-size:19px;max-width:680px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:44px}.card{border:1px solid #dcdedc;background:white;border-radius:18px;padding:27px}.card h2{margin:12px 0;font-size:25px}.tag{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#66736e}.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-weight:600;font-size:14px}.muted{opacity:.65}.card ul{padding-left:1.1em;color:#535a5d;line-height:1.55}.card li{margin:6px 0}.later{margin-top:28px;border:1px dashed #dcdedc;border-radius:18px;padding:20px 27px}.later p{margin:8px 0 0}footer{margin-top:60px;font-size:13px;color:#66736e}</style></head><body><main><nav><a href="index.html">← Kiera Makes Things</a></nav><div class="tag">Experiments in self-understanding</div><h1>Personality Systems</h1><p class="lead">Personality is rarely as tidy as a single label. These are experiments in looking at patterns, dimensions, and how we relate to ourselves and other people.</p><div class="grid"><article class="card"><div class="tag">Available · Personality</div><h2>Enneagram</h2><p>A scaled alternative to forced-choice personality testing, with room for overlapping tendencies and more nuanced scores.</p><div class="links"><a href="https://mccab22k.github.io/enneagram-scaled-test/">Take the quiz →</a><a href="enneagram-scaled-test.md">Project notes</a></div></article><article class="card"><div class="tag">Available · Relationships</div><h2>Attachment Styles</h2><p>Two reflection questionnaires built around the anxious, secure, and avoidant patterns described in <cite>Attached</cite>, using original statements:</p><ul><li><strong>My attachment patterns:</strong> 42 statements about how you handle closeness, distance, and reassurance.</li><li><strong>A partner’s patterns:</strong> 33 behaviors you have actually observed, with room to say “not enough information”.</li></ul><p>Results show every pattern’s score side by side, so overlapping tendencies stay visible.</p><div class="links"><a href="https://mccab22k.github.io/attachment-quiz/">Take the quiz →</a><a href="https://github.com/mccab22k/attachment-quiz">GitHub (Private)</a></div></article></div><section class="later"><div class="tag">Ideas, not yet built</div><p>Possible future additions: Big Five, comparing results across systems, tracking changes over time, and relationship dynamics.</p></section><footer>Assessments are for reflection, not diagnosis. Responses should stay on your device unless you explicitly choose to share them.</footer></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personality Systems | Kiera Makes Things</title>
+  <meta name="description" content="Experiments in personality assessment: a scaled Enneagram test and attachment-style questionnaires.">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
+  <!-- Lets CSS collapse the mobile menu only when JS is available. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    /* Page-specific: two quizzes side by side, stacked on small screens. */
+    .quiz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quiz-grid .project-card:first-child { border-right: 2px solid var(--line); }
+    .project-card ul { max-width: 72ch; margin: 4px 0 8px 1.1em; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .project-card li { margin: 6px 0; }
+    .assessment-note { padding: 22px 28px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 780px) {
+      .quiz-grid { grid-template-columns: 1fr; }
+      .quiz-grid .project-card:first-child { border-right: 0; }
+      .assessment-note { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body data-page="personality">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container">
+    <nav class="topbar" aria-label="Primary">
+      <a class="logo" href="./">KMT_</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html">Security</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="lab.html" aria-current="page">Lab</a></li>
+          <li><a href="work.html">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
+      </div>
+    </nav>
+
+    <main id="content">
+      <header class="page-hero">
+        <div class="eyebrow">Lab / Experiments in self-understanding</div>
+        <h1>Personality Systems</h1>
+        <p class="subtitle">Personality is rarely as tidy as a single label. These are experiments in looking at patterns, dimensions, and how we relate to ourselves and other people.</p>
+      </header>
+
+      <div class="quiz-grid">
+        <article class="project-card card-lab" id="enneagram" data-n="01">
+          <div class="status-badge">Available · Personality</div>
+          <h2 class="project-title">Enneagram</h2>
+          <p class="project-description">A scaled alternative to forced-choice personality testing, with room for overlapping tendencies and more nuanced scores.</p>
+          <div class="project-links">
+            <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Take the quiz</a>
+            <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
+          </div>
+        </article>
+
+        <article class="project-card card-lab" id="attachment-styles" data-n="02">
+          <div class="status-badge">Available · Relationships</div>
+          <h2 class="project-title">Attachment Styles</h2>
+          <p class="project-description">Two reflection questionnaires built around the anxious, secure, and avoidant patterns described in <cite>Attached</cite>, using original statements:</p>
+          <ul>
+            <li><strong>My attachment patterns:</strong> 42 statements about how you handle closeness, distance, and reassurance.</li>
+            <li><strong>A partner’s patterns:</strong> 33 behaviors you have actually observed, with room to say “not enough information”.</li>
+          </ul>
+          <p class="project-description">Results show every pattern’s score side by side, so overlapping tendencies stay visible.</p>
+          <div class="project-links">
+            <a href="https://mccab22k.github.io/attachment-quiz/" class="project-link">Take the quiz</a>
+            <a href="https://github.com/mccab22k/attachment-quiz" class="project-link">GitHub (Private)</a>
+          </div>
+        </article>
+      </div>
+
+      <section class="cross-ref" aria-label="Ideas, not yet built">
+        <span>Ideas, not yet built</span>
+        <p>Possible future additions: Big Five, comparing results across systems, tracking changes over time, and relationship dynamics.</p>
+      </section>
+
+      <p class="assessment-note">Assessments are for reflection, not diagnosis. Responses should stay on your device unless you explicitly choose to share them.</p>
+      <div class="see-all"><a href="lab.html#personality-systems-research">Back to the Lab →</a></div>
+    </main>
+  </div>
+
+  <script src="theme.js?v=ux-1"></script>
+</body>
+</html>

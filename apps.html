@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps & Products | Kiera Makes Things</title>
+  <meta name="description" content="Shipped iOS and web apps, plus prototypes in progress.">
+  <meta property="og:title" content="Apps & Products | Kiera Makes Things">
+  <meta property="og:description" content="Shipped iOS and web apps, plus prototypes in progress.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/apps.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
+  <!-- Lets CSS collapse the mobile menu only when JS is available. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="apps">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container" id="home">
+    <nav class="topbar" aria-label="Primary">
+      <a class="logo" href="./">KMT_</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html">Security</a></li>
+          <li><a href="apps.html" aria-current="page">Apps</a></li>
+          <li><a href="lab.html">Lab</a></li>
+          <li><a href="work.html">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
+      </div>
+    </nav>
+
+    <main id="content">
+    <header class="page-hero">
+      <div class="eyebrow">Apps &amp; products / Things you can use</div>
+      <h1>Apps &amp; Products</h1>
+      <p class="subtitle">Shipped apps, web tools, and prototypes. Every card says what state it is in and where you can use it.</p>
+    </header>
+
+    <div class="filter-bar" role="search" aria-label="Filter apps">
+      <label for="project-filter">Show</label>
+      <select id="project-filter" data-project-filter>
+        <option value="all">Everything</option>
+        <option value="app-store">Live on App Store</option>
+        <option value="web">Usable on the web</option>
+        <option value="wip">In progress</option>
+      </select>
+      <p class="filter-note" data-filter-status aria-live="polite"></p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card featured featured-orbit card-product" id="orbit" data-n="01" data-tags="app-store web">
+        <div class="store-badges">
+          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" aria-label="Orbit, A Fancy Planner on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
+        </div>
+        <div>
+          <div class="status-badge" data-status="live">Live</div>
+          <h2 class="project-title">Orbit, A Fancy Planner</h2>
+          <div class="project-meta">Started 2025 · November origin · iOS + web</div>
+          <p class="project-hook">I have never experienced a day as a vertical list. Orbit started as an attempt to make time look more like it feels: circular, finite, and constantly being rearranged.</p>
+          <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
+          <div class="project-links">
+            <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">iOS App Store</a>
+            <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Web App</a>
+            <a href="orbit.html" class="project-link">Read More</a>
+            <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub (Private)</a>
+          </div>
+          <details class="why-made" open>
+            <summary>Why I Made This</summary>
+            <p>I built Orbit because traditional planners never worked particularly well for my ADHD or the way I actually schedule my life.</p>
+            <p>A lot of tasks do not happen on a strict weekly cadence. Instead, they need to happen five days after I last did them or two weeks from completion. Orbit&#x27;s regenerating task system was built around that idea and remains my favorite feature.</p>
+            <p>I also wanted a better way to see where my time is actually going throughout the day instead of constantly jumping between calendars and task lists.</p>
+          </details>
+        </div>
+        <div class="preview-orbit" aria-hidden="true"></div>
+      </article>
+      <article class="project-card card-product" id="time-since" data-n="02" data-tags="app-store web">
+        <div class="store-badges">
+          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073" aria-label="Time Since Chore Reminder on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
+        </div>
+        <div class="status-badge" data-status="live">Live</div>
+      <div class="card-main">
+        <div class="card-body">
+          <h2 class="project-title">Time Since Chore Manager</h2>
+          <div class="project-meta">Started December 2024 · iOS + web</div>
+          <p class="project-hook">Some routines should reset from the last time they were done. I do not change my sheets every Tuesday—I change them a certain amount of time after I last changed them. A surprising number of routines work this way.</p>
+          <p class="project-description">Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.</p>
+          <div class="project-links">
+            <a href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073" class="project-link">iOS App Store</a>
+            <a href="https://timesincechorereminder.vercel.app/" class="project-link">Web App</a>
+            <a href="time-since.html" class="project-link">Read More</a>
+            <a href="time-since.md" class="project-link">Project Notes</a>
+            <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub (Private)</a>
+          </div>
+          <details class="why-made" open>
+            <summary>Why I Made This</summary>
+            <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
+            <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
+            <p>Time Since supports occurrence trackers, session trackers, counters, reminders, CSV import/export, and flexible elapsed-time views ranging from days to years.</p>
+          </details>
+        </div>
+        <div class="card-shot"><a href="time-since.html"><img loading="lazy" src="assets/tsc/thumb-home.jpg" width="240" alt="Time Since Chore Manager tracker list"></a></div>
+      </div>
+      </article>
+      <article class="project-card card-product" id="time-here-time-there" data-n="03" data-tags="app-store web">
+        <div class="store-badges">
+          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" aria-label="Time Here, Time There on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
+        </div>
+        <div class="status-badge" data-status="live">Live</div>
+      <div class="card-main">
+        <div class="card-body">
+          <h2 class="project-title">Time Here, Time There</h2>
+          <div class="project-meta">Started 2021 · Ongoing timezone coordination</div>
+          <p class="project-hook">I kept opening world clocks and then doing the time-zone math myself anyway. This puts every city on one movable timeline so the overlap is visible.</p>
+          <p class="project-description">A world clock built around one shared timeline: drag it and every city moves together. Daylight bands, sunrise and sunset, timezone grouping, any city as home, and an iOS home-screen widget.</p>
+          <div class="project-links">
+            <a href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" class="project-link">iOS App Store</a>
+            <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Web App</a>
+            <a href="timeheretimethere.html" class="project-link">Read More</a>
+            <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
+          </div>
+          <details class="why-made" open>
+            <summary>Why I Made This</summary>
+            <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
+            <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
+          </details>
+        </div>
+        <div class="card-shot"><a href="timeheretimethere.html"><img loading="lazy" src="assets/thtt/thumb-1-timeline.jpg" width="240" alt="Time Here, Time There shared timeline above a list of cities"></a></div>
+      </div>
+      </article>
+      <article class="project-card card-product" id="catflakes" data-n="04" data-tags="app-store web">
+        <div class="store-badges">
+          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/catflakes/id6795675453" aria-label="Catflakes on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
+        </div>
+        <div class="status-badge" data-status="live">Live</div>
+      <div class="card-main">
+        <div class="card-body">
+          <h2 class="project-title">Catflakes</h2>
+          <div class="project-meta">Started 2018 · Java to iOS</div>
+          <p class="project-hook">When I was learning to code, I challenged myself to recreate a cat-snowflake meme in Java. That was the entire idea. Years later, I rebuilt it for the App Store because apparently I remained committed to the premise.</p>
+          <p class="project-description">A playful iOS and web app for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.</p>
+          <div class="project-links">
+            <a href="https://apps.apple.com/us/app/catflakes/id6795675453" class="project-link">iOS App Store</a>
+            <a href="https://mccab22k.github.io/catflakes/" class="project-link">Web App</a>
+            <a href="catflakes.md" class="project-link">Project Notes</a>
+            <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub (Private)</a>
+          </div>
+          <details class="why-made" open>
+            <summary>Why I Made This</summary>
+            <p>Just because!</p>
+            <p>The proof of concept uses plain HTML, CSS, and Canvas instead of a heavier framework.</p>
+            <p>It currently supports four built-in cats, selectable cat types, wind drift, density controls, speed controls, and falling animation.</p>
+          </details>
+        </div>
+        <div class="card-shot"><a href="https://mccab22k.github.io/catflakes/"><img loading="lazy" src="assets/cf/thumb-web.jpg" width="400" alt="Catflakes web app with radial cat snowflakes falling over a blue sky, above wind, speed and density controls"></a></div>
+      </div>
+      </article>
+      <article class="project-card card-product" id="passport-buddy" data-n="05" data-tags="web">
+        <div class="status-badge" data-status="live">Live</div>
+      <div class="card-main">
+        <div class="card-body">
+          <h2 class="project-title">Passport Buddy</h2>
+          <div class="project-meta">Started January 2020 · Ongoing travel planning</div>
+          <p class="project-hook">Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
+          <p class="project-description">Group travel planning by passport, visa friction, and departure airport, with destination comparisons and shared trip shortlists. Schengen itinerary checks and meeting-airport optimization remain goals.</p>
+          <div class="project-links">
+            <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Web App</a>
+            <a href="travel-buddy.md" class="project-link">Project Notes</a>
+            <a href="https://github.com/mccab22k/passport-buddy" class="project-link">GitHub (Private)</a>
+          </div>
+          <details class="why-made" open>
+            <summary>Why I Made This</summary>
+            <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
+            <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
+            <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
+          </details>
+        </div>
+        <div class="card-shot"><a href="assets/pb/shot-home.jpg"><img loading="lazy" src="assets/pb/thumb-home.jpg" width="240" alt="Passport Buddy home screen"></a></div>
+      </div>
+      </article>
+      <article class="project-card card-lab" id="better-nyc-map" data-n="06" data-tags="web wip">
+        <div class="status-badge" data-status="prototype">Prototype</div>
+        <h2 class="project-title">Better NYC Map</h2>
+        <div class="project-meta">Route planner · Prototype · Supabase</div>
+        <p class="project-hook">Route planners regularly suggest trips that are technically faster and obviously worse. I wanted one that understood when I would rather walk farther, avoid a transfer, or take the ferry because the ferry is nicer.</p>
+        <p class="project-description">A NYC transit-map prototype for walking, transfer, and mode tradeoffs, with preview routing and an optional live routing integration.</p>
+        <div class="project-links">
+          <a href="https://bettermapnyc.vercel.app/" class="project-link">Web App</a>
+          <a href="bettermapnyc.md" class="project-link">Project Notes</a>
+          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub (Private)</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
+          <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
+          <p>Longer-term, it can support native app packaging, service-alert-aware routing, accessibility preferences, and better multi-modal planning across NYC and regional transit.</p>
+        </details>
+      </article>
+      <article class="project-card card-lab" id="rent-stabilized-map" data-n="07" data-tags="web wip">
+        <div class="status-badge" data-status="beta">Beta</div>
+        <h2 class="project-title">Rent Stabilized Map</h2>
+        <div class="project-meta">NYC housing · Data mapping · Research tool</div>
+        <p class="project-hook">Looking for a rent-stabilized apartment meant checking public records one building at a time. I wanted the useful parts on a map.</p>
+        <p class="project-description">A mapping and research project for understanding rent-stabilized housing signals, building records, and neighborhood-level search tradeoffs.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nyc-stabilized-apartment-hunt/" class="project-link">Web App</a>
+          <a href="rent-stabilized-map.md" class="project-link">Project Notes</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Goals</summary>
+          <p>Make public housing data easier to scan during apartment research.</p>
+          <p>Help compare buildings, neighborhoods, and listing signals without treating any single dataset as definitive legal advice.</p>
+          <p>Keep the public portfolio version focused on product goals and data approach rather than linking the live project.</p>
+        </details>
+      </article>
+      <article class="project-card card-lab" id="pet-sticker-maker" data-n="08" data-tags="web wip">
+        <div class="status-badge" data-status="paused">Paused</div>
+        <h2 class="project-title">Pet Sticker Maker</h2>
+        <div class="project-meta">Computer vision · Paused · Stickers</div>
+        <p class="project-hook">Catflakes needed isolated cat heads. I did not want to cut them out manually forever, so this became its own computer-vision project.</p>
+        <p class="project-description">A utility that turns pet photos into transparent sticker assets for reuse in other apps.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Web App</a>
+          <a href="pet-sticker-maker-security.html" class="project-link">Security Review</a>
+          <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
+          <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub (Private)</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>I built this as an asset-generation component for Catflakes.</p>
+          <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
+          <p>This project is currently paused while the Catflakes renderer is stabilized and support for bundled custom PNG and SVG assets is prioritized.</p>
+        </details>
+      </article>
+    </div>
+
+    <!-- No More Data Brokers' primary home is the Security page. -->
+    <p class="cross-ref" data-tags="web">
+      <span>Also in Security</span>
+      <strong>No More Data Brokers</strong>
+      <a class="project-link" href="https://mccab22k.github.io/nomoredatabrokers/">Web App</a>
+      <a class="project-link" href="security-systems.html#no-more-data-brokers">Security Notes</a>
+    </p>
+    </main>
+
+    <footer>
+      <p>Useful tools, unfinished experiments, and notes from figuring them out.</p>
+      <div class="social-links">
+        <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
+        <a href="privacy.html" class="social-link">Privacy Policy</a>
+      </div>
+      <p class="license-note">
+        Unless otherwise stated, all code, concepts, and project materials on this site are owned by Kiera McCabe.
+        Do not copy, reuse, sell, redistribute, or commercialize this work without written permission.
+        For licensing or usage questions, contact <a href="mailto:kieramakesthings@gmail.com" class="social-link">kieramakesthings@gmail.com</a>.
+      </p>
+      <p style="margin-top:28px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
+    </footer>
+  </div>
+
+  <script src="theme.js?v=ux-1"></script>
+  <script src="filters.js?v=ux-1"></script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

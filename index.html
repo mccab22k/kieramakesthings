@@ -4,26 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Designing Useful Things</title>
-  <meta name="description" content="Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.">
+  <meta name="description" content="Cybersecurity engineer building practical software: production security systems, shipped iOS and web apps, prototypes, and research.">
   <meta property="og:title" content="Designing Useful Things">
-  <meta property="og:description" content="Projects range from shipped web and iOS apps to prototypes, home lab documentation, and research concepts.">
+  <meta property="og:description" content="Cybersecurity engineer building practical software: production security systems, shipped iOS and web apps, prototypes, and research.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/">
   <meta name="twitter:card" content="summary">
-
-  <link rel="stylesheet" href="styles.css?v=editorial-13">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
+  <!-- Lets CSS collapse the mobile menu only when JS is available. -->
+  <script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
-  <main class="container" id="home">
-    <!-- Top navigation -->
-    <nav class="topbar">
+<body data-page="home">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container" id="home">
+    <nav class="topbar" aria-label="Primary">
       <a class="logo" href="./">KMT_</a>
-      <div class="topbar-actions">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html">Security</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="lab.html">Lab</a></li>
+          <li><a href="work.html">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
-        <a href="https://github.com/mccab22k">GitHub</a>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
       </div>
     </nav>
 
+    <main id="content">
     <header class="hero-shell">
       <div class="hero-main">
         <div class="eyebrow">Kiera Makes Things / Selected work</div>
@@ -37,323 +48,194 @@
       </aside>
     </header>
 
-    <!-- Project filters -->
-    <div class="project-filters" aria-label="Filter projects">
-      <button class="filter-button active" type="button" data-filter="highlights" aria-pressed="true">Highlights</button>
-      <button class="filter-button" type="button" data-filter="all" aria-pressed="false">All Projects</button>
-      <button class="filter-button" type="button" data-filter="app-store" aria-pressed="false">Live on App Store</button>
-      <button class="filter-button" type="button" data-filter="security" aria-pressed="false">Security</button>
-      <button class="filter-button" type="button" data-filter="apps" aria-pressed="false">Apps &amp; Products</button>
-      <button class="filter-button" type="button" data-filter="experiments" aria-pressed="false">Experiments</button>
-      <button class="filter-button" type="button" data-filter="wip" aria-pressed="false">Research / WIP</button>
-      <span class="filter-note" aria-live="polite">Selected projects across security, software, and experiments.</span>
-    </div>
+    <!-- Two starting points; the global nav covers everything else. -->
+    <nav class="doors" aria-label="Where to start">
+      <a class="door door-security" href="security-systems.html">
+        <span>For security work</span>
+        <strong>Security engineering</strong>
+      </a>
+      <a class="door" href="apps.html">
+        <span>For things you can use</span>
+        <strong>Apps &amp; products</strong>
+      </a>
+    </nav>
 
-    <!-- Featured project -->
-    <div class="section-label" id="featured">Featured projects</div>
+    <h2 class="section-label" id="featured">Featured projects</h2>
     <div class="projects-grid featured-projects">
-      <div class="project-card featured featured-orbit" id="orbit" data-filter-tags="live app-store apps">
+      <article class="project-card featured featured-orbit card-product" id="orbit" data-n="01" data-tags="">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" aria-label="Orbit, A Fancy Planner on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
-          <span class="store-badge play-store-badge" role="img" aria-label="Orbit, A Fancy Planner Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
         </div>
         <div>
-          <div class="status-badge">Live</div>
-          <h2 class="project-title">Orbit, A Fancy Planner</h2>
-          <div class="project-meta">Started 2025 &middot; November origin &middot; iOS + web</div>
-          <div class="project-meta">Planner · App Store · iOS + web</div>
+          <div class="status-badge" data-status="live">Live</div>
+          <h3 class="project-title">Orbit, A Fancy Planner</h3>
+          <div class="project-meta">Started 2025 · November origin · iOS + web</div>
           <p class="project-hook">I have never experienced a day as a vertical list. Orbit started as an attempt to make time look more like it feels: circular, finite, and constantly being rearranged.</p>
           <p class="project-description">A circular 24-hour planner for visual time blocking, recurring routines, templates, and drag-based daily scheduling.</p>
           <div class="project-links">
-            <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">App Store</a>
-            <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Launch App</a>
-            <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub (Private)</a>
+            <a href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489" class="project-link">iOS App Store</a>
+            <a href="https://mccab22k.github.io/orbit-a-fancy-planner/" class="project-link">Web App</a>
             <a href="orbit.html" class="project-link">Read More</a>
+            <a href="https://github.com/mccab22k/orbit-a-fancy-planner" class="project-link">GitHub (Private)</a>
           </div>
           <details class="why-made" open>
             <summary>Why I Made This</summary>
             <p>I built Orbit because traditional planners never worked particularly well for my ADHD or the way I actually schedule my life.</p>
-            <p>A lot of tasks do not happen on a strict weekly cadence. Instead, they need to happen five days after I last did them or two weeks from completion. Orbit's regenerating task system was built around that idea and remains my favorite feature.</p>
+            <p>A lot of tasks do not happen on a strict weekly cadence. Instead, they need to happen five days after I last did them or two weeks from completion. Orbit&#x27;s regenerating task system was built around that idea and remains my favorite feature.</p>
             <p>I also wanted a better way to see where my time is actually going throughout the day instead of constantly jumping between calendars and task lists.</p>
           </details>
         </div>
-        <div class="preview-orbit"></div>
-      </div>
+        <div class="preview-orbit" aria-hidden="true"></div>
+      </article>
+      <article class="project-card featured featured-privacy card-product" id="no-more-data-brokers-featured" data-n="02" data-tags="">
+        <div class="status-badge" data-status="live">Live</div>
+        <h3 class="project-title">No More Data Brokers</h3>
+        <div class="project-meta">Privacy · Public source · Local-only</div>
+        <p class="project-hook">Privacy rights should not require paying the same industry that profits from personal data. I objected to paying a subscription to remove information that should not have been collected in the first place, so I made the process free and kept the data in the browser.</p>
+        <p class="project-description">A free client-side tool for opting out of 28+ data brokers, with prioritized removal links, CCPA/GDPR request templates, and broker-specific re-check tracking. Profile and removal state stay in the browser. No account or backend.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nomoredatabrokers/" class="project-link">Web App</a>
+          <a href="security-systems.html#no-more-data-brokers" class="project-link">Security Notes</a>
+          <a href="https://github.com/mccab22k/nomoredatabrokers" class="project-link">GitHub</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>Data brokers collect and sell personal information, while paid removal services can turn that same exposure into a subscription product. I wanted the opt-out process to be understandable, free, and directly usable by the person whose data is involved.</p>
+          <p>The privacy constraint is also the technical thesis: the tool is a single self-contained HTML file with no build step or dependencies, and all profile and broker-removal state stays in localStorage rather than being sent to a server.</p>
+          <p>Fresh sessions use a fictional profile by default, while confirmed removals surface broker-specific re-check dates because broker profiles can reappear after being re-scraped.</p>
+        </details>
+      </article>
     </div>
 
-    <!-- Functional apps -->
-    <div class="section-label" id="apps">Apps &amp; Products</div>
-    <div class="projects-grid products-grid">
-      <div class="project-card" id="passport-buddy" data-filter-tags="live apps">
-        <div class="store-badges">
-          <span class="store-badge app-store-badge" role="img" aria-label="Passport Buddy iOS release planned" title="iOS release planned"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></span>
-          <span class="store-badge play-store-badge" role="img" aria-label="Passport Buddy Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
-        </div>
-        <div class="status-badge">Live</div>
-        <div class="card-main">
-          <div class="card-body">
-            <h2 class="project-title">Passport Buddy</h2>
-        <div class="project-meta">Started January 2020 &middot; Ongoing travel planning</div>
-        <div class="project-meta">Travel planner · Web app · iOS planned</div>
-        <p class="project-hook">Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
-        <p class="project-description">Group travel planning by passport, visa friction, and departure airport, with destination comparisons and shared trip shortlists. Schengen itinerary checks and meeting-airport optimization remain goals.</p>
-        <div class="project-links">
-          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/passport-buddy" class="project-link">GitHub (Private)</a>
-          <a href="travel-buddy.md" class="project-link">Project Notes</a>
-        </div>
+    <h2 class="section-label" id="security-work">Security engineering</h2>
+    <div class="shelf">
+      <article class="shelf-card card-system">
+        <div class="status-badge" data-status="production">Production</div>
+        <h3>Access Governance Automation</h3>
+        <div class="project-meta">Node.js · TypeScript · Slack · Okta · Email security</div>
+        <p class="project-hook">I built a Slack-based system for requesting and approving access across dozens of applications.</p>
         <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>Many of my friends from college hold different passports, which makes group travel surprisingly complicated.</p>
-          <p>I originally tracked visa requirements, passport restrictions, and travel eligibility in a giant spreadsheet. Eventually it became obvious that what I really needed was an app.</p>
-          <p>Passport Buddy helps answer a simple question: where can all of us go together in a way that is practical and affordable?</p>
+          <summary>What It Demonstrates</summary>
+          <p>Workflow design, API integration, identity provisioning, safe write controls, and end-to-end ownership of an internal security product.</p>
         </details>
-          </div>
-          <div class="card-shot">
-          <a href="assets/pb/shot-home.jpg"><img loading="lazy" src="assets/pb/thumb-home.jpg" width="240" alt="Passport Buddy home screen"></a>
-        </div>
-        </div>
-      
-      </div>
-
-      <div class="project-card" id="time-here-time-there" data-filter-tags="live app-store apps">
-        <div class="store-badges">
-          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" aria-label="Time Here, Time There on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
-          <span class="store-badge play-store-badge" role="img" aria-label="Time Here, Time There Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
-        </div>
-        <div class="status-badge">Live</div>
-        <div class="card-main">
-          <div class="card-body">
-            <h2 class="project-title">Time Here, Time There</h2>
-        <div class="project-meta">Started 2021 &middot; Ongoing timezone coordination</div>
-        <div class="project-meta">Time zones · App Store · iOS + web</div>
-        <p class="project-hook">I kept opening world clocks and then doing the time-zone math myself anyway. This puts every city on one movable timeline so the overlap is visible.</p>
-        <p class="project-description">A world clock built around one shared timeline: drag it and every city moves together. Daylight bands, sunrise and sunset, timezone grouping, any city as home, and an iOS home-screen widget.</p>
         <div class="project-links">
-          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timeheretimethere" class="project-link">GitHub (Private)</a>
-          <a href="timeheretimethere.html" class="project-link">Read More</a>
+          <a href="security-systems.html#access-governance" class="project-link">Read Case Study</a>
         </div>
+      </article>
+      <article class="shelf-card card-system">
+        <div class="status-badge" data-status="production">Production</div>
+        <h3>Google Workspace / GAM Automation</h3>
+        <div class="project-meta">Google Workspace · GAM · Apps Script · TypeScript</div>
+        <p class="project-hook">I automate the repetitive parts of Google Workspace administration without hiding what the automation is about to change.</p>
         <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I wanted a quick way to compare home time, meeting time, and destination time without juggling multiple clock apps.</p>
-          <p>The app is designed around real scheduling questions: what time is reasonable there, what does that mean here, and which cities can overlap without making someone miserable?</p>
+          <summary>What It Demonstrates</summary>
+          <p>Practical identity administration, idempotent automation, protected-account handling, and tools designed to be inspected before they write.</p>
         </details>
-          </div>
-          <div class="card-shot">
-          <a href="timeheretimethere.html"><img loading="lazy" src="assets/thtt/thumb-1-timeline.jpg" width="240" alt="Time Here, Time There shared timeline above a list of cities"></a>
+        <div class="project-links">
+          <a href="security-systems.html#account-lifecycle" class="project-link">See GAM Work</a>
         </div>
+      </article>
+      <article class="shelf-card card-course">
+        <div class="status-badge" data-status="case-study">Case study</div>
+        <h3>Pet Sticker Maker: Security Case Study</h3>
+        <div class="project-meta">FastAPI · Python · React · GitHub Actions · File Upload Security</div>
+        <p class="project-hook">What happens when a fun pet-photo tool accepts untrusted images and processes them on a server?</p>
+        <div class="project-links">
+          <a href="pet-sticker-maker-security.html" class="project-link">Read Security Case Study</a>
+          <a href="nyu-appsec.html" class="project-link">NYU AppSec Write-up</a>
         </div>
-      
-      </div>
+      </article>
+    </div>
+    <div class="see-all"><a href="security-systems.html">All security work (12) →</a></div>
 
-      <div class="project-card" id="time-since" data-filter-tags="live app-store apps">
+    <h2 class="section-label" id="apps">Apps &amp; products</h2>
+    <div class="shelf shelf-apps">
+      <article class="shelf-card card-product">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073" aria-label="Time Since Chore Reminder on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
-          <span class="store-badge play-store-badge" role="img" aria-label="Time Since Chore Manager Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
         </div>
-        <div class="status-badge">Live</div>
-        <div class="card-main">
-          <div class="card-body">
-            <h2 class="project-title">Time Since Chore Manager</h2>
-        <div class="project-meta">Started December 2024 &middot; iOS + web</div>
-        <div class="project-meta">Productivity · App Store · iOS + web</div>
+        <div class="status-badge" data-status="live">Live</div>
+        <h3>Time Since Chore Manager</h3>
+        <div class="project-meta">Started December 2024 · iOS + web</div>
         <p class="project-hook">Some routines should reset from the last time they were done. I do not change my sheets every Tuesday—I change them a certain amount of time after I last changed them. A surprising number of routines work this way.</p>
-        <p class="project-description">Track chores, maintenance, routines, sessions, and life events by elapsed time rather than fixed calendar recurrences.</p>
         <div class="project-links">
-          <a href="https://timesincechorereminder.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/timesincechorereminder" class="project-link">GitHub (Private)</a>
-          <a href="time-since.html" class="project-link">Read More</a>
-          <a href="time-since.md" class="project-link">Project Notes</a>
+          <a href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073" class="project-link">iOS App Store</a>
+          <a href="https://timesincechorereminder.vercel.app/" class="project-link">Web App</a>
+          <a href="apps.html#time-since" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I built this because many recurring tasks do not fit a normal weekly calendar.</p>
-          <p>Replacing HVAC filters, changing sheets, cleaning litterboxes, watering plants, fasting sessions, and dozens of other routines are often better tracked from the last completion date rather than from a fixed schedule.</p>
-          <p>Time Since supports occurrence trackers, session trackers, counters, reminders, CSV import/export, and flexible elapsed-time views ranging from days to years.</p>
-        </details>
-          </div>
-          <div class="card-shot">
-          <a href="time-since.html"><img loading="lazy" src="assets/tsc/thumb-home.jpg" width="240" alt="Time Since Chore Manager tracker list"></a>
+      </article>
+      <article class="shelf-card card-product">
+        <div class="store-badges">
+          <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" aria-label="Time Here, Time There on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
         </div>
+        <div class="status-badge" data-status="live">Live</div>
+        <h3>Time Here, Time There</h3>
+        <div class="project-meta">Started 2021 · Ongoing timezone coordination</div>
+        <p class="project-hook">I kept opening world clocks and then doing the time-zone math myself anyway. This puts every city on one movable timeline so the overlap is visible.</p>
+        <div class="project-links">
+          <a href="https://apps.apple.com/us/app/time-here-time-there/id6796821781" class="project-link">iOS App Store</a>
+          <a href="https://mccab22k.github.io/timeheretimethere/" class="project-link">Web App</a>
+          <a href="apps.html#time-here-time-there" class="project-link">Read More</a>
         </div>
-      
-      </div>
-    </div>
-
-    <!-- Prototypes -->
-    <div class="section-label" id="experiments">Experiments &amp; Research</div>
-    <div class="projects-grid experiments-grid">
-      <div class="project-card" id="catflakes" data-filter-tags="live app-store apps experiments fun">
+      </article>
+      <article class="shelf-card card-product">
         <div class="store-badges">
           <a class="store-badge app-store-badge" href="https://apps.apple.com/us/app/catflakes/id6795675453" aria-label="Catflakes on the App Store" title="Download on the App Store"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.62 9.05 5.34c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.06l.01-.01zM12.03 5.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></a>
-          <span class="store-badge play-store-badge" role="img" aria-label="Catflakes Android release planned" title="Android release planned"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" focusable="false"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></span>
         </div>
-        <div class="status-badge">Live</div>
-        <div class="card-main">
-          <div class="card-body">
-            <h2 class="project-title">Catflakes</h2>
-        <div class="project-meta">Started 2018 &middot; Java to iOS</div>
-        <div class="project-meta">Canvas animation · App Store · iOS + web</div>
+        <div class="status-badge" data-status="live">Live</div>
+        <h3>Catflakes</h3>
+        <div class="project-meta">Started 2018 · Java to iOS</div>
         <p class="project-hook">When I was learning to code, I challenged myself to recreate a cat-snowflake meme in Java. That was the entire idea. Years later, I rebuilt it for the App Store because apparently I remained committed to the premise.</p>
-        <p class="project-description">A Canvas proof of concept for falling radial cat snowflakes with wind, density, speed, and built-in cat controls.</p>
         <div class="project-links">
-          <a href="https://mccab22k.github.io/catflakes/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/catflakes" class="project-link">GitHub (Private)</a>
-          <a href="catflakes.md" class="project-link">Project Notes</a>
+          <a href="https://apps.apple.com/us/app/catflakes/id6795675453" class="project-link">iOS App Store</a>
+          <a href="https://mccab22k.github.io/catflakes/" class="project-link">Web App</a>
+          <a href="apps.html#catflakes" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>Just because!</p>
-          <p>The proof of concept uses plain HTML, CSS, and Canvas instead of a heavier framework.</p>
-          <p>It currently supports four built-in cats, selectable cat types, wind drift, density controls, speed controls, and falling animation.</p>
-        </details>
-          </div>
-          <div class="card-shot">
-            <a href="https://mccab22k.github.io/catflakes/"><img loading="lazy" src="assets/cf/thumb-web.jpg" width="400" alt="Catflakes web app with radial cat snowflakes falling over a blue sky, above wind, speed and density controls"></a>
-          </div>
-        </div>
-      
-      </div>
-
-      <div class="project-card" id="better-nyc-map" data-filter-tags="live wip apps">
-        <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Better NYC Map</h2>
-        <div class="project-meta">Route planner · Prototype · Supabase</div>
-        <p class="project-hook">Route planners regularly suggest trips that are technically faster and obviously worse. I wanted one that understood when I would rather walk farther, avoid a transfer, or take the ferry because the ferry is nicer.</p>
-        <p class="project-description">A NYC transit-map prototype for walking, transfer, and mode tradeoffs, with preview routing and an optional live routing integration.</p>
+      </article>
+      <article class="shelf-card card-product">
+        <div class="status-badge" data-status="live">Live</div>
+        <h3>Passport Buddy</h3>
+        <div class="project-meta">Started January 2020 · Ongoing travel planning</div>
+        <p class="project-hook">Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
         <div class="project-links">
-          <a href="https://bettermapnyc.vercel.app/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/bettermapnyc" class="project-link">GitHub (Private)</a>
-          <a href="bettermapnyc.md" class="project-link">Project Notes</a>
+          <a href="https://passport-buddy-wheat.vercel.app/" class="project-link">Web App</a>
+          <a href="apps.html#passport-buddy" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I wanted a transit planner that reflects how people actually make NYC routing decisions, not just the mathematically shortest trip.</p>
-          <p>The project is designed around options like walking farther to avoid a transfer, preferring above-ground routes, mixing subways with buses or ferries, and comparing best-case versus worst-case transfer-heavy trips.</p>
-          <p>Longer-term, it can support native app packaging, service-alert-aware routing, accessibility preferences, and better multi-modal planning across NYC and regional transit.</p>
-        </details>
-      </div>
+      </article>
+    </div>
+    <div class="see-all"><a href="apps.html">All apps &amp; products (9) →</a></div>
 
-      <div class="project-card" id="rent-stabilized-map" data-filter-tags="live wip apps">
-        <div class="status-badge">Beta</div>
-        <h2 class="project-title">Rent Stabilized Map</h2>
-        <div class="project-meta">NYC housing · Data mapping · Research tool</div>
-        <p class="project-hook">Looking for a rent-stabilized apartment meant checking public records one building at a time. I wanted the useful parts on a map.</p>
-        <p class="project-description">A mapping and research project for understanding rent-stabilized housing signals, building records, and neighborhood-level search tradeoffs.</p>
+    <h2 class="section-label" id="experiments">Lab: experiments &amp; research</h2>
+    <div class="shelf">
+      <article class="shelf-card card-lab">
+        <div class="status-badge" data-status="concept">Concept</div>
+        <h3>The NYC Trolley Problem</h3>
+        <div class="project-meta">NYC culture · Transit · Swipe game</div>
+        <p class="project-hook">New Yorkers already have strong opinions about stations, neighborhoods, transit modes, public art, and pigeons. This turns those arguments into a deliberately impossible series of binary choices.</p>
         <div class="project-links">
-          <a href="https://mccab22k.github.io/nyc-stabilized-apartment-hunt/" class="project-link">Launch App</a>
-          <a href="rent-stabilized-map.md" class="project-link">Project Notes</a>
+          <a href="lab.html#nyc-trolley-problem" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Goals</summary>
-          <p>Make public housing data easier to scan during apartment research.</p>
-          <p>Help compare buildings, neighborhoods, and listing signals without treating any single dataset as definitive legal advice.</p>
-          <p>Keep the public portfolio version focused on product goals and data approach rather than linking the live project.</p>
-        </details>
-      </div>
-
-      <div class="project-card" id="pet-sticker-maker" data-filter-tags="wip apps">
-        <div class="status-badge">Paused</div>
-        <h2 class="project-title">Pet Sticker Maker</h2>
-        <div class="project-meta">Computer vision · Paused · Stickers</div>
-        <p class="project-hook">Catflakes needed isolated cat heads. I did not want to cut them out manually forever, so this became its own computer-vision project.</p>
-        <p class="project-description">A utility that turns pet photos into transparent sticker assets for reuse in other apps.</p>
-        <div class="project-links">
-          <a href="https://mccab22k.github.io/pet-sticker-maker/" class="project-link">Launch App</a>
-          <a href="https://github.com/mccab22k/pet-sticker-maker" class="project-link">GitHub (Private)</a>
-          <a href="pet-sticker-maker.md" class="project-link">Project Notes</a>
-          <a href="pet-sticker-maker-security.html" class="project-link">Security Review</a>
-        </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I built this as an asset-generation component for Catflakes.</p>
-          <p>The goal is to let users turn their own cat photos into reusable sticker pieces without manually cutting out heads, removing backgrounds, or preparing transparent PNGs.</p>
-          <p>This project is currently paused while the Catflakes renderer is stabilized and support for bundled custom PNG and SVG assets is prioritized.</p>
-        </details>
-      </div>
-
-      <div class="project-card" id="colony-cat-management" data-filter-tags="wip experiments">
-        <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Colony Cat Management</h2>
-        <div class="project-meta">Graduate-school era &middot; Computer vision &middot; TNR</div>
-        <div class="project-meta">Computer vision · Prototype · Animal welfare</div>
-        <p class="project-hook">I live near several cat colonies, encounter street cats almost everywhere I travel, and love cats enough to revisit a graduate-school model that was only right about 70% of the time.</p>
-        <p class="project-description">Computer-vision identification and tracking for community cat caretakers.</p>
-        <div class="project-links">
-          <a href="https://github.com/mccab22k/colony-cat-management" class="project-link">GitHub</a>
-          <a href="cats.html" class="project-link">Read More</a>
-        </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I live in a part of Manhattan with several cat colonies, I have traveled extensively in places with large street cat populations, and I simply love cats.</p>
-          <p>In graduate school, I tested whether computer vision could distinguish individual community cats. The model reached roughly 70% accuracy: promising enough to be interesting and unreliable enough that I would not pretend the problem was solved.</p>
-          <p>I want to revisit it as a tool for TNR volunteers tracking colony health, population changes, and cats that may need attention.</p>
-        </details>
-        <aside class="presentation-embed" aria-label="Cat Recognition for TNR presentation">
-          <span>Research presentation</span>
-          <strong>Cat Recognition for TNR</strong>
-          <a href="cats.html">View research notes →</a>
-        </aside>
-      </div>
-
-      <div class="project-card" id="personality-systems-research" data-filter-tags="wip experiments fun">
-        <div class="status-badge">Prototype</div>
-        <h2 class="project-title">Personality Systems Research</h2>
+      </article>
+      <article class="shelf-card card-lab">
+        <div class="status-badge" data-status="prototype">Prototype</div>
+        <h3>Personality Systems Research</h3>
         <div class="project-meta">Assessment · Prototype · Identity</div>
         <p class="project-hook">Most personality tests give you one tidy label and send you on your way. I wanted to see the messier version: overlapping traits, relative strengths, and changes over time.</p>
-        <p class="project-description">A hub for personality assessment experiments: a scaled Enneagram test and an attachment-style quiz with self and partner modes, with longitudinal pattern tracking planned.</p>
         <div class="project-links">
-          <a href="personality.html" class="project-link">Explore Personality Systems</a>
-          <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Enneagram Quiz</a>
-          <a href="https://mccab22k.github.io/attachment-quiz/" class="project-link">Attachment Quiz</a>
-          <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub (Private)</a>
-          <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
+          <a href="lab.html#personality-systems-research" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>Most personality tests give you a label. I wanted something a little more nuanced.</p>
-          <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
-        </details>
-      </div>
-    </div>
-
-    <!-- Infrastructure and home labs -->
-    <div class="section-label">Infrastructure and home labs</div>
-    <div class="projects-grid">
-      <div class="project-card" id="raspberry-pi-adguard" data-filter-tags="wip security">
-        <div class="status-badge">Active</div>
-        <h2 class="project-title">Block Trackers on Your Wi-Fi</h2>
-        <div class="project-meta">Raspberry Pi + AdGuard Home · DNS · Network privacy</div>
-        <p class="project-hook">I wanted a network-level way to block trackers and ads across the devices on my Wi-Fi, not just in one browser.</p>
-        <p class="project-description">A Raspberry Pi 4B running AdGuard Home as the DNS layer for my home network, blocking tracker and ad domains while preserving the services I actually use.</p>
+      </article>
+      <article class="shelf-card card-lab">
+        <div class="status-badge" data-status="prototype">Prototype</div>
+        <h3>Colony Cat Management</h3>
+        <div class="project-meta">Graduate-school era · Computer vision · TNR</div>
+        <p class="project-hook">I live near several cat colonies, encounter street cats almost everywhere I travel, and love cats enough to revisit a graduate-school model that was only right about 70% of the time.</p>
         <div class="project-links">
-          <a href="https://github.com/mccab22k/kieramakesthings" class="project-link">GitHub</a>
-          <a href="adguard.html" class="project-link">Read More</a>
+          <a href="lab.html#colony-cat-management" class="project-link">Read More</a>
         </div>
-        <details class="why-made" open>
-          <summary>Why I Made This</summary>
-          <p>I wanted to get rid of ads across my network and learn more about managing my own infrastructure.</p>
-          <p>This project documents my Raspberry Pi and AdGuard Home setup, the mistakes I made along the way, and the lessons learned getting everything working correctly.</p>
-          <p>Planned expansion: route my phone back through the home AdGuard instance when I am away from Wi-Fi so the same DNS filtering can block ads and trackers on the go.</p>
-        </details>
-      </div>
+      </article>
     </div>
-
-    <!-- Research and concepts -->
-    <div class="section-label" id="research-archive">Research / concepts</div>
-    <div class="projects-grid">
-      <div class="project-card" id="wearable-computing" data-filter-tags="wip experiments">
-        <div class="status-badge">Research</div>
-        <h2 class="project-title">Wearable Computing</h2>
-        <div class="project-meta">Hardware concept · Research · Sensors</div>
-        <p class="project-hook">I want to make my own wearable and take control of the data it collects.</p>
-        <p class="project-description">Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.</p>
-        <div class="project-links">
-          <a href="wearable-computing.md" class="project-link">Project Notes</a>
-        </div>
-      </div>
-    </div>
+    <div class="see-all"><a href="lab.html">Everything in the Lab (5) →</a></div>
 
     <section class="about-panel" id="about" aria-labelledby="about-heading">
       <div class="eyebrow">About / The person making these things</div>
@@ -361,8 +243,8 @@
       <p>I work on security systems, and I make apps because I keep finding problems I'd like to solve. Some are useful day to day; some are experiments that got out of hand. I care about privacy, clear interfaces, and software people can actually use.</p>
       <a class="project-link" href="https://github.com/mccab22k">GitHub</a>
     </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
       <p>Useful tools, unfinished experiments, and notes from figuring them out.</p>
       <div class="social-links">
@@ -376,10 +258,9 @@
       </p>
       <p style="margin-top:28px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
     </footer>
-  </main>
+  </div>
 
-  <!-- Theme toggle -->
-  <script src="theme.js?v=editorial-12"></script>
+  <script src="theme.js?v=ux-1"></script>
 
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>

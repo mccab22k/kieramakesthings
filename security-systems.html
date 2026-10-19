@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security Engineering — Kiera Makes Things</title>
   <meta name="description" content="Professional security engineering, AppSec coursework, and personal privacy projects including No More Data Brokers and AdGuard Home.">
-  <link rel="stylesheet" href="styles.css?v=editorial-12">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
   <style>
     .case-hero {
       max-width: none;
@@ -88,7 +88,7 @@
       margin-bottom: 18px;
     }
 
-    .system-heading h2 {
+    .system-heading h3 {
       max-width: 30ch;
       margin: 4px 0 9px;
       font-family: Arial Black, Arial, sans-serif;
@@ -130,7 +130,7 @@
       border-bottom: 0;
     }
 
-    .system-block h3,
+    .system-block h4,
     .principle h3 {
       margin: 0 0 5px;
       font-size: 13px;
@@ -380,24 +380,39 @@
       .security-tabs a { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 18px; }
       .security-tabs a:last-child { border-bottom: 0; }
     }
+
+    /* Specialty groups: every panel keeps a bottom rule; a lone last panel spans both columns. */
+    .systems { border-bottom: 0; }
+    .system-panel:nth-last-child(-n + 2), .system-panel:last-child { border-bottom: 2px solid var(--line); }
+    .system-panel:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
+    .security-tabs { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    @media (max-width: 840px) {
+      .security-tabs { grid-template-columns: 1fr; }
+      .security-tabs a small { display: none; }
+    }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <main class="container">
-    <nav class="topbar">
-      <a class="logo" href="./">KMT /</a>
-      <div class="topbar-actions">
-        <div class="primary-nav" aria-label="Primary navigation">
-          <a href="./">Home</a>
-          <a href="security-systems.html" aria-current="page">Security</a>
-          <a href="./#apps">Apps</a>
-          <a href="./#experiments">Experiments</a>
-          <a href="./#about">About</a>
-        </div>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container">
+    <nav class="topbar" aria-label="Primary">
+      <a class="logo" href="./">KMT_</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html" aria-current="page">Security</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="lab.html">Lab</a></li>
+          <li><a href="work.html">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
-        <a href="https://github.com/mccab22k">GitHub</a>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
       </div>
     </nav>
+  <main id="content">
 
     <header class="case-hero">
       <div class="eyebrow">Security work / Production systems, application security, personal privacy</div>
@@ -405,19 +420,29 @@
       <p class="subtitle">Professional security systems, application security, and the tools I make to protect my own data and devices. Work for employers is intentionally generalized to protect company systems and configuration.</p>
     </header>
 
-    <nav class="security-tabs" aria-label="Explore security work by type">
-      <a href="#professional-systems">
+    <nav class="security-tabs" aria-label="Jump to a security specialty">
+      <a href="#identity-access">
         <span>01 / Production</span>
-        <strong>Professional systems</strong>
-        <small>8 sanitized case studies · Identity, access, endpoint, automation</small>
+        <strong>Identity &amp; access</strong>
+        <small>5 case studies · Access, onboarding, lifecycle, administration</small>
+      </a>
+      <a href="#email-endpoint">
+        <span>02 / Production</span>
+        <strong>Email &amp; endpoint</strong>
+        <small>2 case studies · Proofpoint and CrowdStrike</small>
+      </a>
+      <a href="#third-party-risk">
+        <span>03 / Production</span>
+        <strong>Third-party risk</strong>
+        <small>1 case study · Vendor assurance</small>
       </a>
       <a href="#hands-on-appsec">
-        <span>02 / Code &amp; testing</span>
+        <span>04 / Code &amp; testing</span>
         <strong>Application security</strong>
         <small>2 studies · Pet Sticker Maker security and NYU AppSec</small>
       </a>
       <a href="#personal-security">
-        <span>03 / For everyone</span>
+        <span>05 / For everyone</span>
         <strong>Privacy &amp; personal infrastructure</strong>
         <small>2 tools · Data broker removal and network privacy</small>
       </a>
@@ -434,24 +459,25 @@
       </aside>
     </section>
 
-    <div class="section-label">Production case studies</div>
-    <section class="systems" id="professional-systems" aria-label="Selected professional security systems">
+    <section id="professional-systems" aria-label="Professional security systems by specialty">
+      <h2 class="section-label" id="identity-access">Production · Identity &amp; access</h2>
+      <div class="systems">
       <article class="system-panel" id="access-governance">
         <div class="system-heading">
           <div>
             <div class="eyebrow">01 · Access governance</div>
-            <h2>Self-service access with controlled provisioning</h2>
+            <h3>Self-service access with controlled provisioning</h3>
             <p class="project-description">A Slack-based access platform that turns fragmented requests into configurable, auditable workflows across dozens of applications.</p>
           </div>
           <div class="system-status">Internal production system</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Problem</h3>
+            <h4>Problem</h4>
             <p>Application access was distributed across informal messages, manual follow-up, and inconsistent provisioning paths.</p>
           </div>
           <div class="system-block">
-            <h3>System</h3>
+            <h4>System</h4>
             <ul>
               <li>Self-service Slack requests</li>
               <li>Per-application approval chains</li>
@@ -460,7 +486,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Safety design</h3>
+            <h4>Safety design</h4>
             <ul>
               <li>Writes disabled by default</li>
               <li>Explicit production gates</li>
@@ -471,19 +497,18 @@
         </div>
         <p class="stack-line">Node.js · TypeScript · Slack Bolt / Socket Mode · Okta APIs · Email-security APIs</p>
       </article>
-
       <article class="system-panel" id="employee-onboarding">
         <div class="system-heading">
           <div>
             <div class="eyebrow">02 · Employee onboarding</div>
-            <h2>One onboarding engine instead of another pile of scripts</h2>
+            <h3>One onboarding engine instead of another pile of scripts</h3>
             <p class="project-description">Onboarding touched enough systems that copying the same logic between scripts stopped making sense. I moved the shared work into a reusable engine and kept the operator-facing workflow small.</p>
           </div>
           <div class="system-status">Internal platform</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>System</h3>
+            <h4>System</h4>
             <ul>
               <li>Shared onboarding engine used by multiple entry points</li>
               <li>Structured intake for otherwise messy HR data</li>
@@ -491,7 +516,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Safety design</h3>
+            <h4>Safety design</h4>
             <ul>
               <li>Dry-run-first writes</li>
               <li>Credentials stored outside the application</li>
@@ -500,7 +525,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Engineering</h3>
+            <h4>Engineering</h4>
             <ul>
               <li>Integration tests around shared behavior</li>
               <li>Reusable logic instead of copied call sites</li>
@@ -510,19 +535,18 @@
         </div>
         <p class="stack-line">TypeScript · Slack APIs · Google Workspace · Shared onboarding engine</p>
       </article>
-
       <article class="system-panel" id="account-lifecycle">
         <div class="system-heading">
           <div>
             <div class="eyebrow">03 · Account lifecycle</div>
-            <h2>Account state as a workflow, not a memory test</h2>
+            <h3>Account state as a workflow, not a memory test</h3>
             <p class="project-description">A scheduled state machine moves accounts through onboarding, first sign-in, active use, and departure while keeping destructive actions visible and controlled.</p>
           </div>
           <div class="system-status">Live automation</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Lifecycle engine</h3>
+            <h4>Lifecycle engine</h4>
             <ul>
               <li>Routes new accounts through controlled states</li>
               <li>Moves active users from validated directory attributes</li>
@@ -530,7 +554,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Boundaries</h3>
+            <h4>Boundaries</h4>
             <ul>
               <li>Protected service and guest accounts</li>
               <li>Explicit state precedence</li>
@@ -538,7 +562,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Operations</h3>
+            <h4>Operations</h4>
             <ul>
               <li>Idempotent scheduled scans</li>
               <li>Dry-run controls</li>
@@ -548,19 +572,18 @@
         </div>
         <p class="stack-line">Google Apps Script · Admin SDK · Google Workspace · Scheduled controls</p>
       </article>
-
       <article class="system-panel" id="deactivation-reconciliation">
         <div class="system-heading">
           <div>
             <div class="eyebrow">04 · Deactivation reconciliation</div>
-            <h2>A second system that checks the first one</h2>
+            <h3>A second system that checks the first one</h3>
             <p class="project-description">Automation can fail quietly. This read-only control compares deactivated accounts across identity, email, and collaboration systems and reports exactly where the records disagree.</p>
           </div>
           <div class="system-status">Detective control</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Checks</h3>
+            <h4>Checks</h4>
             <ul>
               <li>Cross-system account-state comparison</li>
               <li>Itemized discrepancies rather than a pass/fail total</li>
@@ -568,7 +591,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Deliberate limitation</h3>
+            <h4>Deliberate limitation</h4>
             <ul>
               <li>Read-only by design</li>
               <li>No automatic remediation</li>
@@ -576,63 +599,24 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Why separate it?</h3>
+            <h4>Why separate it?</h4>
             <p>The control should still be useful when the automation it checks is wrong. Sharing write behavior would defeat the point.</p>
           </div>
         </div>
         <p class="stack-line">Okta · Google Workspace · Slack · Read-only reconciliation</p>
       </article>
-
-      <article class="system-panel" id="proofpoint-directory-sync">
-        <div class="system-heading">
-          <div>
-            <div class="eyebrow">05 · Email security</div>
-            <h2>Directory synchronization with conservative boundaries</h2>
-            <p class="project-description">This automation keeps directory names and aliases synchronized with Proofpoint. Safe updates are automatic; onboarding and offboarding remain human-reviewed.</p>
-          </div>
-          <div class="system-status">Live automation</div>
-        </div>
-        <div class="system-grid">
-          <div class="system-block">
-            <h3>Automated</h3>
-            <ul>
-              <li>Additive directory updates</li>
-              <li>Alias and display-name consistency</li>
-              <li>Scheduled reporting</li>
-            </ul>
-          </div>
-          <div class="system-block">
-            <h3>Human-reviewed</h3>
-            <ul>
-              <li>Onboarding and offboarding actions</li>
-              <li>Ambiguous account changes</li>
-              <li>Protected account types</li>
-            </ul>
-          </div>
-          <div class="system-block">
-            <h3>Design</h3>
-            <ul>
-              <li>Additive and reversible defaults</li>
-              <li>Least-privilege scopes</li>
-              <li>Hosted job with a local TypeScript twin</li>
-            </ul>
-          </div>
-        </div>
-        <p class="stack-line">Proofpoint APIs · Google Workspace · Google Apps Script · TypeScript</p>
-      </article>
-
       <article class="system-panel" id="workspace-directory-manager">
         <div class="system-heading">
           <div>
-            <div class="eyebrow">06 · Secure administration</div>
-            <h2>A small interface for high-impact directory work</h2>
+            <div class="eyebrow">05 · Secure administration</div>
+            <h3>A small interface for high-impact directory work</h3>
             <p class="project-description">A packaged macOS tool for reviewing directory gaps, previewing Gmail signatures, applying approved changes, and exporting audit results.</p>
           </div>
           <div class="system-status">Internal application</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Capabilities</h3>
+            <h4>Capabilities</h4>
             <ul>
               <li>Directory data-quality review</li>
               <li>Signature preview and application</li>
@@ -640,7 +624,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Access model</h3>
+            <h4>Access model</h4>
             <ul>
               <li>Approved-device restriction</li>
               <li>Secrets excluded from source control</li>
@@ -648,7 +632,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Operator safeguards</h3>
+            <h4>Operator safeguards</h4>
             <ul>
               <li>Preview before apply</li>
               <li>Scoped bulk selection</li>
@@ -658,19 +642,58 @@
         </div>
         <p class="stack-line">Python · Flask · Gmail API · Google Directory API · PyInstaller</p>
       </article>
-
+      </div>
+      <h2 class="section-label" id="email-endpoint">Production · Email &amp; endpoint</h2>
+      <div class="systems">
+      <article class="system-panel" id="proofpoint-directory-sync">
+        <div class="system-heading">
+          <div>
+            <div class="eyebrow">06 · Email security</div>
+            <h3>Directory synchronization with conservative boundaries</h3>
+            <p class="project-description">This automation keeps directory names and aliases synchronized with Proofpoint. Safe updates are automatic; onboarding and offboarding remain human-reviewed.</p>
+          </div>
+          <div class="system-status">Live automation</div>
+        </div>
+        <div class="system-grid">
+          <div class="system-block">
+            <h4>Automated</h4>
+            <ul>
+              <li>Additive directory updates</li>
+              <li>Alias and display-name consistency</li>
+              <li>Scheduled reporting</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h4>Human-reviewed</h4>
+            <ul>
+              <li>Onboarding and offboarding actions</li>
+              <li>Ambiguous account changes</li>
+              <li>Protected account types</li>
+            </ul>
+          </div>
+          <div class="system-block">
+            <h4>Design</h4>
+            <ul>
+              <li>Additive and reversible defaults</li>
+              <li>Least-privilege scopes</li>
+              <li>Hosted job with a local TypeScript twin</li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-line">Proofpoint APIs · Google Workspace · Google Apps Script · TypeScript</p>
+      </article>
       <article class="system-panel" id="endpoint-security">
         <div class="system-heading">
           <div>
             <div class="eyebrow">07 · Endpoint security</div>
-            <h2>Finding the gap between “installed” and healthy</h2>
+            <h3>Finding the gap between “installed” and healthy</h3>
             <p class="project-description">I worked across endpoint-security and device-management data to find unhealthy installations, reconcile mismatched inventory, and improve fleet visibility.</p>
           </div>
           <div class="system-status">Fleet automation</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Investigation</h3>
+            <h4>Investigation</h4>
             <ul>
               <li>Separated stale records from unhealthy installations</li>
               <li>Identified missing endpoint permissions</li>
@@ -678,7 +701,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Reconciliation</h3>
+            <h4>Reconciliation</h4>
             <ul>
               <li>Compared endpoint and device-management records</li>
               <li>Corrected more than 100 records</li>
@@ -686,7 +709,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Direction</h3>
+            <h4>Direction</h4>
             <ul>
               <li>Automated health reporting</li>
               <li>Fleet posture monitoring</li>
@@ -696,19 +719,21 @@
         </div>
         <p class="stack-line">CrowdStrike · Device management · Reconciliation · Monitoring design</p>
       </article>
-
+      </div>
+      <h2 class="section-label" id="third-party-risk">Production · Third-party risk</h2>
+      <div class="systems">
       <article class="system-panel" id="vendor-assurance">
         <div class="system-heading">
           <div>
             <div class="eyebrow">08 · Vendor assurance</div>
-            <h2>One source record, several useful views</h2>
+            <h3>One source record, several useful views</h3>
             <p class="project-description">A reconciliation uncovered that vendor and agreement records were living in too many places. I designed a normalized system that keeps the source record, review status, and downstream compliance views connected.</p>
           </div>
           <div class="system-status">System design</div>
         </div>
         <div class="system-grid">
           <div class="system-block">
-            <h3>Problem</h3>
+            <h4>Problem</h4>
             <ul>
               <li>Vendor data split across separate trackers</li>
               <li>Agreement status difficult to verify</li>
@@ -716,7 +741,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Model</h3>
+            <h4>Model</h4>
             <ul>
               <li>Normalized vendor and agreement records</li>
               <li>Explicit ownership and review status</li>
@@ -724,7 +749,7 @@
             </ul>
           </div>
           <div class="system-block">
-            <h3>Use</h3>
+            <h4>Use</h4>
             <ul>
               <li>Live downstream compliance views</li>
               <li>Clear gaps without publishing internal vendor data</li>
@@ -734,6 +759,7 @@
         </div>
         <p class="stack-line">Notion · Vendor inventory · Agreement tracking · Compliance views</p>
       </article>
+      </div>
     </section>
 
 
@@ -749,6 +775,7 @@
           <p class="project-description">I walk through the React/FastAPI architecture, upload boundary, automated tests, current GitHub Actions CI, and where I still need to harden it. Implemented safeguards and proposed changes are separated clearly.</p>
           <p class="stack-line">FastAPI · Python · React · GitHub Actions · File Upload Security</p>
           <a class="project-link" href="pet-sticker-maker-security.html">Read Security Case Study →</a>
+          <a class="project-link" href="apps.html#pet-sticker-maker">The App</a>
         </article>
         <article class="personal-security-card">
           <div class="eyebrow">Academic work · NYU AppSec</div>
@@ -787,7 +814,14 @@
         <div class="project-links">
           <a href="adguard.html" class="project-link">Read More</a>
           <a href="home-improvement/adguard-home-raspberry-pi.md" class="project-link">Setup Notes</a>
+          <a href="https://github.com/mccab22k/kieramakesthings" class="project-link">GitHub</a>
         </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>I wanted to get rid of ads across my network and learn more about managing my own infrastructure.</p>
+          <p>This project documents my Raspberry Pi and AdGuard Home setup, the mistakes I made along the way, and the lessons learned getting everything working correctly.</p>
+          <p>Planned expansion: route my phone back through the home AdGuard instance when I am away from Wi-Fi so the same DNS filtering can block ads and trackers on the go.</p>
+        </details>
       </article>
     
       </div>
@@ -808,10 +842,11 @@
 
     <footer>
       <p>Professional work is sanitized to omit confidential implementation details. The Pet Sticker Maker app is public but its repository is private; the NYU coursework and No More Data Brokers repositories are public.</p>
-      <a class="project-link back-link" href="./#security-work">Back to portfolio</a>
+      <a class="project-link back-link" href="work.html">All work</a>
     </footer>
   </main>
+  </div>
 
-  <script src="theme.js?v=editorial-12"></script>
+  <script src="theme.js?v=ux-1"></script>
 </body>
 </html>
