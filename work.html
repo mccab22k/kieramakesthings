@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Work | Kiera Makes Things</title>
+  <meta name="description" content="Every project: security engineering, apps, and experiments.">
+  <meta property="og:title" content="All Work | Kiera Makes Things">
+  <meta property="og:description" content="Every project: security engineering, apps, and experiments.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/work.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
+  <!-- Lets CSS collapse the mobile menu only when JS is available. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="work">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container" id="home">
+    <nav class="topbar" aria-label="Primary">
+      <a class="logo" href="./">KMT_</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html">Security</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="lab.html">Lab</a></li>
+          <li><a href="work.html" aria-current="page">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
+      </div>
+    </nav>
+
+    <main id="content">
+    <header class="page-hero">
+      <div class="eyebrow">All work / Table of contents</div>
+      <h1>All Work</h1>
+      <p class="subtitle">Every project in one list, grouped by where it lives. Projects that belong to two areas are listed once, with a note.</p>
+    </header>
+
+    <div class="filter-bar" role="search" aria-label="Filter all work">
+      <label for="project-filter">Show</label>
+      <select id="project-filter" data-project-filter>
+        <option value="all">Everything</option>
+        <option value="security">Security</option>
+        <option value="apps">Apps &amp; products</option>
+        <option value="lab">Lab</option>
+        <option value="app-store">Live on App Store</option>
+        <option value="wip">In progress</option>
+      </select>
+      <p class="filter-note" data-filter-status aria-live="polite"></p>
+    </div>
+
+    <section data-filter-group aria-label="Security engineering">
+      <h2 class="section-label has-link"><span>Security engineering</span><a href="security-systems.html">Open page →</a></h2>
+      <ol class="work-index">
+        <li class="work-row" data-tags="security">
+          <span class="n">01</span>
+          <a href="security-systems.html#access-governance">Access Governance Automation</a>
+          <p>I built a Slack-based system for requesting and approving access across dozens of applications. It handles different approval paths, provisions approved access, and keeps an audit trail without turning every request into a security ticket.</p>
+          <span class="tags">Production · Identity &amp; access<br>Node.js · TypeScript · Slack · Okta · Email security</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">02</span>
+          <a href="security-systems.html#employee-onboarding">Employee Onboarding Platform</a>
+          <p>Onboarding touched enough systems that copying the same logic between scripts stopped making sense. I turned it into a shared engine with dry runs, credential safeguards, device checks, and append-only audit logging.</p>
+          <span class="tags">Production · Identity &amp; access<br>TypeScript · Slack · Google Workspace · Shared engine</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">03</span>
+          <a href="security-systems.html#account-lifecycle">Account Lifecycle Automation</a>
+          <p>A state-based workflow moves accounts through onboarding, first sign-in, and departure. It reduces manual cleanup while keeping destructive actions visible and controlled.</p>
+          <span class="tags">Production · Identity &amp; access<br>Google Apps Script · Admin SDK · Scheduled controls</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">04</span>
+          <a href="security-systems.html#deactivation-reconciliation">Deactivation Reconciliation</a>
+          <p>Automation can fail quietly, so I compare deactivated accounts across identity, email, and collaboration systems. The control reports discrepancies without trying to “helpfully” modify anything.</p>
+          <span class="tags">Production · Identity &amp; access<br>Okta · Google Workspace · Slack · Read-only</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">05</span>
+          <a href="security-systems.html#account-lifecycle">Google Workspace / GAM Automation</a>
+          <p>I automate the repetitive parts of Google Workspace administration without hiding what the automation is about to change. The work spans account lifecycle controls, directory cleanup, group management, and connected email-security systems, with dry runs and human review around destructive actions.</p>
+          <span class="tags">Production · Identity &amp; access<br>Google Workspace · GAM · Apps Script · TypeScript</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">06</span>
+          <a href="security-systems.html#proofpoint-directory-sync">Proofpoint Directory Sync</a>
+          <p>This automation keeps directory information synchronized with Proofpoint. Safe changes are additive and reversible; onboarding and offboarding actions remain human-reviewed.</p>
+          <span class="tags">Production · Email &amp; endpoint<br>Proofpoint · Google Workspace · Apps Script · TypeScript</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">07</span>
+          <a href="security-systems.html#endpoint-security">Endpoint Security Automation</a>
+          <p>I worked across endpoint and device-management data to find unhealthy installations and mismatched records. More than 100 records were corrected without misplacing a device.</p>
+          <span class="tags">Production · Email &amp; endpoint<br>CrowdStrike · Device management · Reconciliation</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">08</span>
+          <a href="security-systems.html#vendor-assurance">Vendor Assurance System of Record</a>
+          <p>A reconciliation uncovered that vendor and agreement records were living in too many places. I designed a normalized system that keeps the source record, review status, and compliance views connected.</p>
+          <span class="tags">System design · Third-party risk<br>Notion · Vendor inventory · Agreement tracking</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">09</span>
+          <a href="pet-sticker-maker-security.html">Pet Sticker Maker: Security Case Study</a>
+          <p>What happens when a fun pet-photo tool accepts untrusted images and processes them on a server?</p>
+          <span class="tags">Case study · Application security</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">10</span>
+          <a href="nyu-appsec.html">Breaking Things to Learn AppSec</a>
+          <p>Memory safety, fuzzing, Django exploits, Kubernetes deployments, and Android privacy—with the messy debugging notes left intact.</p>
+          <span class="tags">Coursework · Application security</span>
+        </li>
+        <li class="work-row" data-tags="security apps">
+          <span class="n">11</span>
+          <a href="security-systems.html#no-more-data-brokers">No More Data Brokers</a>
+          <p>Privacy rights should not require paying the same industry that profits from personal data. I objected to paying a subscription to remove information that should not have been collected in the first place, so I made the process free and kept the data in the browser.</p>
+          <span class="tags">Live · Privacy · also an app</span>
+        </li>
+        <li class="work-row" data-tags="security">
+          <span class="n">12</span>
+          <a href="security-systems.html#raspberry-pi-adguard">Block Trackers on Your Wi-Fi</a>
+          <p>I wanted a network-level way to block trackers and ads across the devices on my Wi-Fi, not just in one browser. A Raspberry Pi 4B running AdGuard Home as the DNS layer for my home network, blocking tracker and ad domains while preserving the services I actually use.</p>
+          <span class="tags">Live · Privacy · Home lab<br>Raspberry Pi + AdGuard Home · DNS · Network privacy</span>
+        </li>
+      </ol>
+    </section>
+
+    <section data-filter-group aria-label="Apps &amp; products">
+      <h2 class="section-label has-link"><span>Apps &amp; products</span><a href="apps.html">Open page →</a></h2>
+      <ol class="work-index">
+        <li class="work-row" data-tags="apps app-store">
+          <span class="n">13</span>
+          <a href="apps.html#orbit">Orbit, A Fancy Planner</a>
+          <p>I have never experienced a day as a vertical list. Orbit started as an attempt to make time look more like it feels: circular, finite, and constantly being rearranged.</p>
+          <span class="tags">Live · iOS + web · <a class="row-store" href="https://apps.apple.com/us/app/orbit-a-fancy-planner/id6776764489">App Store ↗</a></span>
+        </li>
+        <li class="work-row" data-tags="apps app-store">
+          <span class="n">14</span>
+          <a href="apps.html#time-since">Time Since Chore Manager</a>
+          <p>Some routines should reset from the last time they were done. I do not change my sheets every Tuesday—I change them a certain amount of time after I last changed them. A surprising number of routines work this way.</p>
+          <span class="tags">Live · iOS + web · <a class="row-store" href="https://apps.apple.com/us/app/time-since-chore-reminder/id6795689073">App Store ↗</a></span>
+        </li>
+        <li class="work-row" data-tags="apps app-store">
+          <span class="n">15</span>
+          <a href="apps.html#time-here-time-there">Time Here, Time There</a>
+          <p>I kept opening world clocks and then doing the time-zone math myself anyway. This puts every city on one movable timeline so the overlap is visible.</p>
+          <span class="tags">Live · iOS + web · <a class="row-store" href="https://apps.apple.com/us/app/time-here-time-there/id6796821781">App Store ↗</a></span>
+        </li>
+        <li class="work-row" data-tags="apps app-store lab">
+          <span class="n">16</span>
+          <a href="apps.html#catflakes">Catflakes</a>
+          <p>When I was learning to code, I challenged myself to recreate a cat-snowflake meme in Java. That was the entire idea. Years later, I rebuilt it for the App Store because apparently I remained committed to the premise.</p>
+          <span class="tags">Live · iOS + web · <a class="row-store" href="https://apps.apple.com/us/app/catflakes/id6795675453">App Store ↗</a></span>
+        </li>
+        <li class="work-row" data-tags="apps">
+          <span class="n">17</span>
+          <a href="apps.html#passport-buddy">Passport Buddy</a>
+          <p>Group travel gets complicated fast when friends hold different passports. I started with a giant spreadsheet; eventually the spreadsheet became an argument for building an app.</p>
+          <span class="tags">Live · Web app</span>
+        </li>
+        <li class="work-row" data-tags="apps wip">
+          <span class="n">18</span>
+          <a href="apps.html#better-nyc-map">Better NYC Map</a>
+          <p>Route planners regularly suggest trips that are technically faster and obviously worse. I wanted one that understood when I would rather walk farther, avoid a transfer, or take the ferry because the ferry is nicer.</p>
+          <span class="tags">Prototype · Web app</span>
+        </li>
+        <li class="work-row" data-tags="apps wip">
+          <span class="n">19</span>
+          <a href="apps.html#rent-stabilized-map">Rent Stabilized Map</a>
+          <p>Looking for a rent-stabilized apartment meant checking public records one building at a time. I wanted the useful parts on a map.</p>
+          <span class="tags">Beta · Web app</span>
+        </li>
+        <li class="work-row" data-tags="apps wip security">
+          <span class="n">20</span>
+          <a href="apps.html#pet-sticker-maker">Pet Sticker Maker</a>
+          <p>Catflakes needed isolated cat heads. I did not want to cut them out manually forever, so this became its own computer-vision project.</p>
+          <span class="tags">Paused · Web app · also security</span>
+        </li>
+      </ol>
+    </section>
+
+    <section data-filter-group aria-label="Lab">
+      <h2 class="section-label has-link"><span>Lab</span><a href="lab.html">Open page →</a></h2>
+      <ol class="work-index">
+        <li class="work-row" data-tags="lab wip">
+          <span class="n">21</span>
+          <a href="lab.html#nyc-trolley-problem">The NYC Trolley Problem</a>
+          <p>New Yorkers already have strong opinions about stations, neighborhoods, transit modes, public art, and pigeons. This turns those arguments into a deliberately impossible series of binary choices.</p>
+          <span class="tags">Concept · Swipe game</span>
+        </li>
+        <li class="work-row" data-tags="lab wip">
+          <span class="n">22</span>
+          <a href="lab.html#personality-systems-research">Personality Systems Research</a>
+          <p>Most personality tests give you one tidy label and send you on your way. I wanted to see the messier version: overlapping traits, relative strengths, and changes over time.</p>
+          <span class="tags">Prototype · Assessment</span>
+        </li>
+        <li class="work-row" data-tags="lab wip">
+          <span class="n">23</span>
+          <a href="lab.html#colony-cat-management">Colony Cat Management</a>
+          <p>I live near several cat colonies, encounter street cats almost everywhere I travel, and love cats enough to revisit a graduate-school model that was only right about 70% of the time.</p>
+          <span class="tags">Prototype · Computer vision</span>
+        </li>
+        <li class="work-row" data-tags="lab wip">
+          <span class="n">24</span>
+          <a href="lab.html#wearable-computing">Wearable Computing</a>
+          <p>I want to make my own wearable and take control of the data it collects.</p>
+          <span class="tags">Concept · Hardware</span>
+        </li>
+      </ol>
+    </section>
+
+    </main>
+
+    <footer>
+      <p>Useful tools, unfinished experiments, and notes from figuring them out.</p>
+      <div class="social-links">
+        <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
+        <a href="privacy.html" class="social-link">Privacy Policy</a>
+      </div>
+      <p class="license-note">
+        Unless otherwise stated, all code, concepts, and project materials on this site are owned by Kiera McCabe.
+        Do not copy, reuse, sell, redistribute, or commercialize this work without written permission.
+        For licensing or usage questions, contact <a href="mailto:kieramakesthings@gmail.com" class="social-link">kieramakesthings@gmail.com</a>.
+      </p>
+      <p style="margin-top:28px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
+    </footer>
+  </div>
+
+  <script src="theme.js?v=ux-1"></script>
+  <script src="filters.js?v=ux-1"></script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

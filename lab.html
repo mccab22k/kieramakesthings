@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab | Kiera Makes Things</title>
+  <meta name="description" content="Experiments, research prototypes, and concepts.">
+  <meta property="og:title" content="Lab | Kiera Makes Things">
+  <meta property="og:description" content="Experiments, research prototypes, and concepts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mccab22k.github.io/kieramakesthings/lab.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css?v=ux-1">
+  <!-- Lets CSS collapse the mobile menu only when JS is available. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="lab">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container" id="home">
+    <nav class="topbar" aria-label="Primary">
+      <a class="logo" href="./">KMT_</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <div class="topbar-actions" id="site-menu">
+        <ul class="primary-nav">
+          <li><a href="security-systems.html">Security</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="lab.html" aria-current="page">Lab</a></li>
+          <li><a href="work.html">All work</a></li>
+          <li><a href="./#about">About</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+        <a class="ext" href="https://apps.apple.com/us/developer/kiera-mccabe/id6776764761" aria-label="Kiera McCabe on the App Store">iOS Apps</a>
+        <a class="ext" href="https://github.com/mccab22k">GitHub</a>
+      </div>
+    </nav>
+
+    <main id="content">
+    <header class="page-hero">
+      <div class="eyebrow">Lab / Experiments &amp; research</div>
+      <h1>The Lab</h1>
+      <p class="subtitle">Experiments, research, and ideas that are still finding their shape.</p>
+    </header>
+
+    <div class="filter-bar" role="search" aria-label="Filter experiments">
+      <label for="project-filter">Show</label>
+      <select id="project-filter" data-project-filter>
+        <option value="all">Everything</option>
+        <option value="playable">Playable now</option>
+        <option value="research">Research &amp; concepts</option>
+      </select>
+      <p class="filter-note" data-filter-status aria-live="polite"></p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card card-lab" id="nyc-trolley-problem" data-n="01" data-tags="playable">
+        <div class="status-badge" data-status="concept">Concept</div>
+        <h2 class="project-title">The NYC Trolley Problem</h2>
+        <div class="project-meta">NYC culture · Transit · Swipe game</div>
+        <p class="project-hook">New Yorkers already have strong opinions about stations, neighborhoods, transit modes, public art, and pigeons. This turns those arguments into a deliberately impossible series of binary choices.</p>
+        <p class="project-description">A Tinder-style swipe game that starts in hyper-niche transit mode — stations, subway lines, ferries, buses, and service patterns — before expanding into increasingly specific NYC cultural dilemmas.</p>
+        <div class="project-links">
+          <a href="https://mccab22k.github.io/nyc-trolley-problem/" class="project-link">Play Game</a>
+          <a href="https://github.com/mccab22k/nyc-trolley-problem" class="project-link">GitHub (Private)</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>I wanted a New York version of the trolley problem that feels local enough to reward people who actually know the city.</p>
+          <p>The first mode is transit-heavy: players choose between stations, lines, buses, ferries, and other pieces of the system. Later rounds move into neighborhood and cultural matchups such as Koreatown versus Chinatown, DUMBO versus Gramercy, Keith Haring versus other New York iconography, and one giant pigeon versus all ordinary pigeons.</p>
+          <p>The interaction is intentionally simple: swipe left or right, then see how everyone else voted.</p>
+        </details>
+      </article>
+      <article class="project-card card-lab" id="personality-systems-research" data-n="02" data-tags="playable">
+        <div class="status-badge" data-status="prototype">Prototype</div>
+        <h2 class="project-title">Personality Systems Research</h2>
+        <div class="project-meta">Assessment · Prototype · Identity</div>
+        <p class="project-hook">Most personality tests give you one tidy label and send you on your way. I wanted to see the messier version: overlapping traits, relative strengths, and changes over time.</p>
+        <p class="project-description">A hub for personality assessment experiments: a scaled Enneagram test and an attachment-style quiz with self and partner modes, with longitudinal pattern tracking planned.</p>
+        <div class="project-links">
+          <a href="personality.html" class="project-link">Explore Personality Systems</a>
+          <a href="https://mccab22k.github.io/enneagram-scaled-test/" class="project-link">Enneagram Quiz</a>
+          <a href="https://mccab22k.github.io/attachment-quiz/" class="project-link">Attachment Quiz</a>
+          <a href="enneagram-scaled-test.md" class="project-link">Project Notes</a>
+          <a href="https://github.com/mccab22k/enneagram-scaled-test" class="project-link">GitHub (Private)</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>Most personality tests give you a label. I wanted something a little more nuanced.</p>
+          <p>This project explores measuring personality traits on a spectrum rather than forcing people into a single category. Eventually I would like users to be able to save results and see how those patterns change over time.</p>
+        </details>
+      </article>
+      <article class="project-card card-lab" id="colony-cat-management" data-n="03" data-tags="research">
+        <div class="status-badge" data-status="prototype">Prototype</div>
+        <h2 class="project-title">Colony Cat Management</h2>
+        <div class="project-meta">Graduate-school era · Computer vision · TNR</div>
+        <p class="project-hook">I live near several cat colonies, encounter street cats almost everywhere I travel, and love cats enough to revisit a graduate-school model that was only right about 70% of the time.</p>
+        <p class="project-description">Computer-vision identification and tracking for community cat caretakers.</p>
+        <div class="project-links">
+          <a href="cats.html" class="project-link">Read More</a>
+          <a href="https://github.com/mccab22k/colony-cat-management" class="project-link">GitHub</a>
+        </div>
+        <details class="why-made" open>
+          <summary>Why I Made This</summary>
+          <p>I live in a part of Manhattan with several cat colonies, I have traveled extensively in places with large street cat populations, and I simply love cats.</p>
+          <p>In graduate school, I tested whether computer vision could distinguish individual community cats. The model reached roughly 70% accuracy: promising enough to be interesting and unreliable enough that I would not pretend the problem was solved.</p>
+          <p>I want to revisit it as a tool for TNR volunteers tracking colony health, population changes, and cats that may need attention.</p>
+        </details>
+        <aside class="presentation-embed" aria-label="Cat Recognition for TNR presentation">
+          <span>Research presentation</span>
+          <strong>Cat Recognition for TNR</strong>
+          <a href="cats.html">View research notes →</a>
+        </aside>
+      </article>
+      <article class="project-card card-lab" id="wearable-computing" data-n="04" data-tags="research">
+        <div class="status-badge" data-status="concept">Concept</div>
+        <h2 class="project-title">Wearable Computing</h2>
+        <div class="project-meta">Hardware concept · Research · Sensors</div>
+        <p class="project-hook">I want to make my own wearable and take control of the data it collects.</p>
+        <p class="project-description">Exploring modular sensors, passive power systems, and retrofitting traditional watches with modern tracking.</p>
+        <div class="project-links">
+          <a href="wearable-computing.md" class="project-link">Project Notes</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Catflakes started as an experiment; its primary home is now Apps. -->
+    <p class="cross-ref" data-tags="playable">
+      <span>Also in Apps</span>
+      <strong>Catflakes</strong>
+      <a class="project-link" href="https://apps.apple.com/us/app/catflakes/id6795675453">iOS App Store</a>
+      <a class="project-link" href="apps.html#catflakes">Read More</a>
+    </p>
+    </main>
+
+    <footer>
+      <p>Useful tools, unfinished experiments, and notes from figuring them out.</p>
+      <div class="social-links">
+        <a href="https://github.com/mccab22k" class="social-link">GitHub</a>
+        <a href="privacy.html" class="social-link">Privacy Policy</a>
+      </div>
+      <p class="license-note">
+        Unless otherwise stated, all code, concepts, and project materials on this site are owned by Kiera McCabe.
+        Do not copy, reuse, sell, redistribute, or commercialize this work without written permission.
+        For licensing or usage questions, contact <a href="mailto:kieramakesthings@gmail.com" class="social-link">kieramakesthings@gmail.com</a>.
+      </p>
+      <p style="margin-top:28px;font-size:.85rem;">Made to be useful. © 2026 Kiera Makes Things</p>
+    </footer>
+  </div>
+
+  <script src="theme.js?v=ux-1"></script>
+  <script src="filters.js?v=ux-1"></script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ae874fbe4e1f4a4aa74b4ec2d95308d2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
