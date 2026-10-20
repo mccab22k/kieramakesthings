@@ -662,6 +662,31 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
     text-align: left;
   }
   .topbar-actions > .theme-toggle { border-bottom: 0; }
+
+  /* Homepage: theme.js moves the links below the doors as a wrapping row. */
+  .js .topbar.nav-moved .menu-toggle { display: none; }
+  .js .nav-below .topbar-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0 18px;
+  }
+  .nav-below .primary-nav { flex-direction: row; width: auto; gap: 0 18px; }
+  .nav-below .primary-nav li,
+  .nav-below .topbar-actions > a,
+  .nav-below .topbar-actions > .theme-toggle { border-top: 0; }
+  .nav-below .primary-nav a,
+  .nav-below .topbar-actions > a {
+    display: inline-block;
+    width: auto;
+    padding: 8px 0;
+  }
+  .nav-below .topbar-actions > .theme-toggle {
+    width: auto;
+    padding: 4px 0 2px;
+    border-bottom: 2px solid var(--accent);
+  }
 }
 
 /* Smaller hero used by Apps, Lab and All work. */

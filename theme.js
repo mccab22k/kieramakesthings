@@ -56,6 +56,33 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// On the homepage at menu width, the page links sit below the two doors
+// instead of behind the Menu button. The same node is moved (not cloned) so
+// the theme toggle keeps its listener; it moves back when the window widens.
+const doors = document.querySelector('.doors');
+const siteMenu = document.getElementById('site-menu');
+
+if (doors && siteMenu && topbar) {
+  const navBelow = document.createElement('nav');
+  navBelow.className = 'topbar nav-below';
+  navBelow.setAttribute('aria-label', 'Pages');
+  const narrow = window.matchMedia('(max-width: 780px)');
+
+  const placeNav = () => {
+    if (narrow.matches) {
+      setMenu(false);
+      navBelow.append(siteMenu);
+      doors.after(navBelow);
+    } else {
+      topbar.append(siteMenu);
+      navBelow.remove();
+    }
+    topbar.classList.toggle('nav-moved', narrow.matches);
+  };
+  placeNav();
+  narrow.addEventListener('change', placeNav);
+}
+
 // ---- 3. Old homepage deep links ------------------------------------------
 // Projects used to live as cards on the homepage. Their full cards now live
 // on a category page, so old links like /#time-since are forwarded there.
