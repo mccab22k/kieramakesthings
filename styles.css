@@ -624,6 +624,8 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .topbar .ext::after { color: var(--accent); content: " ↗"; }
 .topbar a:not(.logo):not(.ext)::after { content: none; }
 
+.topbar-title { display: none; }
+
 .menu-toggle {
   display: none;
   appearance: none;
@@ -687,6 +689,30 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
     padding: 4px 0 2px;
     border-bottom: 2px solid var(--accent);
   }
+
+  /* Homepage: the hero title folds into the header so the doors and page
+     links sit near the top. The h1 stays in the page for screen readers. */
+  .topbar-title {
+    display: block;
+    margin-right: auto;
+    font-family: Arial Black, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -.04em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .hero-main { padding: 18px 20px 20px; }
+  .hero-main .eyebrow, .hero-shell .working-principle { display: none; }
+  .hero-main h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .hero-main .subtitle { font-size: 16px; }
 }
 
 /* Smaller hero used by Apps, Lab and All work. */
