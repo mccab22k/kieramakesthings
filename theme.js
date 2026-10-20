@@ -59,8 +59,10 @@ document.addEventListener('keydown', (event) => {
 // On the homepage at menu width, the page links sit below the two doors
 // instead of behind the Menu button. The same node is moved (not cloned) so
 // the theme toggle keeps its listener; it moves back when the window widens.
+// The GitHub link goes up into the header instead, to thin out that row.
 const doors = document.querySelector('.doors');
 const siteMenu = document.getElementById('site-menu');
+const githubLink = siteMenu?.querySelector('a.ext[href*="github.com"]');
 
 if (doors && siteMenu && topbar) {
   const navBelow = document.createElement('nav');
@@ -73,7 +75,9 @@ if (doors && siteMenu && topbar) {
       setMenu(false);
       navBelow.append(siteMenu);
       doors.after(navBelow);
+      if (githubLink) topbar.append(githubLink);
     } else {
+      if (githubLink) siteMenu.append(githubLink);
       topbar.append(siteMenu);
       navBelow.remove();
     }

@@ -693,6 +693,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
   /* Homepage: the hero title folds into the header so the doors and page
      links sit near the top. The h1 stays in the page for screen readers. */
   .topbar.nav-moved { flex-wrap: nowrap; gap: 14px; }
+  .topbar.nav-moved > .ext { flex-shrink: 0; padding: 12px 0; font-size: 13px; }
   .topbar-title {
     display: block;
     min-width: 0;
