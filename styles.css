@@ -46,7 +46,7 @@ body {
 a { color: inherit; }
 
 .container {
-  width: min(1240px, calc(100% - 32px));
+  width: calc(100% - 32px);
   margin: 0 auto;
   border-right: 2px solid var(--line);
   border-left: 2px solid var(--line);
