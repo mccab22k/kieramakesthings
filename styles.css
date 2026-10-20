@@ -692,11 +692,13 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 
   /* Homepage: the hero title folds into the header so the doors and page
      links sit near the top. The h1 stays in the page for screen readers. */
+  .topbar.nav-moved { flex-wrap: nowrap; gap: 14px; }
   .topbar-title {
     display: block;
+    min-width: 0;
     margin-right: auto;
     font-family: Arial Black, Arial, sans-serif;
-    font-size: 15px;
+    font-size: clamp(12px, 4vw, 15px);
     font-weight: 900;
     letter-spacing: -.04em;
     line-height: 1.1;
@@ -899,9 +901,10 @@ h2.section-label { font-size: 10px; }
 
 @media (max-width: 780px) {
   .page-hero, header.page-hero { padding: 30px 18px 26px; }
-  .doors, .shelf, .shelf-apps { grid-template-columns: 1fr; }
-  .door { padding: 20px 18px; }
-  .door + .door { border-left: 0; border-top: 2px solid var(--line); }
+  .shelf, .shelf-apps { grid-template-columns: 1fr; }
+  /* The two doors stay side by side; titles shrink to fit half the width. */
+  .door { padding: 16px 14px; }
+  .door strong { font-size: 18px; }
   .shelf-card, .shelf > .shelf-card:nth-child(n) { padding: 22px 18px; border-right: 0; }
   .see-all, .filter-bar, .cross-ref { padding-left: 18px; padding-right: 18px; }
   .work-row { grid-template-columns: 34px minmax(0, 1fr); padding: 14px 18px; }
